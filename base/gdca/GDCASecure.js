@@ -1564,11 +1564,6 @@
 		}
 	};
 	
-	GDCA.getErrorInfo = function() {
-		return this.UseCom.getErrorInfo();
-	};
-	
-
 	GDCA.ActiveXInit = function() {
 		debugger;
 		if (this.UseCom)
@@ -1632,16 +1627,7 @@
 		return CertData[0];
 	};
 
-	GDCA.getCertInfo = function(CertType) {
-		var outData = [], certData = this.getCertData(2);
-		var ret = GDCAGetCertInfo(this.UseCom, this.KeyType[0], certData, outData);
-		if (ret !== 0) {
-			throw ("解析证书信息出错：" + ret);
-		}
-		return outData[0];
-	};
-
-	GDCA.KeyType1getXML = function(sourceData, serchname) {
+	GDCA.getXML = function(sourceData, serchname) {
 		var startStr = "<" + serchname + ">";
 		var endStr = "</" + serchname + ">";
 		var start = sourceData.indexOf(startStr);
