@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>UI</name>
+	<comment>x5 project</comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>.output_base_resources_src</name>
+			<type>2</type>
+			<location>D:/BeX5_V3.6-platform3.1/model/UI/base/resources/classes</location>
+		</link>
+		<link>
+			<name>.output_generateXML_generateDYQXML_process_dsrc</name>
+			<type>2</type>
+			<location>D:/BeX5_V3.6-platform3.1/model/UI/generateXML/generateDYQXML/process/dclasses</location>
+		</link>
+	</linkedResources>
+</projectDescription>
