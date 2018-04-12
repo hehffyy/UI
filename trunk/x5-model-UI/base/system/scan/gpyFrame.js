@@ -7,10 +7,6 @@ function GetFileName(filepath) {
 	}
 }
 
-gpyFrame.getParam = function() {
-	return window.parent.materialManager.systemRunnerSend({});
-};
-
 gpyFrame.model1XBLLoaded = function(event) {
 	$(
 			'<object id="view1" type="application/x-eloamplugin" width="100%" height="95%" name="view"></object>')
@@ -30,7 +26,8 @@ gpyFrame.model1Load = function(event) {
 		$("#view1").hide();
 		$("#thumb1").hide();
 		var baseInstall = "<center style='margin-top:100px'><font color='#FF00FF'>博通基础运行插件未安装!点击这里<a href='"
-				+ justep.Request.convertURL("/UI/base/plugins/博通基础运行插件.exe",true)
+				+ justep.Request.convertURL("/UI/base/plugins/博通基础运行插件.exe",
+						true)
 				+ "' target='_self'>执行安装</a>,安装后请刷新页面或重新进入。</font></center>";
 		$(baseInstall).appendTo($("#divCamara"));
 		return;
@@ -54,6 +51,9 @@ gpyFrame.trigger2Click = function(event) {
 	CloseVideo();
 };
 
+/**
+ * 拍照click
+ */
 gpyFrame.trigger7Click = function(event) {
 	scanFileHead = gpyFrame.getParam().materialName;
 	Scan();
@@ -113,8 +113,8 @@ function uploadPdf1() {
 	uploadOcx.ServerUrl = getUrl();
 	uploadOcx.StartProcess("文件上传");
 	uploadOcx.AddInfo("开始打包图片转成 PDF格式");
+	var ds = justep.xbl("data");
 	try {
-		var ds = window.parent.materialManager.getCurrentDs();
 		var files = ds.getValue("files");
 		if (files == "")
 			return;
@@ -135,8 +135,8 @@ function uploadPdf1() {
 				file : fileBase64
 			};
 			param = JSON.stringify(param);
-			var xhr = justep.Request.sendHttpRequest(uploadOcx.ServerUrl, param,
-					"application/json");
+			var xhr = justep.Request.sendHttpRequest(uploadOcx.ServerUrl,
+					param, "application/json");
 			if (justep.Request.isSuccess(xhr))
 				response = xhr.responseText;
 		} else {
@@ -150,7 +150,7 @@ function uploadPdf1() {
 			return;
 		var ret = JSON.parse(response);
 		var result = ret.result;
-		window.parent.materialManager.systemRunnerReceive({
+		justep.xbl("windowReceiver").sendData({
 			data : {
 				kind : 'upload',
 				attachs : [ result ]
@@ -167,28 +167,28 @@ function uploadImage1() {
 	uploadOcx.StartProcess("文件上传");
 	try {
 		var reg = /\\/g;
-		var response,fileName,fileBase64,xhr,ret;
+		var response, fileName, fileBase64, xhr, ret;
 		for ( var i = 0; i < thumb1().Thumbnail_GetCount(); i++) {
 			response = "";
 			filePath = thumb1().Thumbnail_GetFileName(i);
 			uploadOcx.AddInfo("开始上传文件[" + filePath);
 			if (!!uploadOcx.ToBase64) {
 				fileName = filePath.replace(reg, '/');
-				fileName = fileName.substring(fileName.lastIndexOf("/")+1);
+				fileName = fileName.substring(fileName.lastIndexOf("/") + 1);
 				var param = {
 					fileName : fileName,
 					file : uploadOcx.ToBase64(filePath)
 				};
 				param = JSON.stringify(param);
-				xhr = justep.Request.sendHttpRequest(uploadOcx.ServerUrl, param,
-						"application/json");
+				xhr = justep.Request.sendHttpRequest(uploadOcx.ServerUrl,
+						param, "application/json");
 				if (justep.Request.isSuccess(xhr))
 					response = xhr.responseText;
-			}else{
+			} else {
 				response = uploadOcx.Upload(filePath);
 			}
 			ret = JSON.parse(response);
-			window.parent.materialManager.systemRunnerReceive({
+			justep.xbl("windowReceiver").sendData({
 				data : {
 					kind : 'upload',
 					attachs : [ ret.result ]
@@ -238,7 +238,7 @@ function httpUpload(http, filePath, fileName) {
 		response = resp;
 	var ret = JSON.parse(response);
 	var result = ret.result;
-	window.parent.materialManager.systemRunnerReceive({
+	justep.xbl("windowReceiver").sendData({
 		data : {
 			kind : 'upload',
 			attachs : [ result ]
@@ -310,33 +310,46 @@ gpyFrame.trgRefreshClick = function(event) {
 	location.reload();
 };
 
-// --------------------一键上传
-function saveScanFiles(ds, rowID) {
-	if (ds == null) {
-		ds = window.parent.materialManager.getCurrentDs();
-		rowID = ds.getCurrentID();
-	}
+/**
+ * 拍照click delay
+ */
+function saveScanFiles() {
+	// assert data.getValue("fID") == parent.data.getID()
+	var ds = justep.xbl("data");
 	var list = [];
-	ds.setValue("pdf", "是", rowID);
+	ds.setValue("pdf", "是");
 	for ( var i = 0; i < thumb1().Thumbnail_GetCount(); i++) {
-		// if (!thumb1().Thumbnail_GetCheck(i)) {
-		// continue;
-		// }
 		var filePath = thumb1().Thumbnail_GetFileName(i);
 		list.push(filePath);
 	}
 	if (list.length == 0) {
-		ds.setValue("scanCount", "", rowID);
-		ds.setValue("files", "", rowID);
+		ds.setValue("scanCount", "");
+		ds.setValue("files", "");
 	} else {
-		ds.setValue("scanCount", list.length, rowID);
-		ds.setValue("files", JSON.stringify(list), rowID);
+		ds.setValue("scanCount", list.length);
+		ds.setValue("files", JSON.stringify(list));
 	}
 };
 
-function showScanFiles(ds) {
+function showScanFiles(fID,fMaterialName,reset) {
 	thumb1().Thumbnail_Clear(false);
-	var files = ds.getValue("files");
+	var data = justep.xbl("data");
+	var ids = data.find([ "fID" ], [ fID ], true);
+	if (ids.length == 0) {
+		data.newData();
+		data.setValue("fID", fID);
+		data.setValue("fMaterialName", fMaterialName);
+	} else {
+		data.setIndex(data.getIndex(ids[0]));
+	}
+	
+	if(reset){
+		data.setValue("scanCount", "");
+		data.setValue("files", "");
+		data.setValue("pdf", "");
+	}
+
+	var files = data.getValue("files");
 	if (files == "")
 		return;
 	files = JSON.parse(files);
@@ -350,10 +363,11 @@ function showScanFiles(ds) {
 	}, 100);
 };
 
-function uploadAll(ds) {
+function uploadAll() {
 	var uploadOcx = document.getElementById("uploadOcx");
 	uploadOcx.ServerUrl = getUrl();
 	uploadOcx.StartProcess("批量文件上传");
+	var ds = justep.xbl("data");
 	try {
 		for ( var i = 0; i < ds.getCount(); i++) {
 			var id = ds.getID(i);
@@ -377,8 +391,8 @@ function uploadAll(ds) {
 						+ fileName.replace(/^\s+|\s+$/gm, '');
 				if (!!uploadOcx.ToPdfBase64) {
 					var fileBase64 = uploadOcx.ToPdfBase64(lFiles);
-					if(fileBase64==""){
-						alert("转换"+fileName+"异常");
+					if (fileBase64 == "") {
+						alert("转换" + fileName + "异常");
 						continue;
 					}
 					var param = {
@@ -386,14 +400,14 @@ function uploadAll(ds) {
 						file : fileBase64
 					};
 					param = JSON.stringify(param);
-					var xhr = justep.Request.sendHttpRequest(uploadOcx.ServerUrl, param,
-							"application/json");
+					var xhr = justep.Request.sendHttpRequest(
+							uploadOcx.ServerUrl, param, "application/json");
 					if (justep.Request.isSuccess(xhr))
 						response = xhr.responseText;
-				} else{
+				} else {
 					var filePath = uploadOcx.ToPDF(lFiles, fileName);
 					if (filePath == "") {
-						alert("转换"+fileName+"异常");
+						alert("转换" + fileName + "异常");
 						continue;
 					}
 					uploadOcx.AddInfo("开始上传文件" + filePath);
@@ -402,7 +416,7 @@ function uploadAll(ds) {
 				if (response == "")
 					continue;
 				var ret = JSON.parse(response);
-				window.parent.materialManager.systemRunnerReceive({
+				justep.xbl("windowReceiver").sendData({
 					data : {
 						kind : 'upload',
 						attachs : [ ret.result ],
@@ -416,3 +430,10 @@ function uploadAll(ds) {
 	}
 };
 
+gpyFrame.getParam = function() {
+	return gpyFrame._initData || {};
+};
+
+gpyFrame.windowReceiverReceive = function(event) {
+	gpyFrame._initData = event.data; 
+};

@@ -13,7 +13,8 @@
     <xforms:action id="action3" ev:event="onunload"> 
       <xforms:script id="xformsScript3"><![CDATA[gpyFrame.model1UnLoad(event)]]></xforms:script> 
     </xforms:action> 
-  <xforms:action id="action12" ev:event="xforms-model-construct"><xforms:script id="xformsScript12"><![CDATA[gpyFrame.model1ModelConstruct(event)]]></xforms:script></xforms:action></xforms:model>  
+  <xforms:action id="action12" ev:event="xforms-model-construct"><xforms:script id="xformsScript12"><![CDATA[gpyFrame.model1ModelConstruct(event)]]></xforms:script></xforms:action>
+  <data component="/UI/system/components/data.xbl.xml#data" data-type="json" columns="fID,fMaterialName,scanCount,files,pdf" src="" auto-load="false" id="data" store-type="simple" confirm-refresh="false" confirm-delete="false"></data></xforms:model>  
   <xui:view id="rootView" auto-load="true"> 
     <xui:layout style="height:100%;width:100%" id="rootLayout"> 
       <xhtml:div component="/UI/system/components/borderLayout.xbl.xml#borderLayout"
@@ -35,7 +36,8 @@
         </right> 
       </xhtml:div>  
       <xui:place control="sysReceiver" id="controlPlace12" style="position:absolute;top:139px;left:104px;"/> 
-    <xui:place control="messageDialog" id="controlPlace1" style="position:absolute;left:97px;top:386px;"></xui:place></xui:layout>  
+    <xui:place control="messageDialog" id="controlPlace1" style="position:absolute;left:97px;top:386px;"></xui:place>
+  <xui:place control="windowReceiver" id="controlPlace5" style="position:absolute;top:213px;left:377px;"></xui:place></xui:layout>  
     <xui:view auto-load="true" id="viewOpr" class="xui-container"> 
       <layout type="absolute" style="position:relative;" id="layout3"> 
         <xhtml:img src="/UI/base/icons/img/setting.png" alt="" id="image2" style="position:absolute;left:11px;height:20px;width:24px;top:10px;"/>  
@@ -99,7 +101,8 @@
   <xforms:trigger component="/UI/system/components/trigger.xbl.xml#trigger" id="trgRefresh" appearance="image-text" icon-class="icon-system-play" class="button-blue">
    <xforms:label id="default1"><![CDATA[刷新页面]]></xforms:label>
    <xforms:action id="action5" ev:event="DOMActivate"><xforms:script id="xformsScript5"><![CDATA[gpyFrame.trgRefreshClick(event)]]></xforms:script></xforms:action></xforms:trigger></xui:view> 
-  <xhtml:div component="/UI/system/components/messageDialog.xbl.xml#messageDialog" id="messageDialog" title="222" message="121" details="1" img="info"></xhtml:div></xui:view>  
+  <xhtml:div component="/UI/system/components/messageDialog.xbl.xml#messageDialog" id="messageDialog" title="222" message="121" details="1" img="info"></xhtml:div>
+  <xhtml:div component="/UI/system/components/windowReceiver.xbl.xml#windowReceiver" id="windowReceiver" onReceive="gpyFrame.windowReceiverReceive"></xhtml:div></xui:view>  
   <xui:resource id="resource1"> 
     <xhtml:script id="htmlScript1" src="gpyFrame.js"/>  
     <xhtml:script id="htmlScript3" src="/UI/base/system/scan/gpy.js"/>
