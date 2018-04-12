@@ -1,0 +1,129 @@
+﻿/******************** 首页 ********************/
+
+/* 通用：界面中通用的样式 */
+@import url("general/general.css");
+/* 模块列表：模块内列表的样式 */
+@import url("infoList/infoList.css");
+/* 版权：页面底部版权的样式 */
+@import url("copyright/copyright.css");
+/* 详细信息的样式 */
+@import url("infoDetail/infoDetail.css");
+
+/* body */
+body {
+	margin: 0px;
+	text-align: center;
+	background: url(bg.jpg) repeat-x top;
+}
+.bodyDiv {
+	width: 940px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: justify;
+	padding-left:43px;
+	padding-right:43px;
+}
+
+/* 页面布局：不分frame页面的主体，一般包含左、中、右 */
+.infoDetail,.listRelevance {
+	margin-bottom: 10px;
+}
+.linedotted_H {
+	margin-bottom: 5px;
+	margin-top: 3px;
+}
+
+/* 局部布局：放置多个并列摆放模块的布局表格 */
+
+/* 模块内信息布局 */
+
+/* 模块特性：公用模块在当前页面不同于公共样式的属性 */
+.copyright_C {
+	text-align: left;
+	padding-left: 20px;
+}
+.copyright_O {
+}
+
+/* 页面独有模块 */
+/* 页面顶部 */
+.infoTop {
+	width: 100%;
+	height: 146px;
+	background: url(infoDetail/images/positonbg.jpg) bottom no-repeat;
+}
+.infoTop .infoType {
+	width: 600px;
+	margin-top: 95px;
+	margin-left: 15px;
+	font-size: 12px;
+}
+.infoBtn {
+	width: 150px;
+	text-align: right;
+	margin-right:10px;
+	color: #666666;
+	cursor: pointer;
+}
+.infoTop .infoBtn {
+	color: #E60011;
+	font-weight: bold;
+	float: right;
+	margin-top: 95px;
+}
+/** 信息 **/
+.listRelevance {
+	line-height: 180%;
+}
+.listRelevance li {
+	font-size: 14px;
+	margin-left: 18px;
+}
+.listRelevance .listHead {
+	font-size: 14px;
+	font-weight: bold;
+	margin-left: 20px;
+}
+/*在线帮助*/
+.helpPage {
+	background:#E9F2FC;
+	padding:0px;
+	margin:0px;
+}
+.helpPage .bodyDiv {
+	*width:100%;
+	margin:0px;
+	padding:0px;
+}
+.helpPage .pageTop {
+	width:100%;
+	height:95px;
+	background:url(infoDetail/images/helpTop_C.jpg) repeat-x top;
+}
+.helpPage .pageTop_L {
+	display:none;
+}
+.helpPage .pageTop_C {
+	background:url(infoDetail/images/helpTop_L.jpg) no-repeat left top;
+}
+.helpPage .pageTop_R {
+	width:206px;
+	background:url(infoDetail/images/helpTop_R.jpg) no-repeat right top;
+}
+.helpPage .pageBody {
+	background:url(infoDetail/images/helpPageCont.jpg) repeat-x center top;
+	padding:10px 30px;
+}
+.helpPage .pageCont {
+	*width:100%;
+	line-height:180%;
+	font-size:14px;
+}
+.helpPage .pageCont a {
+	color:#0033FF;
+	text-decoration:underline;
+}
+.title{
+	font-size:16px;
+	font-weight:bold;
+}
