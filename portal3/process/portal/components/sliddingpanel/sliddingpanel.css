@@ -1,0 +1,125 @@
+.sliddingpanel {
+	/* border-bottom: 1px solid white; */ 
+	height: auto;
+}
+
+.sliddingpanel .c {
+	display: none;
+}
+.sliddingpanel .inner {
+	padding-top: 6px;
+	background-color: #fff;/*#0071bd;*/
+	height: 200px;
+	width: 960px;
+	/*border: 2px dashed #999;*/
+	margin: 0 auto;
+	position: relative;
+}
+
+.sliddingpanel .b {
+	background-color: #003ebb;/*#0071bd;*/
+	height: 0px; /* 6px; */
+	width: 960px;
+	margin: 0 auto;
+	position: relative;
+	z-index: 1000;
+}
+
+.sliddingpanel .bar {
+	display: none;
+	background: #003ebb;
+	padding: 6px 16px 0 16px;
+	height: 32px;
+	width: 28px;
+	position: absolute;
+	z-index: 8000;
+	bottom: -38px;
+	right: 0;
+} 
+/*  url(../images/down.png) */
+
+.sliddingpanel .bar .btn {
+	background: url(./images/down.png) top center no-repeat; 
+	color: white;
+	padding-top: 12px;
+	text-decoration: none;
+	display: inline-block;
+	height: 12px;
+	line-height: 12px;
+}
+.sliddingpanel .bar .close {
+	background: url(./images/up.png) top center no-repeat; 
+}
+
+.sliddingpanel .close{
+	position: absolute;
+	right: 16px;
+	bottom: 10px;
+	display: block;
+	width: 18px;
+	padding-top: 18px;
+	cursor: pointer;
+	z-index: 10;
+	text-decoration: none;
+}
+
+.sliddingpanel .close >i{
+	font-size: 22px;
+    margin: 10px 0px;
+    color: #596063;
+}
+
+.sliddingpanel .close >i:hover{
+    color: #2091CF;
+}
+#skin_set {
+height: 100%;
+}
+#skin_set .skin {
+ height: 100px;
+ width: 98px;
+ padding: 10px;
+ border-radius: 4px;
+ float: left;
+ border: 1px solid #DDD;
+ margin: 5px;
+}
+
+#skin_set .selected{
+   border-color: #428BCA;
+}
+
+#skin_set .skin:hover{
+   border-color: #428BCA;
+}
+#skin_set .skin >a {
+display: block;
+width: 100%;
+height: 100%;
+}
+
+#skin_set a.default{
+background-color: #1597d4;
+}
+
+#skin_set a.darkBlue{
+background-color: #6672C5;
+}
+#skin_set a.black{
+background-color: #2a3950;
+}
+#skin_set a.white{
+background-color: #fff;
+}
+
+#skin_set a.blueGray{
+background-color: #EEF2F5;
+}
+
+#skin_set a.red{
+background-color: #5B1314;
+}
+
+#skin_set a.green{
+background-color: #70C319;
+}

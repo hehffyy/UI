@@ -1,0 +1,104 @@
+.sortablebar {
+	padding: 10px 10px 0 10px;
+	border: 0;
+	border-bottom: 1px solid gainsboro;
+	position: relative;
+	background-color: white;/*#95c615;*/
+	position: relative;
+}
+
+.sortablebar .empty {
+	display: block;
+	font-size: 16px;
+	font-family:\9ED1\4F53;
+	color: #888;
+	margin: 0 0 20px 0;
+}
+
+.sortablebar ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.sortablebar ul li{
+	display: block;
+	height: 26px;
+	line-height: 26px;
+	margin-right: 10px;
+	padding: 0 8px;
+	border: 1px solid #ddd;
+	background-color: #f5f5f5;
+	font-weight: bold;
+	text-align: center;
+	-webkit-border-radius: 3px;
+}
+
+.sortablebar ul li a{
+	cursor: pointer;
+	text-decoration: none;
+	color: #444;
+	margin: 4px 0;
+	line-height: 18px;
+	height: 18px;
+	float: left;
+}
+
+.sortablebar ul li span {
+	display: none;
+}
+	
+.sortablebar ul li .move, 
+.sortablebar ul li .delete {
+	height: 0px;
+	width: 16px;
+	padding-top: 16px;
+	margin: 4px 0 0 7px;
+}
+
+.sortablebar ul li .move {
+	background-image: url(./images/move.png);
+}
+
+.sortablebar ul li .delete {
+	background-image: url(./images/blog_app.png);
+	background-position: -665px -18px;
+}
+
+.sortablebar .config-btn {
+	display: block;
+	position: absolute;
+	z-index: 10;
+
+	right: 45px;
+	top: 15px;
+	width: 18px;
+	height: 0;
+	padding-top: 16px;
+	overflow: hidden;
+	
+	background-image: url(./images/gb_toolbar_import.png);
+	background-position: -200px 0;
+	
+}
+
+.sortablebar .config-btn[set=on] {
+	background-position: -200px -17px;
+}
+
+.sortablebar .close-btn {
+	display: block;
+	position: absolute;
+	z-index: 10;
+
+	right: 16px;
+	top: 14px;
+	width: 18px;
+	height: 0;
+	padding-top: 18px;
+	overflow: hidden;
+				
+	background-image: url(./images/sprite-8bit.png);
+	background-position: 0 58px;
+}
+

@@ -1,0 +1,57 @@
+#slider {
+	position: fixed;
+	top: 0;
+	right: 0px;
+	width: 20%;
+	height: 100%;
+	display: none;
+}
+
+#fileNameDiv {
+	font-size: 13px;
+	padding-top: 30px;
+	font-weight: 700;
+	color: #313334;
+}
+
+#sealsDiv {
+	font-size: 13px;
+	padding: 20px 0 0 20px;
+	font-weight: 700;
+	color: #313334;
+}
+
+ul {
+	list-style-type: none;
+	margin: 1px 0px 5px 10px;
+	color: #ccc;
+}
+
+li {
+	padding: 5px 0;
+}
+
+li span {
+	color: #54B3F3;
+	cursor: pointer;
+}
+
+.saveTip {
+	color: white;
+	font-weight: 800;
+	font-size: 12px;
+	border-radius: 10px;
+	left: 50%;
+	background-color: black;
+	width: auto;
+	height: auto;
+	position: absolute;
+	bottom: 15px;
+	display: none;
+	padding: 5px;
+}
+
+.saveTip span {
+	width: 100%;
+	height: 100%;
+}

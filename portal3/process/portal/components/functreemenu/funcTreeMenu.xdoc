@@ -1,0 +1,11 @@
+/**
+	@name justep.Portal.FuncTreeMenu
+	@model UI
+	@class 
+	@language js
+	@description 在新门户index2.w中使用的功能树菜单， 作为funcManager的表现组件， 和funcTreeView功能相似
+	@example 
+	<xmp>
+	var menu = new FuncTreeMenu({id:'menu', funcMng: funcMng});
+	</xmp>
+*/

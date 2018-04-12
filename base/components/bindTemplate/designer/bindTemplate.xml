@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<elements> 
+  <element name="bindTemplate" tag-name="div" icon="secret.gif" text="会签组件" namespace="xhtml"
+    is-complex-component="false" namespace-uri="http://www.w3.org/1999/xhtml" display-property="id"
+    binding-component="/UI/base/components/bindTemplate.xbl.xml#bindTemplate" component-class="BindTemplate"
+    component-type="view" design-view="web-designer"> 
+    <!--属性 editor-parameter：属性编辑器的参数-->  
+    <properties> 
+      <property name="id" text="编号" required="false"/>  
+      <property name="layout-type" text="布局" path="@type" editor-ref="layoutType"
+        default-value="flow" enum-values="flow,absolute"/>  
+      <property name="data" text="引用数据" required="true" editor-ref="contextComponent"
+        editor-parameter="data" is-id-ref="true"/>  
+      <property name="list" text="列表输出" editor-ref="booleanList" default-value="false"
+        data-type="boolean"/>  
+      <property name="filter" text="过滤条件($row:本bindTemplate数据,$object:父bindTemplate数据)" />
+      <property name="shadow" text="阴影效果" editor-ref="booleanList" default-value="false"
+        data-type="boolean"/>  
+      <property name="class" text="class" default-value=""/>  
+      <property name="style" text="样式" editor-ref="styleDialog"> 
+        <property name="left" text="位置左" is-style="true"/>  
+        <property name="top" text="位置上" is-style="true"/>  
+        <property name="height" text="高度" is-style="true"/>  
+        <property name="width" text="宽度" is-style="true"/>  
+        <property name="background-color" text="背景颜色" is-style="true" editor-ref="simplecolor"/> 
+      </property> 
+    </properties>  
+    <events> 
+      <event name="onAfterRender" text="渲染后" parameters="event"/>  
+    </events>  
+    <property-editors> 
+      <!--属性编辑器描述，可通过下拉列表或者弹出对话框来设置属性值，不这是默认问普通的文本输入框。-->  
+      <property-editor name="layoutType" type="list"> 
+        <static-data value="flow:流式布局,absolute:绝对布局"/> 
+      </property-editor> 
+    </property-editors>  
+    <!--模板	-->  
+    <templates> 
+      <template name="default"> <![CDATA[
+				<xhtml:div component="/UI/base/components/bindTemplate.xbl.xml#bindTemplate" class="" data-bind="" style="position:relative;width:400px; height: 300px;" type="absolute">
+					
+      			</xhtml:div>
+				]]> </template> 
+    </templates>  
+    <toolbar/> 
+  </element> 
+</elements>

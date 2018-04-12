@@ -1,0 +1,279 @@
+a {
+	background: transparent;
+}
+
+a:active,a:hover {
+	outline: 0;
+}
+
+a,a:visited {
+	text-decoration: none;
+}
+
+a[href]:after {
+	content: " (" attr(href) ")";
+}
+
+abbr[title]:after {
+	content: " (" attr(title) ")";
+}
+
+a[href ^="javascript:"]:after,a[href ^="#"]:after {
+	content: "";
+}
+
+a {
+	color: #428bca;
+	text-decoration: none;
+}
+
+a:hover,a:focus {
+	color: #2a6496;
+	text-decoration: none;
+}
+
+a:focus {
+	outline: thin dotted;
+	outline: 5px auto -webkit-focus-ring-color;
+	outline-offset: -2px;
+}
+
+ul.lanmu-list,ul.lanmu-list ul {
+	padding: 0;
+	width: 198px;
+	border: 1px solid #CCCCCC;
+	height: 99%;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+ul.lanmu-list li a {
+	padding-left: 20px;
+	display: block;
+	text-decoration: none;
+	color: #999999;
+}
+
+ul.lanmu-list li {
+	line-height: 40px;
+	font-size: 14px;
+	border-bottom: 1px dotted #CCCCCC;
+	list-style: none;
+	margin: 2px 4px 0px 4px;
+}
+
+ul.lanmu-list li a:hover {
+	background: #DFF8FF;
+	color: #000;
+	font-weight: 700;
+}
+
+ul.lanmu-list li ul li a {
+	background: #ccc;
+	color: #000;
+	padding-left: 20px;
+}
+
+ul.lanmu-list li.current { /*	background: #DFF8FF;*/
+	color: #999999;
+	font-weight: 700;
+	border-bottom: 2px solid lightblue
+}
+
+ul.lanmu-list li.current>a {
+	color: #000;
+}
+
+/*UI change*/
+.ui-jqgrid tr.jqgrow td {
+	height: 36px;
+}
+
+.ui-jqgrid .ui-jqgrid-htable th {
+	height: 38px;
+}
+
+th.ui-state-hover {
+	background: #fff !important;
+}
+
+tr.ui-state-hover {
+	background: #C3DCF4 !important;
+}
+
+.ui-state-highlight,.ui-widget-content .ui-state-highlight {
+	background: #C3DCF4 !important;
+}
+
+.ui-state-highlight:hover,.ui-widget-content:hover {
+	cursor: pointer;
+}
+
+.ui-jqgrid .ui-jqgrid-titlebar {
+	padding: 0.5em 0.2em 0.2em 0.3em;
+}
+
+.ui-jqgrid tr.ui-row-ltr td {
+	padding-left: 10px;
+}
+
+.ui-jqgrid .ui-jqgrid-hdiv,.ui-jqgrid .ui-jqgrid-bdiv {
+	padding-left: 0px;
+}
+
+.xui-button {
+	color: #444;
+	background-color: #fff !important;
+	border-color: #ccc;
+}
+
+div.circle {
+	position: relative;
+	width: 28px;
+	height: 28px;
+	margin: auto;
+	line-height: 25px;
+}
+
+
+div.circle:before {
+	position: absolute;
+	content: '';
+	width: 16px;
+	height: 16px;
+	left: 5px;
+	top: 5px;
+	background-repeat: no-repeat;
+}
+
+div.circle.nolimit:before {
+	background-image: url(../../../../base/resources/images/green.bmp);
+}
+
+div.circle.green:before {
+	background-image: url(../../../../base/resources/images/green.bmp);
+}
+
+div.circle.warning:before {
+	background-image: url(../../../../base/resources/images/warning.bmp);
+}
+
+div.circle.yellow:before {
+	background-image: url(../../../../base/resources/images/yellow.bmp);
+}
+
+div.circle.red:before {
+	background-image: url(../../../../base/resources/images/red.bmp);
+}
+
+div.circle.bj:before {
+	position: absolute;
+	content: '';
+	background-image: url(../../../../base/resources/images/greenbj.bmp);
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+	left: 5px;
+	top: 5px;
+}
+
+div.circle.warning.bj:before {
+	position: absolute;
+	content: '';
+	background-image: url(../../../../base/resources/images/warningbj.bmp);
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+	left: 5px;
+	top: 5px;
+}
+
+div.circle.yellow.bj:before {
+	position: absolute;
+	content: '';
+	background-image: url(../../../../base/resources/images/yellowbj.bmp);
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+	left: 5px;
+	top: 5px;
+}
+
+div.circle.red.bj:before {
+	position: absolute;
+	content: '';
+	background-image: url(../../../../base/resources/images/redbj.bmp);
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+	left: 5px;
+	top: 5px;
+}
+
+/*预警灯数字模式*/
+
+div.circle2 {
+	position: relative;
+	width: 28px;
+	height: 28px;
+	margin: auto;
+	line-height: 25px;
+		-moz-border-radius: 50%;
+		-webkit-border-radius: 50%;
+		border-radius: 50%;
+		text-align: center;
+		font-weight: bold;
+		color: #FFF;
+}
+
+div.circle2:before {
+	position: absolute;
+	content: '';
+	width: 16px;
+	height: 16px;
+	left: 5px;
+	top: 5px;
+	background-repeat: no-repeat;
+}
+
+div.circle2.nolimit,div.circle2.green{
+	background-color: green;
+}
+
+div.circle2.warning {
+	background-color: blue;
+}
+
+div.circle2.yellow {
+	background-color: yellow;
+	color:#333;
+}
+
+div.circle2.red {
+	background-color: red;
+}
+
+#viewSearch ul li.search {
+	float: left;
+	margin-left: 10px;
+	margin-top: 5px;
+}
+
+#viewSearch ul li {
+	list-style-type: none;
+	width: 250px;
+}
+
+#viewSearch ul li input {
+	width: 160px;
+	height: 23px;
+	display:inline-block;
+}
+
+#viewSearch ul li .label {
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 80px;
+    display: inline-block;
+}

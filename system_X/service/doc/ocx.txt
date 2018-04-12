@@ -1,0 +1,84 @@
+						chrome下plugin的事件中不能显示任何浏览器信息，包括异常
+						
+						/*ie
+						<object id="{id}" classid="{classid}" width="{width}" height="{height}" 
+							codebase="/UI/system/service/doc/office/office2.cab#version=${version}">
+							<param name="BorderColor" value="-2147483632"/>
+							<param name="BackColor" value="-2147483643"/>
+							<param name="ForeColor" value="-2147483640"/>
+							<param name="TitlebarColor" value="-2147483635"/>
+							<param name="TitlebarTextColor" value="-2147483634"/>
+							<param name="BorderStyle" value="0"/>
+							<param name="Titlebar" value="0"/>
+							<param name="Toolbars" value="{toolbar}"/>
+							<param name="Menubar" value="0"/>
+							<param name="ActivationPolicy" value="1"/>
+							<param name="FrameHookPolicy" value="0"/>
+							<param name="MenuAccelerators" value="1"/>
+						</object>
+						ie*/
+						
+						/*webkit
+						<object id="{id}" clsid="{clsid}" width="{width}" height="{height}" 
+							codebase="/UI/system/service/doc/office/office2.cab#version=${version}"
+							type="application/justep-activex" 
+							param_BorderColor="-2147483632"
+							param_BackColor="-2147483643"
+							param_BorderColor="-2147483643"
+							param_ForeColor="-2147483632"
+							param_TitlebarColor="-2147483632"
+							param_TitlebarTextColor="-2147483632"
+							param_Titlebar="1"
+							param_Toolbars="{toolbar}"
+							param_BorderStyle="1"
+							param_BorderColor="-2147483632"
+							param_LicenseName="3AYYK3L-B3V5RU"
+							param_LicenseCode="EDO8-550D-124A-ABEB"
+							param_Menubar="1"
+							param_ActivationPolicy="1"
+							param_FrameHookPolicy="1"
+							param_MenuAccelerators="1">
+						</object>
+						webkit*/
+						
+						
+						/*ie
+						<object id="{id}" classid="{classid}" width="{width}" height="{height}" codebase="/UI/system_X/service/doc/ntko/OfficeControl.cab#version=${version}">
+							<param name="IsUseUTF8URL" value="-1">
+							<param name="IsUseUTF8Data" value="-1"> 
+							<param name="BorderStyle" value="1">
+							<param name="BorderColor" value="14402205">
+							<param name="TitlebarColor" value="15658734">
+							<param name="ToolBars" value="false">
+							<param name="TitlebarTextColor" value="0">
+							<param name="MenubarColor" value="14402205">
+							<param name="MenuButtonColor" VALUE="16180947">
+							<param name="MenuBarStyle" value="3">
+							<param name="MenuButtonStyle" value="7">
+							<param name="WebUserName" value="NTKO">
+							<param name="Caption" value="{caption}"> 
+							<SPAN STYLE="color:red">不能装载文档控件。请在检查浏览器的选项中检查浏览器的安全设置。</SPAN>
+						 </object>
+						 ie */
+
+						/*webkit
+						 <object id="{id}" clsid="{clsid}" width="{width}" height="{height}" type="application/ntko-plug" codebase="/UI/system_X/service/doc/ntko/OfficeControl.cab#version=${version}"
+						 	ForOnSaveToURL="OnSaveToURL"
+						 	ForOnBeginOpenFromURL="OnBeginOpenFromURL"
+						 	ForOndocumentopened="OnDocumentOpened"
+						 	ForOnPublishAsHTMLToURL="publishashtml"
+						 	ForOnpublishAspdftourl="publishaspdf"
+						 	ForOnSaveAsOtherFormatToUrl="saveasotherurl"
+						 	ForOnDoWebGet="dowebget"
+							ForOnDoWebExecute="webExecute"
+						 	ForOnDoWebExecute2="webExecute2"
+						 	ForOnFileCommand="FileCommand"
+						 	ForOnCustomMenuCmd2="CustomMenuCmd"
+						 	_IsUseUTF8URL="-1" _IsUseUTF8Data="-1"
+						 	_BorderStyle="1" _BorderColor="14402205"
+						 	_MenubarColor="14402205" _MenuButtonColor="16180947"
+						 	_MenuBarStyle="3" _MenuButtonStyle="7"
+						 	_WebUserName="{userName}" _Caption="{caption}"> 
+						 	<SPAN STYLE="color:red">尚未安装NTKO Web Chrome跨浏览器插件。请点击<a href="ntkoplugins.crx">安装组件</a></SPAN>
+						 </object> 
+						 webkit*/

@@ -1,0 +1,147 @@
+.menuWrap{background: #fff;border-right:1px solid #ccc;}
+.sidebar-title{height: 40px;line-height: 40px;text-indent:20px;color: #333;font-size: 24px;text-align: left;background: #f2f2f2;}
+.sidebar-title div{font-weight: normal;font-size: 16px;}
+.sidebar-title >span{font-size:16px;padding-left: 5px;}
+.sidebar-title >a>i{font-size:16px;}
+a {
+    text-decoration: none;
+}
+
+a:visited, a:link {
+    color: #60B7E1;
+}
+.functreemenu .hd{
+height:18px;
+background-color: #F7F7F7;
+}
+/* nav-wrap */
+.nav-wrap { position: relative; *z-index:2;
+width: 100%; background: #ff6600; }
+.nav h2 a.expIcon{
+	float: right;
+    height: 38px;
+    line-height: 38px;
+	padding-right: 10px;
+    padding-top: 4px;
+    text-indent: 0px;
+}
+.nav h2 a.expIcon>i{
+	font-size: 20px;
+}
+.nav h2 a.expIcon:hover{
+	background: none;
+}
+.nav h2 a { display: block; height: 61px; padding-left: 0px; line-height: 40px; color: #ddd; }
+.nav h2 a:hover { text-decoration: none; height: 38px; }
+.nav-list { height: 40px; }
+.nav-list li { float: left; margin-right: 1px; }
+.nav-list a { display: block; height: 40px; float: left; padding: 0 15px; text-align: center; color: #fff; text-decoration: none; font-size: 15px; font-weight: bold; line-height: 40px; }
+.nav-list a:hover { background: #d25400; text-decoration: none; }
+.nav-list a.on { background: #d25400; }
+.all-nav { position: absolute; left: 0;width:100%; overflow: visible; border-style: none; list-style-type:none;}
+.all-nav .item { width: 100%; height: 80px; border-bottom: 1px solid #ccc; cursor:pointer;}
+.all-nav .btnone { border-top: none; }
+.all-nav .item .product { z-index: 999; width:100%; height: 80px; text-align: center;z-index:300; }
+.all-nav .item .product h3 { width: 100%; height: 34px; padding-top: 8px;  padding-right: 3px; border-width: 1px 0; font-weight: normal; }
+.all-nav .item .product s { display: block; position: absolute; top: 13px; left: 167px; width: 6px; height: 9px; }
+.all-nav .active .product h3 { background-color: #FFFFFF; width: 80px; height: 83px; }
+.all-nav .active .product h3 a { color: #000; }
+.icn { height: 48px; display: block; }
+.all-nav .product-wrap { position: fixed;  overflow: hidden;width: 230px; height: 89%; z-index: 301; background-color: #FFFFFF;  left: 5000px; top: 66px; }
+.all-nav .product-wrap p { color: #999999; }
+.home { height: 60px;   background-color: #2B2C2B;overflow: hidden;}
+
+.product-wrap ul { padding-left: 20px; padding-top: 10px; }
+.product-wrap li { line-height: 40px; font-size: 14px; border-bottom: 1px dotted #CCCCCC; list-style: none}
+.product-wrap ul.accMenu { padding-right: 10px; }
+/*skin zhengff to themes dir
+.nav {z-index: 10000; position: absolute; top:0; left: 0; width: 80px; min-height: 450px;    background-color: #F2F2F2; border-collapse: separate; bottom: 0 }
+.all-nav .pos01 { border: 1px solid #1d65a9; }
+.product-wrap h2 { background-color: #1d65a9; line-height: 59px; color: #FFFFFF; font-size: 16px; text-indent: 20px; }
+.pos01 h2{background-color:#1d65a9 }
+.product-wrap a { display: block; color: #999999; }
+.product-wrap a:hover { background-color: #DFF8FF; text-decoration: none; color: #000; font-weight: bold; }
+
+*/
+.menu-t{
+    left:80px !important;
+}
+.menu-hide{
+   display: none;
+}
+/*prve next*/
+
+.carou-scroll{
+	 position: absolute;
+	 width: 80px;
+     text-align: center;
+	 z-index: 10001;
+	 background-color: #F9F9F9;
+	 filter:alpha(opacity=50);  /*支持 IE 浏览器*/
+	 -moz-opacity:0.50; /*支持 FireFox 浏览器*/
+	 opacity:0.50;  /*支持 Chrome, Opera, Safari 等浏览器*/
+}
+
+.scroll-prev{
+   top: 0px;
+}
+.scroll-prev:hover{
+   background-color: #BAE5F5;
+   color:red;
+}
+
+.scroll-next{
+   bottom: 0px;
+}
+
+.scroll-next:hover{
+   background-color: #BAE5F5;
+   color:red;
+}
+
+ul.accMenu ul {display: none;} 
+ul.accMenu span.sidebar-draw{float:right;}
+
+.sidebar-title >span.sider-title-draw{
+	cursor: pointer;
+    float: right;
+    padding-right: 5px;
+    color:#21a6d7;
+}
+.sidebar-title >span.sider-title-draw:hover{
+    color:red;
+}
+
+.sidebar-title >span.sider-title-draw i{
+    font-size: 13px;
+}
+.sider-title-up{
+	color:#99CADB;
+	height: 550px;
+    line-height: 550px;
+    cursor: pointer;
+}
+
+.sider-title-up i{
+    padding-left: 4px;
+    font-size: 12px;
+}
+
+.sider-title-up:hover{
+	 color:red;
+	 background-color: #F1F0EE;
+}
+
+.logo .mark{
+	font-size: 28px;
+	font-weight: 700;
+	font-family: 黑体;
+	letter-spacing: 4px;
+}
+
+.head .sign{
+	margin-top: 12px !important
+}
+.logo .en{
+   font-size: 12px;
+}

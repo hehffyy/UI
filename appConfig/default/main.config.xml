@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+	<!-- 系统中文名称 -->
+	<item name="title_zh"><![CDATA[butone平台2.0]]></item>
+	<!-- 系统英文名称 -->
+	<item name="title_en"><![CDATA[]]></item>
+	<!-- 系统检索功能开关 -->
+	<item name="isSearch"><![CDATA[false]]></item>
+	<!-- 流程业务选择过滤功能:用于案卷中心、查询配置选择流程 -->
+	<item name="flow_choice"><![CDATA[]]>
+	</item>
+</root>

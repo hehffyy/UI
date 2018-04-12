@@ -1,0 +1,21 @@
+/**
+	@name justep.Portal.PortalView
+	@model UI
+	@class 
+	@language js
+	@description widget块展示组件, 依赖PortalManager组件, 如果需要开发定制的widget表现或布局可以参考这个组件的实现来开发。
+	@example 
+	<xmp>
+		var portal = new PortalView({
+	        id: 'portal',
+			mng: portalMng
+	    });
+	</xmp>
+*/
+
+/**
+	@name justep.Portal.PortalView#refreshWidget
+	@function
+	@description 刷新widget, 全部刷新, 或者依据配置中是否可刷新来刷新。
+	@param {boolean} all 为true全部刷新，否则依据widget配子的是否可刷新来刷新， 默认为false
+*/

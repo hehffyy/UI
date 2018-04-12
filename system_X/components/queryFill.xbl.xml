@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xbl:xbl xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:justep="http://www.justep.com/x5#"
+	xmlns:xbl="http://www.w3.org/ns/xbl"
+	xmlns:xhtml="http://www.w3.org/1999/xhtml"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xsl:version="2.0"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xforms="http://www.justep.com/xforms"
+	script-type="text/javascript">
+	<xbl:script type="text/javascript" src="/UI/system/components/dialog/dialog.js"/>
+	<xbl:script type="text/javascript" src="/UI/system/components/windowDialog/windowDialog.js"/>
+	<xbl:script type="text/javascript" src="/UI/base/core/components/dialogs/selectDialog.js"/>
+	
+	<xbl:binding id="queryFill">
+<!--		<xbl:template template-type="xslt"/>-->
+		<xbl:template template-type="java" src="QueryFill"/>
+		<xbl:implementation>
+		({
+			"initXBL" : function() {
+				var node = this.domNode;
+				var url = node.getAttribute('url');
+				if(!url)
+					url="/UI/base/core/components/dialogs/selectDialog.w";
+				var dialog = new justep.WindowDialog(node.id,url,node.getAttribute('title'),node.getAttribute('modal')=="true",node.getAttribute('status'),
+				                  node.getAttribute('width'),node.getAttribute('height'),node.getAttribute('left'),node.getAttribute('top'),node.getAttribute("reload-on-open") =='true',
+				                  node.getAttribute('onSend') , node.getAttribute('onReceive') ,node.getAttribute('onInit') ,node.getAttribute('onOpen') ,node.getAttribute('onClose'));
+				dialog.setClosable(node.getAttribute('closable')!="false");
+				dialog.setMinmaxable(node.getAttribute('minmaxable')!="false");
+				dialog.setResizable(node.getAttribute('resizable')!="false");
+				dialog.setNeighbor(node.getAttribute('neighbor'));
+				dialog.setAutoSize(node.getAttribute('autosize')=="true");
+				dialog.setShowTitle(node.getAttribute("show-title")!="false");
+				dialog.setProcess(node.getAttribute("process"));
+				dialog.setActivity(node.getAttribute("activity"));
+				
+				this.targetUrl = node.getAttribute('targetUrl');
+				this.returnDataId = node.getAttribute('returnDataId');
+				this.multiGridId = node.getAttribute('multiGridId');
+				this.multiSelect = "true" === node.getAttribute('multiSelect');
+				this.displayColumn = node.getAttribute('displayColumn');
+				this.checkColumn = node.getAttribute('checkColumn');
+				
+				justep.Object.extend(this, dialog);
+				
+				this._open2 = this.open2;
+				this.open2 = this.open3;
+			},
+			
+			open3 : function(options){
+				debugger;
+				if(butone &amp;&amp; butone.Context &amp;&amp; butone.Context.frameForm != butone.Context.frameForm.getRootForm().currentForm &amp;&amp;  butone.Context.frameForm.getRootForm().currentForm !=null){
+					this.createAndOpenDialog(butone.Context.frameForm.getRootForm().currentForm.contentWindow,options);
+				}else{
+					this._open2(options);
+				}
+			},
+			
+			createAndOpenDialog: function(contentWindow,options){
+				if(this._contentDialog){
+					this._contentDialog.open2(options);
+				}else{
+					debugger;
+					var me = this;		
+					function createDialog(){
+						var dialog = new contentWindow.justep.WindowDialog((new justep.UUID()).valueOf(),me.url,me.dialog.title,me.dialog.modal,me.dialog.status,
+							me.dialog.width,me.dialog.height,me.dialog.left,me.dialog.top,me.reloadOnOpen,
+							  /*onSend*/
+							function(event){
+								event.source = me;
+								return me.callEvent("onSend",[event]);
+							},
+						   /*onReceive*/
+							function(event){
+								event.source = me;
+								me.onReceiveByMapping(me, event.data);
+								me.checkEvent("onReceive") &amp;&amp; me.callEvent("onReceive",[event]);
+							},
+							 /*onInit*/
+							function(event){
+								event.source = me;
+								me.checkEvent("onInit") &amp;&amp; me.callEvent("onInit",[event]);
+							},
+							/*onOpen*/
+							function(event){
+								event.source = me;
+								me.checkEvent("onOpen") &amp;&amp; me.callEvent("onOpen",[event]);
+							},
+							/*onClose*/
+							function(event){
+								event.source = me;
+								me.checkEvent("onClose") &amp;&amp; me.callEvent("onClose",[event]);
+							});
+						dialog.setClosable(me.dialog.closeable);
+						dialog.setMinmaxable(me.dialog.minmaxable);
+						dialog.setResizable(me.dialog.resizable);
+						dialog.setNeighbor(me.dialog.neighbor);
+						dialog.setAutoSize(me.dialog.autoSize);
+						dialog.setShowTitle(me.dialog.isShowTitle);
+						dialog.setProcess(me.process);
+						dialog.setActivity(me.activity);
+						
+						dialog.displayColumn = me.displayColumn;
+						dialog.checkColumn = me.checkColumn;
+						dialog.multiSelect = me.multiSelect;
+						dialog.multiGridId = me.multiGridId;
+						dialog.targetUrl = me.targetUrl;
+						dialog.returnDataId= me.returnDataId;
+						return dialog;
+					}	
+					if(contentWindow.justep.WindowDialog){
+						me._contentDialog = createDialog();
+						me._contentDialog.open2(options);
+					}else{
+						if(me._jsLoading) return;
+						me._jsLoading = true;
+						contentWindow.butone.Loader.requireJS(["system/components/dialog/dialog","system/components/windowDialog/windowDialog"])
+							.done(function() {
+								me._contentDialog = createDialog();
+								me._contentDialog.open2(options);
+								delete me._jsLoading;
+							});
+					}
+				}
+			}
+		})			
+		</xbl:implementation>
+	</xbl:binding>
+</xbl:xbl>

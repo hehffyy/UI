@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<xbl:xbl xmlns:xbl="http://www.w3.org/ns/xbl" xmlns="http://www.w3.org/ns/xbl" xmlns:xui="http://www.justep.com/xui"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xforms="http://www.justep.com/xforms"
+  xmlns:ev="http://www.w3.org/2001/xml-events" xsl:version="2.0" script-type="text/javascript">  
+  <script src="/UI/system/components/dialog/dialog.js"/>
+  <script src="/UI/system/components/windowDialog/windowDialog.js"/>
+  <script src="/UI/system_X/components/unitField/unitField.js"/>  
+  <script src="/UI/system_X/components/unitField/unitFieldManager.js"/>
+  
+  <binding id="unitField"> 
+    <template template-type="java" src="UnitField"/>  
+    <implementation>({ 
+    	initXBL : function() {
+    		var el = jQuery(this.domNode);
+    		var ref = el.attr("ref");
+    		if(ref){
+				var xpathr = /(instance|data)\([\"\'](.*)[\"\']\)\/(.*)/i;
+				var info = ref.match(xpathr);
+				this.dataId = info[2];
+				this.relation = info[3];
+				this.data = justep.xbl(this.dataId);
+			}
+			var unitType = el.attr("unitType");
+			var attrEl = $(this.getElementByXblID('attribute'));
+			var unitNames = attrEl.attr('unitNames').split(','); 
+			var unitRates = attrEl.attr('unitRate').split('|'); 
+			butone.UnitFieldManager.addUnitTypeDefines(unitType,unitNames,unitRates);
+    	},
+    	initXBL2 : function(){ 
+    		justep.Object.extend(this,new com.butone.UnitField(this)); 
+    	} 
+    })</implementation>  
+    <xbl:resources> 
+       
+    </xbl:resources> 
+  </binding> 
+</xbl:xbl>

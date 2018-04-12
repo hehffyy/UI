@@ -1,0 +1,72 @@
+.setpwd{
+	padding: 0 16px;
+	height: 100%;
+	position: relative;
+}
+
+.setpwd .left {
+	float: left;
+	width: 50%;
+}
+
+.setpwd label {
+	color: #000;
+}
+
+.setpwd .row {
+	margin-top: 5px;	
+}
+
+.setpwd .btnBar {
+	margin-top: 10px;	
+}
+
+.setpwd .field{
+	width: 160px;
+	color: #555;
+	padding: 3px 12px;
+	vertical-align: middle;
+	background-color: #FFF;
+	border: 1px solid #CCC;
+	border-radius: 4px;
+}
+
+.setpwd .saveBtn{
+	text-decoration: none;
+	display: inline-block;
+	background: #8dc000;
+	color: white;
+	margin-right: 10px;
+	height: 20px;
+	line-height: 20px;
+	padding: 0 16px;
+}
+
+.setpwd .cancelBtn{
+	display: inline-block;
+	color: white;
+	height: 20px;
+	line-height: 20px;
+}
+
+.setpwd .right{
+	float: left;
+	width: 40%;
+	height: 116px;
+	color: #000;
+	border-left: 1px dashed  #999;
+	padding: 22px 10px 0 10px;
+}
+
+.setpwd .message{
+	display: none;
+	padding: 3px;
+	background: pink;
+	color: white;
+	position: absolute;
+	top: 0;
+}
+
+.setpwd .error{
+	background: red;
+}

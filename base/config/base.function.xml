@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root> 
+  <item label="模型管理" icon16="mo01.png"> 
+    <item label="流程业务"> 
+      <item label="缓存管理" process="/base/core/process/BizModel/bizModelProcess"
+        activity="mainActivity" url="/base/core/process/BizModel/mainActivity.w"/> 
+    </item>  
+    <item label="系统配置"> 
+      <item label="通用编码日志" process="/base/system/sequenceCode/process/SequenceCode/sequenceCodeProcess"
+        activity="mainActivity" url="/base/system/sequenceCode/process/SequenceCode/mainActivity.w"
+        display="hide"/>  
+      <item label="数据字典" process="/base/system/process/sysDict/sysDictProcess"
+        activity="mainActivity" url="/base/system/process/sysDict/mainActivity.w"/>  
+      <item label="系统参数" process="/base/system/process/sysDict/sysDictProcess"
+        activity="mainActivity" url="/base/system/process/sysDict/sysParaActivity.w"/>  
+      <item label="单位字段" process="/base/system/process/unitType/unitTypeProcess"
+        activity="mainActivity" url="/base/system/process/unitType/mainActivity.w"/>  
+      <item label="工作日管理" process="/base/system/workDaysManage/process/workDaysManage/workDaysManageProcess"
+        activity="mainActivity" url="/base/system/workDaysManage/process/workDaysManage/mainActivity.w"/>  
+      <item label="区域维护" process="/base/system/process/area/areaProcess" activity="mainActivity"
+        url="/base/system/process/area/mainActivity.w"/>  
+      <item label="单位类型设置" process="/base/system/process/SystemConfig/systemConfigProcess"
+        activity="unitTypeConfig" url="/base/system/process/SystemConfig/unitTypeConfig.w"/>  
+      <item label="导入设置" process="/base/system/process/SystemConfig/systemConfigProcess"
+        activity="importConfig" url="/base/system/process/SystemConfig/importConfig.w"
+        display="hide"/>  
+      <item label="菜单配置" process="/base/system/menuconfig/process/menuSet/menuSetProcess"
+        activity="mainActivity" url="/base/system/menuconfig/process/menuSet/mainActivity.w"/> 
+    </item> 
+  </item>  
+  <item label="门户管理"> 
+    <item label="首页管理" url="/base/portal/widget/mainActivity.w" process="/base/portal/widget/widgetProcess"
+      activity="mainActivity"/>  
+    <item label="主题管理" url="/base/portal/themes/mainActivity.w" process="/base/portal/themes/themesProcess"
+      activity="mainActivity"/> 
+  </item>  
+  <item label="案卷"> 
+    <item label="案卷统计" url="/base/core/widgets/ajtjTask/ajtjTask.j" process="/base/core/widgets/ajtjTask/ajtjTaskProcess"
+      activity="mainActivity"/>  
+    <item label="案卷图表" url="/base/core/widgets/ajtbTask/ajtbTask.j" process="/base/core/widgets/ajtbTask/ajtbTaskProcess"
+      activity="mainActivity"/> 
+  </item> 
+</root>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<elements> 
+  <element name="printForm" tag-name="div" icon="print.gif" text="打印文档" namespace="xhtml"
+    namespace-uri="http://www.w3.org/1999/xhtml" binding-component="/UI/system_X/components/printForm.xbl.xml#printForm"
+    display-property="id" component-class="PrintForm" component-type="formControl"> 
+    <properties> 
+      <property name="id" text="编号" required="true"/>  
+      <property name="label" text="标签" default-value="打印表单"/>  
+      <property name="url" text="文档URL" editor-ref="fileDialog" editor-parameter="*.w"/>  
+      <property name="title" text="打印窗口标题"/>  
+      
+      <property name="appearance" default-value="image" text="表现形式" editor-ref="triggerAppearanceList"
+        enum-values=""/>  
+      <property name="image-text-mode" text="image-text模式下显示方式" enabled-condition="@appearance='image-text'"
+        editor-ref="imageTextModes" enum-values="LR"/>  
+      <property name="src" text="可用时的图片" default-value="/UI/system_X/images/demo/print.gif"
+        editor-ref="fileDialog" editor-parameter="*.gif;*.jpg" enabled-condition="@appearance='image' or @appearance='image-text'"
+        allow-empty="false"/>  
+      <property name="dis-src" text="不可用时的图片" default-value="/UI/system_X/images/demo/print.gif"
+        editor-ref="fileDialog" editor-parameter="*.gif;*.jpg" enabled-condition="@appearance='image' or @appearance='image-text'"/>  
+      <property name="class" text="class" editor-ref="buttonClassList"/>  
+      <property name="icon-class" text="icon-class" editor-ref="iconSelectionDlg"/>  
+      <property name="style" text="样式" editor-ref="styleDialog" use-default="true"/>  
+      <property name="tabindex" text="Tab键顺序" data-type="integer"/>  
+      <property name="accesskey" text="快捷键"/>  
+      <property name="disabled" text="禁用" editor-ref="edit-disabled" default-value="false"
+        data-type="boolean"/> 
+    </properties>  
+    <property-editors> 
+      <property-editor name="triggerAppearanceList" type="list"> 
+        <static-data value="button,image,image-text,minimal,image-minimal"/> 
+      </property-editor>  
+      <property-editor name="imageTextModes" type="list"> 
+        <static-data value="LR:左右,TB:上下"/> 
+      </property-editor> 
+    </property-editors>  
+    <events> 
+      	<event name="onSend" parameters="event"/> 
+    </events>  
+    <templates> 
+      <template name="default"><![CDATA[ 
+				<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml" xhtml:style="width:65px;" appearance="image-minimal" icon-class="icon-system-print" component="/UI/system_X/components/printForm.xbl.xml#printForm" label="打印表单">
+
+				</xhtml:div>
+		   ]]></template> 
+    </templates> 
+  </element> 
+</elements>

@@ -1,0 +1,30 @@
+ul{
+	list-style: none;
+}
+
+.bizOperationBar>li>div{
+	padding:4px 4px;
+	text-align:center;
+}
+
+.bizOperationBar .xui-button{
+	width:100%;	
+}
+
+.list-icon-link {
+	width: 32px;
+	height: 34px;
+	margin: 0 5px 0 5px; 
+	font-size: 16px;
+	text-decoration: none;
+	cursor: pointer;
+	color: #fff;
+	text-align: center;
+	line-height: 32px;
+	background: url(../img/step_ico_bg.png) no-repeat 0 -68px;
+	display: inline-block;
+}
+
+.list-icon-current {
+	background-position: 0 0;
+}

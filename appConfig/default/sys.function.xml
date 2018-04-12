@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root> 
+  <item icon="people.png" label="协同平台" icon16="xtszgn.png"> 
+    <item icon="" label="任务管理" icon32="&amp;#xe620;"> 
+      <item label="案卷中心" url="/SA/task/taskCenter/mainActivity.w" process="/SA/task/taskCenter/taskCenterProcess"
+        icon="/UI/SA/task/taskCenter/images/icon16.png" icon32="/UI/SA/task/taskCenter/images/icon32.png"
+        icon64="/UI/SA/task/taskCenter/images/icon64.png" activity="mainActivity"
+        fixed="true"/>  
+      <!--  
+      <item label="任务汇总"  url="/SA/task/taskView/taskSummary.j"
+        process="/SA/task/taskView/taskViewProcess" activity="mainActivity" display="hide"/> 
+      -->  
+      <item label="流程监控" process="/SA/process/monitor/monitorProcess" url="/SA/process/monitor/mainActivity.w"
+        icon="/UI/SA/process/monitor/images/icon16.png" icon32="/UI/SA/process/monitor/images/icon32.png"
+        icon64="/UI/SA/process/monitor/images/icon64.png" activity="mainActivity"/>  
+      <item label="流程模板管理" process="/SA/process/template/templateProcess" url="/SA/process/template/mainActivity2.w"
+        icon="/UI/SA/process/template/images/icon16.png" icon32="/UI/SA/process/template/images/icon32.png"
+        icon64="/UI/SA/process/template/images/icon64.png" activity="mainActivity2"/> 
+    </item>  
+    <item icon="org.png" label="组织权限" icon16="org.png"> 
+      <item display="solid" label="基础设置"> 
+        <item label="组织级别设置" process="/SA/OPM/organization/organizationProcess"
+          activity="orgLevelSetting" url="/SA/OPM/organization/orgLevelSetting.w"/>  
+        <item label="业务管理类型设置" process="/SA/OPM/management/managementProcess"
+          activity="manageTypeSetting" url="/SA/OPM/management/manageTypeSetting.w"/> 
+      </item>  
+      <item label="组织管理" url="/SA/OPM/organization/mainActivity.w" process="/SA/OPM/organization/organizationProcess"
+        activity="mainActivity" icon="/UI/SA/OPM/organization/images/icon16.png" icon32="/UI/SA/OPM/organization/images/icon32.png"
+        icon64="/UI/SA/OPM/organization/images/icon64.png"/>  
+      <item label="角色管理" url="/SA/OPM/role/mainActivity.w" process="/SA/OPM/role/roleProcess"
+        activity="mainActivity" icon="/UI/SA/OPM/role/images/icon16.png" icon32="/UI/SA/OPM/role/images/icon32.png"
+        icon64="/UI/SA/OPM/role/images/icon64.png"/>  
+      <item label="按组织授权" url="/SA/OPM/authorization/mainActivity.w" process="/SA/OPM/authorization/authorizationProcess"
+        activity="mainActivity" icon="/UI/SA/OPM/authorization/images/icon16.png"
+        icon32="/UI/SA/OPM/authorization/images/icon32.png" icon64="/UI/SA/OPM/authorization/images/icon64.png"/>  
+      <item label="按角色授权" url="/SA/OPM/authorizationByRole/mainActivity.w" process="/SA/OPM/authorizationByRole/authorizationByRoleProcess"
+        activity="mainActivity" icon="/UI/SA/OPM/authorization/images/icon16.png"
+        icon32="/UI/SA/OPM/authorization/images/icon32.png" icon64="/UI/SA/OPM/authorization/images/icon64.png"/>  
+      <item label="权限查询" process="/SA/OPM/authorizationQuery/authorizationQueryProcess"
+        activity="mainActivity" url="/SA/OPM/authorizationQuery/mainActivity.w"/>  
+      <item label="业务管理权限" url="/SA/OPM/management/mainActivity.w" process="/SA/OPM/management/managementProcess"
+        activity="mainActivity" icon="/UI/SA/OPM/management/images/icon16.png" icon32="/UI/SA/OPM/management/images/icon32.png"
+        icon64="/UI/SA/OPM/management/images/icon64.png"/>  
+      <item label="回收站" url="/SA/OPM/recycled/mainActivity.w" process="/SA/OPM/recycled/recycledProcess"
+        activity="mainActivity" icon="/UI/SA/OPM/recycled/images/icon16.png" icon32="/UI/SA/OPM/recycled/images/icon32.png"
+        icon64="/UI/SA/OPM/recycled/images/icon64.png"/>  
+      <item label="分级管理" process="/SA/OPM/grade/gradeProcess" activity="mainActivity"
+        url="/SA/OPM/grade/mainActivity.w" icon="/UI/SA/OPM/grade/images/icon16.png"
+        icon32="/UI/SA/OPM/grade/images/icon32.png" icon64="/UI/SA/OPM/grade/images/icon64.png"/>  
+      <item label="分级管理-分级" process="/SA/OPM/grade/gradeProcess" activity="gradeActivity"
+        url="/SA/OPM/grade/gradeActivity.w" icon="/UI/SA/OPM/grade/images/icon16.png"
+        icon32="/UI/SA/OPM/grade/images/icon32.png" icon64="/UI/SA/OPM/grade/images/icon64.png"/>  
+      <item label="组织管理-分级" url="/SA/OPM/organization/gradeActivity.w" process="/SA/OPM/organization/organizationProcess"
+        activity="gradeActivity" icon="/UI/SA/OPM/organization/images/icon16.png"
+        icon32="/UI/SA/OPM/organization/images/icon32.png" icon64="/UI/SA/OPM/organization/images/icon64.png"/>  
+      <item label="按组织授权-分级" url="/SA/OPM/authorization/gradeActivity.w" process="/SA/OPM/authorization/authorizationProcess"
+        activity="gradeActivity" icon="/UI/SA/OPM/authorization/images/icon16.png"
+        icon32="/UI/SA/OPM/authorization/images/icon32.png" icon64="/UI/SA/OPM/authorization/images/icon64.png"/>  
+      <item label="按角色授权-分级" url="/SA/OPM/authorizationByRole/gradeActivity.w"
+        process="/SA/OPM/authorizationByRole/authorizationByRoleProcess" activity="gradeActivity"
+        icon="/UI/SA/OPM/authorization/images/icon16.png" icon32="/UI/SA/OPM/authorization/images/icon32.png"
+        icon64="/UI/SA/OPM/authorization/images/icon64.png"/>  
+      <item label="权限查询-分级" process="/SA/OPM/authorizationQuery/authorizationQueryProcess"
+        activity="gradeActivity" url="/SA/OPM/authorizationQuery/gradeActivity.w"/>  
+      <item label="业务管理权限-分级" url="/SA/OPM/management/gradeActivity.w" process="/SA/OPM/management/managementProcess"
+        activity="gradeActivity" icon="/UI/SA/OPM/management/images/icon16.png" icon32="/UI/SA/OPM/management/images/icon32.png"
+        icon64="/UI/SA/OPM/management/images/icon64.png"/>  
+      <item label="回收站-分级" url="/SA/OPM/recycled/gradeActivity.w" process="/SA/OPM/recycled/recycledProcess"
+        activity="gradeActivity" icon="/UI/SA/OPM/recycled/images/icon16.png" icon32="/UI/SA/OPM/recycled/images/icon32.png"
+        icon64="/UI/SA/OPM/recycled/images/icon64.png"/>  
+      <item label="代理设置" url="/SA/OPM/agent/mainActivity.w" process="/SA/OPM/agent/agentProcess"
+        activity="mainActivity" icon="/UI/SA/OPM/agent/images/icon16.png" icon32="/UI/SA/OPM/agent/images/icon32.png"
+        icon64="/UI/SA/OPM/agent/images/icon64.png"/>  
+      <item label="组织机构日志" process="/SA/OPM/log/logProcess" activity="mainActivity"
+        url="/SA/OPM/log/mainActivity.w"/>  
+      <item activity="mainActivity" label="修复工具" process="/SA/OPM/repairTools/repairToolsProcess"
+        url="/SA/OPM/repairTools/mainActivity.w"/>  
+      <item label="设置公共常用组" process="/SA/OPM/customGroup/customGroupProcess"
+        activity="publicGroup" url="/SA/OPM/customGroup/publicGroup.w"/>  
+      <item label="设置个人常用组" process="/SA/OPM/customGroup/customGroupProcess"
+        activity="privateGroup" url="/SA/OPM/customGroup/privateGroup.w"/> 
+    </item>  
+    <item icon="/UI/system/images/menu/pidgin.gif" label="文档管理" icon16="/UI/system/images/menu/pidgin.gif"> 
+      <item label="文档中心" process="/SA/doc/docCenter/docCenterProcess" activity="mainActivity"
+        url="/SA/doc/docCenter/docCenter.w" icon="/UI/SA/doc/docCenter/images/icon16.png"
+        icon32="/UI/SA/doc/docCenter/images/icon32.png" icon64="/UI/SA/doc/docCenter/images/icon64.png"/>  
+      <item label="文档检索" process="/SA/doc/docSearch/docSearchProcess" activity="mainActivity"
+        url="/SA/doc/docSearch/docSearch.w" icon="/UI/SA/doc/docSearch/images/icon16.png"
+        icon32="/UI/SA/doc/docSearch/images/icon32.png" icon64="/UI/SA/doc/docSearch/images/icon64.png"/>  
+      <item label="文档关联" process="/SA/doc/docPermission/docPermissionProcess"
+        activity="mainActivity" url="/SA/doc/docPermission/docPermission.w" icon="/UI/SA/doc/docPermission/images/icon16.png"
+        icon32="/UI/SA/doc/docPermission/images/icon32.png" icon64="/UI/SA/doc/docPermission/images/icon64.png"/>  
+      <item label="文档配置" process="/SA/doc/docSetting/docSettingProcess" activity="mainActivity"
+        url="/SA/doc/docSetting/docSetting.w" icon="/UI/SA/doc/docSetting/images/icon16.png"
+        icon32="/UI/SA/doc/docSetting/images/icon32.png" icon64="/UI/SA/doc/docSetting/images/icon64.png"/> 
+    </item>  
+    <item label="门户管理"> 
+      <item label="门户默认布局管理" url="/SA/theme/themeDefine/mainActivity2.w" process="/SA/theme/themeDefine/themeDefineProcess"
+        activity="mainActivity"/>  
+      <item label="门户默认布局分配" url="/SA/theme/themeManager/mainActivity2.w" process="/SA/theme/themeManager/themeManagerProcess"
+        activity="mainActivity"/> 
+    </item>  
+    <item label="系统工具"> 
+      <!--item label="license密钥更新" process="/SA/license/licenseProcess" activity="mainActivity"
+        url="/SA/license/mainActivity.w"/-->  
+      <item label="操作日志" process="/SA/log/logProcess" activity="mainActivity"
+        url="/SA/log/mainActivity.w" icon="/UI/SA/log/images/icon16.png" icon32="/UI/SA/log/images/icon32.png"
+        icon64="/UI/SA/log/images/icon64.png"/>  
+      <item label="在线用户" process="/SA/online/onlineProcess" activity="mainActivity"
+        url="/SA/online/mainActivity.w" icon="/UI/SA/online/images/icon16.png" icon32="/UI/SA/online/images/icon32.png"
+        icon64="/UI/SA/online/images/icon64.png"/>  
+      <item label="软件更新" display="hide" url="/SA/update/update.j" process="/SA/update/updateProcess"
+        activity="mainActivity"/>  
+      <item label="导出初始化数据" process="/SA/tools/process/exportData/exportDataProcess"
+        activity="mainActivity" url="/SA/tools/process/exportData/mainActivity.w"/> 
+    </item>  
+    <item icon="/UI/system/images/menu/pidgin.gif" label="工作事务"> 
+      <item label="工作任务" url="/SA/task/workTask/mainActivity.w" process="/SA/task/workTask/workTaskProcess"
+        icon="/UI/SA/task/workTask/images/icon16.png" icon32="/UI/SA/task/workTask/images/icon32.png"
+        icon64="/UI/SA/task/workTask/images/icon64.png" activity="mainActivity"/>  
+      <item label="工作记录" url="/SA/task/workRecord/mainActivity.w" process="/SA/task/workRecord/workRecordProcess"
+        icon="/UI/SA/task/workRecord/images/icon16.png" icon32="/UI/SA/task/workRecord/images/icon32.png"
+        icon64="/UI/SA/task/workRecord/images/icon64.png" activity="mainActivity"/> 
+    </item> 
+  </item> 
+</root>

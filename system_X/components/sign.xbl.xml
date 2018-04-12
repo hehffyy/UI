@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<xbl:xbl xmlns:xbl="http://www.w3.org/ns/xbl" xmlns="http://www.w3.org/ns/xbl" xmlns:xui="http://www.justep.com/xui"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xforms="http://www.justep.com/xforms"
+  xmlns:ev="http://www.w3.org/2001/xml-events" xsl:version="2.0" script-type="text/javascript">  
+  <xbl:script type="text/javascript" src="/UI/portal2/process/portal/lib/md5.js"/>  
+  <script src="/UI/system_X/components/sign/sign.js"/>  
+  <script src="/UI/base/lib/jquery-ui-1.7.1/ui/jquery-ui.js"/>  
+  <script src="/UI/base/lib/jquery-ui-1.7.1/ui/ui.draggable.js"/>  
+ 
+  <binding id="sign"> 
+    <!--编译入口-->  
+    <template template-type="java" src="Sign"/>  
+    <implementation>({ 
+    	initXBL2 : function(){ 
+    		justep.Object.extend(this, new com.butone.Sign(this)); 
+    	} 
+    })</implementation> 
+  </binding> 
+</xbl:xbl>

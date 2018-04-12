@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<elements> 
+  <element name="attachment" tag-name="div" icon="attachment.gif" text="附件编辑器"
+    namespace="xhtml" namespace-uri="http://www.w3.org/1999/xhtml" binding-component="/UI/base/components/attachment.xbl.xml#attachment"
+    component-class="Attachment" component-type="formControl" tag-type="rich"> 
+    <!--属性 editor-parameter：属性编辑器的参数-->  
+    <properties> 
+      <property name="id" text="编号" required="false"/>  
+      <property name="ref" text="引用" editor-ref="dataRef"/>  
+      <property name="keyID" text="keyId名称"/>  
+      <property name="limit" text="限制上传个数"/>  
+      <property name="subPath" text="动态子目录"/>  
+      <property name="subPath" text="动态子目录"/>  
+      <property name="showName" text="显示附件名称"  editor-ref="booleanList" default-value="false" data-type="boolean"/>
+      <property name="access" text="权限" editor-ref="accessType" enum-values=""/>  
+      <property name="class" text="class"/>  
+      <property name="style" text="样式" editor-ref="styleDialog"> 
+        <property name="width" text="高度" required="true"/>  
+        <property name="height" text="宽度" required="true"/> 
+      </property> 
+    </properties>  
+    <property-editors> 
+      <!--属性编辑器描述，可通过下拉列表或者弹出对话框来设置属性值，不这是默认问普通的文本输入框。-->  
+      <property-editor name="accessType" type="list"> 
+        <static-data value="l:列表,r:读取,d:下载,du:下载 上传,duu:下载 上传 修改,duud:下载 上传 修改 删除"/> 
+      </property-editor> 
+    </property-editors>  
+    <events> 
+      <event name="onBrowse" text="浏览事件" parameters="event"/>  
+      <event name="onFileSelect" text="选择文件事件" parameters="event"/>  
+      <event name="onStart" text="文件开始上传前事件" parameters="event"/>  
+      <event name="onProgress" text="上传进度事件" parameters="event"/>  
+      <event name="onSuccess" text="上传完成事件" parameters="event"/>  
+      <event name="onError" text="上传失败事件" parameters="event"/> 
+    </events>  
+    <!--模板	-->  
+    <templates> 
+      <template name="default"> <![CDATA[
+				<xhtml:div component="/UI/base/components/attachment.xbl.xml#attachment" access="duud" data-bind="">
+					<div class="x-attachment">
+				        <div class="x-attachment-content x-card-border">
+				            <div class="x-doc-process">
+							   <div class="progress-bar x-doc-process-bar" role="progressbar" style="width:0%;"></div> 
+						    </div> 
+				        	<div data-bind="foreach:$attachmentItems">
+				            	<div class="x-attachment-cell">
+				            		<div>
+					                    <div class="x-attachment-item x-item-other" data-bind="attr:{title:$object.docName},click:$model.previewOrRemoveItem.bind($model),style:{opacity: $model.$access.get() % 4 >= 2 || $model.$state.get() == 'remove' ? '1.0' : '0.5',backgroundImage:($model.previewPicture.bind($model,$object))()}">
+					                         <a data-bind="visible:$model.$state.get() == 'remove'" class="x-remove-barget"/>
+					                    </div> 
+					                    <label data-bind="text:$object.docName,visible:$model.showName" style="display:block;margin-left:10px"/>
+				                    </div> 
+				                </div> 
+				            </div> 
+				            <div class="x-attachment-cell" data-bind="visible:$state.get() == 'upload' &amp;&amp; ($limit.get() == '-1' || $limit.get() > $attachmentItems.get().length)">
+				                <div class="x-attachment-item x-item-upload" data-bind="visible:$state.get() == 'upload' &amp;&amp; $access.get() % 512 >= 256"/>
+				            </div> 
+				            <div class="x-attachment-cell" data-bind="visible:$state.get() == 'upload' &amp;&amp; $attachmentItems.get().length > 0">
+				                <div class="x-attachment-item x-item-remove" data-bind="click:changeState.bind($object,'remove'),visible:$access.get() % 2048 >= 1024"/>
+				            </div> 
+				            <div style="clear:both;"/> 
+				        </div> 
+				   	</div> 
+      			</xhtml:div>
+				]]> </template> 
+    </templates>  
+    <toolbar/> 
+  </element>  
+  <!--  attachmentPC-->  
+  <element name="attachmentPC" tag-name="div" icon="attachment.gif" text="附件编辑器(PC)"
+    namespace="xhtml" namespace-uri="http://www.w3.org/1999/xhtml" binding-component="/UI/base/components/attachment.xbl.xml#attachmentPC"
+    component-class="attachment" component-type="formControl" tag-type="rich"> 
+    <!--属性 editor-parameter：属性编辑器的参数-->  
+    <properties> 
+      <property name="id" text="编号" required="false"/>  
+      <property name="ref" text="引用" editor-ref="dataRef"/>  
+      <property name="keyID" text="keyId名称"/>  
+      <property name="limit" text="限制上传个数"/>  
+      <property name="subPath" text="动态子目录"/> 
+      <property name="showName" text="显示附件名称"  editor-ref="booleanList" default-value="false" data-type="boolean"/> 
+      <property name="access" text="权限" editor-ref="accessType" enum-values=""/>  
+      <property name="class" text="class"/>  
+      <property name="style" text="样式" editor-ref="styleDialog"> 
+        <property name="width" text="高度" required="true"/>  
+        <property name="height" text="宽度" required="true"/> 
+      </property> 
+    </properties>  
+    <property-editors> 
+      <!--属性编辑器描述，可通过下拉列表或者弹出对话框来设置属性值，不这是默认问普通的文本输入框。-->  
+      <property-editor name="accessType" type="list"> 
+        <static-data value="l:列表,r:读取,d:下载,du:下载 上传,duu:下载 上传 修改,duud:下载 上传 修改 删除"/> 
+      </property-editor> 
+    </property-editors>  
+    <events> 
+      <event name="onBrowse" text="浏览事件" parameters="event"/>  
+      <event name="onFileSelect" text="选择文件事件" parameters="event"/>  
+      <event name="onStart" text="文件开始上传前事件" parameters="event"/>  
+      <event name="onProgress" text="上传进度事件" parameters="event"/>  
+      <event name="onSuccess" text="上传完成事件" parameters="event"/>  
+      <event name="onError" text="上传失败事件" parameters="event"/> 
+    </events>  
+    <!--模板	-->  
+    <templates> 
+      <template name="default"> <![CDATA[
+				<xhtml:div component="/UI/base/components/attachment.xbl.xml#attachmentPC" access="duud" data-bind="">
+					<div class="x-attachment-pc"> 
+			          <div class="x-attachment-content x-card-border"> 
+			            <div class="x-doc-process"> 
+			              <div class="progress-bar x-doc-process-bar" role="progressbar"
+			                style="width:0%;"/> 
+			            </div>   
+			            <div class="x-attachment-cell-tpl" data-bind="foreach:$attachmentItems"> 
+			              <div class="x-attachment-cell x-attachment-item"> 
+			              	<div>
+				              <div class="x-item-other x-item-icon" data-bind="event:{mouseover:function(){if($model.$state.get()!='upload'){return;} $model.$activeDoc.set($object)}},click:$model.previewOrRemoveItem.bind($model),style:{opacity: $model.$access.get() % 4 &gt;= 2 || $model.$state.get() == 'remove' ? '1.0' : '0.5',backgroundImage:($model.previewPicture.bind($model,$object))()},css:{'x-doc-item-active':$model.$activeDoc.get() == $object}"> 
+				                <a data-bind="visible:$model.$state.get() == 'remove'" class="x-remove-barget"/> 
+				              </div> 
+				              <label data-bind="text:$object.docName,visible:$model.showName" style="display:block;margin-left:10px"></label>
+			                </div>  
+			              </div>  
+			            </div>   
+			            <div class="x-attachment-cell x-attachment-item" data-bind="visible:$state.get() == 'upload' &amp;&amp; ($limit.get() == '-1' || $limit.get() &gt; $attachmentItems.get().length)"> 
+			              <div class="x-item-icon x-item-upload" data-bind="visible:$state.get() == 'upload' &amp;&amp; $access.get() % 512 &gt;= 256"/> 
+			            </div>   
+			            <div class="x-attachment-cell x-attachment-item" data-bind="visible:$state.get() == 'upload' &amp;&amp; ($limit.get() == '-1' || $limit.get() &gt; $attachmentItems.get().length)"> 
+			              <div class="x-item-icon x-item-new-tpl" data-bind="visible:$state.get() == 'upload' &amp;&amp; $access.get() % 512 &gt;= 256,click:$model.newFormTemplate.bind($model)"/> 
+			            </div>   
+			            <div class="x-attachment-cell x-attachment-item" data-bind="visible:$state.get() == 'upload' &amp;&amp; $attachmentItems.get().length &gt; 0"> 
+			              <div class="x-item-icon x-item-remove" data-bind="click:changeState.bind($object,'remove'),visible:$access.get() % 2048 &gt;= 1024"/> 
+			            </div>   
+			            <div class="x-attachment-toolbar" data-bind="if:$model.$activeDoc.get(),style:{display:$model.$activeDoc.get()?($model.$domNode.hasClass('flexboxlegacy')?'flex':'inline-block'):'none'}"> 
+			              <div class="x-item-name"> 
+			                <a class="btn btn-link" data-bind="enable:($model.$activeDoc.get().fileID.get() &amp;&amp; $model.$access.get() % 4 &gt;= 2),click:$model.previewOrRemoveItem.bind($model,$model.$activeDoc.get()),text:$model.$activeDoc.get().docName.get()"/>  
+			                <span class="btn btn-link" data-bind="enable:false,text:$model.getFormatSize($model.$activeDoc.get())"/> 
+			              </div>   
+			              <div class="x-item-edit"> 
+			                <a class="btn btn-link" data-bind="enable:$model.$access.get() % 1024 &gt;= 512,click:$model.editDoc.bind($model,$model.$activeDoc.get())">编辑</a> 
+			              </div>   
+			              <div class="x-item-download"> 
+			                <a class="btn btn-link" data-bind="enable:$model.$access.get() % 1024 &gt;= 512,click:$model.showHistory.bind($model,$model.$activeDoc.get())">历史</a> 
+			              </div>   
+			              <div class="x-item-download"> 
+			                <a class="btn btn-link" data-bind="enable:($model.$activeDoc.get().fileID.get() &amp;&amp; $model.$access.get() % 8 &gt;= 4),click:$model.downloadDoc.bind($model,$model.$activeDoc.get())">下载</a> 
+			              </div>   
+			              <div class="x-item-delete"> 
+			                <a class="btn btn-link" data-bind="enable:$model.$access.get() % 2048 &gt;= 1024,click:$model.deleteDoc.bind($model,$model.$activeDoc.get())">删除</a> 
+			              </div>  
+			            </div>   
+			            <div style="clear:both;"/> 
+			          </div>  
+			        </div>  
+      			</xhtml:div>
+				]]> </template> 
+    </templates>  
+    <toolbar/> 
+  </element>  
+  <!--  attachmentSimple-->  
+  <element name="attachmentSimple" tag-type="rich" tag-name="div" icon="attachment.png"
+    text="附件(非文档服务)" binding-component="/UI/base/components/attachment.xbl.xml#attachmentSimple"
+    display-property="id" component-type="formControl" design-view="web-designer"> 
+    <properties> 
+      <property name="id" text="编号" editor-discriptor-ref=""/>  
+      <property name="ref" text="引用" editor-ref="dataRef"/> 
+      <property name="showName" text="显示附件名称"  editor-ref="booleanList" default-value="false" data-type="boolean"/> 
+      <property name="class" text="class"/>  
+      <property name="style" text="样式" editor-ref="styleDialog"> 
+        <property name="width" text="高度" required="true"/>  
+        <property name="height" text="宽度" required="true"/> 
+      </property> 
+    </properties>  
+    <events> 
+      <event name="onBrowse" text="浏览事件" parameters="event"/>  
+      <event name="onFileSelect" text="选择文件事件" parameters="event"/>  
+      <event name="onStart" text="文件开始上传前事件" parameters="event"/>  
+      <event name="onProgress" text="上传进度事件" parameters="event"/>  
+      <event name="onSuccess" text="上传完成事件" parameters="event"/>  
+      <event name="onError" text="上传失败事件" parameters="event"/> 
+    </events>  
+    <templates> 
+      <template name="default"><![CDATA[ 
+			    <xhtml:div component="/UI/base/components/attachment.xbl.xml#attachmentSimple" data-bind="">
+					<div class="x-attachment">
+				        <div class="x-attachment-content x-card-border">
+				            <div class="x-doc-process">
+							   <div class="progress-bar x-doc-process-bar" role="progressbar" style="width:0%;"></div> 
+						    </div> 
+				        	<div data-bind="foreach:$attachmentItems">
+				        		<div>
+					            	<div class="x-attachment-cell">
+					                    <div class="x-attachment-item x-item-other" data-bind="click:$model.previewOrRemoveItem.bind($model),style:{backgroundImage:($model.previewPicture.bind($model,$object))()}">
+					                         <a data-bind="visible:$model.$state.get() == 'remove'" class="x-remove-barget"></a>
+					                    </div> 
+					                </div> 
+				                <label data-bind="text:$object.docName,visible:$model.showName" style="display:block;margin-left:10px"></label>
+				                </div> 
+				            </div> 
+				            <div class="x-attachment-cell" data-bind="visible:$state.get() == 'upload'">
+				                <div class="x-attachment-item x-item-upload" data-bind="visible:$state.get() == 'upload'">
+				                </div> 
+				            </div> 
+				            <div class="x-attachment-cell" data-bind="visible:$state.get() == 'upload' &amp;&amp; $attachmentItems.get().length > 0">
+				                <div class="x-attachment-item x-item-remove" data-bind="click:changeState.bind($object,'remove')">
+				                </div> 
+				            </div> 
+				            <div style="clear:both;"></div> 
+				        </div> 
+				   	</div> 
+				</xhtml:div>
+		   ]]></template> 
+    </templates> 
+  </element> 
+</elements>

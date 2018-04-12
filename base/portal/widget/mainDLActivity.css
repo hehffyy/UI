@@ -1,0 +1,10 @@
+.wd-content {list-style:none;margin:0px;margin-top:10px 0;}
+.wd-content li {float:left;margin: 10px;}
+.wd-content a{cursor:pointer;color:#333;text-decoration:none;}
+.wd-content a label{padding: 5px;}
+
+#selectedWidget {list-style:none;margin:0px;margin-top:10px 0;}
+#selectedWidget li {float:left;margin: 5px;}
+#selectedWidget li a{background: #4c9ed9;display: inline-block;padding: 5px;color: #fff;text-decoration: none;border-radius: 4px;}
+.w-count{color:#ff3f13}
+#d_save span,#d_close span{font-size:14px;}

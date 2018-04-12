@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<!-- 
+  <item label="门户测试"> 
+    <item id="PortalAPITest" title="门户API测试" type="func" url="/portal2/process/portal/testWidget.w"
+      process="/SA/OPM/system/systemProcess" activity="mainActivity"> 
+    </item> 
+  </item> 
+ -->
+</root>

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<reg-info>
+	<!-- 组件目录注册  -->
+	<component-dirs>
+		/UI/system_X/components/calendar,
+		/UI/system_X/components/orgSelectExt,
+		/UI/system_X/components/sign,
+		/UI/system_X/components/unitField,
+		/UI/system_X/components/unitControl,
+		/UI/system_X/components/sequenceCode,
+		/UI/system_X/components/queryFill,
+		/UI/system_X/components/boundaryImport,
+		/UI/system_X/components/mapBrowser,
+		/UI/system_X/components/dateFilterExt,
+		/UI/system_X/components/uiPlugin,
+		/UI/system_X/components/printForm,
+		/UI/system_X/components/fileImport,
+		/UI/system_X/components/fileExport,
+		/UI/system_X/components/rangeFilter
+	</component-dirs>
+	
+	<!-- 组件工具箱配置 -->
+	<toolbox>
+		<!--component-name必需和xxx.xml中element元素的name一致-->
+		<catalog name="butone" text="业务组件">
+			<item component-name="calendar"/>
+			<item component-name="orgSelectExt"/>
+			<item component-name="sign"/>
+			<item component-name="multiSign"/>
+			<item component-name="unitField"/>
+			<item component-name="unitControl"/>
+			<item component-name="upload"/>
+			<item component-name="sequenceCode"/>
+			<item component-name="queryFill"/>
+			<item component-name="boundaryImport"/>
+			<item component-name="mapBrowser"/>
+			<item component-name="dateFilterExt"/>
+			<item component-name="uiPlugin"/>
+			<item component-name="printForm"/>
+			<item component-name="fileImport"/>
+			<item component-name="fileExport"/>
+			<item component-name="rangeFilter"/>
+			
+		</catalog>
+	</toolbox>
+</reg-info>

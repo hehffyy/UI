@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<elements>
+	<element name="menuButton" tag-name="div" icon="menu.gif" text="菜单按钮" namespace="xhtml" namespace-uri="http://www.w3.org/1999/xhtml"
+		display-property="id"
+		component-class="MenuButton"
+		component-type="formControl"  design-view="web-designer"
+		binding-component="/UI/system/components/menuButton.xbl.xml#menuButton">
+		<properties>
+			<property name="id" text="编号" required="false" />  
+			<property name="label" text="标签"/>
+			<property name="mode" text="展开方向" editor-ref="modelList" default-value="down right"/>
+			<property name="icon-class" text="图标样式" />
+			<property name="class" text="class"/>
+			<property name="style" text="样式1" editor-ref="styleDialog" use-default="false">
+				<!-- <property name="left" text="位置左" is-style="true" />
+				<property name="top" text="位置上" is-style="true" /> -->
+				<property name="height" text="高度" is-style="true" />
+				<property name="width" text="宽度" is-style="true"/>
+				<!--<property name="background-color" text="背景颜色" is-style="true" editor-ref="simplecolor" />
+				<property name="display" text="显示" editor-ref="display" is-style="true" /> -->
+			</property>			
+		</properties>
+		<toolbar>			
+			<item text="添加菜单项" method="newMenuItem"/>	
+			<item text="选择操作" method="selectOperation"/>			
+		</toolbar>
+		<property-editors><!--属性编辑器描述，可通过下拉列表或者弹出对话框来设置属性值，不这是默认问普通的文本输入框。-->
+			<property-editor name="modelList" type="list" > 				
+				<static-data value="auto:自动适应,down right:向下右对齐,down left:向下左对齐,up right:向上右对齐,up left:向上左对齐" />
+			</property-editor>
+		</property-editors>
+		<templates>
+		   <template name="default"><![CDATA[ 
+		        <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml" label="更多" component="/UI/system/components/menuButton.xbl.xml#menuButton">
+				</xhtml:div>
+		   ]]></template>
+		</templates>
+	</element>
+  
+	<element name="menuitem" tag-name="menuitem" icon="menuitem.gif" text="菜单项"   display-property="label" 
+	    js-class="justep.design.MenuItem"
+		component-class="MenuItem" 
+		component-type="barItem" parent-range="menuButton">
+		<properties>
+		    <property name="id" text="编号"/>
+			<property name="name" text="名称" />
+			<property name="operation-owner" text="操作所属组件"/>
+			<property name="operation" text="操作"/>
+			 <property name="label" text="标签"  depend-on="operation" default-value=":getPropDefaultValue"/>
+			<property name="icon-class" text="图标样式"   editor-ref="iconSelectionDlg"  default-value=":getPropDefaultValue"/>
+			<property name="separator" text="是否显示分割条"  editor-ref="booleanList"/>
+
+		</properties>
+		<toolbar>			
+			<item text="上移" method="moveUp"/>	
+			<item text="下移" method="moveDown"/>						
+		</toolbar>
+		<property-editors>
+		</property-editors>
+		<events>
+            <event name="onClick" text="点击事件"/>
+        </events>
+		<templates>
+		   <template name="default"><![CDATA[ 
+              <menuitem  />
+		   ]]></template>
+		</templates>
+	</element>
+	 
+	 
+</elements>

@@ -1,0 +1,11 @@
+{
+   "tileMenu_ios":{
+	   "tileMenuTitle":["设置","刷新","退出","资源"],
+	   "tileMenuAction":["openSettingDlg","loadSystem","logOut","javascript:justep.getJustepApp().attachment.showDownloadList();"],
+	   "tileMenuRGBA":["24/129/212/0.9","24/129/212/0.9","24/129/212/0.9","24/129/212/0.9"]
+   },
+   "tileMenu_android":{
+	   "tileMenuTitle":["设置","刷新","退出"],
+	   "tileMenuAction":["openSettingDlg","loadSystem","logOut"]
+   }
+}

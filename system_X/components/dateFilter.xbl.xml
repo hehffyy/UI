@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xbl:xbl xmlns="http://www.w3.org/ns/xbl"
+	xmlns:xui="http://www.justep.com/xui"
+	xmlns:xbl="http://www.w3.org/ns/xbl" 
+	xmlns:xhtml="http://www.w3.org/1999/xhtml"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xsl:version="2.0"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:xforms="http://www.justep.com/xforms"
+	xmlns:ev="http://www.w3.org/2001/xml-events" 
+	script-type="text/javascript">
+	<script src="/UI/system/components/common/common.js" />
+	<script src="/UI/system/components/dateFilter/dateFilter.js"/>
+
+	<binding id="dateFilterReserved">
+		<template template-type="java" src="DateFilter" />
+		<implementation>
+			({
+				initXBL : function() {
+					justep.Object.extend(this, new justep.DateFilter(this));
+				}
+			})			
+		</implementation>		
+	</binding>
+	<binding id="dateFilter">
+		<template template-type="xslt">
+			<xsl:template match="/*" xmlns:justep="http://www.justep.com/x5#">
+				<justep:root xbl:class="xui-select">
+					<xsl:variable name="id" select="@id" />
+					<xsl:variable name="partId" select="concat(@id,'_part')" />
+					<xsl:variable name="modelId" select="concat(@id,'_model')" />
+					<xsl:variable name="dataId" select="concat(@id,'_data')" />
+					<xsl:variable name="dialogId" select="concat(@id,'_dialog')" />
+					<xforms:model id="{$modelId}">
+					<!-- 生成 设置data filter逻辑 -->
+		             <xforms:action ev:event="xforms-model-construct">
+		             	<xforms:script>justep.DateFilter.setFilter("<xsl:value-of select="$id"/>", justep.xbl("<xsl:value-of select="@filter-data"/>"), "<xsl:value-of select="@filter-date-mode"/>", "<xsl:value-of select="@filter-date-relation1"/>", "<xsl:value-of select="@filter-date-relation2"/>", "", "<xsl:value-of select="@default-select"/>", null, null, "<xsl:value-of select="@onGetCondition"/>", false);</xforms:script>
+		             </xforms:action>
+		           </xforms:model>  
+				 <xforms:group id="{$partId}" xforms:lazy="true">
+		           <xforms:model id="{$modelId}">  
+		             <xforms:bind type="xsd:date" nodeset="instance('{$dataId}')/beginDate"/>  
+		             <xforms:bind type="xsd:date" nodeset="instance('{$dataId}')/endDate"/>  
+		             <xforms:instance id="{$dataId}" type="simple" columnids="value,label,beginDate,endDate"> 
+		               <rows xmlns="" rows="">  
+		                 <row/> 
+		               </rows> 
+		             </xforms:instance> 
+		           </xforms:model>  
+		           <xforms:dialog id="{$dialogId}"  minmax="false" resizable="false" width="238" height="112">
+		           	 <xsl:attribute name="title">i18n{title}</xsl:attribute>  
+		             <xhtml:table style="width:100%;height:100%;tabel-layout:fixed" cellspacing="8" cellpadding="0" border="0" component="/UI/system/components/tableLayout.xbl.xml#tableLayout"> 
+		               <xhtml:tr style="height: 28px" valign="middle"> 
+		                 <xhtml:td style="width: 56px;"><xhtml:div style="padding-top:8px">i18n{beginDate}</xhtml:div></xhtml:td>  
+		                 <xhtml:td> 
+		                   <xforms:input ref="instance('{$dataId}')/beginDate" /> 
+		                 </xhtml:td> 
+		               </xhtml:tr>  
+		               <xhtml:tr style="height: 28px" valign="middle"> 
+		                 <xhtml:td style="width: 56px;"><xhtml:div style="padding-top:8px">i18n{endDate}</xhtml:div></xhtml:td>  
+		                 <xhtml:td> 
+		                   <xforms:input ref="instance('{$dataId}')/endDate"/> 
+		                 </xhtml:td> 
+		               </xhtml:tr>  
+		               <xhtml:tr valign="middle"> 
+		                 <xhtml:td align="right" colspan="2">
+				            <xforms:trigger style="width:75px;margin-right:8px;" class="button-green"> 
+				              <xforms:label ><![CDATA[i18n{ok}]]></xforms:label>  
+				              <xforms:action ev:event="DOMActivate" > 
+				                <xforms:script >xforms.blur(true); if(justep.xbl('<xsl:value-of select="$id" />')._doDialogCheck()) xforms('<xsl:value-of select="$dialogId" />').close();</xforms:script> 
+				              </xforms:action> 
+				            </xforms:trigger>  
+				            <xforms:trigger  style="width:75px;" appearance="minimal"> 
+				              <xforms:label ><![CDATA[i18n{cancel}]]></xforms:label>  
+				              <xforms:action ev:event="DOMActivate" > 
+				                <xforms:script >xforms('<xsl:value-of select="$dialogId" />').close();</xforms:script> 
+				              </xforms:action> 
+				            </xforms:trigger>  
+		                 </xhtml:td> 
+		               </xhtml:tr> 
+		             </xhtml:table> 
+		           </xforms:dialog>
+		           </xforms:group>
+		       </justep:root>      
+			</xsl:template>
+		</template>
+		<implementation><![CDATA[
+			({
+				initXBL : function() {
+					var labels = (new justep.Message(justep.Message.JUSTEP231074)).getMessage().split(",");
+					this.alertLabel1 = (new justep.Message(justep.Message.JUSTEP231075)).getMessage();
+					this.alertLabel2 = (new justep.Message(justep.Message.JUSTEP231076)).getMessage();
+					
+					this.partId = this.domNode.id + "_part";
+					this.modelId = this.domNode.id + "_model";
+					this.dataId = this.domNode.id + "_data";
+					this.dialogId = this.domNode.id + "_dialog";
+					var el = jQuery(this.domNode);
+					
+					var onChanged = el.attr("onChanged");
+					if(onChanged)
+						this.onChanged = justep.Function.get(onChanged);
+					
+					var onGetCondition = el.attr('onGetCondition');
+					if(onGetCondition)	
+						this.onGetCondition = justep.Function.get(onGetCondition);
+					
+					this.defaultValue = el.attr("default-select");
+					var width = el.width()||100;
+					var tabindex = el.attr("tabindex");
+					var disable = el.attr("disabled");
+					this.autoRefresh = el.attr('auto-refresh') == "true";
+					this.filterDateMode = el.attr('filter-date-mode');
+					this.filterDataID = el.attr('filter-data');
+					if(this.filterDataID)
+						this.filterData = justep.xbl(this.filterDataID);
+					this.dateRelation1 = el.attr('filter-date-relation1');
+					this.dateRelation2 = el.attr('filter-date-relation2');
+					
+					this.dropdownHeight = el.attr("dropdown-height") || "225";
+					
+					this._disabled = disable = disable ? ((''+disable)=="true"): false; 
+					window.dhx_globalImgPath=justep.Request.convertURL("/form/dhtmlx/dhtmlxCombo/imgs/", true);
+			    	this.combo = new dhtmlXCombo(this.domNode.id, "", width, "", tabindex);
+			    	this.combo.addOption([["0", labels[0]], ["1", labels[1]], ["2", labels[2]], ["3", labels[3]], ["4", labels[4]], ["5", labels[5]], ["6", labels[6]], ["7", labels[7]], ["8", labels[8]], ["9","一年内"],["10", labels[9]]]);
+			    	if(this.defaultValue != undefined) this.combo.setComboValue(this.defaultValue);
+			    	this.jelement = jQuery(this.combo.DOMelem); 
+			    	this.combo.readonly(true);
+			    	this.setDisabled(disable);
+			    	
+			    	if(this.dropdownHeight){
+			    		if(this.dropdownHeight.indexOf("px") == -1 ) this.dropdownHeight = this.dropdownHeight + "px";
+			    		jQuery(this.combo.DOMlist).height(this.dropdownHeight);
+			    		if (this.combo.DOMlistF) 
+			    			jQuery(this.combo.DOMlistF).height(this.dropdownHeight);
+			    	}	
+			    	
+
+		    		var that = this;
+		    		var callback = function(){
+		    			if(that.getCurrentSelect() == 10){
+		    				that.openDialog();
+		    			}else{
+			    			var event = {source: that};
+			    			that.setFilter();
+			    			if(that.onChanged)
+			    				that.onChanged.call(that, event);
+		    			}	
+		    		};
+		    		this.combo.attachEvent("onChange",callback);
+				},
+				setDisabled : function(disabled){
+					this.combo.disable(disabled);
+					if(disabled) this.jelement.addClass("xforms-readonly");
+					else this.jelement.removeClass("xforms-readonly");
+					this._disabled = disabled;
+				},
+				getDisabled : function(){
+					return this._disabled;
+				},
+				setReadonly : function(readonly){
+					this.setDisabled(readonly);
+				},
+				getReadonly : function(){
+					return this.getDisabled();
+				},
+				setTabIndex : function(tabIndex){
+					this._tabIndex = tabIndex;
+				},
+				getTabIndex : function(){
+					return this._tabIndex;
+				},
+				setAccessKey : function(key){
+					this._accessKey = key;
+				},
+				getAccessKey : function(){
+					return this._accessKey;
+				},
+				setAutoRefresh : function(autoRefresh){
+					this.autoRefresh = autoRefresh;
+				},
+				clearFilter : function(){
+					this.filterData.setFilter(this.getFilterName(),"");
+					if(this.defaultValue != undefined) 
+						this.combo.setComboValue(this.defaultValue);
+					else
+						this.combo.setComboValue("0");
+				},			
+				setFilter : function(){
+					if(!this.filterData || !this.dateRelation1) return;
+					var condition = this.getCondition();
+					var old = this.filterData.getFilter(this.getFilterName());
+					if (condition != old) {
+						this.filterData.setFilter(this.getFilterName(), condition);
+						if (this.autoRefresh)
+							this.filterData.refreshData();
+					}			
+				},
+				getCondition : function(){
+					var r = this.getDateRange();
+					var condition;
+					if (this.filterDateMode == "single"){
+						var relationAlias = justep.Components.FilterUtils.getRelationAlias(this.filterDataID,this.dateRelation1);
+						condition = justep.Components.FilterUtils.getDateFilter(relationAlias, r.beginDate, r.endDate);
+					}else{
+						var r1 = justep.Components.FilterUtils.getRelationAlias(this.filterDataID,this.dateRelation1);
+						var r2 = justep.Components.FilterUtils.getRelationAlias(this.filterDataID,this.dateRelation2);
+						condition = justep.Components.FilterUtils.getDateRangeFilter(r1, r2, r.beginDate, r.endDate);					
+					}
+					if (this.onGetCondition) {
+						var eventData = {
+							"filterData" : this.filterData,
+							"filterMode" : this.filterDateMode,
+							"dateRelation1" : this.dateRelation1,
+							"dateRelation2" : this.dateRelation2,
+							"currentSelect" : this.getCurrentSelect(),
+							"defaultSelect" : this.defaultValue,
+							"customBeginDate" : r.beginDate,
+							"customEndDate" : r.endDate,
+							"defaultCondition" : condition
+						};
+						var ret = this.onGetCondition(eventData);
+						if (ret)
+							condition = ret;
+					}
+					return condition;		
+				},
+				getFilterName : function(){
+					return "_" + this.domNode.id + "_filter";
+				},
+				getDateFilter : function(relation){
+					if(!relation) return '';
+					var range = this.getDateRange();
+					var r = justep.Components.FilterUtils.getRelationAlias(this.filterDataID,relation);
+					return justep.Components.FilterUtils.getDateFilter(r, range.beginDate, range.endDate);
+				},
+				getBeginDatetime : function(){
+					return this.getDateRange().beginDate;                   
+				},
+				getEndDatetime : function(){
+					return this.getDateRange().endDate;
+				},
+				getCurrentSelect : function(){
+					return this.combo.getSelectedValue();
+				},
+				getValue : function(){
+					return this.getCurrentSelect();
+				},
+				getInnerDialog : function(){
+					this._loadPart();
+					return this.dialog;				
+				},
+				getInnerSelect : function(){
+					return this.combo;
+				},
+				getDateRange : function() {
+					var select = this.combo.getSelectedValue();
+					var result = {'beginDate': null, 'endDate': null};
+					if(typeof(select) == "string" && select) select = parseInt(select);
+					if(typeof(select) != "number") return result;
+				
+					var today = justep.DateFilter._getToday();
+				
+					switch(select){
+						case 0: break;
+						case 1:{
+							result.beginDate = today;
+							result.endDate = result.beginDate;
+							break;
+						}
+						case 2:{
+							result.beginDate = justep.Date.increase(today, -1, "d");
+							result.endDate = result.beginDate;
+							break;
+						}
+						case 3:{
+							//result.beginDate = justep.Date.increase(today, -today.getDay(), "d");
+							result.beginDate = justep.Date.increase(today, today.getDay()==0 ? -6 :-(today.getDay()-1), "d");
+							result.endDate = justep.Date.increase(result.beginDate, 6, "d");
+							break;
+						}
+						case 4:{
+						    //result.beginDate = justep.Date.increase(today, -today.getDay()-7, "d");
+							result.beginDate = justep.Date.increase(today, (today.getDay()==0 ? -6 :-(today.getDay()-1))-7, "d");
+							result.endDate = justep.Date.increase(result.beginDate, 6, "d");
+							break;
+						}case 5:{
+							result.beginDate = new Date(today.getFullYear(), today.getMonth(), 1);
+							result.endDate = justep.Date.increase(new Date(today.getFullYear(), today.getMonth()+1, 1), -1, "d");
+							break;
+						}
+						case 6:{
+							result.beginDate = new Date(today.getFullYear(), today.getMonth()-1, 1);
+							result.endDate = justep.Date.increase(new Date(today.getFullYear(), today.getMonth(), 1), -1, "d");
+							break;
+						}
+						case 7:{
+							result.beginDate = new Date(today.getFullYear(), 0, 1);
+							result.endDate = justep.Date.increase(new Date(today.getFullYear()+1, 0, 1), -1, "d");
+							break;
+						}
+						case 8:{
+							result.beginDate = new Date(today.getFullYear()-1, 0, 1);
+							result.endDate = justep.Date.increase(new Date(today.getFullYear(), 0, 1), -1, "d");
+							break;
+						}
+						case 9:{
+							result.beginDate = justep.Date.increase(today, -1, "y");
+							result.endDate = today;
+							break;
+						}
+						case 10:{
+							customBeginDate = this.getCustomBeginDate();  
+							customEndDate = this.getCustomEndDate();
+						
+							if (customBeginDate) 
+								result.beginDate = this._str2date(customBeginDate);
+							if (customEndDate) 
+								result.endDate = this._str2date(customEndDate);
+							break;
+						}
+					}
+					return result;	
+				},
+				getCustomBeginDate : function(){
+					debugger;
+					return this.data.getValue("beginDate", 1);
+				},
+				getCustomEndDate : function(){
+					return this.data.getValue("endDate", 1);
+				},
+				openDialog : function(){
+					this._loadPart();
+					this.dialog.open();				
+				},
+				_loadPart : function(){
+					if(!this._hasLoaded){
+						xforms.load_part(this.partId);
+						this.model = justep.xbl(this.modelId);
+						this.data = justep.xbl(this.dataId);
+						this.dialog = justep.xbl(this.dialogId);
+						this._hasLoaded = true;
+						
+						this.dialog.attachEvent("onOpen", function(event) {
+							this._doDialogOpen(event);
+						}, this);
+						this.dialog.attachEvent("onClose", function(event) {
+							this._doDialogClose(event);
+						}, this);
+						this._lastCustomBeginDate = null;
+						this._lastCustomEndDate = null;
+											
+					}
+				},
+				_doDialogOpen : function(){
+					this._isDialogOK = false;
+					if (this.getCustomBeginDate() == "" && this.getCustomEndDate() == "") {
+						var today = justep.Date.toString(this._getToday(), "YYYY-MM-DD");
+						this.data.setValue("beginDate", today, 1);
+						this.data.setValue("endDate", today, 1);
+					}
+				},
+				_getToday : function() {
+					return this._str2date(justep.System.datetimeString());
+				},
+				_doDialogClose : function(){
+					xforms.blur();
+					if (this._isDialogOK) {
+						this._lastCustomBeginDate = this.getCustomBeginDate();
+						this._lastCustomEndDate = this.getCustomEndDate();
+						this.setFilter();
+						if(this.onChanged) this.onChanged({'source':this});
+					} else {
+						this.data.setValue("beginDate", this._lastCustomBeginDate, 1);
+						this.data.setValue("endDate", this._lastCustomEndDate, 1);
+					}
+				},
+				getCurrentLabel : function(){
+					return this.combo.getComboText();
+				},
+				_str2date : function(d) {
+					return new Date(parseInt(d.substr(0, 4), 10), parseInt(d.substr(5, 2), 10) - 1, parseInt(d.substr(8, 2), 10));
+				},
+				_doDialogCheck : function(){
+					if (this.getCustomBeginDate() == "" || this.getCustomEndDate() == "") {
+						alert(this.alertLabel1);
+						return false;
+					}
+					var beginDate = this._str2date(this.getCustomBeginDate());
+					var endDate = this._str2date(this.getCustomEndDate());
+					if (beginDate > endDate) {
+						alert(this.alertLabel2);
+						return false;
+					}
+					this._isDialogOK = true;
+					return true;
+				},
+				dispose: function(){
+					this.combo.destructor();
+					this.combo = null;
+					justep.XBLObject.prototype.dispose.call(this);
+				}
+			})			
+		]]></implementation>
+		<resources>
+			<xbl:style src="/form/dhtmlx/dhtmlxCombo/dhtmlxcombo.css"></xbl:style>
+			<xbl:style>
+			<![CDATA[
+			  .xforms-readonly .dhx_combo_img{
+			    display:none;
+			  }
+			]]>
+			</xbl:style>
+		</resources>		
+	</binding>
+</xbl:xbl>

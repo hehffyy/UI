@@ -1,0 +1,36 @@
+/*首页导航图标集合 规则=>nav-icon-业务名称*/
+
+[class ^="nav-icon-"],.nav-icon{background-image: url("./img/nav-sprite.png");display: inline-block;height: 16px;width: 16px;}
+.nav-icon-default{height:15px;width:16px;background-position:0 0;}
+.nav-icon-pzbg{height:16px;width:16px;background-position:-113px 0;}
+.nav-icon-pz{height:16px;width:16px;background-position:-16px 0;}
+.nav-icon-tdcx{height:16px;width:16px;background-position:-32px 0;}
+.nav-icon-ss{height:16px;width:16px;background-position:-48px 0;}
+.nav-icon-menu{height:16px;width:16px;background-position:-64px 0;}
+.nav-icon-khgl{height:14px;width:16px;background-position:-80px 0;}
+.nav-icon-mxgl{height:16px;width:16px;background-position:-96px 0;}
+.nav-icon-zsk{height:16px;width:16px;background-position:-128px 0;}
+.nav-icon-ydbg{height:16px;width:16px;background-position:-144px 0;}
+.nav-icon-zzt{height:16px;width:16px;background-position:-160px 0;}
+.nav-icon-zxt{height:16px;width:16px;background-position:-176px 0;}
+.nav-icon-tz-1{height:16px;width:16px;background-position:-192px 0;}
+.nav-icon-tz{height:16px;width:16px;background-position:-208px 0;}
+.nav-icon-xtbggl{height:16px;width:16px;background-position:-224px 0;}
+.nav-icon-wjj{height:16px;width:16px;background-position:-240px 0;}
+.nav-icon-jcsj{height:16px;width:16px;background-position:-256px 0;}
+.nav-icon-bbb3{height:16px;width:16px;background-position:-272px 0;}
+.nav-icon-bbb1{height:16px;width:16px;background-position:-288px 0;}
+.nav-icon-bbxt{height:16px;width:16px;background-position:-304px 0;}
+.nav-icon-bbtj{height:16px;width:16px;background-position:-320px 0;}
+.nav-icon-19{height:16px;width:16px;background-position:-336px 0;}
+.nav-icon-03{height:16px;width:16px;background-position:-352px 0;}
+.nav-icon-bbb{height:16px;width:16px;background-position:-368px 0;}
+.nav-icon-bb{height:16px;width:16px;background-position:-384px 0;}
+.nav-icon-gtzyk{height:16px;width:16px;background-position:-400px 0;}
+.nav-icon-cx{height:16px;width:16px;background-position:-416px 0;}
+.nav-icon-home{height:16px;width:16px;background-position:-432px 0;}
+.nav-icon-gzpt{height:16px;width:16px;background-position:-448px 0;}
+.nav-icon-bgdd{height:16px;width:16px;background-position:-464px 0;}
+.nav-icon-bg{height:16px;width:16px;background-position:-480px 0;}
+.nav-icon-bt{height:16px;width:16px;background-position:-496px 0;}
+.nav-icon-bgypgl{height:16px;width:16px;background-position:-512px 0;}

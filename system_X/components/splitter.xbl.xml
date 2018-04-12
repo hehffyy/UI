@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xbl:xbl xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:justep="http://www.justep.com/x5#"
+	xmlns:xbl="http://www.w3.org/ns/xbl"
+	xmlns:xhtml="http://www.w3.org/1999/xhtml"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xsl:version="2.0"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xforms="http://www.justep.com/xforms"
+	
+	xmlns:ev="http://www.w3.org/2001/xml-events"
+	script-type="text/javascript">
+
+	<xbl:binding id="splitter">
+		<xbl:template template-type="xslt">
+			<xsl:template match="/*">
+				<justep:root>
+					<xsl:variable name="baseCls" select="'xui-splitter'" />
+					<xhtml:div class="{$baseCls}-root">
+					<xsl:for-each select="./*">
+						<xhtml:div class="{$baseCls}-region {$baseCls}-{@region}">
+							<xsl:copy-of select="./*"/>
+						</xhtml:div>
+					</xsl:for-each>
+				    <xsl:if test="@has-drag-bar='true'">
+						<xhtml:div class="{$baseCls}-handler">
+						<xsl:attribute name="class">
+							<xsl:value-of select="concat($baseCls, '-handler', ' ', $baseCls, '-handler-', if(@mode='horz')then 'h' else 'v')" />
+					  	</xsl:attribute>
+					  	<xsl:if test="@has-arrow-button='true'">
+					  	<xhtml:div>
+						<xsl:attribute name="class">
+							<xsl:value-of select="concat($baseCls, '-btn', ' ', $baseCls, '-btn-', if(@mode='horz')then (if(@fix-type='right') then 'h-right' else 'h') else (if(@fix-type='bottom') then 'v-up' else 'v'))" />
+					  	</xsl:attribute>
+						<xsl:attribute name="role">
+							<xsl:value-of select="if(@mode='horz')then (if(@fix-type='right') then 'right' else 'left') else (if(@fix-type='bottom') then 'up' else 'down')" />
+					  	</xsl:attribute>
+					  	<i>
+						<xsl:attribute name="class">
+							<xsl:value-of select="concat(if(@mode='horz')then (if(@fix-type='right') then 'icon-system-right-dir' else 'icon-system-left-dir') else (if(@fix-type='bottom') then 'icon-system-up-dir' else 'icon-system-down-dir'), ' white-icon')" />
+					  	</xsl:attribute>
+					  	</i>
+					  	</xhtml:div>
+					  	</xsl:if>							
+						</xhtml:div>
+					</xsl:if>
+					</xhtml:div>
+				</justep:root>
+			</xsl:template>
+		</xbl:template>
+		
+		<xbl:implementation>
+			<![CDATA[
+
+		
+		({
+
+			"initXBL" : function() {
+			   	if(!this.domNode.id || this.domNode.id ==""){
+					this.domNode.id = (new UUID()).valueOf();
+			   	}
+			   	var baseCls = '.xui-splitter-';
+			   	var id = this.domNode.id; 
+			   	this.el = $("#" + id);
+				this.status = this.el.attr("status") || "normal";
+				this.fixType = this.el.attr("fix-type");
+				this.state = 1;
+				if(this.status=='show-first' || this.status=='show-left' || this.status=='show-top'){
+				   	this.state = 0;
+				}else if(this.status=="show-second" || this.status=='show-right' || this.status=='show-bottom'){
+				   	this.state = 2;
+				}
+				this.spacing = 5;
+				this.resizable = this.domNode.getAttribute('resizable')?this.domNode.getAttribute('resizable')=="true": true;
+			   	this.isHorz = this.el.attr("mode") === 'horz';
+			   	this.hasHandler = this.el.attr("has-drag-bar") === 'true';
+			   	this.hasArrowBtn = this.el.attr("has-arrow-button") === 'true';
+			   	this.fixSize = this.el.attr("fix-size") || '50%';
+			   	this.isAnchor = this.fixSize.indexOf('%') != -1;/*是百分比的*/
+
+
+				this.onRegionResize = justep.Function.get($(this.domNode).attr("onRegionResize"));
+
+			   	this.rootEl = $(">div" + baseCls + "root", this.el);
+			   	var s = ">div" + baseCls + "root >div";
+			   	this.leftEl = this.isHorz ? $(s + baseCls + "left", this.el) : $(s + baseCls + "top", this.el);
+			   	this.rightEl = this.isHorz ? $(s + baseCls + "right", this.el) : $(s + baseCls + "bottom", this.el);
+			   	this.handlerEl = $(s + baseCls + "handler", this.el);
+			   	
+			   	var that = this;
+			   	if(this.hasHandler && this.hasArrowBtn){
+			   		this.arrowBtn = $("#" + id+" > "+baseCls + "root > "+baseCls + "handler >"+baseCls + "btn");
+			   		if(this.state != 1){
+				   		var dir = this.arrowBtn.attr("role");
+				   		$('i', this.arrowBtn).removeClass('icon-system-' + dir + '-dir');
+				   		switch(dir){
+				   			case 'up': dir = 'down'; break;
+				   			case 'down': dir = 'up'; break;
+				   			case 'left': dir = 'right'; break;
+				   			case 'right': dir = 'left'; break;
+				   		}
+				   		$('i', this.arrowBtn).addClass('icon-system-' + dir + '-dir');
+				   		this.arrowBtn.attr('role', dir);
+			   		}
+				   	this.arrowBtn.css('cursor', 'pointer');
+				   	this.arrowBtn.bind('mousedown', function(event){
+				   		that.splitBtnClick = true;
+				   		setTimeout(function(){
+				   			that.splitBtnClick = false;
+				   		}, 50);
+				   		var dir = $(this).attr("role");
+				   		that._onResizeBtnClick(dir);
+				   		$('i', this).removeClass('icon-system-' + dir + '-dir');
+				   		switch(dir){
+				   			case 'up': dir = 'down'; break;
+				   			case 'down': dir = 'up'; break;
+				   			case 'left': dir = 'right'; break;
+				   			case 'right': dir = 'left'; break;
+				   		}
+				   		$('i', this).addClass('icon-system-' + dir + '-dir');
+				   		$(this).attr('role', dir);
+				   		if(event.stopPropagation)
+				   			event.stopPropagation();
+				   	});
+			   	}
+			},
+			_onResizeBtnClick: function(role){
+				if(!this.isHorz){
+					role = role==='up'?'left':'right';
+				}
+				if((this.state === 0 && role==='right')||(this.state === 2 && role==='left')){
+					return;
+				}
+				var oldState = this.state;
+				if(this.state === 1){
+					if(role==='left'){
+						this.state = 2;
+					}else{
+						this.state = 0;
+					}
+				}else{
+					if(this.state === 0){
+						if(role==='left'){
+							this.state = 1;
+						}
+					}else{
+						if(role==='right'){
+							this.state = 1;
+						}	
+					}
+				}
+				if(this.state!=oldState){
+					this.onWindowResize();
+					justep.XBLObject.resize(this.domNode.id);
+				}
+			},
+			_getBorderWidth: function(el, s){
+				if(s == 'tb'){
+					return (parseInt(el.css("padding-top"))||0) 
+						+ (parseInt(el.css("padding-bottom"))||0) 
+						+ (parseInt(el.css("border-top"))||0) 
+						+ (parseInt(el.css("border-bottom"))||0);  
+				}else{
+					return (parseInt(el.css("padding-left"))||0)
+						+ (parseInt(el.css("padding-right"))||0) 
+						+ (parseInt(el.css("border-left"))||0)
+						+ (parseInt(el.css("border-right"))||0);  
+				}
+			},
+			moveToStart: function(){
+				if(this.state != 2){
+					this.state = 2;
+					this.onWindowResize();
+					justep.XBLObject.resize(this.domNode.id);
+				}
+			},
+			moveToMiddle: function(){
+				if(this.state != 1){
+					this.state = 1;
+					this.onWindowResize();
+					justep.XBLObject.resize(this.domNode.id);
+				}
+			},
+			moveToEnd: function(){
+				if(this.state != 0){
+					this.state = 0;
+					this.onWindowResize();
+					justep.XBLObject.resize(this.domNode.id);
+				}
+			},
+			onWindowResize: function(){
+				var el = this.rootEl;
+
+				/*为了解决 当前套在tab次页下时，初次有不显示的缺陷*/
+				if(justep.Browser.IE7){
+					el.width(this.el.width());
+					el.height(this.el.height());
+				}
+				
+				
+				var l = this.isHorz ? el.width() : el.height();
+				if(this.hasHandler){
+					l -= this.isHorz ? this.handlerEl.width() : this.handlerEl.height();
+				}
+				var lw = rw = 0;
+				if(!this.isNotCalcWidth){
+					var	f = parseFloat(this.fixSize);
+					if(this.isAnchor){
+						lw = Math.round(l*f*0.01);
+					}else{
+						lw = Math.round(f);
+					}
+					this.calcWidth = lw;
+				}
+				if(this.state === 1){
+					if(this.fixType == 'right' || this.fixType == 'bottom'){
+						rw = this.calcWidth;
+						lw = l - rw;
+					}else{
+						lw = this.calcWidth;
+						rw = l - lw;
+					}
+				}else if(this.state === 0){
+					lw = l;
+					rw = 0;
+				}else if(this.state === 2){
+					lw = 0;
+					rw = l;
+				}
+				
+				this.leftEl.css("overflow", "hidden");
+				this.rightEl.css("overflow", "hidden");
+				
+				if(this.isHorz){
+					this.leftEl.width(lw);
+					this.rightEl.width(rw);
+				}else{
+					this.leftEl.height(lw);
+					this.rightEl.height(rw);
+				}
+
+				if(this.hasHandler){
+					if(this.isHorz){
+						this.handlerEl.css("left", lw+"px");
+					}else{
+						this.handlerEl.css("top", lw+"px");
+					}
+				}
+				var that = this;
+				setTimeout(function(){
+					that.leftEl.css("overflow", "auto");
+					that.rightEl.css("overflow", "auto");
+				}, 1);
+				
+			   	if(this.hasHandler && this.resizable && !this.mousedowned){
+			   		this.mousedowned = true;
+					this.handlerEl.bind("mousedown",function(){
+						if(that.status=="normal"){
+							if(!that.splitBtnClick) 
+								that.buildDrag();
+						}	
+					});		
+			   	}
+			},
+			buildDrag: function() {
+				var me = this;
+				if(!this.$H)
+					this.$H = $("<div />").appendTo("body");
+				if(xforms.Core.isIE){
+					this.$H[0].setCapture();
+				}
+				
+				var splitter = this.handlerEl[0];
+				var pos = this.cumulativeOffset(splitter);
+			
+				this.$H.css({position:"absolute",backgroundColor:"#999999",zIndex:"99999",fontSize:"1px"
+						,top:pos[1],left:pos[0],height:splitter.offsetHeight,width:splitter.offsetWidth});
+				
+				this.$H.show();		
+			
+				this.minPosition = this.rootEl.offset()[this.isHorz?"left":"top"];
+				this.maxPosition = this.minPosition + (this.isHorz?this.rootEl.outerWidth():this.rootEl.outerHeight()) - this.spacing;
+				
+				me.orgPos = {
+					x : pos[0],
+					y : pos[1]
+				};
+				me.draging_call = function(e) {
+					me.draging(e);
+				};
+				me.done_call = function(e) {
+					me.done(e);
+				};
+				$(document).bind("mousemove",me.draging_call);
+				$(document).bind("mouseup",me.done_call);
+			},
+			cumulativeOffset: function(element) {
+				var valueT = 0, valueL = 0;
+				do {
+					valueT += element.offsetTop  || 0;
+					valueL += element.offsetLeft || 0;
+					element = element.offsetParent;
+			    }while(element);
+			    return [valueL, valueT];
+			},
+			draging: function(e) {
+				var attr = this.isHorz? "pageX" : "pageY";
+				this.$H.css(this.isHorz?"left":"top",Math.min(Math.max((e[attr]-2),this.minPosition),this.maxPosition));
+			},
+			done: function() {
+				var dir = this.isHorz? "offsetWidth" : "offsetHeight";
+				var pos = this.cumulativeOffset(this.$H[0]);  //current pos
+				var offset = pos[this.isHorz?0:1] - this.orgPos[this.isHorz?"x":"y"]; //relative old pos
+				var orgSize = this.leftEl[0][dir]; 	//first width
+				var newSize = orgSize + offset;
+				var parentSize = this.rootEl[0][dir];
+				
+				var f = newSize;
+				var s = parentSize - newSize - this.spacing;
+				f==0?this.leftEl.hide():this.leftEl.show();
+				s==0?this.rightEl.hide():this.rightEl.show();
+				var dir = this.isHorz? "width" : "hight";
+				
+				this.calcWidth = f;
+				this.isNotCalcWidth = true;
+				
+				if(xforms.Core.isIE){
+					this.$H[0].releaseCapture();
+				}
+				
+				this.$H.hide();
+				
+				$(document).unbind("mousemove",this.draging_call);
+				$(document).unbind("mouseup",this.done_call);
+				
+				if(this.onRegionResize)
+					this.onRegionResize({source:this});
+					
+				this.onWindowResize();
+				justep.XBLObject.resize(this.domNode.id);
+			}
+		})
+			]]>
+		
+		</xbl:implementation>
+		<xbl:resources>
+			<xbl:style>
+			<![CDATA[
+				.splitter{
+					width: 100%;
+					height: 100%;
+				}
+				.xui-splitter-root{
+					position: relative;
+					width: 100%;
+					height: 100%;				
+					overflow: hidden;
+				}
+				.xui-splitter-region{
+					position: absolute;
+					overflow: auto;
+					background-color: white;
+				}
+				.xui-splitter-left{
+					top: 0;
+					left: 0;
+					height: 100%;
+				}
+				.xui-splitter-right{
+					top: 0;
+					right: 0;
+					height: 100%;
+				}
+				.xui-splitter-top{
+					top: 0;
+					left: 0;
+					width: 100%;
+				}
+				.xui-splitter-bottom{
+					bottom: 0;
+					left: 0;
+					width: 100%;
+				}
+				.xui-splitter-handler{
+					position: absolute;
+					background: #DFE8F6;
+				}
+				.xui-splitter-handler-h{
+					top: 0;
+					width: 5px;
+					height: 100%;
+				}
+				.xui-splitter-handler-v{
+					left: 0;
+					height: 5px;
+					width: 100%;
+				}
+				.xui-splitter-btn{
+					z-index:100;
+					position: absolute;
+				}
+				.xui-splitter-btn-h{
+					left:0;
+					bottom: 20px;
+					margin-top: -35px;
+					margin-left: 3px; 
+					color: white;
+					background-color: #DFE8F6;
+					cursor: pointer;
+					padding: 5px;
+				}
+				.xui-splitter-btn-h-right{
+					left:-27px;
+					bottom: 20px;
+					margin-top: -35px;
+					margin-left: 3px; 
+					color: white;
+					background-color: #DFE8F6;
+					cursor: pointer;
+					padding: 5px;
+				}
+				.xui-splitter-btn-v{
+					right:20px;
+					margin-left: -35px;
+					bottom: 3px;
+					color: white;
+					background-color: #DFE8F6;
+					cursor: pointer;
+					padding: 5px;
+				}
+				.xui-splitter-btn-v-up{
+					right:20px;
+					margin-left: -35px;
+					top: 0;
+					color: white;
+					background-color: #DFE8F6;
+					cursor: pointer;
+					padding: 5px;
+				}
+			]]>
+			</xbl:style>
+		</xbl:resources>					
+	</xbl:binding>
+</xbl:xbl>

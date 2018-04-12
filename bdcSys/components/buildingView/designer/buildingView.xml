@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<elements> 
+  <element name="buildingView" tag-name="div" tag-type="rich" icon="grid.gif" text="楼盘表"
+    namespace="xhtml" is-complex-component="false" namespace-uri="http://www.w3.org/1999/xhtml"
+    display-property="id" binding-component="/UI/bdcSys/components/buildingView.xbl.xml#buildingView"
+    component-class="BuildingView" component-type="formControl" design-view="web-designer"> 
+    <!--属性 editor-parameter：属性编辑器的参数-->  
+    <properties> 
+      <property name="id" text="编号" required="false"/>  
+      <property name="reader" text="加载数据Action"/> 
+      <property name="process" text="reader的process"/>  
+      <property name="activity" text="reader的activity"/>  
+      <property name="showZT" text="显示户状态" editor-ref="hztDialog" readonly="true" />  
+      <property name="showZRZName" text="显示自然幢名称" editor-ref="booleanList" default-value="true"
+        data-type="boolean"/>  
+      <property name="class" text="class" default-value=""/>  
+      <property name="style" text="样式" editor-ref="styleDialog"> 
+        <property name="left" text="位置左" is-style="true"/>  
+        <property name="top" text="位置上" is-style="true"/>  
+        <property name="height" text="高度" is-style="true"/>  
+        <property name="width" text="宽度" is-style="true"/>  
+        <property name="background-color" text="背景颜色" is-style="true" editor-ref="simplecolor"/> 
+      </property> 
+    </properties>  
+    <events> 
+      <event name="onInited" text="初始化完成" parameters="event"/>  
+      <event name="onCreateQueryActionParam" text="创建查询参数(自定义Action应处理)" parameters="event"/> 
+      <event name="onAfterRender" text="渲染后" parameters="event"/>  
+      <event name="onChangeCH" text="拖放修改层号" parameters="event"/>  
+      <event name="onHIDClick" text="点击HID" parameters="event"/>  
+      <event name="onShowRecInfo" text="显示案卷信息(RECID)" parameters="event"/>  
+      <event name="onHZTClick" text="点击状态图标" parameters="event"/> 
+    </events>  
+    <property-editors> 
+      <!--属性编辑器描述，可通过下拉列表或者弹出对话框来设置属性值，不这是默认问普通的文本输入框。--> 
+      	<property-editor name="hztDialog" type="list" mutil-selection='true'>
+				<static-data value="fz:发证,cf:查封,dj:冻结,dy:抵押,yg:预告,yy:异议"/> <!--直接定义的静态数据 -->				
+		</property-editor>
+    </property-editors>  
+    <!--模板	-->  
+    <templates> 
+      <template name="default" type="dialog"> <![CDATA[
+				<xhtml:div component="/UI/bdcSys/components/buildingView.xbl.xml#buildingView" class="xui-autofill" data-bind="" style="position:relative;">
+				  <h3 style="text-align:center;" data-bind="text:$model.zrzName,visible:$model.showZRZName"/>  
+			      <div class="container_cengs" data-bind="foreach:$model.cengs" style="display:none"> 
+			        <div class="x-row row_ceng" data-bind="event:{dragenter:$model.bindModelFn($model.dodragEnter),dragover:$model.bindModelFn($model.dodragOver),dragend:$model.bindModelFn($model.dodragEnd)}"> 
+			          <div class="x-col x-col-10 pri"> 
+			            <div> 
+			              <span data-bind="text:CH"/> 
+			            </div> 
+			          </div>  
+			          <div class="x-col"> 
+			            <div class="x-row" data-bind="foreach:{data:$object.items,afterRender:$model.bindModelFn($model.afterRenderColH)}"> 
+			              <div class="x-col colH" draggable="true" data-bind="if:$object.HID,attr:{title:$object.ZL},event:{dragstart:$model.bindModelFn($model.dodragStart),drop:$model.bindModelFn($model.dodrop)}"> 
+			                <div class="x-row row_h"> 
+			                  <span class="hh" data-bind="text:$object.HH"/>  
+			                  <i class="rec" data-bind="visible:!!$object.RECID,event:{click:$model.bindModelFn($model.showRecInfo)}"/> 
+			                </div>  
+			                <div class="x-row hid"> 
+			                  <a href="javascript:void(0)" data-bind="text:$object.HID,event:{click:$model.bindModelFn($model.hidClick)}"/> 
+			                </div>  
+			                <div class="x-row allzt" data-bind="event:{click:$model.bindModelFn($model.hztClick)}"> 
+			                  <span class="zt zt-fz" name="fz" data-bind="text:$model.getHZTLabel('fz',$object.FZZT),visible:$model.isShowHZT('fz',$object.FZZT)"/>  
+			                  <span class="zt zt-cf" name="cf" data-bind="text:$model.getHZTLabel('cf',$object.CFZT),visible:$model.isShowHZT('cf',$object.CFZT)"/>  
+			                  <span class="zt zt-dj" name="dj" data-bind="text:$model.getHZTLabel('dj',$object.DJZT),visible:$model.isShowHZT('dj',$object.DJZT)"/>  
+			                  <span class="zt zt-dy" name="dy" data-bind="text:$model.getHZTLabel('dy',$object.DYZT),visible:$model.isShowHZT('dy',$object.DYZT)"/>  
+			                  <span class="zt zt-yg" name="yg" data-bind="text:$model.getHZTLabel('yg',$object.YGZT),visible:$model.isShowHZT('yg',$object.YGZT)"/>  
+			                  <span class="zt zt-yy" name="yy" data-bind="text:$model.getHZTLabel('yy',$object.YYZT),visible:$model.isShowHZT('yy',$object.YYZT)"/> 
+			                </div> 
+			              </div> 
+			            </div> 
+			          </div> 
+			        </div> 
+			      </div>   
+      			</xhtml:div>
+				]]> </template> 
+    </templates>  
+    <toolbar/> 
+  </element> 
+</elements>

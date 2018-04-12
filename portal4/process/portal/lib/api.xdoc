@@ -1,0 +1,60 @@
+/**
+	@name justep.Portal
+	@model UI
+	@class 
+	@language js
+	@description 这个类是在新门户portal2的index.w中使用，提供了一些常用的操作。 
+*/
+
+/**
+	@name justep.Portal.isPortal2
+	@attribute
+	@type Boolean
+	@description portal2的标记 
+*/
+
+/**
+	@name justep.Portal.logout
+	@function
+	@description 退出系统 
+*/
+
+/**
+	@name justep.Portal.openWindow
+	@function
+	@description 打开一个功能
+	@param {Object} options 功能的描述
+*/
+	
+/**
+	@name justep.Portal.refreshWindow
+	@function
+	@description 刷新当前窗体为另一个功能
+	@param {Object} options 功能的描述
+*/
+
+/**
+	@name justep.Portal.closeWindow
+	@function
+	@description 关闭功能窗体， 默认为关闭当前
+	@param {Object} options 功能的描述
+*/
+	
+/**
+	@name justep.Portal.openAgentPage
+	@function
+	@description 打开代办首页
+	@param {String} id 代办人的id
+*/
+	
+/**
+	@name justep.Portal.startLoading
+	@function
+	@description 在门户中显示等待图标
+*/
+
+/**
+	@name justep.Portal.stopLoading
+	@function
+	@description 停止显示等待图标
+*/

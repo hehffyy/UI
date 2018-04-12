@@ -1,0 +1,6 @@
+.button {
+	border: 1px solid #dfe8f6;
+	border-bottom: 10px solid #AACBFF;
+	empty-cells: hide;
+	border-collapse: collapse;
+}

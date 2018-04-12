@@ -1,0 +1,342 @@
+.gray-bg{
+    padding: 20px;
+}
+/* user.css*/
+* {
+	font-family: "\5FAE\8F6F\96C5\9ED1", tahoma, arial;
+	font-style: normal;
+	border: 0 none;
+	margin: 0;
+	padding: 0;
+}
+* {
+	font-family: Microsoft YaHei;
+}
+
+div {
+	font-size: 14px;
+}
+
+/* celllayout.css*/
+.first-row {
+	font-size:0;  
+}
+
+.cc{
+	 border:0px !important;
+}
+
+.first-col {
+	 width:1px; font-size:0; 
+	 border:0px !important;
+}
+.first-cell{
+   height:1px; 
+   border:0px !important;
+}
+
+/*------------------------------------------------网格 自定义样式------------------------------------*/
+.table{
+	border-collapse: collapse;
+	border-spacing:0;
+	table-layout: fixed; 
+	display: inherit; 
+	font-size: 14px;
+}
+
+.table th,td{  
+   padding:0;  
+}  
+
+
+
+.table td{
+    font-size: 14px;
+    border-width: 1px 1px 1px 1px;
+    border-style: solid;
+    border-color: #d3e1ee;
+    text-align: center;
+    color: #333;
+    height: 33px;
+/*    background-color: #FFF;*/
+}
+
+
+table.required td{
+	background-color: #fffdda;
+}
+
+table.readonly td{
+	background-color: #f8f8f8 !important;
+}
+
+.table .xforms-control td,.table .xui-select td{
+	border : 0px;
+}
+
+/**
+ * 标题：样式背景
+ * 示例：<td class="table">示例文字</td>
+ */
+.table .title,.table td.title{
+	font-size: 22px;
+    color: #fff;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #F1F1F1;
+}
+.table .title1{
+	font-size: 12px;
+	font-weight:bold ;
+    color: #84aace;
+    height: 50px;
+    line-height: 25px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #F1F1F1;
+}
+
+/**
+ * 分组分类：样式背景
+ * 示例：<td class="lable">示例文字</td>
+ */
+.table td.label{
+    background-color: #f4f7fc;
+}
+
+/**
+ * 分组分类：样式背景
+ * 示例：<td class="group">示例文字</td>
+ */
+.table td.group{
+    background-color: #e3ecf5;
+}
+
+/**
+ * 必填项 提示信息
+ */
+.table td.required{
+    background-color: #fffdda;
+}
+
+/**
+ * 竖排文字 利用label 方式 div也可以
+ */
+.table td label.vertical,.table td .vertical{
+	margin: auto;
+	display:block;
+	width:1em;
+	letter-spacing:1em;
+	word-break:break-all;
+}
+
+/*----------------------按钮--------------------------*/
+/**
+ * 按钮：选择
+ */
+.table .select{
+    width: 64px;
+    background-color: #7dbe3e;
+    border-radius: 5px;
+    color: #fff;
+}
+
+/**
+ * 按钮：签名
+ */
+.table .sign{
+   border-radius: 5px;
+   color: #fff;
+}
+
+
+/**
+ * 按钮：点点
+ */
+.table .subsign{
+    width: 44px;
+    background-color: #689acd;
+    border-radius: 5px;
+    color: #fff;
+}
+
+/***********************************************form 自定义样式******************************************************************/
+
+.form-table{
+    border-collapse: collapse;
+    border-spacing:0;
+    table-layout: fixed; 
+    display: inherit; 
+    font-size: 14px;
+    border: 1px solid #d3e1ee;
+}
+
+.form-table th,td{  
+   padding:0;  
+}  
+
+.form-table td{
+    border-width: 0;
+    padding-right: 12px;
+}
+
+.form-table td{
+    font-size: 14px;   
+    border-style: solid;
+    border-color: #d3e1ee;
+    height: 42px;
+    color: #333;
+    text-align: center;
+    background-color: #FFF;
+}
+
+/**
+ * 标题：样式背景
+ * 示例：<td class="table">示例文字</td>
+ */
+.form-table .title,.form-table td.title{
+    font-size: 22px;
+    color: #fff;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #84aace;
+}
+
+/**
+ * 分组分类：样式背景
+ * 示例：<td class="lable">示例文字</td>
+ */
+.form-table td.label{
+    background-color: #fff;
+}
+
+.form-table td.label{
+    text-align: right;
+    padding: 0 10px; 
+}
+/**
+ * 分组分类：样式背景
+ * 示例：<td class="group">示例文字</td>
+ */
+.form-table td.group{
+    background-color: #e3ecf5;
+}
+
+/**
+ * 必填项 提示信息
+ */
+.form-table td.required{
+    background-color: #fffdda;
+}
+
+
+/**
+ * 竖排文字 利用label 方式 div也可以
+ */
+.form-table td label.vertical,.table td .vertical{
+    margin: auto;
+    display:block;
+    width:1em;
+    letter-spacing:1em;
+    word-break:break-all;
+}
+
+/*-----------按钮---------------*/
+/**
+ * 按钮：选择
+ */
+.form-table .select{
+    width: 64px;
+    background-color: #7dbe3e;
+    border-radius: 5px;
+    color: #fff;
+}
+
+/**
+ * 按钮：签名
+ */
+.form-table .sign{
+    width: 64px;
+    background-color: #689acd;
+    border-radius: 5px;
+    color: #fff;
+}
+
+
+/**
+ * 按钮：点点
+ */
+.form-table .subsign{
+    width: 44px;
+    background-color: #689acd;
+    border-radius: 5px;
+    color: #fff;
+}
+/**************表单-组件**********/
+.form-table .form-control {
+  background-color: #FFFFFF;
+  background-image: none;
+  border: 1px solid #e5e6e7;
+  border-radius: 1px;
+  color: inherit;
+  display: block;
+
+  transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+  width: 100%;
+}
+.form-table .form-control {
+    padding: 6px 0 6px 12px;
+}
+.form-table .form-control:focus {
+  border-color: #84aace;
+}
+.dhx_combo_list div{
+	height:28px;
+}
+.first-col+td{
+	border-width:0px;
+	background-color: white !important;
+}
+/**************表单-组件 zhengff**********/
+
+
+/**zhengff */
+.xui-button button[disabled],.xui-button button[disabled]:hover {
+	background: #F8F8F8 !important;
+	border-bottom: 0 !important;
+	cursor: not-allowed;
+	background-image: none;
+	opacity: 0.65;
+	box-shadow: none;
+	pointer-events: none;
+	line-height: normal!important;
+}
+
+table table .xui-input{
+border:0  !important;
+}
+
+.grid-select td{
+	color: #333 !important;
+}
+
+div.grid-select table.obj tr:hover td{
+	color: #fff !important;
+}
+
+div.grid-select table.obj tr {
+	color: #333 !important;
+}
+div.grid-select table.obj tr:hover {
+	background-color: #1E90FF !important;
+	color: #fff !important;
+}
+
+/*2016414 zhegnff 单选按钮 左右空隙*/
+div.xforms-item-radio{
+	padding: 0px 5px;
+}

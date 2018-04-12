@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<elements>
+	<element name="attachmentEditor2" tag-name="div" icon="attachmentEditor2.gif" text="附件编辑器" 
+		namespace="xhtml" namespace-uri="http://www.w3.org/1999/xhtml"
+		binding-component="/UI/system/components/attachmentEditor2.xbl.xml#attachmentEditor2"
+		 component-class="AttachmentEditor2"
+		 component-type="formControl" tag-type="rich">
+		<properties>
+			<property name="id" text="编号" required="true"/>
+			<property name="keyId" text="keyId名称" />
+			<property name="ref" text="引用" editor-ref="dataRef" required="true"/>
+			<property name="useNTKO" text="使用NTKO控件(wps必须设置为true)" editor-ref="booleanList" default-value="false" data-type="boolean" />
+			<property name="useWaterMark" text="使用水印" editor-ref="booleanList" default-value="false" data-type="boolean" />
+			
+			<property name="auto-load" text="是否自动加载数据" editor-ref="booleanList" default-value="true" data-type="boolean" />
+			<property name="autoCreateVersion" text="是否自动成文" editor-ref="booleanList" default-value="false" data-type="boolean" />
+			<property name="limit" text="限制个数" default-value="-1"/>
+			<property name="runtime" text="采用何种机制初始化上传组件" editor-ref="runtimeTypeList" default-value="flash"/>
+			<property name="sub-path" text="动态子目录" />
+			<property name="limit-size" text="限制大小(字节)" enabled-condition="@runtime!='html4'" checkup-condition="@runtime!='html4'"/>
+			<property name="access" text="权限"  editor-ref="accessType" enum-values=""/>
+			<property name="extension-filter" text="上传文件类型" editor-ref="extensionFilterList" enum-values="" />
+			<group name="display-buttons" text="显示按钮">
+				<property name="upload" text="上传按钮" write-to="display-buttons" editor-ref="booleanList" default-value="true"/>
+				<property name="template" text="从模板新建按钮" write-to="display-buttons" editor-ref="booleanList" default-value="true"/>
+				<property name="download" text="下载按钮" write-to="display-buttons" editor-ref="booleanList" default-value="true"/>
+				<property name="edit" text="编辑按钮" write-to="display-buttons" editor-ref="booleanList" default-value="true"/>
+				<property name="delete" text="删除按钮" write-to="display-buttons" editor-ref="booleanList" default-value="true"/>
+				<property name="history" text="历史按钮" write-to="display-buttons" editor-ref="booleanList" default-value="true"/>
+			</group>
+			<property name="class" text="class"/>
+			<property name="style" text="样式" editor-ref="styleDialog">
+				<property name="width" text="高度" required="true" /> 
+				<property name="height" text="宽度" required="true" />
+			</property>
+		</properties>
+		<templates>
+		   <template name="default"><![CDATA[ 
+		     <xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml" component="/UI/system/components/attachmentEditor2.xbl.xml#attachmentEditor2"
+		      display-buttons="upload:true;template:true;download:true;edit:true;delete:true;history:true;" limit="-1" runtime="html4"></xhtml:div>
+		   ]]></template>
+		</templates>
+		<property-editors>
+			<property-editor name="modelList" type="list">
+				<dynamic-data xpath="//*[local-name()='model']/@id" />								
+			</property-editor>
+			<property-editor name="runtimeTypeList" type="list">
+				<static-data value="html4,flash" />
+			</property-editor>
+			<property-editor name="accessType" type="list" >
+				<static-data value="l:列表,r:读取,d:下载,du:下载 上传,duu:下载 上传 修改,duud:下载 上传 修改 删除" /> 
+			</property-editor>
+			<property-editor name="extensionFilterList" type="list" >  
+				<static-data value=":所有,图片文件(*.bmp;*.JPG;*.JPEG;*.JPE;*.JFIF;*.GIF;*.PNG;*.TIF;*.TIFF)|*.bmp;*.JPG;*.JPEG;*.JPE;*.JFIF;*.GIF;*.PNG;*.TIF;*.TIFF:图片文件,文档文件(*.txt;*.xls;*.doc;*.pdf)|*.txt;*.xls;*.doc;*.pdf:文档文件" /> 
+			</property-editor>
+		</property-editors>	
+		<events>
+			<event name="onCreate" parameters="event"/>
+			<event name="onRender" parameters="event"/>
+			<event name="onNewFromTemplate" parameters="event"/>
+			<event name="onBrowseDocClick" parameters="event"/>
+			<event name="onLoadData" parameters="event"/>
+			<event name="onUploadClick" parameters="event"/>
+			<event name="onEditClick" parameters="event"/>
+			<event name="onOpenOfficeEditor" parameters="event"/>
+			<event name="onOfficeLoaded" parameters="event"/>
+			<event name="onDeleteClick" parameters="event"/>
+			<event name="onDownloadClick" parameters="event"/>
+			<event name="onHistoryClick" parameters="event"/>
+			<event name="onGetIsPrint" parameters="event"/>
+			<event name="onCreateVersion" parameters="event"/>
+			<event name="onFileSelected" parameters="event"/>
+			<event name="onUploadCompleted" parameters="event"/>
+		</events>
+	</element>
+</elements>

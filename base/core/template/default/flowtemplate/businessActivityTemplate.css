@@ -1,0 +1,65 @@
+#borderLayout1 .xui-borderlayout-top:first-child .xui-button button{
+	height:28px;
+}
+
+/**发送**/
+.bizOperationBar #bizOpt_advance.xui-button button {
+    background: #A0D468;
+    border: 0px !important;
+    color: #fff;
+}
+
+.bizOperationBar #bizOpt_advance.xui-button button:hover{
+    background: #65b951 !important;
+}
+
+/*普通，主要  主要——主色	通常用于确定、保存等**/
+#btnSave button:hover,
+#btnSave button:focus,
+#btnSave button:active
+{
+    color:#fff !important;background-color:#70bafd !important;border-color:#70bafd !important
+}
+#btnSave button
+ {
+    color:#fff !important;background-color:#5db2ff !important;border-color:#5db2ff !important
+}
+
+
+/*普通，次要/非重点按钮——灰白色	通常用于取消 刷新*/
+#btnRefresh button:hover,
+#btnRefresh button:focus,
+#btnRefresh button:active
+{
+	text-decoration: none !important;
+    color:#333 !important;background-color:#c7c7c7 !important;border-color:#c7c7c7 !important
+}
+#btnRefresh button
+{
+    background-color:#e6e6e6 !important;border-color:#e6e6e6 !important
+}
+
+#btnBack button:hover,
+#btnBack button:focus,
+#btnBack button:active{
+    color:#333 !important;background-color:#c7c7c7 !important;border-color:#c7c7c7 !important
+}
+
+#btnBack button {
+    color:#333 !important;background-color:#e6e6e6 !important;border-color:#e6e6e6 !important
+}
+
+#btnSave button[disabled]{
+	background: #5db2ff !important;
+}
+
+#btnRefresh button[disabled],
+#btnSave button[disabled],
+#btnBack button[disabled]
+{
+	cursor: not-allowed;
+	background-image: none;
+	opacity: 0.65;
+	box-shadow: none;
+	pointer-events: none;
+}

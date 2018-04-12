@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root> 
+  <item label="平台案例" icon16="gongwen.png"> 
+    <item label="组件案例"> 
+      <item label="表单数据组件"> 
+        <item label="业务字段"> 
+          <item label="活动环节" display="hide" process="/ptal/zjal/bdsjzj/ywzd/process/ywzd/ywzdProcess"
+            activity="act1" url="/ptal/zjal/bdsjzj/ywzd/process/ywzd/act1.w"/> 
+        </item> 
+      </item>  
+      <item label="表单功能组件"> 
+        <item label="基础组件"> 
+          <item label="表单界面组件"> 
+            <item label="数列表" process="/ptal/zjal/bdgnzj/jczj/bdjmzj/process/bdjmzj/bdjmzjProcess"
+              activity="slb" url="/ptal/zjal/bdgnzj/jczj/bdjmzj/process/bdjmzj/slb.w"/> 
+          </item> 
+        </item> 
+      </item> 
+    </item>  
+    <item label="平台案例系统"> 
+      <item label="函数专题"> 
+        <item label="函数流程"> 
+          <item label="申请" process="/ptal/ptalxt/hszt/hslc/process/hslc/hslcProcess"
+            activity="act1" url="/ptal/ptalxt/hszt/hslc/process/hslc/act1.w"/>  
+          <item label="受理" display="hide" process="/ptal/ptalxt/hszt/hslc/process/hslc/hslcProcess"
+            activity="act2" url="/ptal/ptalxt/hszt/hslc/process/hslc/act2.w"/>  
+          <item label="审批" display="hide" process="/ptal/ptalxt/hszt/hslc/process/hslc/hslcProcess"
+            activity="act3" url="/ptal/ptalxt/hszt/hslc/process/hslc/act3.w"/> 
+        </item> 
+      </item>  
+      <item label="输入表单"> 
+        <item label="下拉框"> 
+          <item label="活动环节1" display="hide" process="/ptal/ptalxt/srbd/xlk/process/xlk/xlkProcess"
+            activity="act1" url="/ptal/ptalxt/srbd/xlk/process/xlk/act1.w"/>  
+          <item label="活动环节2" display="hide" process="/ptal/ptalxt/srbd/xlk/process/xlk/xlkProcess"
+            activity="act2" url="/ptal/ptalxt/srbd/xlk/process/xlk/act2.w"/> 
+        </item>  
+        <item label="业务流程案例"> 
+          <item label="活动环节1" process="/ptal/ptalxt/srbd/ywlcal/process/ywlcal/ywlcalProcess"
+            activity="act1" url="/ptal/ptalxt/srbd/ywlcal/process/ywlcal/act1.w"/>  
+          <item label="活动环节2" display="hide" process="/ptal/ptalxt/srbd/ywlcal/process/ywlcal/ywlcalProcess"
+            activity="act2" url="/ptal/ptalxt/srbd/ywlcal/process/ywlcal/act2.w"/>  
+          <item label="活动环节3" display="hide" process="/ptal/ptalxt/srbd/ywlcal/process/ywlcal/ywlcalProcess"
+            activity="act3" url="/ptal/ptalxt/srbd/ywlcal/process/ywlcal/act3.w"/> 
+        </item>  
+        <item label="业务字段"> 
+          <item label="活动环节1" process="/ptal/ptalxt/srbd/ywzd/process/ywzd/ywzdProcess"
+            activity="act1" url="/ptal/ptalxt/srbd/ywzd/process/ywzd/act1.w"/>  
+          <item label="活动环节2" display="hide" process="/ptal/ptalxt/srbd/ywzd/process/ywzd/ywzdProcess"
+            activity="act2" url="/ptal/ptalxt/srbd/ywzd/process/ywzd/act2.w"/> 
+        </item> 
+      </item>  
+      <item label="业务规则"> 
+        <item label="流程业务规则"> 
+          <item label="活动环节1" process="/ptal/ptalxt/ywgz/lcywgz/process/lcywgz/lcywgzProcess"
+            activity="act1" url="/ptal/ptalxt/ywgz/lcywgz/process/lcywgz/act1.w"/>  
+          <item label="活动环节2" display="hide" process="/ptal/ptalxt/ywgz/lcywgz/process/lcywgz/lcywgzProcess"
+            activity="act2" url="/ptal/ptalxt/ywgz/lcywgz/process/lcywgz/act2.w"/> 
+        </item> 
+      </item>  
+      <item label="流程功能"> 
+        <item label="流程操作"> 
+          <item label="活动环节1" display="solid" process="/ptal/ptalxt/lcgn/lccz/process/lccz/lcczProcess"
+            activity="act1" url="/ptal/ptalxt/lcgn/lccz/process/lccz/act1.w"/>  
+          <item label="活动环节2" display="hide" process="/ptal/ptalxt/lcgn/lccz/process/lccz/lcczProcess"
+            activity="act2" url="/ptal/ptalxt/lcgn/lccz/process/lccz/act2.w"/>  
+          <item label="活动环节3" display="hide" process="/ptal/ptalxt/lcgn/lccz/process/lccz/lcczProcess"
+            activity="act3" url="/ptal/ptalxt/lcgn/lccz/process/lccz/act3.w"/> 
+        </item>  
+        <item label="自定义案卷查询"> 
+          <item label="活动环节1" display="hide" process="/ptal/ptalxt/lcgn/zdyajcx/process/zdyajcx/zdyajcxProcess"
+            activity="act1" url="/ptal/ptalxt/lcgn/zdyajcx/process/zdyajcx/act1.w"/>  
+          <item label="活动环节2" display="hide" process="/ptal/ptalxt/lcgn/zdyajcx/process/zdyajcx/zdyajcxProcess"
+            activity="act2" url="/ptal/ptalxt/lcgn/zdyajcx/process/zdyajcx/act2.w"/>  
+          <item label="案卷查询环节" process="/ptal/ptalxt/lcgn/zdyajcx/process/zdyajcx/zdyajcxProcess"
+            activity="ajcxhj" url="/ptal/ptalxt/lcgn/zdyajcx/process/zdyajcx/ajcxhj.w"/> 
+        </item>  
+        <item label="流程模板_simple"> 
+          <item label="活动环节1" process="/ptal/ptalxt/lcgn/lcmb/process/lcmb_simple/lcmb_simpleProcess"
+            activity="act1" url="/ptal/ptalxt/lcgn/lcmb/process/lcmb_simple/act1.w"/>  
+          <item label="活动环节2" display="hide" process="/ptal/ptalxt/lcgn/lcmb/process/lcmb_simple/lcmb_simpleProcess"
+            activity="act2" url="/ptal/ptalxt/lcgn/lcmb/process/lcmb_simple/act2.w"/> 
+        </item>  
+        <item label="流程模板_simple2"> 
+          <item label="活动环节1" process="/ptal/ptalxt/lcgn/lcmb/process/lcmb_simple2/lcmb_simple2Process"
+            activity="act1" url="/ptal/ptalxt/lcgn/lcmb/process/lcmb_simple2/act1.w"/>  
+          <item label="活动环节2" display="hide" process="/ptal/ptalxt/lcgn/lcmb/process/lcmb_simple2/lcmb_simple2Process"
+            activity="act2" url="/ptal/ptalxt/lcgn/lcmb/process/lcmb_simple2/act2.w"/> 
+        </item>  
+        <item label="流程模板"> 
+          <item label="活动环节1" process="/ptal/ptalxt/lcgn/lcmb/process/lcmb/lcmbProcess"
+            activity="act1" url="/ptal/ptalxt/lcgn/lcmb/process/lcmb/act1.w"/>  
+          <item label="活动环节2" display="hide" process="/ptal/ptalxt/lcgn/lcmb/process/lcmb/lcmbProcess"
+            activity="act2" url="/ptal/ptalxt/lcgn/lcmb/process/lcmb/act2.w"/> 
+        </item> 
+      </item>  
+      <item label="业务组件"> 
+        <item label="流程组件"> 
+          <item label="活动环节1" process="/ptal/ptalxt/ywzj/lczj/process/lczj/lczjProcess"
+            activity="act1" url="/ptal/ptalxt/ywzj/lczj/process/lczj/act1.w"/>  
+          <item label="活动环节2" display="hide" process="/ptal/ptalxt/ywzj/lczj/process/lczj/lczjProcess"
+            activity="act2" url="/ptal/ptalxt/ywzj/lczj/process/lczj/act2.w"/> 
+        </item> 
+      </item>  
+      <item label="个性化专题"> 
+        <item label="表单个性化"> 
+          <item label="活动环节1" process="/ptal/ptalxt/gxhzt/bdgxh/process/bdgxh/bdgxhProcess"
+            activity="act1" url="/ptal/ptalxt/gxhzt/bdgxh/process/bdgxh/act1.w"/>  
+          <item label="活动环节2" display="hide" process="/ptal/ptalxt/gxhzt/bdgxh/process/bdgxh/bdgxhProcess"
+            activity="act2" url="/ptal/ptalxt/gxhzt/bdgxh/process/bdgxh/act2.w"/> 
+        </item> 
+      </item> 
+    </item>  
+    <item label="业务案例"> 
+      <item label="单流程"> 
+        <item label="信息公开"> 
+          <item label="窗口收件" display="solid" process="/ptal/ywal/dlc/xxgk/process/xxgk/xxgkProcess"
+            activity="act1" url="/ptal/ywal/dlc/xxgk/process/xxgk/act1.w"/>  
+          <item label="处室分办" display="hide" process="/ptal/ywal/dlc/xxgk/process/xxgk/xxgkProcess"
+            activity="act2" url="/ptal/ywal/dlc/xxgk/process/xxgk/act2.w"/>  
+          <item label="处室办理" display="hide" process="/ptal/ywal/dlc/xxgk/process/xxgk/xxgkProcess"
+            activity="act3" url="/ptal/ywal/dlc/xxgk/process/xxgk/act3.w"/>  
+          <item label="窗口归档" display="hide" process="/ptal/ywal/dlc/xxgk/process/xxgk/xxgkProcess"
+            activity="act4" url="/ptal/ywal/dlc/xxgk/process/xxgk/act4.w"/>  
+          <item label="辅助环节" process="/ptal/ywal/dlc/xxgk/process/xxgk/xxgkProcess"
+            activity="fzhj" url="/ptal/ywal/dlc/xxgk/process/xxgk/fzhj.w"/> 
+        </item> 
+      </item> 
+    </item> 
+  </item>  
+  <item label="业务案例" icon16="gongwen.png"> 
+    <item guid="E17AFB78B3417848F97DF62CF757F70B" label="窗口收件" process="/ptal/ywal/dlc/xxgk/process/xxgk/xxgkProcess"
+      activity="act1" url="/ptal/ywal/dlc/xxgk/process/xxgk/act1.w" display="solid"/>  
+    <item label="下拉框" guid="E824C3F424B641B6BD79C52014CDA83A"> 
+      <item guid="4818B2D9B310F2E839EF7A25354E57D6" label="活动环节1" process="/ptal/ptalxt/srbd/xlk/process/xlk/xlkProcess"
+        activity="act1" url="/ptal/ptalxt/srbd/xlk/process/xlk/act1.w"/>  
+      <item guid="82F47ACF55AC29D98B617A253BD782B1" label="活动环节2" process="/ptal/ptalxt/srbd/xlk/process/xlk/xlkProcess"
+        activity="act2" url="/ptal/ptalxt/srbd/xlk/process/xlk/act2.w" display="hide"/> 
+    </item>  
+    <item label="单流程"> 
+      <item label="信息公开"> 
+        <item label="窗口收件" process="/ptal/ywal/dlc/xxgk/process/xxgk/xxgkProcess"
+          activity="act1" url="/ptal/ywal/dlc/xxgk/process/xxgk/act1.w"/>  
+        <item label="处室分办" display="hide" process="/ptal/ywal/dlc/xxgk/process/xxgk/xxgkProcess"
+          activity="act2" url="/ptal/ywal/dlc/xxgk/process/xxgk/act2.w"/>  
+        <item label="处室办理" display="hide" process="/ptal/ywal/dlc/xxgk/process/xxgk/xxgkProcess"
+          activity="act3" url="/ptal/ywal/dlc/xxgk/process/xxgk/act3.w"/>  
+        <item label="窗口归档" display="hide" process="/ptal/ywal/dlc/xxgk/process/xxgk/xxgkProcess"
+          activity="act4" url="/ptal/ywal/dlc/xxgk/process/xxgk/act4.w"/>  
+        <item label="辅助环节" process="/ptal/ywal/dlc/xxgk/process/xxgk/xxgkProcess"
+          activity="fzhj" url="/ptal/ywal/dlc/xxgk/process/xxgk/fzhj.w"/> 
+      </item> 
+    </item> 
+  </item> 
+</root>

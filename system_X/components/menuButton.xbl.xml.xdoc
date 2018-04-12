@@ -1,0 +1,72 @@
+/**
+	@name UI.menuButton
+	@component /UI/system/components/menuButton.xbl.xml#menuButton
+	@class
+	@model UI
+	@description <b>[rich]</b>下拉菜单组件
+	@example
+<xmp>
+	xml格式 
+    <xhtml:div component="/UI/system/components/menuButton.xbl.xml#menuButton" id="more" label="更多操作"> 
+      <menuitem label="任务回收" name="recycleItem" onClick="mainActivity.trgRecycleClick" icon-class="icon-system-back"/>  
+      <menuitem label="流程轨迹" name="flowItem" onClick="mainActivity.trgChartClick" icon-class="icon-system-sitemap"/>  
+      <menuitem label="流程记录" name="recordItem" onClick="mainActivity.trgExecuteListClick"/> 
+    </xhtml:div>  
+</xmp>
+*/
+
+/**
+	@name UI.menuButton#component
+	@property
+	@description <b>[attribute]</b><b>[required]</b> 组件标识
+	@default "/UI/system/components/menuButton.xbl.xml#menuButton"
+*/
+
+/**
+	@name UI.menuButton#id
+	@property 
+	@description <b>[attribute]</b> id标识
+*/
+
+/**
+	@name UI.menuButton#label
+	@property
+	@type string 
+	@description <b>[attribute]</b> 标题
+*/
+
+/**
+	@name UI.menuButton#icon-class
+	@property
+	@type string 
+	@description <b>[attribute]</b> 图标的class
+*/
+
+/**
+	@name UI.menuButton#mode	
+	@property
+	@type string 
+	@description <b>[attribute]</b> 下拉模式， 默认是"down righ", 表示下拉并且右对齐
+*/
+
+/**
+	@name UI.menuButton#open
+	@function
+	@description 显示下拉菜单
+*/
+
+/**
+	@name UI.menuButton#close
+	@function
+	@description 收起下拉菜单
+*/
+
+/**
+	@name UI.menuButton#execItem
+	@function
+	@param {String} name 下拉项的name 
+	@param {object} event 事件对象
+	@description 通过name执行下拉菜单中的项目
+*/
+
+

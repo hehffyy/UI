@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xbl:xbl xmlns:justep="http://www.justep.com/x5#"
+	xmlns:xbl="http://www.w3.org/ns/xbl"
+	xmlns:xhtml="http://www.w3.org/1999/xhtml"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xsl:version="2.0"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xforms="http://www.justep.com/xforms"
+	xmlns:ev="http://www.w3.org/2001/xml-events"
+	script-type="text/javascript">
+
+	<xbl:script type="text/javascript"
+		src="/UI/system/components/tabs/tabs.js" />
+
+	<xbl:binding id="tabs">
+		<xbl:template template-type="java" src="SimpleTabs"/>
+		<xbl:implementation>
+		({
+			"initXBL" : function() {
+				this.tabbar = new justep.JSTabbar(this.domNode.id);
+				justep.Utils.proxable(this, this.tabbar, justep.JSTabbar);
+				$(this.domNode).removeAttr("disabled");
+			}
+		}) 
+		</xbl:implementation>
+		<xbl:resources>
+   			<xbl:style src="./tabs/tabs.css"></xbl:style>
+			<xbl:style>
+			<![CDATA[
+			ul.tabItems button:disabled
+			{
+				background-color:#EEEEEE;
+			}
+			]]>
+			</xbl:style>   			
+  		</xbl:resources>  
+	</xbl:binding>
+</xbl:xbl>

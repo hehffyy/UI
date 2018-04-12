@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root> 
+  <item label="待办事项"> 
+    <item id="item_1423474524684" title="待办事项" height="180px" type="func" refresh="true"
+      class="blue" url="/base/core/widgets/dbsxTask/dbsxTask.j" process="/base/core/widgets/dbsxTask/dbsxTaskProcess"
+      activity="mainActivity"/> 
+  </item>  
+  <item label="案卷"> 
+    <item id="item_1423537615876" title="案卷统计" height="220px" type="func" refresh="true"
+      class="blue" url="/base/core/widgets/ajtjTask/ajtjTask.j" process="/base/core/widgets/ajtjTask/ajtjTaskProcess"
+      activity="mainActivity"></item>  
+    <item id="item_1423549023980" title="案卷图表" height="220px" type="func" class="greenGrass"
+      refresh="true" url="/base/core/widgets/ajtbTask/ajtbTask.j" process="/base/core/widgets/ajtbTask/ajtbTaskProcess"
+      activity="mainActivity"/>
+  </item>
+</root>

@@ -1,0 +1,12 @@
+ul{
+	list-style: none;
+}
+
+.bizOperationNav>li>div{
+	padding:4px 4px;
+	text-align:center;
+}
+
+.bizOperationNav .xui-button{
+	width:100%;	
+}

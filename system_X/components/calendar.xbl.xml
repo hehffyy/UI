@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<xbl:xbl xmlns:xbl="http://www.w3.org/ns/xbl" xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xforms="http://www.justep.com/xforms" xmlns:ev="http://www.w3.org/2001/xml-events"
+  xmlns="http://www.w3.org/ns/xbl" xsl:version="2.0" script-type="text/javascript">  
+  <!-- 增加js文件的引用   -->  
+  <script src="/UI/system_X/components/calendar/calendarRunTime.js"/>  
+  <xbl:binding id="calendar"> 
+    <template template-type="java" src="Calendar"/>  
+    <xbl:implementation>({ "initXBL" : function() { justep.Object.extend(this,new justep.calendarRunTime(this)); } })</xbl:implementation>  
+    <xbl:resources> 
+      <xbl:style src="/UI/system_X/components/calendar/calendarRunTime.css"/> 
+    </xbl:resources> 
+  </xbl:binding> 
+</xbl:xbl>

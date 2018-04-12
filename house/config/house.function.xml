@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root> 
+  <item display="solid" label="房管数据导入"> 
+    <item label="导入房产数据" process="/house/FcTables/process/house/houseProcess"
+      activity="impFangChan" url="/house/FcTables/process/house/impFangChan.w"/> 
+  </item> 
+</root>

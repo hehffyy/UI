@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xbl:xbl xmlns="http://www.w3.org/ns/xbl"
+	xmlns:xui="http://www.justep.com/xui"
+	xmlns:xbl="http://www.w3.org/ns/xbl"
+	xmlns:xhtml="http://www.w3.org/1999/xhtml"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xsl:version="2.0"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xforms="http://www.justep.com/xforms"
+	xmlns:ev="http://www.w3.org/2001/xml-events"
+	script-type="text/javascript">
+	
+	<binding id="gridSelect" delete-bound-element="true" >
+		<template template-type="java"  src="GridSelect" />
+		<resources>
+			<xbl:style>
+			<![CDATA[
+			  div.grid-select.gridbox_justep table.obj tr.rowselected td.cellselected, div.grid-select.gridbox table.obj td.cellselected,div.grid-select.gridbox_justep table.obj tr.rowselected td {
+   	 			background-color: transparent;
+			  }
+			]]>
+			</xbl:style>
+		</resources>
+	</binding>
+
+	<binding id="treeSelect" delete-bound-element="true" >
+		<template template-type="java"  src="TreeSelect" />
+	</binding>
+	
+	<binding id="simpleSelect">
+		<template template-type="java"  src="SimpleSelect" />
+		<implementation><![CDATA[
+			({
+				initXBL : function() {
+					window.dhx_globalImgPath=justep.Request.convertURL("/form/dhtmlx/dhtmlxCombo/imgs/", true);
+					var el = jQuery(this.domNode);
+					var onChanged = el.attr("onChanged");
+					var defaultValue = el.attr("default-select");
+					this.tabindex = el.attr("tabindex");
+					this.accesskey = el.attr("accesskey");
+					var disable = el.attr("disabled")=="true";
+					var initValue = el.attr("initValue");
+					var ref = el.attr("ref");
+					var labelRef = el.attr("label-ref");
+
+					this.optionDataId = el.attr("option-data");
+					this.optionLabel = el.attr("option-label");
+					this.optionValue = el.attr("option-value");
+					
+					this.dropdownHeight = el.attr("dropdown-height");
+					this.valueSeparator  = el.attr("value-separator");
+					this.labelSeparator  = el.attr("label-separator");
+					
+					var onDropdown = el.attr("onDropdown");
+					if(onDropdown){
+						this.onDropdown = justep.Function.get(onDropdown);
+					}
+					var onCloseup = el.attr("onCloseup");
+					if(onCloseup){
+						this.onCloseup = justep.Function.get(onCloseup);
+					}					
+					this.isMulti = el.attr("multi-select") ? (el.attr("multi-select") == "true") : false;
+			    	this.combo = new dhtmlXCombo(this.domNode.id, "", "100%", this.isMulti?"checkbox":"", this.tabindex);
+			    	var selfCombo = this.combo;
+			    	var _doresize = function(){
+			    		/*如果初始是隐藏的， 那么会设置为0*/
+			    		if(el.innerWidth())
+			    			selfCombo.setSize(el.innerWidth());
+			    		var ji = jQuery(selfCombo.DOMelem_input);
+			    		ji.css('top',(el.innerHeight()-ji.outerHeight(true))/2);
+			    		var jb = jQuery(selfCombo.DOMelem_button);
+			    		jb.css('top',(el.innerHeight()-jb.outerHeight(true))/2);
+			    	};
+			    	el.bind('resize', _doresize);
+			    	_doresize();
+			    	
+			    	this.onWindowResize = _doresize;
+			    	
+			    	this.combo.disable(disable);
+			    	if(this.onDropdown){
+			    		var that = this;
+			    		this.combo.attachEvent("onOpen", function(){
+			    			that.onDropdown({source: that});
+			    		});	
+			    	}
+			    	if(this.dropdownHeight){
+			    		if(this.dropdownHeight.indexOf("px") == -1 ) this.dropdownHeight = this.dropdownHeight + "px";
+			    		jQuery(this.combo.DOMlist).height(this.dropdownHeight);
+			    		if (this.combo.DOMlistF) 
+			    			jQuery(this.combo.DOMlistF).height(this.dropdownHeight);
+			    	}	
+			    	if(initValue){
+			    		eval("initValue = " + initValue + ";");
+				    	this.combo.addOption(initValue);
+				    	this._optionsLoaded = true;
+			    	}else if(this.optionDataId){
+			    		this.optionData = justep.xbl(this.optionDataId);
+			    		var data = this.optionData;
+			    		var that = this;
+			    		$(this.combo.DOMelem).bind("click", function(){
+				    		if(!that._optionsLoaded){
+				    			if(!data.loaded) data.refreshData();
+				    			var options = [];
+				    			for(var i = 0; i<data.getCount();i++){
+				    				var rowId = data.getRowId(i);
+				    				var label = data.getValue(that.optionLabel, rowId);
+				    				if(that.optionLabel && that.optionLabel.toLowerCase() == "rowid")
+				    					value = rowId;
+				    				var value = rowId;
+				    				if(that.optionValue && that.optionValue.toLowerCase() != "rowid")
+				    					value = data.getValue(that.optionValue, rowId);
+				    				options.push([value, label]);
+				    			}
+				    			that.combo.addOption(options);
+				    			that._optionsLoaded = true;
+				    		}	
+			    		});
+			    	}
+			    	if(ref){
+					  	var xpathr = /(instance|data)\([\"\'](.*)[\"\']\)\/(.*)/i;
+					  	var info = ref.match(xpathr);
+					  	this.dataId = info[2];
+					  	this.relation = info[3];
+					  	if(labelRef)
+					  		this.labelRelation = labelRef.match(xpathr)[3];
+					  	this.data = justep.xbl(this.dataId);
+						this.field = this.data.getStore().fields[this.relation];
+						this.jelement = jQuery(this.combo.DOMelem);
+					  	new xforms.Listener(this.data.getInstance().model.element, "xforms-rebuild", null,$.proxy(this._reprint,this));
+					  	
+					  	var that = this;
+					  	var func = function(event){
+							var value = event.source.getValue(that.relation, event.rowId);
+							that.value = value;
+					  		if(that._optionsLoaded){
+					  			if(!that.isMulti){
+									that.combo.setComboValue(value);					  			
+					  			}else{
+					  				var vals = value.split(" ");
+					  				for(i in vals){
+						  				that.combo.setCheckedByValue(vals[i]);
+					  				}
+								   that.combo.setComboText(that.combo.getCheckedText());
+					  			}
+					  		}	
+							that.combo.setValue(value);
+					  		if(that.labelRelation){
+					  			that.rowId = event.rowId;
+								var label = event.source.getValue(that.labelRelation, event.rowId);
+								that.combo.setComboText(label);
+					  		}
+							that._reprint();
+						};
+					  	this.data.attachEvent("onIndexChanged", function(event){var evt=event;window.setTimeout(function(){func(evt);},10);});
+					  	this.data.attachEvent("onAfterRefresh", function(event){var evt=event;window.setTimeout(function(){func(evt);},10);});
+					  	this.data.attachEvent("onValueChanged", function(event){if(!that.disablePrint && event.column && event.column==that.relation) {func(event);that.value = event.value;}});
+					  	
+					  	if(this.data.getCount() > 0){
+					  		var rowId = this.data.getRowId(0);
+					  		var event = {
+					  			source: this.data, 
+					  			rowId: rowId,
+					  			rowIndex: 0
+					  		};
+					  		func(event);
+					  	}else this._reprint(); 
+			    	}
+			    	this.combo.readonly(true);
+		    		if(this.data && this.relation){
+		    			var that = this;
+				    	this.combo.attachEvent("onClose", function(){
+				    		that.oldValue = that.value;
+				    		if(that.value == that.combo.getValue()) return;
+				    		that.value = that.combo.getValue();
+				    		that.disablePrint = true;
+				    		that.data.setValue(that.relation, that.value, that.rowId);
+				  			if(!that.isMulti){
+						    	that.text = that.combo.getComboText();
+				  			}else{
+						    	that.text = that.combo.getCheckedText();
+				  			}
+				    		if(that.labelRelation){
+				    			that.data.setValue(that.labelRelation, that.text, that.rowId);
+				    		}
+				    		that.disablePrint = false;
+				    		that._reprint();	
+				    	});
+		    		}
+			    	if(this.onCloseup){
+			    		var that = this;
+			    		this.combo.attachEvent("onClose", function(){
+			    			that.onCloseup({source: that, label: that.text, value: that.value, valueChanged: (that.oldValue!=that.value)});
+			    		});	
+			    	}
+		    		this.value = this.getValue(); 
+		    		this.oldValue = this.value;
+		    		this.text = this.getText(); 
+				},
+				_reprint :function(){
+					if(this.data.getCount()==0){
+					  this.combo.disable(true);
+					  this.jelement.addClass("xforms-readonly");
+					  this.jelement.removeClass("grid-invalid");
+					  return;
+				    }
+					this.combo.disable(this.field.readonly);
+					if(this.field.readonly) this.jelement.addClass("xforms-readonly");
+					else this.jelement.removeClass("xforms-readonly");
+		    		if (this.field.valid == false){
+		    			this.jelement.addClass("grid-invalid");
+		    		}else{
+		    			this.jelement.removeClass("grid-invalid");
+		    		}
+		    	},				
+				getValue : function(){
+					return this.combo.getValue();
+				},
+				getText : function(){
+		  			if(!this.isMulti){
+				    	return this.combo.getComboText();
+		  			}else{
+				    	return this.combo.getCheckedText();
+		  			}
+				},
+				_hasRef : function(){
+					var el = jQuery(this.domNode);
+					var ref = el.attr("ref");
+					return ref ? true : false; 
+				},
+				_extractRef : function(ref){
+					
+				},
+				getDisabled : function(){
+					return this.combo._disabled;
+				},
+				setDisabled : function(value){
+					this.combo.disable(value);
+				},
+				getTabIndex : function(){
+					return this.tabindex;
+				},
+				setTabIndex : function(index){
+					this.tabindex = index;
+				},
+				getAccessKey : function(){
+					return this.accesskey;
+				},
+				setAccessKey : function(key){
+					this.accesskey = key;
+				},
+				dispose: function(){
+					this.combo.destructor();
+					this.combo = null;
+					justep.XBLObject.prototype.dispose.call(this);
+				}
+			})			
+		]]></implementation>
+		<resources>
+			<xbl:style src="/form/dhtmlx/dhtmlxCombo/dhtmlxcombo.css"></xbl:style>
+			<xbl:style>
+			<![CDATA[
+			  .xforms-readonly .dhx_combo_img{
+			    display:none;
+			  }
+			]]>
+			</xbl:style>
+		</resources>
+	</binding>
+</xbl:xbl>	

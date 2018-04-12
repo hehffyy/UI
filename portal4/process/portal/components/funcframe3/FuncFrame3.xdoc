@@ -1,0 +1,34 @@
+/**
+	@name justep.Portal.FuncFrame3
+	@model UI
+	@class 
+	@language js
+	@description 具有子菜单的功能显示组件, 类似FuncFrame2, 多了子菜单树
+	@example 
+	<xmp>
+	var funcFrame = new FuncFrame3({id: 'funcFrame', bsessionid: bsessionid, onclose: function(option){
+		//当关闭功能时执行
+	}});
+	</xmp>
+*/
+
+/**
+	@name justep.Portal.FuncFrame3#reload
+	@function
+	@description 加载子菜单, 如果是功能并打开功能 
+	@param {Object} oprion <b>[required]</b> 子菜单或功能的描述
+*/
+
+/**
+	@name justep.Portal.FuncFrame3#open
+	@function
+	@description 打开一个功能 
+	@param {Object} oprion <b>[required]</b> 功能的描述
+*/
+
+/**
+	@name justep.Portal.FuncFrame3#close
+	@function
+	@description 关闭功能
+	@param {String} id 功能的id
+*/

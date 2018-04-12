@@ -1,0 +1,167 @@
+.noPaddingTB {
+	padding-top: 0px !important;
+	padding-bottom: 0px !important;
+}
+
+.table>tbody>tr>td {
+	border-top: 1px solid #C2D5E3;
+}
+
+.table>tbody>tr>td a:hover {
+	background-color: inherit;
+	text-decoration: underline;
+}
+
+.table>tbody>tr>td a {
+	color: inherit;
+}
+
+.table-bottom {
+	border-bottom: 1px solid #C2D5E3;
+}
+
+.pl {
+	background-color: #FFF;
+}
+
+.bm {
+	border: 1px solid #e3e3e3;
+}
+
+.bm,.bn {
+	margin-bottom: 9px;
+}
+
+.pl table {
+	table-layout: fixed;
+	width: 100%;
+}
+
+.pls {
+	width: 160px;
+	background: #FFF;
+	overflow: hidden;
+	border-right: 1px solid #e5e5e5;
+}
+
+.pbm {
+	padding-bottom: 10px !important;
+}
+
+.ptm {
+	padding-top: 10px !important;
+}
+
+.plc {
+	padding: 0 20px;
+}
+
+.plc,.pls {
+	vertical-align: top;
+	overflow: hidden;
+}
+
+.vwthd {
+	padding-right: 80px !important;
+}
+
+.ptm {
+	padding-top: 10px !important;
+}
+
+.pbn {
+	padding-bottom: 5px !important;
+}
+
+.vwthd div.y {
+	display: inline;
+	margin-right: -60px;
+}
+
+.y {
+	float: right;
+}
+
+.ts {
+	display: inline;
+	font: 700 16px 'Microsoft Yahei', 'Hei', Tahoma, 'SimHei', sans-serif;
+}
+
+td .ts {
+	margin-left: 20px;
+}
+
+td .x-card-border {
+	border: 0px none;
+}
+
+.hm {
+	text-align: center;
+}
+
+.pipe {
+	margin: 0 5px;
+	color: #CCC;
+}
+
+.xg1,.xg1 a {
+	color: #999 !important;
+}
+
+.ad .pls {
+	background: #eaeaea;
+	border-top: 1px solid #d4d4d4;
+	border-bottom: 1px solid #d4d4d4;
+	padding: 0;
+	height: 5px;
+}
+
+.ad .plc {
+	background: #eaeaea;
+	border-top: 1px solid #d4d4d4;
+	border-bottom: 1px solid #d4d4d4;
+	padding: 0;
+	overflow: hidden;
+}
+
+.pi {
+	overflow: hidden;
+	margin-bottom: 10px;
+	padding: 10px 0;
+	height: 16px;
+	border-bottom: 1px dashed #e3e3e3;
+}
+
+.pls .pi {
+	padding-left: 15px;
+}
+
+.fbt {
+	padding: 10px 10px;
+}
+
+.xw1 {
+	font-weight: 700;
+}
+
+#bindLingDaoPSList>ul {
+	margin: 0;
+}
+
+#scrolltop {
+    position: fixed;
+    bottom: 100px;
+    margin: -30px 0 0;
+    width: 26px;
+    height: 50px;
+    background: url(./images/scrolltop.png) no-repeat 50% 0;
+    line-height: 999px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+#windowFrame {
+	with: 100%;
+	height: 100%;
+	min-height: 400px;
+}

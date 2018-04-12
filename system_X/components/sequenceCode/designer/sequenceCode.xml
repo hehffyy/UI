@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<elements> 
+  <element name="sequenceCode" tag-type="rich" tag-name="div" icon="sequenceCode.gif"
+    text="序列编码" binding-component="/UI/system_X/components/sequenceCode.xbl.xml#sequenceCode"
+    namespace="xhtml" namespace-uri="http://www.w3.org/1999/xhtml" is-complex-component="true"
+    display-property="id" component-class="sequenceCode" component-type="formControl"> 
+    <properties> 
+      <property name="id" text="编号" required="true"/>  
+      <property name="ref" text="引用" required="true" editor-ref="dataRef"/>  
+      <property name="showButton" text="显示按钮" editor-ref="booleanList" default-value="true"
+        data-type="boolean"/>  
+      <property name="class" text="class"/>  
+      <property name="style" text="样式" editor-ref="styleDialog"> 
+        <property name="width" text="宽度" is-style="true"/>  
+        <property name="height" text="高度" is-style="true"/> 
+      </property> 
+    </properties>  
+    <property-editors/>  
+    <inner-component-config> 
+      <item name="input" exclude-properties="format,style,ref"/>  
+      <item name="trigger" exclude-properties="operation,operation-owner,style,ref"
+        exclude-events="DOMActivate"/> 
+    </inner-component-config>  
+    <toolbar> 
+      <item text="生成label" class="com.justep.studio.ui.editors.xui.component.FormControl"
+        method="genaControlLabel"/> 
+    </toolbar>  
+    <templates> 
+      <template name="default"><![CDATA[ 
+			<xhtml:div
+				xmlns:xui="http://www.justep.com/xui"
+				xmlns:xhtml="http://www.w3.org/1999/xhtml"
+				xmlns:xforms="http://www.justep.com/xforms"
+ 				component="/UI/system_X/components/sequenceCode.xbl.xml#sequenceCode" style="width:155px;height:21px">
+ 				<xhtml:table border="0" cellpadding="0" cellspacing="0" style="height:100%;width:100%;padding-right:0px;margin-right:0px;">
+					<xhtml:tr>
+						<xhtml:td>
+							<xforms:input class="xui-input" readonly="true" style="height:100%;width:100%;"></xforms:input>
+						</xhtml:td>
+						<xhtml:td style="width:60px;">
+							<xforms:trigger appearance="image-text" class="button-blue" icon-class="icon-system-pencil" style="height:100%;width:100%">
+								<xforms:label>生成</xforms:label>
+							</xforms:trigger>
+						</xhtml:td>
+					</xhtml:tr>
+				</xhtml:table>
+				<xhtml:div component="/UI/system/components/menu.xbl.xml#menu" menu-id="signMenu" appearance="context" open-mode="win"  class="xui-container" style="width:0px;height:0px">
+					<xui:menuitem label="自动" name="autoCode" img="/UI/SA/OPM/images/funRole.gif" dis-img="/UI/SA/OPM/images/un_funRole.gif"></xui:menuitem>
+					<xui:menuitem label="手选" name="manualCode" img="/UI/SA/OPM/images/dataRole.gif" dis-img="/UI/SA/OPM/images/un_dataRole.gif"></xui:menuitem>
+					<xui:menuitem label="清除" name="clearCode" img="/UI/SA/OPM/images/dataRole.gif" dis-img="/UI/SA/OPM/images/un_dataRole.gif"></xui:menuitem>	
+				</xhtml:div>
+			</xhtml:div>
+		   ]]></template> 
+		   <!-- 自动、手选、清除  的名称 在   sequenceCode.js  的 _getItemIdByLabel  中 用到，如果修改  名称，请同步修改js文件 -->
+    </templates> 
+  </element> 
+</elements>

@@ -1,0 +1,221 @@
+*{
+	font-size: 14px;
+	font-family: "Microsoft Yahei",arial, sans-serif;
+}
+html, body{
+	margin: 0;
+	padding: 0;
+	background:url(../images/common/login-main.jpg) no-repeat center 0;
+}
+/* 登录框居右显示效果
+#main{
+	margin-top:40px;
+	margin-left:740px;
+	width: 460px;
+	position: relative;
+}
+*/
+/* 登录框居中显示效果*/
+#main{
+	margin: 40px auto;
+	width: 517px;
+	position: relative;
+	background: url(../images/common/login-head.png) no-repeat;
+}
+
+#main .head{
+	height: 160px;
+}
+
+.login{
+	margin: 0;
+	padding:0;
+	background:url(../images/login/bg-c.png) no-repeat;
+	height:87px;
+	margin-left:100px;
+}
+/*
+#main .head p{
+	display: block;
+	height: 60px;
+	float: right;
+	width: 150px;
+	padding: 0;
+	margin: 0;
+	background: url(../images/login/title.png) left 38px no-repeat;
+}
+*/
+#downApp span{
+	font-size:26px;
+	color:#888;
+	display:inline-block;
+	margin:10px 10px 0px 0px;
+	vertical-align: baseline;
+}
+
+#downApp span:hover{
+	cursor:pointer;
+	color:#444;
+}
+
+#setting{
+	height:120px;
+	position: relative;
+}
+
+.login_btn_form{
+	height:110px;
+	background: url(../images/login/btm-bg.png) no-repeat;
+}
+
+.inner .loginBtn {
+	text-decoration: none;
+	display: inline-block;
+	color: #fff;
+	background-color: #487eb7;
+	font-size: 18px;
+	height:36px;
+	width:265px;
+	border-radius: 5px;
+	line-height: 36px;
+	text-align: center;
+}
+
+.inner .loginBtn:hover {
+	/*background-color:#3b699c;*/
+	border-radius: 5px;
+	background-color: transparent;
+	border: 1px solid #335397;
+	color: #335397;
+}
+#setting .inner {
+	/* display: none; */
+	margin-left: 100px;
+}
+
+#setting p{
+	margin: 5px 0;
+}
+#setting label{
+	color: #666;
+}
+
+#setting .on{
+	background: url(../images/login/up.png);
+}
+
+.justep-info{
+	margin: 100px  auto 0 auto;
+	width: 280px;
+}
+.justep-info a{
+	color: #666;
+	text-decoration: none;
+}
+
+.tail {
+	height: 5px;
+	width: 100%;
+	bottom: 0;
+}
+.tail div{
+	height: 5px;
+	width: 66px;
+	float: left;
+}
+.message{
+	margin:0px 10px 0px 10px;
+	font-size:14px;
+	height: 16px;
+	text-align: left;
+}
+.login .error{
+	color: #B94A48;
+	background-color: #F2DEDE;
+	border: 1px solid #EED3D7;
+	margin-bottom: 18px;
+}
+
+.login label{
+	color: #6f7278;
+	width: 80px;
+	font-size: 18px;
+	float: left;
+	margin-right: 90px;
+	padding-top: 9px;
+}
+
+.login .pwd, 
+.login .name {
+	margin-bottom: 3px;
+	border: 0px #fff solid;
+	margin-top: 2px;
+	width: 246px;
+	display: block;
+	font-size: 18px;
+	height: 36px;
+	line-height:36px;
+	background-color: transparent;
+	width:210px;
+	color: #6f7278;
+}
+
+.cform span{
+	float:left;
+	padding:8px 5px 0 0 ;
+}
+
+.login .captcha {
+	margin-bottom: 10px;
+	border: 1px #C4C4C4 solid;
+	width: 110px;
+	padding: 5px;
+	float:left;
+	font-size: 18px;
+}
+.login .captchaimages {
+	margin-bottom: 10px;
+	padding: 5px;
+	font-size: 18px;
+}
+.cform{
+	padding-left: 50px;
+	padding-top: 1px;
+}
+.login .pwd{
+	letter-spacing: 5px;
+}
+
+.login .error {
+	margin-top: 0px;
+	border: 2px red solid;
+}
+
+.login .empty{
+	color: #C4C4C4;
+}
+
+.login .loginBtn {
+	margin: 16px 0 0 100px;
+	text-decoration: none;
+	display: inline-block;
+	padding: 7px 18px;
+	color: white;
+	background: #09F;
+	font-size: 16px;
+	font-weight: bold;
+	-webkit-border-radius: 0.5em;
+	border-radius: 0.5em;
+}
+#setting .error{
+  color:red;
+  background: url(../images/login/warning.png) no-repeat;
+  padding-left:15px;
+}
+
+/*cloud*/
+
+#mainBody {width:100%;height:100%;position:absolute;z-index:0;}
+.cloud1 {position:absolute;top:0px;left:0px;width:100%;height:100%;background:url(../images/login/cloud1.png) no-repeat;z-index:1;opacity:0.8;}
+.cloud2 {position:absolute;top:0px;left:0px;width:100%;height:100%;background:url(../images/login/cloud2.png) no-repeat;z-index:1;opacity:0.8;}
+#cloud2 {z-index:2;}

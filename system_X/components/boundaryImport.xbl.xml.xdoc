@@ -1,0 +1,31 @@
+/**
+	@name UI.boundaryImport
+	@component /UI/system_X/components/boundaryImport.xbl.xml#boundaryImport
+	@class justep.boundaryImport
+	@model UI
+	@description <b>[rich]</b>
+	@example
+	<b>xml格式：</b>
+<xmp>
+	<xhtml:div component="/UI/system_X/components/boundaryImport.xbl.xml#boundaryImport" id="boundaryImport1" onAfterUpload="testReceiveFromFreame"/>
+</xmp>
+*/
+
+/**
+	name:boundaryImport#onAfterUpload
+	@event 
+	description: <b>[回调型事件]</b>
+	@param event 
+	<br/><b>格式说明：</b>
+	<xmp>
+	{
+		"source" : 组件的js对象,
+		"data" : 传入的数据{
+			projInfo ： 项目信息(Object)
+			landInfo ： 地块信息[Array]
+			pointInfo： 坐标信息[Array]
+		}
+	}
+	</xmp>
+*/
+

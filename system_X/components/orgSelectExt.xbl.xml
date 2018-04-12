@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xbl:xbl xmlns="http://www.w3.org/ns/xbl"
+	xmlns:xui="http://www.justep.com/xui"
+	xmlns:xbl="http://www.w3.org/ns/xbl"
+	xmlns:xhtml="http://www.w3.org/1999/xhtml"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xsl:version="2.0"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xforms="http://www.justep.com/xforms"
+	xmlns:ev="http://www.w3.org/2001/xml-events"
+	script-type="text/javascript">
+	<xbl:script type="text/javascript" src="/UI/portal2/process/portal/lib/md5.js"/>
+	<xbl:script type="text/javascript" src="/UI/system/components/orgDialog/orgDialog.js"/>
+	<script src="/UI/system_X/components/orgSelectExt/orgSelectExt.js"/>
+	<binding id="orgSelectExt">
+		<template template-type="java" src="orgSelectExt"/>
+		<implementation>
+			({
+				initXBL : function() {
+	    			var el = jQuery(this.domNode);
+	    			var ref = el.attr("ref");
+	    			if(ref){
+						var xpathr = /(instance|data)\([\"\'](.*)[\"\']\)\/(.*)/i;
+						var info = ref.match(xpathr);
+						this.dataId = info[2];
+						this.relation = info[3];
+						this.data = justep.xbl(this.dataId);
+					};
+					var extRef = el.attr("extRef");
+					if(extRef){
+						var xpathr = /(instance|data)\([\"\'](.*)[\"\']\)\/(.*)/i;
+						var info = extRef.match(xpathr);
+						this.extRelation = info[3];
+					};
+					this.multiSelect = (el.attr("multi-select") == "true");
+					this.showType = el.attr("show-type");
+					this.orgKinds = el.attr("org-kinds");
+					this.dialogId = el.attr("dialogId");
+    			},
+				initXBL2 : function()
+				{
+					justep.Object.extend(this,new com.butone.OrgSelectExt(this));
+				}
+			})			
+		</implementation>		
+	</binding>
+	
+	
+	
+</xbl:xbl>	

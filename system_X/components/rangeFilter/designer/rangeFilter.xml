@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<elements>
+	<element name="rangeFilter" tag-type="rich" tag-name="div" icon="rangeFilter.gif" text="数字过滤" 
+		binding-component="/UI/system_X/components/rangeFilter.xbl.xml#rangeFilter"
+        namespace="xforms"  namespace-uri="http://www.justep.com/xforms"
+        display-property="id" 
+        component-class="RangeFilter" 
+        component-type="formControl" design-view="web-designer" >
+		<properties>
+			<property name="id" text="编号" required="true"/>		
+
+			<property name="filter-data" text="过滤数据集" required="true" is-id-ref="true" editor-ref="contextComponent" editor-parameter="data"/>
+			<property name="filter-relations" text="过滤关系" required="true" editor-ref="relationDlg" editor-parameter="filter-data" ref-type="Relation/m" ref-context="filter-data/d"/>
+			<property name="operator" text="操作" required="true" editor-ref="operatorList"     />
+			<property name="input-regex" text="正则表达式输入控制" editor-ref="regexList" readonly="false"/>
+			<property name="auto-refresh" text="当过滤条件改变时是否自动刷新数据（初始化过滤条件时不刷新）" editor-ref="booleanList" readonly="true" default-value="false"/>
+			<property name="default-class" text="默认class" readonly="true" default-value="xui-input"/>
+			<property name="class"  text="class" editor-extend-data="xui-input:input"/>
+			<property name="style" text="样式" editor-ref="styleDialog" />
+			<property name="tabindex" text="Tab键顺序" data-type="integer" allow-empty="true"/>
+			<property name="accesskey" text="快捷键" />
+			<property name="readonly" text="只读" editor-ref="edit-readonly"  default-value="false" data-type="boolean" allow-empty="true"/>
+			<property name="disabled" text="禁用" editor-ref="edit-disabled" default-value="false" data-type="boolean" allow-empty="true"/>			
+		</properties>
+		<events>
+			<event name="onGetCondition" text="构造过滤条件"/>
+		</events>
+		
+		<!--属性编辑器描述，可通过下拉列表或者弹出对话框来设置属性值，不这是默认问普通的文本输入框。-->
+		<property-editors>
+			<property-editor name="operatorList" type="list" > 				
+				<static-data value=">=:大于等于,>:大于,=:等于,&lt;=:小于等于,&lt;:小于" />
+			</property-editor>
+		</property-editors>
+		
+		<templates>
+		   	<template name="default">
+		   		<![CDATA[ 
+				<xhtml:div component="/UI/system_X/components/rangeFilter.xbl.xml#rangeFilter"/>
+		   		]]>
+		   	</template>
+		</templates>
+	</element>
+</elements>

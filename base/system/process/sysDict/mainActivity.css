@@ -1,0 +1,54 @@
+div.grid-choice table.hdr td {
+    background-color: #f9f9f9 !important;
+    border-top: 1px solid #D3D3D3;
+    border-image: none;
+    border-width: medium medium 1px;
+    border-style: none none solid;
+    border-right: medium none;
+	border-left: medium none;
+	padding: 0px 3px;
+	background-image: none;
+}
+
+
+div.grid-choice div.xhdr{
+    border-bottom: 2px solid #4197e0;
+}
+div.grid-choice td {
+    text-align: left !important;
+    padding-left: 20px;
+}
+div.grid-choice table.hdr td{
+    text-align: left !important;
+}
+
+div.grid-choice .objbox{
+    overflow-x:hidden !important;
+}
+
+div.grid-choice table.hdr td{
+    padding-left:20px;
+}
+
+
+div.grid-choice .ev_justep {
+    background-color: #FFF !important;
+}
+div.grid-choice .odd_justep {
+    background-color: #FFF !important;
+}
+div.grid-choice table.obj tr.rowselected td.cellselected{
+    background-color: #F8F8F8  !important;
+    font-weight: 700;
+}
+
+div.grid-choice.odd_justep {
+    background-color: #FFF !important;
+}
+div.grid-choice tr:hover {
+	background-color: #FFF !important;
+}
+
+div.grid-compact .objbox{
+    overflow-x:hidden !important;
+}

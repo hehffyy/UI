@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<xbl:xbl xmlns:xbl="http://www.w3.org/ns/xbl" xmlns="http://www.w3.org/ns/xbl" xmlns:xui="http://www.justep.com/xui"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xforms="http://www.justep.com/xforms"
+  xmlns:ev="http://www.w3.org/2001/xml-events" xsl:version="2.0" script-type="text/javascript">  
+  <script src="/UI/system_X/components/unitControl/unitControl.js"/>  
+  <script src="/UI/system_X/components/unitField/unitFieldManager.js"/>  
+  <binding id="unitControl"> 
+    <template template-type="java" src="UnitControl"/>  
+    <implementation><![CDATA[
+			({
+				initXBL : function() {
+					
+				},
+				
+				initXBL2 : function()
+				{
+					justep.Object.extend(this, new com.butone.UnitControl(this));
+				}
+			})			
+		]]></implementation>  
+    <resources> 
+      <xbl:style src="/form/dhtmlx/dhtmlxCombo/dhtmlxcombo.css"/>  
+      <xbl:style> <![CDATA[
+			  .xforms-readonly .dhx_combo_img{
+			    display:none;
+			  }
+			]]> </xbl:style> 
+    </resources> 
+  </binding> 
+</xbl:xbl>

@@ -1,0 +1,142 @@
+body,input,button,select,textarea {
+	font: 12px/1.5 Tahoma, Helvetica, 'SimSun', sans-serif;
+	color: #444;
+}
+
+em,cite,i {
+	font-style: normal;
+}
+
+table {
+	empty-cells: show;
+	border-collapse: collapse;
+}
+
+a {
+	color: #333;
+	text-decoration: none;
+	cursor: pointer;
+	outline: none;
+}
+
+a:link,a:visited {
+	color: #000000;
+}
+
+.mbm {
+	padding: 10px 0;
+}
+
+.cl {
+	zoom: 1;
+	background: #FFF;
+}
+
+table.block {
+	width: 100%;
+	border: 1px solid #e5e5e5;
+}
+
+.t_fsz {
+	min-height: 300px;
+}
+
+/*.t_fsz table {*/
+/*	width: auto;*/
+/*	border: 0px;*/
+/*	min-height: 300px;*/
+/*}*/
+.quote {
+	background-color: #D3D3D3
+}
+
+.pi {
+	overflow: hidden;
+	margin-bottom: 10px;
+	padding: 10px 0;
+	height: 16px;
+	border-bottom: 1px dashed #e3e3e3;
+}
+
+.pi em {
+	
+}
+
+/*.pl table {*/
+/*	table-layout: fixed;*/
+/*	width: 100%;*/
+/*}*/
+.plc {
+	padding: 0 20px;
+}
+
+.plc,.pls {
+	vertical-align: top;
+	overflow: hidden;
+}
+
+.pct {
+	padding-bottom: 1em;
+}
+
+.pti {
+	
+}
+
+.pdbt {
+	float: right;
+	margin: -5px 10px 0 0;
+}
+
+.authicn { /*cursor: pointer;*/
+	background: url(./image/online_member.gif) no-repeat;
+}
+
+.xg1,.xg1 a {
+	color: #999 !important;
+}
+
+.pipe {
+	margin: 0 5px;
+	color: #CCC;
+}
+
+.pi strong a {
+	float: right;
+	margin-top: -6px;
+	padding: 4px 6px;
+	border: 1px solid #FFFFFF;
+	font-weight: 400;
+}
+
+.po {
+	border-top: 1px dashed #e3e3e3;
+}
+
+.pob {
+	line-height: 36px;
+}
+
+.pob em a {
+	padding: 5px 10px 5px 25px;
+}
+
+.ad {
+	
+}
+
+.ad .plc {
+	background: #eaeaea;
+	border-top: 1px solid #d4d4d4;
+	border-bottom: 1px solid #d4d4d4;
+	padding: 0;
+	height: 5px;
+}
+
+.fastre {
+	background: url(./image/fastreply.gif) no-repeat 0 50%;
+}
+
+.editp {
+	background: url(./image/edit.gif) no-repeat 4px 50%;
+}

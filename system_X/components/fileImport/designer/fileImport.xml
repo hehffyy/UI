@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<elements> 
+  <element name="fileImport" tag-type="rich" tag-name="div" icon="import.gif" text="文件导入"
+    namespace="xhtml" namespace-uri="http://www.w3.org/1999/xhtml" display-property="id"
+    binding-component="/UI/system_X/components/fileImport.xbl.xml#fileImport" component-class="FileImport"
+    parent-range="view" component-type="formControl"> 
+    <properties> 
+      <property name="id" text="编号" required="false"/>  
+      <property name="url" text="映射文件"/>  
+      <property name="virtualFile" text="虚拟文件" editor-ref="booleanList" default-value="false"
+        data-type="boolean"/> 
+    </properties>  
+    <events> 
+      <event name="onBeforeExecute" text="执行前准备请求参数 " parameters="event"/>  
+      <event name="onReceive" text="接收数据" parameters="event"/> 
+    </events>  
+    <templates> 
+      <template name="default" type="dialog"> <![CDATA[
+				<xhtml:div xmlns:xui='http://www.justep.com/xui' 
+					   xmlns:xforms='http://www.justep.com/xforms' 
+					   xmlns:xhtml='http://www.w3.org/1999/xhtml'
+					   component='/UI/system_X/components/fileImport.xbl.xml#fileImport'>
+				</xhtml:div>
+				]]> </template> 
+    </templates> 
+  </element> 
+</elements>

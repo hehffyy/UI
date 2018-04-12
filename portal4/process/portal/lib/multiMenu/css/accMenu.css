@@ -1,0 +1,61 @@
+
+.sidebar-title div{font-weight: normal;font-size: 16px;}
+.sidebar-title >span{font-size:16px;}
+.sidebar-title >a>i{font-size:16px;}
+ul{list-style:none}
+ul.nav .navImage{
+    padding-right: 10px;
+    height: 37px;
+    padding-top: 3px;
+    float: left;
+}
+
+ul.nav .nav-nom-Icon{
+font-size: 16px;
+padding-right: 5px;
+}
+
+ul.nav .nav-emp-Icon{
+font-size: 15px;
+padding-right: 10px;
+}
+
+ul.nav >li > ul >li{
+padding: 1px;
+}
+
+
+
+.sidebar-title >span.sider-title-draw i{
+    font-size: 18px;
+}
+.sider-title-up{
+	color:#99CADB;
+	height: 550px;
+    line-height: 550px;
+    cursor: pointer;
+}
+
+.sider-title-up i{
+    padding-left: 4px;
+    font-size: 12px;
+}
+
+.sider-title-up:hover{
+	 color:red;
+	 background-color: #76B3D8;
+}
+
+.logo .mark{
+	font-size: 28px;
+	font-weight: 700;
+	font-family: 黑体;
+	letter-spacing: 4px;
+}
+
+.head .sign{
+	margin-top: 15px !important
+}
+.logo .en{
+   font-size: 12px;
+}
