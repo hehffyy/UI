@@ -1,0 +1,1087 @@
+/*dark*/
+* {
+	font-size: 14px;
+}
+
+@font-face {
+	font-family: 'webfont';
+    src: url('../../webFont/webfont.eot'); /* IE9*/
+    src: url('../../webFont/webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../../webFont/webfont.woff') format('woff'), /* chrome、firefox */
+    url('../../webFont/webfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../../config/webFont/webfont.svg#webfont') format('svg'); /* iOS 4.1- */
+}
+.web-font{
+    font-family:"webfont" !important;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+/*skin color*/
+.title-zh-font{
+    font-size:28px;
+    letter-spacing: 6px;
+    color:#fff;
+}
+.title-en-font{
+    font-size:12px;
+    color:#fff;
+}
+html, body, #main{
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	background-color: white;
+	min-width: 980px;
+	/*
+	background: url(index/images/background.jpg);
+	*/
+	
+}
+/*skin color*/
+.head {
+	position: relative;/*fixed;*/
+	margin: 0;
+	height: 65px;
+	z-index: 500;
+	text-align: center;
+	font-size: 12px;
+	color: #fff;
+	background-color: #454B57;
+}
+
+.head .brand {
+	height: 63px;
+	border-bottom: 1px solid #DDD;
+}
+.head .brand .logo {
+	margin-left: 26px;
+	margin-top: 6px;
+	min-width:600px;
+	text-align: left;
+	float: left;
+}
+.head .brand >.bar {
+	float: right;
+	padding-right: 10px;
+}
+
+.clearfix:after { content:"\200B"; display:block; height:0; clear:both; }
+.clearfix {*zoom:1;}/*IE/7/6*/
+
+.head .brand >.bar >div {
+	clear: both;
+}
+
+.menuWrap{background: #F7F7F7; }
+.sidebar-title{height: 40px;line-height: 40px;text-indent:20px;color: #333;font-size: 24px;text-align: left;background: #f2f2f2;}
+.nav {padding: 40px 28px 25px 0; font-family: "Microsoft yahei", Arial, Helvetica, sans-serif;} 
+ul.nav {padding: 0; margin: 0; font-size: 1em; line-height: 0.5em; list-style: none;background: #F7F7F7;} 
+ul.nav li {border-top:1px solid #e5e5e5;border-width:1px 0;box-shadow: 0px 1px 0px #FFF inset;} 
+ul.nav li a:hover {color:#1963AA;}
+ul.nav ul { margin: 0; padding: 0;display: none;} 
+ul.nav ul li { margin: 0; padding: 0; clear: both;} 
+ul.nav li a {line-height: 40px; font-size: 14px; padding: 0px 5px;padding-left:20px; color: #333; display: block; text-decoration: none; font-weight: 400;}
+ul.nav ul li a { padding-left: 30px; font-size: 14px; font-weight: normal;}
+ul.nav ul li a:hover {color:#675C7C;} 
+ul.nav ul ul li a {color: #333; padding-left: 50px;} 
+ul.nav ul ul li a:hover {color:#1963AA;} 
+/*skin color*/
+
+.head .brand >.bar a {
+	text-decoration: none;
+	color: #fff;
+}
+.head .brand >.bar .user {
+	margin-right: 12px;
+}  
+.head .brand >.bar .user .name {
+	display: inline-block;
+	margin-top: 3px;
+	margin-right: 10px;
+}  
+.head .brand >.bar .user img {
+	width: 20px;
+	height:20px;
+	border-radius: 2px;
+	display: inline-block;
+	vertical-align: top;
+}
+.head .brand >.bar .tools{
+	display: inline-block;
+}
+
+.head .brand >.menu {
+	height: 56px;
+	width: 580px;
+	border-top: 1px solid #2EA8FC;
+	padding-top: 12px;
+	overflow: hidden;
+}
+.head .brand >.menu div{
+	float: right;
+	position: relative;
+}	
+.head .brand >.menu .bar2 {
+	list-style: none;
+	margin: 2px 0 0 0;
+	padding: 0px;
+	float: left;
+}
+.head .brand >.menu .bar2 >li {
+	display: block;
+	margin-left: 10px;
+	float: left;
+	background-color: #aaa;
+}
+.head .brand >.menu .bar2 >li>a {
+	display: block;
+	font-size: 16px;
+	padding: 12px 15px 15px;
+}
+
+.head .brand >.menu .bar2 #button{
+	margin: 12px;
+}
+
+.head .brand >.menu .bar2 >li a{
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+}
+
+#fun-map-show-btn {
+	display: none;
+	border-radius: 4px;
+	margin-right: 6px;
+	background-color: #2ea8fc;
+}
+#fun-map-show-btn a {
+	color: white;
+}
+
+#fun-map-close-btn {
+	border-radius: 4px;
+	margin-right: 6px;
+	background-color: #2ea8fc;
+}
+
+.content {
+	margin: 0 5px;
+}
+.fun-map {
+	background-color: white;
+	width: 100%;
+
+}
+
+.fun-map-border {
+	border-bottom: 1px solid gainsboro;
+    background: #F7F7F7;
+}
+.content .max {
+	width: auto;
+	margin: 0 5px;
+}
+.portal {
+	padding-top: 5px;
+	height: 100%;
+	position: relative;
+}
+.column {
+	width: 33.29%;
+	float: left;
+}
+.first .widget-item {
+	margin-left: 0;
+} 
+.widget-item {
+	margin: 0 0 18px 18px;
+	min-height: 200px;
+	border: solid gainsboro 1px; 
+	background-color: white;
+}
+.titleBox {
+	background-color: #888;
+	height: 24px;
+}
+.outerBox {
+	background-color: white;
+	height: 100px;
+}
+
+#bar1 {
+	float: left;
+	margin-top: 2px;
+}
+
+#b1 ul li{
+	border: 0;
+	background: white;
+}
+
+#b1 ul li:hover{
+	background: #f5f5f5;
+}
+
+#b1 ul li>a {
+	text-decoration: none;
+	font-size: 12px;
+	cursor: pointer;
+	color: #0967B0;
+	font-weight: normal;
+	padding-left: 20px;
+	background: url(../../../system/images/default16.png) left center no-repeat;
+}
+#b1 ul li span {
+	display: inline;
+}			
+#b1 ul li span .move {
+	display: none;
+}
+
+#b3 ul li{ 
+	margin-right: 2px;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px; 
+}
+
+#b3 ul .on,
+#b3 ul li.on:hover{
+	background: #FFF;
+	color: #526880;
+}
+#b3 ul li.on>a {
+   color: #526880;
+   font-weight: 700;
+}
+
+#b3 ul li:hover{
+	background: #f5f5f5;
+}
+
+#b3 ul li>a {
+	text-decoration: none;
+	cursor: pointer;
+	font-weight: normal;
+	padding-left: 10px;
+}
+#b3 ul li span {
+	display: inline;
+}			
+#b3 ul li span .move {
+	display: none;
+}
+
+
+#topPanel .max  {
+	width: auto;
+	margin: 0 5px;
+}
+
+#funcFrame {
+	display: none;
+	margin: 0 5px;
+	height: 100%;
+}
+
+.debug-mode{
+	display: none;
+	position: absolute;
+	z-index: 9999;
+	top: 5px;
+	left: 5px;
+	background: red;
+	padding: 6px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	font-weight: 700;
+	font-size: 14px;	
+}
+
+#topPanel .inner,
+#topPanel .b,
+.head .inner,
+.content .inner {
+	width: auto;
+	margin: 0 5px;
+}
+
+
+#setting-btn,
+#logout,
+#fun-map-show-btn,
+#fun-map-close-btn {
+	cursor: pointer;
+}
+#logout:hover,
+#setting-btn:hover {
+	color:red;
+}
+/*skin*/
+#logout>div,#setting-btn>div{
+    color:#3598DB;
+}
+#agents a:hover{
+	text-decoration: underline;
+}
+#funcFrame{
+	overflow:auto; 
+	-webkit-overflow-scrolling:touch;	
+}
+
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+}
+.clearfix:after {
+  clear: both;
+}
+
+.isloading-overlay {
+	text-align: center;
+	background: url(./images/overlay.png); 
+	position:fixed; 
+	left:0; 
+	top:0; 
+	z-index: 10000; 
+}
+
+.isloading-overlay .isloading-wrapper {
+	background: #FFFFFF;
+	-webkit-border-radius: 7px;
+	-webkit-background-clip: padding-box;
+	-moz-border-radius: 7px;
+	-moz-background-clip: padding;
+	border-radius: 7px;
+	background-clip: padding-box;
+	display: inline-block;
+	margin: 0 auto;
+	padding: 10px 20px;
+	top: 45%;
+	z-index: 9000;
+	position: relative;
+	text-align: center;
+}
+
+.isloading-overlay i{
+	display: block; 
+	width: 32px; 
+	height: 32px; 
+	background: url(./images/ajax-loader.gif)	
+}
+
+.left-nav {
+    background-color: #fff;
+  /*  overflow: auto;*/
+    padding: 0px;
+    min-width: 6px;
+    min-height: 6px;
+    float: left;
+    border-right: 1px solid #E5E5E5;
+}
+
+.func-menu-show{
+   width: 240px;
+   position: relative;
+   z-index: 101;
+   float: left;
+}
+
+.left-nav-show{
+     width: 240px;
+     position: relative;
+     z-index: 102;
+}
+
+.func-menu-hide{
+   width: 25px;
+}
+
+.left-nav-hide{
+     width: 20px;
+}
+
+#tools-nav{
+}
+
+.tools-nav-pad{
+   padding-top: 20px;
+}
+
+.tools-nav-user{
+   border-left: 1px solid #5E6671;
+   float: left;
+   height: 45px;
+   padding-top: 20px;
+}
+.tools-nav-other{
+   padding-top: 0px;
+   float: right;
+}
+.tools-user-icon{
+  float: left;
+  padding: 0 20px;
+}
+.rightNav {
+    border-left: 1px solid #5E6671;
+    cursor: pointer;
+    display: block;
+    float: left;
+    height: 43px;
+    list-style: outside none none;
+    padding: 21px 20px 0;
+}
+.rightNav>span,.rightNav>button{	
+	margin-top: 30px;
+}
+.rightNav button{
+	background-color: transparent;
+    border: medium none;
+    color: white;
+}
+.rightNav > ul {
+	display:none;
+	border:1px solid #c3c3c3;
+	position:absolute;
+	left:0px;
+	z-index:100;
+	margin:0px;
+	padding:0px;
+	background-color:white;
+}
+.rightNav > ul > li {
+	border-top:1px solid #E4ECF3;
+	list-style-type:none;
+	padding: 10px;
+    text-align: left;
+	min-height: 10px;
+}
+
+.iconfont-tools{
+}
+
+.iconfont-tools-user {
+    font-size:24px
+}
+
+.iconfont-tools-other {
+    font-size:20px
+}
+
+
+/* skin zhegnff 01*/
+/* left nav menu*/
+.all-nav .item .product h3 a {font-size: 14px; color: #fff;padding-top: 40px;}
+.all-nav .item .product h3 a:hover { text-decoration: none; }
+.all-nav .active .product h3 { background-color: #39C2EC; width: 80px; height: 83px; }
+.all-nav .active .product h3 a { color: #fff; }
+
+.product-wrap h2 { background-color: #0166B4; line-height: 43px; color: #FFFFFF; font-size: 16px; text-indent: 20px; }
+.pos01 h2{background-color:#454B57; }
+.all-nav .pos01 { border: 1px solid #0166B4; }
+.product-wrap a { display: block; color: #999999; }
+.product-wrap a:hover { background-color: #E7F2FA;; text-decoration: none; color: #000; font-weight: bold; }
+
+
+/* sortablebar 页签栏*/
+
+.scrollbar {
+	border: 0;
+	/*border-bottom: 1px solid gainsboro;*/
+	position: relative;
+	background-color: white;/*#95c615;*/
+	position: relative;
+	padding-bottom: 2px;
+}
+
+.scrollbar ul {
+	list-style: none;
+	margin: 0;
+	padding: 0 2px;
+}
+.scrollbar ul li{
+	display: block;
+	line-height: 26px;
+	padding: 1px 8px;
+	margin-top: 8px;
+	margin-left: 2px;
+	border: 1px solid #ddd;
+	border-bottom:0;
+	font-weight: bold;
+	text-align: center;
+	-webkit-border-radius: 3px;
+}
+
+.scrollbar ul li a{
+	cursor: pointer;
+	text-decoration: none;
+	color: #333;
+	margin: 4px 0;
+	line-height: 22px;
+	display: table-cell;
+    height: 22px;
+    padding-left: 12px;
+    vertical-align: middle;
+    float: left;
+}
+
+.scrollbar ul li span {
+	display: none;
+}
+	
+.scrollbar ul li .move {
+	height: 0px;
+	width: 16px;
+	padding-top: 16px;
+	margin: 4px 0 0 7px;
+}
+.scrollbar ul li .delete{
+    color:#999;
+}
+.scrollbar ul li .delete:hover{
+    color:red;
+}
+.scrollbar ul li .del {
+	font-size: 16px;
+}
+
+.scrollbar .fixed {
+	float:left;
+	height: 40px;
+	margin-left: 5px;
+}
+.scrollbar .fixed >li >a {
+	padding-right: 10px;
+}
+.scrollbar .wrap {
+	background-color: #F7F7F7;
+	max-height: 40px;
+	border-bottom: 1px solid gainsboro;
+}
+
+.scrollbar .other {
+	height: 40px;
+	float: left;
+	max-width: 720px;
+}
+/*zhengff 414*/
+.bar .nav-search{
+	float: left;
+	margin-top: 18px;
+	margin-right: 20px;
+	position: relative;
+	height:28px;
+	line-height: 28px;
+}
+
+.bar .nav-search .nav-search-icon {
+	position: absolute;
+	top: 4px;
+	bottom: 1px;
+	left: 5px;
+    color: #6FB3E0 !important;
+    font-size: 14px !important;
+    line-height: 24px !important;
+}
+.bar .nav-search > input {
+    padding-right: 6px;
+    padding-left: 24px;
+}
+
+.bar .nav-search .nav-search-input {
+    border: 1px solid #6FB3E0;
+    height: 28px !important;
+    border-radius: 4px !important;
+    font-size: 13px;
+    color: #666 !important;
+    z-index: 11;
+    transition: width 0.15s ease 0s;
+}
+/****411 end*/
+
+.scrollbar .prev,
+.scrollbar .next {
+	margin-top: 15px;
+	width: 14px;
+	height: 14px;
+}
+
+.scrollbar .prev {
+	float: left;
+	margin-left: 20px;
+}
+
+.scrollbar .next {
+	float: left;
+	margin-right: 5px;
+}
+/*
+ ****************************portal widget**************************************
+ *skin 切换
+ *portal widget
+ ******************************************************************
+ */
+.portalpageview {
+	margin-top: 0px;
+}
+
+.portalpageview .widget{
+    -moz-border-radius-topleft: 3px;
+	-webkit-border-top-left-radius: 3px;
+	-khtml-border-top-left-radius: 3px;
+	border-top-left-radius: 3px;
+	-moz-border-radius-topright: 3px;
+	-webkit-border-top-right-radius: 3px;
+	-khtml-border-top-right-radius: 3px;
+	border-top-right-radius: 3px;
+}
+.portalpageview .widget .widget-head{
+	height: 35px;
+	line-height: 35px;
+	overflow:hidden;
+}
+
+.portalpageview .widget .widget-head span.widget-title{
+	float: left;
+	font-weight: bold;
+}
+
+.portalpageview .widget .collapse > i{
+	font-size:16px;
+	padding: 0px 2px;
+	font-weight: 700;
+}
+.portalpageview .widget .refresh >i{
+	font-size: 14px;
+}
+.portalpageview .widget .more >i {
+	font-size: 14px;
+}
+.portalpageview .widget .edit >i {
+	font-size: 14px;
+}
+
+/**********************
+*portal widget 默认色
+**********************
+*/
+
+.portalpageview .widget-default{
+	border: 1px solid #C9C9C9;
+}
+/*头部*/
+.portalpageview .widget-default .widget-head{
+	color: #666;
+	border-top: 1px solid #FFF;
+	border-bottom: 1px solid #CCC;
+	background: #F8F8F8;
+}
+/*标题*/
+.portalpageview .widget-default .widget-head span.widget-title{
+	text-shadow: 0px 1px #FFF;
+	color: #666;
+}
+/*伸缩图标*/
+.portalpageview .widget-default .collapse > i{
+	color:#555550;
+}
+.portalpageview .widget-default .collapse > i:hover{
+	color:#4C9ED9;
+}
+/*工具栏图标样式*/
+.portalpageview .widget-default .refresh >i{
+    color: #333;
+}
+.portalpageview .widget-default .more >i {
+	color: #333;
+}
+.portalpageview .widget-default .edit >i {
+	color: #333;
+}
+
+.portalpageview .widget-default .refresh >i:hover{
+    color: #428BCA;
+}
+.portalpageview .widget-default .more >i:hover {
+	color: #428BCA;
+}
+.portalpageview .widget-default .edit >i:hover {
+	color: #428BCA;
+}
+/**********************
+*portal widget blue色
+**********************
+*/
+
+.portalpageview .widget-blue{
+	border: 1px solid #C9C9C9;
+}
+/*头部*/
+.portalpageview .widget-blue .widget-head{
+	color: #666;
+	border-top: 1px solid #FFF;
+	border-bottom: 1px solid #CCC;
+	background: #248EC2;
+}
+/*标题*/
+.portalpageview .widget-blue .widget-head span.widget-title{
+	text-shadow: 0px 1px #248EC2;
+	color: #fff;
+}
+/*伸缩图标*/
+.portalpageview .widget-blue .collapse > i{
+	color:#E3E3E3;
+}
+.portalpageview .widget-blue .collapse > i:hover{
+	color:#4C9ED9;
+}
+/*工具栏图标样式*/
+.portalpageview .widget-blue .refresh >i{
+    color: #FFF;
+}
+.portalpageview .widget-blue .more >i {
+	color: #FFF;
+}
+.portalpageview .widget-blue .edit >i {
+	color: #FFF;
+}
+
+.portalpageview .widget-blue .refresh >i:hover{
+    color: #e3e3e3;
+}
+.portalpageview .widget-blue .more >i:hover {
+	color: #e3e3e3;
+}
+.portalpageview .widget-blue .edit >i:hover {
+	color: #e3e3e3;
+}
+
+/**********************
+*portal widget green色
+**********************
+*/
+.portalpageview .widget-green{
+	border: 1px solid #C9C9C9;
+}
+/*头部*/
+.portalpageview .widget-green .widget-head{
+	color: #666;
+	border-top: 1px solid #FFF;
+	border-bottom: 1px solid #CCC;
+	background: #439A31;
+}
+/*标题*/
+.portalpageview .widget-green .widget-head span.widget-title{
+    text-shadow: 0px 1px #439A31;
+	color: #fff;
+}
+/*伸缩图标*/
+.portalpageview .widget-green .collapse > i{
+	color:#E3E3E3;
+}
+.portalpageview .widget-green .collapse > i:hover{
+	color:#4C9ED9;
+}
+/*工具栏图标样式*/
+.portalpageview .widget-green .refresh >i{
+    color: #FFF;
+}
+.portalpageview .widget-green .more >i {
+	color: #FFF;
+}
+.portalpageview .widget-green .edit >i {
+	color: #FFF;
+}
+
+.portalpageview .widget-green .refresh >i:hover{
+    color: #e3e3e3;
+}
+.portalpageview .widget-green .more >i:hover {
+	color: #e3e3e3;
+}
+.portalpageview .widget-green .edit >i:hover {
+	color: #e3e3e3;
+}
+/**********************
+*portal widget orange色
+**********************
+*/
+.portalpageview .widget-orange{
+	border: 1px solid #C9C9C9;
+}
+/*头部*/
+.portalpageview .widget-orange .widget-head{
+	color: #666;
+	border-top: 1px solid #FFF;
+	border-bottom: 1px solid #CCC;
+	background: #C59902;
+}
+/*标题*/
+.portalpageview .widget-orange .widget-head span.widget-title{
+    text-shadow: 0px 1px #C59902;
+	color: #fff;
+}
+/*伸缩图标*/
+.portalpageview .widget-orange .collapse > i{
+	color:#E3E3E3;
+}
+.portalpageview .widget-orange .collapse > i:hover{
+	color:#4C9ED9;
+}
+/*工具栏图标样式*/
+.portalpageview .widget-orange .refresh >i{
+    color: #FFF;
+}
+.portalpageview .widget-orange .more >i {
+	color: #FFF;
+}
+.portalpageview .widget-orange .edit >i {
+	color: #FFF;
+}
+
+.portalpageview .widget-orange .refresh >i:hover{
+    color: #e3e3e3;
+}
+.portalpageview .widget-orange .more >i:hover {
+	color: #e3e3e3;
+}
+.portalpageview .widget-orange .edit >i:hover {
+	color: #e3e3e3;
+}
+/**********************
+*portal widget lightRed色
+**********************
+*/
+.portalpageview .widget-lightRed{
+	border: 1px solid #C9C9C9;
+}
+/*头部*/
+.portalpageview .widget-lightRed .widget-head{
+	color: #666;
+	border-top: 1px solid #FFF;
+	border-bottom: 1px solid #CCC;
+	background: #F7594D;
+}
+/*标题*/
+.portalpageview .widget-lightRed .widget-head span.widget-title{
+    text-shadow: 0px 1px #F7594D;
+	color: #fff;
+}
+/*伸缩图标*/
+.portalpageview .widget-lightRed .collapse > i{
+	color:#E3E3E3;
+}
+.portalpageview .widget-lightRed .collapse > i:hover{
+	color:#4C9ED9;
+}
+/*工具栏图标样式*/
+.portalpageview .widget-lightRed .refresh >i{
+    color: #FFF;
+}
+.portalpageview .widget-lightRed .more >i {
+	color: #FFF;
+}
+.portalpageview .widget-lightRed .edit >i {
+	color: #FFF;
+}
+
+.portalpageview .widget-lightRed .refresh >i:hover{
+    color: #e3e3e3;
+}
+.portalpageview .widget-lightRed .more >i:hover {
+	color: #e3e3e3;
+}
+.portalpageview .widget-lightRed .edit >i:hover {
+	color: #e3e3e3;
+}
+/**********************
+*portal widget greenGrass色
+**********************
+*/
+.portalpageview .widget-greenGrass{
+	border: 1px solid #C9C9C9;
+}
+/*头部*/
+.portalpageview .widget-greenGrass .widget-head{
+	color: #666;
+	border-top: 1px solid #FFF;
+	border-bottom: 1px solid #CCC;
+	background: #356E35;
+}
+/*标题*/
+.portalpageview .widget-greenGrass .widget-head span.widget-title{
+    text-shadow: 0px 1px #356E35;
+	color: #fff;
+}
+/*伸缩图标*/
+.portalpageview .widget-greenGrass .collapse > i{
+	color:#E3E3E3;
+}
+.portalpageview .widget-greenGrass .collapse > i:hover{
+	color:#4C9ED9;
+}
+/*工具栏图标样式*/
+.portalpageview .widget-greenGrass .refresh >i{
+    color: #FFF;
+}
+.portalpageview .widget-greenGrass .more >i {
+	color: #FFF;
+}
+.portalpageview .widget-greenGrass .edit >i {
+	color: #FFF;
+}
+
+.portalpageview .widget-greenGrass .refresh >i:hover{
+    color: #e3e3e3;
+}
+.portalpageview .widget-greenGrass .more >i:hover {
+	color: #e3e3e3;
+}
+.portalpageview .widget-greenGrass .edit >i:hover {
+	color: #e3e3e3;
+}
+
+
+/*************************other*****************************/
+.portalpageview .widget {	
+	margin-bottom: 8px;
+}
+
+.portalpageview .widget-content{
+	height: 100px;
+/*	padding: 5px;*/
+	background-color: white;
+	
+}
+.portalpageview .widget-content iframe{
+	height: 100%;
+	width: 100%;
+}
+
+.portalpageview .widget .collapse {
+	display: inline-block;
+	text-decoration: none;
+	float: left;
+}
+
+.portalpageview .widget .edit-box {
+	display: none;
+	margin-bottom: 2px;
+	border-top: white 1px dashed;
+	/*
+	background-color: white;
+	*/
+}
+.portalpageview .widget .collapse {
+	margin-left: 3px;
+	margin-top: 3px;
+}
+
+.portalpageview .widget .right {
+	float: right;
+}
+
+.portalpageview .widget .edit-box>ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.portalpageview .widget .edit-box>ul>li{
+	padding: 5px 0;
+	overflow: hidden;
+}
+.portalpageview .widget .edit-box>ul>li>label{
+	width: 20%;
+	padding-left: 10px;
+	float: left;
+	line-height: 25px;
+	margin-bottom: 5px;
+}
+
+.portalpageview .widget .edit-box .colors{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	float: left;
+	width: 270px;
+	padding-bottom: 5px;
+}
+
+.portalpageview .widget .edit-box .colors li{
+	float: left;
+	width: 20px;
+	height: 20px;
+	margin-right: 5px;
+	border: 1px solid #EEE;
+	cursor: pointer;
+}
+.portalpageview .widget .edit-box .want-delete,
+.portalpageview .widget .edit-box .cancel-delete {
+	color: black;
+	padding-left: 10px;
+	line-height: 26px;
+}
+
+.portalpageview .widget .delete-box {
+	display: none;
+}
+
+.portalpageview .widget-placeholder { 
+	border: 2px dashed #999;
+}
+
+.portalpageview .dock .widget-placeholder {
+	margin: 0 8px 16px 8px;
+	padding: 2px;
+}
+
+.portalpageview .dock:first-child .widget-placeholder{
+	margin-left: 0;
+}
+
+.portalpageview .dock:last-child .widget-placeholder{
+	margin-right: 0;
+}
+.portalpageview .widget .edit {
+	color: #000;
+	padding-right: 8px;
+	display: inline-block;
+	text-decoration: none;
+}
+
+.portalpageview .widget .refresh,
+.portalpageview .widget .more {
+	padding-right: 8px;
+	display: inline-block;
+	text-decoration: none;
+}
+
+.portalpageview .widget .refresh:hover,
+.portalpageview .widget .more:hover {
+	cursor: point;
+}
+
+.portalpageview .widget .docks {
+	width: 70px;
+}
+
+
+.ac_results {border: 1px solid #ccc;background-color: white;overflow: hidden;	z-index: 99999;padding: 5px 0px;margin: 2px 0px 0px;}
+.ac_results ul {width: 100%;list-style-position: outside;list-style: none;padding: 0;margin: 0;}
+.ac_results li {margin: 1px 0px;cursor: pointer;padding: 2px 13px;display: block;color: #393939;font-size: 14px;line-height: 24px;overflow: hidden;}
+.ac_loading {background: white url('indicator.gif') right center no-repeat;}
+.ac_odd {background-color: #fff;}
+.ac_over {background-color: #4F99C6;color:#FFFFFF !important;}
+.ac_results strong {
+    font-weight: bold;
+}
+.all-nav .item{
+	border-bottom: 1px solid #99a0a8;
+}

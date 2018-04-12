@@ -1,0 +1,15 @@
+<xbl xmlns="http://www.w3.org/ns/xbl"
+	xmlns:xbl="http://www.w3.org/ns/xbl"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+   
+	xmlns:xforms="http://www.justep.com/xforms">
+	<xbl:script type="text/javascript" src="/base/base.js"/>
+	<xbl:script type="text/javascript" src="/UI/system/resources/system.res.js"/>
+	<xbl:script type="text/javascript" src="/UI/system_X/components/window/xforms.js"/>
+	
+	
+	<binding id="window" order="inner" >
+		<template template-type="java" src="Window"/>
+	</binding>
+</xbl>

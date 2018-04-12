@@ -1,0 +1,142 @@
+.menuButton {
+	position: relative;
+	display: inline-block;
+	zoom: 1;
+	*display:inline;
+	background-color: white;
+}
+
+.menuButton a {
+	text-decoration: none;
+	display: inline-block;
+}
+			  
+.menuButton .head{
+	padding: 4px;
+	background: white;
+}
+.menuButton .label{
+	font-family: "Microsoft Yahei";
+	font-size: 13px;
+	color: #535353;
+	white-space: nowrap;
+	height: 16px;
+	line-height: 16px;
+}
+.menuButton .arr{
+	cursor: pointer;
+	width: 16px;
+	height: 16px;
+	background: url(./images/arr.png) no-repeat 0 0;
+}
+.menuButton .list .head .arr{
+	background: url(./images/arr.png) no-repeat 0 -16px;
+}
+
+.menuButton .list{
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.menuButton .list .head{
+	padding: 3px 3px 8px 3px;
+	border: #DADADA 1px solid;
+	border-bottom: none;
+	position: relative;
+	z-index: 10;
+}
+.menuButton .list ul{
+	background: white;
+	position: absolute;
+	z-index: 9;
+	top: 27px;
+	left: 0;
+	
+	list-style: none;
+	margin: 0;
+	padding: 0 8px;
+	border: #DADADA 1px solid;
+}
+.menuButton .list ul li{
+	font-family: "Microsoft Yahei";
+	font-size: 13px;
+	color: #535353;
+	white-space: nowrap;
+	margin: 8px 0;
+}
+.menuButton .list ul li.sep{
+	padding-bottom: 8px;
+	border-bottom: #DADADA solid 1px;
+}
+.menuButton .list ul li a{
+	padding: 0;
+}
+.menuButton .icon{
+	*margin: 2px 5px -2px 0;
+	height: 16px;
+	line-height: 16px;
+	width: 16px;
+}
+.menuButton .default{
+	background-image: url(./images/default.png);
+}
+.menuButton .empty-icon{
+	*margin: 2px 5px -2px 0;
+	height: 16px;
+	line-height: 16px;
+	width: 16px;
+	background: translate;
+}
+.menuButton .dropdown,
+.menuButton .dropup {
+	display: block;
+}
+.menuButton .left ul{
+	right: 0;
+	left: auto;
+}
+
+.menuButton span{
+	display: inline-block;
+	vertical-align: top;
+	*display: inline;
+	zoom: 1;
+}
+
+.menuButton .dropup .head{
+	padding: 8px 3px 3px 3px;
+	border: #DADADA 1px solid;
+	border-top: none;
+}
+
+.menuButton .dropup ul{
+	bottom: 27px;
+	top: auto;
+}
+
+.menuButton .dropup{
+	top: auto;
+	bottom: 0;
+}
+
+.menuButton .overlay{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 8;
+	display: none; 
+}
+
+.menuButton .test{
+	display: block;
+}
+
+.menuButton .test .head{
+	visibility: hidden; 
+	/*ie7 visibility bug*/
+	*visibility: visible;
+	*display: none;
+}

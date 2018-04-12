@@ -1,0 +1,126 @@
+* {
+	box-sizing: border-box;
+}
+
+a {
+	cursor: pointer;
+}
+
+.ui-state-active>h5 {
+	color: #1963AA;
+	font-weight: bold;
+}
+
+.tree-group-name {
+	display: block;
+	min-height: 31px;
+	padding-left: 10px;
+	box-sizing: content-box;
+	color: #616161;
+	background: #e0eaf2;
+	background: -webkit-linear-gradient(top, #6DB2E4, #57A0DE);
+}
+
+.tree-group-name>h5 {
+	width: 60px;
+	font-size: 15px;
+	font-weight: normal;
+	line-height: 30px;
+	padding: 0;
+	margin: 0;
+	display: inline;
+}
+
+.tree-group-name>span {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	padding-top: 5px;
+}
+
+.tree-group-name>span>a:hover {
+	color: red;
+}
+
+.tree-group-name>span>a.group-up {
+	color: #99CADB;
+}
+
+.tree-group-name>span>a.group-refresh {
+	color: #ACD392;
+}
+
+.tree-form-ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.tree-form-ul>li {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	line-height: 30px;
+	padding-left: 8px;
+	border-bottom: 1px dotted #E2E2E2;
+	margin: 3px;
+	color: #535353;
+}
+
+.tree-form-ul>li.selected {
+	color: #1963AA;
+	border-bottom: 2px solid blue;
+}
+
+.tree-form-ul>li>a {
+	font-size: 14px;
+}
+
+.tree-form-ul>li>a:hover {
+	color: red;
+}
+
+.tree-form-ul>li>span.formicon {
+	float: left;
+	width: 20px;
+	height: 30px;
+	background: url('./images/form.png') 0px 6px no-repeat;
+}
+
+.ul-material {
+	list-style: circle inside;
+}
+
+.ul-material>li {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-decoration: underline;
+	font-size: 12px;
+}
+
+.ul-material>li>a:hover {
+	color: blue;
+}
+
+
+/* change */
+.tree-group-name {
+	height:36px;
+}
+
+.tree-group-name > h5 {
+	line-height:40px;
+}
+
+.tree-form-ul > li {
+	line-height:30px;
+}
+
+.tree-form-ul > li.selected {
+	border-bottom: 2px solid #4197e0;
+}
+
+.tree-form-ul > li > span.formicon {
+	background-position:0 12px;
+}

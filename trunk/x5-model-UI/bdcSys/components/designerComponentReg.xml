@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<reg-info> 
+  <!-- 组件目录注册  -->  
+  <component-dirs>/UI/bdcSys/components/buildingView</component-dirs>  
+  <!-- 组件工具箱配置 -->  
+  <toolbox> 
+    <catalog name="bdcSys" text="不动产"> 
+      <item component-name="buildingView"/> 
+    </catalog>  
+  </toolbox> 
+</reg-info>

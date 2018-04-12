@@ -1,0 +1,250 @@
+#rootView {
+	width: 98%;
+	margin: 0 auto;
+}
+
+/*以下来自edior的iframe*/
+.view {
+	padding: 0;
+	word-wrap: break-word;
+	cursor: text;
+	height: 100%;
+}
+
+body {
+	margin: 8px;
+	font-family: sans-serif;
+	font-size: 12px;
+	background: url(./image/gfan_bg.png)
+}
+
+p {
+	margin: 5px 0;
+}
+
+.selectTdClass {
+	background-color: #edf5fa !important
+}
+
+table.noBorderTable td,table.noBorderTable th,table.noBorderTable caption
+	{
+	border: 1px dashed #ddd !important
+}
+
+table {
+	margin-bottom: 10px;
+	border-collapse: collapse;
+	display: table;
+}
+
+caption {
+	border: 1px dashed #DDD;
+	border-bottom: 0;
+	padding: 3px;
+	text-align: center;
+}
+
+th {
+	border-top: 2px solid #BBB;
+	background: #F7F7F7;
+}
+
+.ue-table-interlace-color-single {
+	background-color: #fcfcfc;
+}
+
+.ue-table-interlace-color-double {
+	background-color: #f7faff;
+}
+
+td p {
+	margin: 0;
+	padding: 0;
+}
+
+ol,ul {
+	margin: 0;
+	pading: 0;
+	width: 95%
+}
+
+li {
+	clear: both;
+}
+
+ol.custom_cn {
+	list-style: none;
+}
+
+ol.custom_cn li {
+	background-position: 0 3px;
+	background-repeat: no-repeat
+}
+
+li.list-cn-paddingleft-1 {
+	padding-left: 25px
+}
+
+li.list-cn-paddingleft-2 {
+	padding-left: 40px
+}
+
+li.list-cn-paddingleft-3 {
+	padding-left: 55px
+}
+
+ol.custom_cn1 {
+	list-style: none;
+}
+
+ol.custom_cn1 li {
+	background-position: 0 3px;
+	background-repeat: no-repeat
+}
+
+li.list-cn1-paddingleft-1 {
+	padding-left: 30px
+}
+
+li.list-cn1-paddingleft-2 {
+	padding-left: 40px
+}
+
+li.list-cn1-paddingleft-3 {
+	padding-left: 55px
+}
+
+ol.custom_cn2 {
+	list-style: none;
+}
+
+ol.custom_cn2 li {
+	background-position: 0 3px;
+	background-repeat: no-repeat
+}
+
+li.list-cn2-paddingleft-1 {
+	padding-left: 40px
+}
+
+li.list-cn2-paddingleft-2 {
+	padding-left: 55px
+}
+
+li.list-cn2-paddingleft-3 {
+	padding-left: 68px
+}
+
+ol.custom_num {
+	list-style: none;
+}
+
+ol.custom_num li {
+	background-position: 0 3px;
+	background-repeat: no-repeat
+}
+
+li.list-num-paddingleft-1 {
+	padding-left: 25px
+}
+
+ol.custom_num1 {
+	list-style: none;
+}
+
+ol.custom_num1 li {
+	background-position: 0 3px;
+	background-repeat: no-repeat
+}
+
+li.list-num1-paddingleft-1 {
+	padding-left: 25px
+}
+
+ol.custom_num2 {
+	list-style: none;
+}
+
+ol.custom_num2 li {
+	background-position: 0 3px;
+	background-repeat: no-repeat
+}
+
+li.list-num2-paddingleft-1 {
+	padding-left: 35px
+}
+
+li.list-num2-paddingleft-2 {
+	padding-left: 40px
+}
+
+ul.custom_dash {
+	list-style: none;
+}
+
+ul.custom_dash li {
+	background-position: 0 3px;
+	background-repeat: no-repeat
+}
+
+li.list-dash-paddingleft {
+	padding-left: 35px
+}
+
+ul.custom_dot {
+	list-style: none;
+}
+
+ul.custom_dot li {
+	background-position: 0 3px;
+	background-repeat: no-repeat
+}
+
+li.list-dot-paddingleft {
+	padding-left: 20px
+}
+
+.list-paddingleft-1 {
+	padding-left: 0
+}
+
+.list-paddingleft-2 {
+	padding-left: 30px
+}
+
+.list-paddingleft-3 {
+	padding-left: 60px
+}
+
+.pagebreak {
+	display: block;
+	clear: both !important;
+	cursor: default !important;
+	width: 100% !important;
+	margin: 0;
+}
+
+.anchorclass {
+	background:
+		url('/x5/$v2649_no_/UI/system/components/ueditor/themes/default/images/anchor.gif')
+		no-repeat scroll left center transparent;
+	border: 1px dotted #0000FF;
+	cursor: auto;
+	display: inline-block;
+	height: 16px;
+	width: 15px;
+}
+
+pre {
+	margin: .5em 0;
+	padding: .4em .6em;
+	border-radius: 8px;
+	background: #f8f8f8;
+	line-height: 1.5
+}
+
+.xforms-invalid {
+	background-image: url(/x5/$v2649/form/xforms/invalid_line.gif);
+	background-repeat: repeat-x;
+	background-position: bottom;
+}

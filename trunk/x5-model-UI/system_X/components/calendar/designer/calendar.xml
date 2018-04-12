@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<elements> 
+  <element name="calendar" tag-type="rich" tag-name="div" icon="calendar_1.jpg" text="万年历"
+			 is-complex-component="true"
+	         namespace="xhtml"  namespace-uri="http://www.w3.org/1999/xhtml"
+	         display-property="id" 
+			 binding-component="/UI/system_X/components/calendar.xbl.xml#calendar"
+	         component-class="calendar" 
+	         component-type="formControl"> 
+    <properties> 
+      <property name="id" text="编号" required="false"/>  
+      <property name="ref" text="引用" required="false" editor-ref="dataRef"/>  
+      <property name="style" text="样式" editor-ref="styleDialog"> 
+        <property name="width" text="宽度" is-style="true"/> 
+      </property>  
+    </properties>  
+    <templates> 
+      <template name="default"> <![CDATA[ 
+ 	<xhtml:div  component="/UI/system_X/components/calendar.xbl.xml#calendar" style="height:250px;width:410px;background-color:#EEFFFC;"> 
+                
+        <xhtml:div  style="width:100%;height:12%;"> 
+         	<xhtml:table border="0"  style="width:100%;height:100%;background-color:#5BFAFA;font-size:14px;"  cellspacing="0" cellpadding="0"> 
+         		<xhtml:tr class="options"> 
+          			<xhtml:td  style="width:8%;" title="上一年" > 
+            			<xforms:trigger component="/UI/system/components/trigger.xbl.xml#trigger" style="width:80%;"> 
+      						<xforms:label ></xforms:label>
+   						</xforms:trigger>
+          			</xhtml:td>  
+            		<xhtml:td  style="width:8%;"  title="上一月">
+            			<xforms:trigger component="/UI/system/components/trigger.xbl.xml#trigger" style="width:80%;"> 
+      						<xforms:label ></xforms:label>
+   						</xforms:trigger>
+         			</xhtml:td>  
+          			<xhtml:td    bgcolor="#B4EEB4" extKind="dateTitle"></xhtml:td>  
+          			<xhtml:td  style="width:8%;"  title="下一月">
+          	   			<xforms:trigger component="/UI/system/components/trigger.xbl.xml#trigger" style="width:80%;"> 
+      						<xforms:label ></xforms:label>
+   						</xforms:trigger>
+          			</xhtml:td>  
+          			<xhtml:td  style="width:8%;" title="下一年">
+            			<xforms:trigger component="/UI/system/components/trigger.xbl.xml#trigger" style="width:80%;"> 
+      						<xforms:label ></xforms:label>
+   						</xforms:trigger>
+          			</xhtml:td>  
+          			<xhtml:td  style="width:10%;" >
+            			<xforms:trigger component="/UI/system/components/trigger.xbl.xml#trigger" style="width:80%;"> 
+      						<xforms:label ></xforms:label>
+   						</xforms:trigger>
+          			</xhtml:td>  
+          			<xhtml:td  cnDate="cnDateTitle"></xhtml:td> 
+        		</xhtml:tr> 
+      		</xhtml:table>  
+      
+        </xhtml:div>  
+        
+        <xhtml:div  style="width:100%;height:10%;"> 
+          <xhtml:table border="0"  style="width:100%;height:100%;font-size:16px" cellspacing="0" class="options"
+            align="center"> 
+            <xhtml:tr  class="weekdayColor"> 
+              <xhtml:td  >日</xhtml:td>  
+              <xhtml:td  >一</xhtml:td>  
+              <xhtml:td  >二</xhtml:td>  
+              <xhtml:td  >三</xhtml:td>  
+              <xhtml:td  >四</xhtml:td>  
+              <xhtml:td  >五</xhtml:td>  
+              <xhtml:td  >六</xhtml:td> 
+            </xhtml:tr> 
+          </xhtml:table> 
+        </xhtml:div>  
+        
+        <xhtml:div style="width:100%;height:78%;"> 
+          <xhtml:table border="0" style="width:100%;height:100%;font-size:14px" align="center"
+            cellspacing="0" class="dateTable"> 
+            <xhtml:tr class="options"> 
+              <xhtml:td  class="restDayTD"/>  
+              <xhtml:td />  
+              <xhtml:td />  
+              <xhtml:td />  
+              <xhtml:td />  
+              <xhtml:td />  
+              <xhtml:td  class="restDayTD"/> 
+            </xhtml:tr>  
+            <xhtml:tr class="options"> 
+              <xhtml:td  class="restDayTD"/>  
+              <xhtml:td />  
+              <xhtml:td />  
+              <xhtml:td />  
+              <xhtml:td />  
+              <xhtml:td />  
+              <xhtml:td  class="restDayTD"/> 
+            </xhtml:tr>  
+            <xhtml:tr class="options"> 
+              <xhtml:td  class="restDayTD"/>  
+              <xhtml:td />  
+              <xhtml:td />  
+              <xhtml:td />  
+              <xhtml:td />  
+              <xhtml:td />  
+              <xhtml:td  class="restDayTD"/> 
+            </xhtml:tr>  
+            <xhtml:tr class="options"> 
+              <xhtml:td  class="restDayTD"/>  
+              <xhtml:td />  
+              <xhtml:td />  
+              <xhtml:td />  
+              <xhtml:td />  
+              <xhtml:td />  
+              <xhtml:td  class="restDayTD"/> 
+            </xhtml:tr>  
+            <xhtml:tr class="options"> 
+              <xhtml:td  class="restDayTD"/>  
+              <xhtml:td />  
+              <xhtml:td />  
+              <xhtml:td />  
+              <xhtml:td />  
+              <xhtml:td />  
+              <xhtml:td  class="restDayTD"/> 
+            </xhtml:tr>  
+            <xhtml:tr class="options"> 
+              <xhtml:td  class="restDayTD"/>  
+              <xhtml:td />  
+              <xhtml:td />  
+              <xhtml:td />  
+              <xhtml:td />  
+              <xhtml:td />  
+              <xhtml:td  class="restDayTD"/> 
+            </xhtml:tr>  
+          </xhtml:table> 
+        </xhtml:div> 
+  </xhtml:div> 
+		   ]]> </template> 
+    </templates> 
+  </element> 
+</elements>

@@ -1,0 +1,173 @@
+.xui-attachEditor2 {
+	overflow: auto;
+	font-size: 100%;
+}
+
+.att_container{
+	width:100%;
+	height:100%;
+	overflow:auto;
+	position:relative;
+}
+
+/**
+	修改head的高度，需要同时修改body的padding-top
+	需要保证att_head.height + att_head.margin-top + margin-bottom == att_body.padding-top;
+**/
+.att_head {
+	overflow:hidden;
+	height:14px;
+	width:100%;
+	position:absolute;
+	top:0px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+.att_head_limited {
+	overflow:hidden;
+	height:0px;
+	padding-top:0px;
+	padding-bottom:0px;	
+}
+.att_body_limited {
+	height:100%;
+	width:100%;
+	overflow:auto;
+	box-sizing:border-box;
+	padding-top:0px;
+}	
+
+.att_head_btn {
+	color:rgb(51, 102, 255);
+	background-color: transparent;
+	margin-right:8px;
+	margin-left:8px;
+}
+
+.att_upload_btn {
+	position:relative;
+}
+
+
+.att_body {
+	height:100%;
+	width:100%;
+	overflow:auto;
+	box-sizing:border-box;
+	padding-top:30px;
+}
+.att_scroll_area{
+	width:100%;
+	height:100%;
+	overflow:auto;
+}
+
+
+.att_container a {
+	text-decoration: none;
+}
+
+.att_container table {
+	width:100%;
+	border-spacing: 0;
+}
+
+
+
+.att_body_row {
+	height:30px;
+}
+
+.att_body_row:hover {
+	height:30px;
+	background-color: rgba(243,243,243,.85);
+}
+
+.att_body_row_odd {
+}
+
+.att_body_row_ev {
+	background-color: #E3EBF7;
+}
+
+.att_body_btn {
+	font-size:13px;
+	background-color: transparent;
+	cursor: pointer;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+
+.att_body table{
+	width: 100%;
+	table-layout: fixed;
+}
+
+
+.att_size_col {
+	width: 80px;
+}
+
+.att_person_col {
+	width: 50px;
+}
+
+.att_time_col {
+	width: 140px;
+}
+
+.att_edit_col {
+	width: 30px;
+}
+
+.att_down_col {
+	width: 30px;
+}
+
+.att_del_col {
+	width: 30px;
+}
+
+.att_his_col {
+	width: 30px;
+}
+
+.att_name_btn {
+	color: black;
+}
+
+.att_size_btn {
+	color: black;
+/*	cursor:default;*/
+}
+
+.att_person_btn {
+	color: black;
+/*	cursor:default;*/
+}
+
+.att_time_btn {
+	color: black;
+/*	cursor:default;*/
+}
+
+.att_edit_btn{
+	color:rgb(51, 102, 255);
+}
+
+.att_down_btn{
+	color:rgb(51, 102, 255);
+}
+
+.att_del_btn{
+	color:rgb(51, 102, 255);
+}
+
+.att_his_btn {
+	color:rgb(51, 102, 255);
+}
+.att_btn_dis {
+	color: grey;
+}

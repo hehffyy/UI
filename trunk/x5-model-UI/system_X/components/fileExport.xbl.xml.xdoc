@@ -1,0 +1,31 @@
+/**
+	@name UI.fileExport
+	@component /UI/system_X/components/fileExport.xbl.xml#fileExport
+	@class com.butone.FileExport
+	@model UI
+	@description <b>[rich]</b>
+	@example
+	<b>xml格式：</b>
+<xmp>
+	<xhtml:div component="/UI/system_X/components/fileExport.xbl.xml#fileExport" id="fileExport1" onBeforeExecute="testBeforeExecute">
+		<xhtml:iframe xblid="download" src="about:blank" style="display:none"/>
+	</xhtml:div>
+</xmp>
+*/
+
+/**
+	name:fileExport#onBeforeExecute
+	@event 
+	description: <b>[回调型事件]</b>
+	@param event 
+	<br/><b>格式说明：</b>
+	<xmp>
+	{
+		"source" : {Object} 组件的js对象,
+		"bizRecId" :{String} 当前案卷编号,默认justep.Context.getProcessData1()
+		"variants" :{Map} 用于后台数据映射加载表、通用计算组件参数值初始化
+		"filters": {Map} 默认非流程模板、默认查询模板 设置表的过滤条件，否则组件不会加载工作表数据
+	}
+	</xmp>
+*/
+

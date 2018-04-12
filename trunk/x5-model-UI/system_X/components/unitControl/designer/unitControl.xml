@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<elements> 
+  <element name="unitControl" tag-type="rich" tag-name="div" icon="gridSelect.gif"
+    text="单位控制字段" binding-component="/UI/system_X/components/unitControl.xbl.xml#unitControl"
+    base-class="unitControl" namespace="xui" namespace-uri="http://www.justep.com/xforms"
+    display-property="id" component-class="UnitControl" js-class="justep.design.GridSelect"
+    component-type="formControl" design-view="web-designer"> 
+    <properties> 
+      <property name="id" text="编号" required="true"/>  
+      <property name="ref" text="引用" editor-ref="dataRef" required="true"/>  
+      <property name="label-ref" text="label引用" editor-ref="dataRef"/>  
+      <property name="controlData" text="控制数据源" required="true" is-id-ref="true"
+        editor-ref="multiDatasource"/>  
+      <property name="unitType" default-value="" readonly="false" text="单位类别" editor-ref="unitType-list"
+        is-id-ref="true" allow-empty="true"/>  
+      <property name="dispUnit" default-value="" readonly="false" text="默认显示单位"
+        editor-ref="dispUnit-list" editor-parameter="unitType" depend-on="unitType"/>  
+      <property name="controlField" default-value="" readonly="false" text="控制字段"
+        editor-ref="control-unit-list" editor-parameter="controlData" editor-extend-data="unitType"/>  
+      <property name="dropdown-height" text="下拉框高度"/>  
+      <property name="default-class" text="默认class" readonly="true" default-value="xui-select"/>  
+      <property name="class" text="class" editor-extend-data="xui-select:select"/>  
+      <property name="style" text="样式" editor-ref="styleDialog"> 
+        <property name="width" text="宽度" is-style="true"/> 
+      </property>  
+      <property name="tabindex" text="Tab键顺序" data-type="integer"/>  
+      <property name="accesskey" text="快捷键"/>  
+      <property name="readonly" text="只读" editor-ref="edit-readonly" default-value="false"
+        data-type="boolean"/>  
+      <property name="disabled" text="禁用" editor-ref="edit-disabled" default-value="false"
+        data-type="boolean"/> 
+    </properties>  
+    <!--属性编辑器-->  
+    <property-editors> 
+      <!--单位类别-->  
+      <property-editor name="unitType-list" type="list"> 
+        <!--TODO 公共出来-->  
+        <dynamic-data class-name="com.butone.studio.ui.editors.property.datasource.UnitTypeListDatasource"
+          method="getTypeDatasource"/> 
+      </property-editor>  
+      <!--默认显示单位-->  
+      <property-editor name="dispUnit-list" type="list"> 
+        <dynamic-data class-name="com.butone.studio.ui.editors.property.datasource.UnitTypeListDatasource"
+          method="getDispDatasource"/> 
+      </property-editor>  
+      <!--控制字段-->  
+      <property-editor name="control-unit-list" type="dialog"> 
+        <!--数据源-->  
+        <dynamic-data class-name="com.butone.studio.ui.editors.property.datasource.MultiDatasourceRelation"
+          method="getUnitFieldRelations"/>  
+        <!--弹出框-->  
+        <dialog-page class-name="com.justep.studio.ui.editors.propertypage.RelationPage"/> 
+      </property-editor>  
+      <!--DATA数据源-->  
+      <property-editor name="multiDatasource" type="list" mutil-selection="true"> 
+        <dynamic-data class-name="com.butone.studio.ui.utils.XUIUtils" method="getAllDataSourceIds"/> 
+      </property-editor> 
+    </property-editors>  
+    <events> 
+      <!--组件事件-->  
+      <event name="onValueChanged" text="单位改变后"/>  
+    </events>  
+    <templates> 
+      <template name="default"><![CDATA[ 
+				<xhtml:div component="/UI/system_X/components/unitControl.xbl.xml#unitControl"> 
+				</xhtml:div> 
+		   ]]></template> 
+    </templates> 
+  </element> 
+</elements>

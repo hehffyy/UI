@@ -1,0 +1,850 @@
+/*用户扩展样式*/
+* {
+	font-family: Microsoft YaHei, "\5FAE\8F6F\96C5\9ED1", tahoma, arial,EUDC;
+	font-style: normal;
+	border: 0 none;
+	margin: 0;
+	padding: 0;
+}
+
+div {
+	font-size: 14px;
+}
+
+.linetitle {
+	border-bottom: solid 1px #d0dee5;
+	line-height: 35px;
+	position: relative;
+	height: 35px;
+	margin-bottom: 20px;
+}
+
+.linetitle span {
+	font-weight: bold;
+	font-size: 16px;
+	border-bottom: solid 3px #66c9f3;
+	float: left;
+	position: absolute;
+	z-index: 100;
+	bottom: -1px;
+	padding: 0 3px;
+	height: 30px;
+	line-height: 30px;
+}
+
+.noneborder {
+	border: none;
+}
+
+/*输入框显示*/
+.xforms-disabled,table.xforms-control.xforms-appearance-minimal.xforms-disabled
+	{
+	display: inline-table; /*block*/
+}
+
+input,textarea,select {
+	font-size: inherit;
+}
+
+div.grid-compact {
+	color: #333;
+	border-color: #D3D3D3;
+}
+
+div.grid-compact>div {
+	color: #333;
+	border-left: 1px solid #D3D3D3;
+	border-right: 1px solid #D3D3D3;
+}
+
+div.gridbox_justep table.obj tr.rowselected td.cellselected,div.gridbox table.obj td.cellselected
+	{
+	background-color: #5db2ff;
+}
+
+div.gridbox_justep table.obj tr.rowselected td {
+	background-color: #5db2ff;
+	color: black;
+}
+
+div.gridbox table.obj td.group_row {
+	text-align: left;
+}
+
+div.grid-compact table.obj tr.rowselected td,div.grid-compact table.obj tr.rowselected td.cellselected
+	{
+	background-color: #E5FDE1;
+	color: #333;
+}
+
+div.grid-compact .odd_justep {
+	background-color: #F8F8F8 !important;
+}
+
+div.gridbox_justep tr:hover {
+	background-color: #E5FDE1 !important;
+}
+
+.grid-compact .hdr td {
+	text-align: center !important;
+}
+
+div.grid-compact table.obj tr td {
+	padding: 0px 5px;
+}
+
+/*按钮 */
+.xui-button {
+	min-height: 28px !important;
+	border: 1px solid #ddd;
+	background-color: #f3f3f3 !important;
+	border-radius: 3px;
+	width: auto;
+}
+
+.xui-button:hover {
+	border: 1px solid #ddd;
+	background-color: #e5e5e5;
+	color: #fff;;
+	border-radius: 3px;
+}
+
+.xui-button a.xui-button-label:hover {
+	text-decoration: none !important;
+	color: #333;;
+}
+
+.xui-button button {
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	border: 0px none;
+	cursor: pointer;
+	white-space: nowrap;
+	border-radius: 2px;
+	overflow: hidden;
+	box-shadow: none;
+	background-color: #f3f3f3;
+	color: #535353;
+	/*	padding: 2px 10px;*/
+}
+
+.xui-button button span {
+	font-weight: 400;
+}
+
+.xui-button button:hover {
+	background-color: #e5e5e5 !important;
+	border-radius: 3px;
+}
+
+.trigger {
+	min-width: 65px;
+}
+
+/*查询 自定义 弹出窗样式修改*/
+/*zhengff 2016625*/
+.dhtmlx_wins_td_header_middle {
+	background-color: #fbfbfb;
+	background-image: none !important;
+	border-bottom: 3px solid #5DB2FF !important;
+}
+
+.dhtmlx_wins_title_dhx_blue {
+	color: #333 !important;
+	top: 5px !important;
+}
+
+.ui-widget-content {
+	border: 1px solid #e5e5e5 !important;
+}
+
+.dhtmlx_wins_buttons_dhx_blue {
+	top: 6px !important;
+}
+
+.dhtmlx_wins_header {
+	height: 40px !important;
+}
+
+.button_close_default,.show_message_title_button {
+	background: url('./images/close.png') !important;
+	height: 22px !important;
+	width: 22px !important;
+}
+
+.button_close_over_pressed {
+	background: url('./images/close1.png') !important;
+	height: 22px !important;
+	width: 22px !important;
+}
+
+.button_close_over_default {
+	background: url('./images/close1.png') !important;
+	height: 22px !important;
+	width: 22px !important;
+}
+
+.show_message_title_button:hover {
+	background: url('./images/close1.png') !important;
+	height: 22px !important;
+	width: 22px !important;
+}
+
+td.show_message_td_header_middle {
+	background-color: #22acec;
+	color: white !important;
+	background-image: linear-gradient(#3e97c9, #3e97c9);
+	background-repeat: repeat-x;
+	border-color: #c1c1c1 #c1c1c1 #f0f3f3;
+	border-style: solid;
+	border-width: 1px 1px 0;
+	cursor: default;
+	font-size: 2px;
+	height: 31px;
+}
+
+div.show_message_title {
+	color: white !important;
+}
+
+/*按钮修改样式*/
+.trigger-sdpd {
+	display: inline-block;
+	background-image: url('./images/sdpd.png') !important;
+	height: 24px;
+	width: 24px;
+}
+
+.trigger-gzlc {
+	display: inline-block;
+	background-image: url('./images/gzlc.png') !important;
+	height: 24px;
+	width: 24px;
+}
+
+.trigger-dtll {
+	display: inline-block;
+	background-image: url('./images/dtll.png') !important;
+	height: 24px;
+	width: 24px;
+}
+
+.trigger-dlsh {
+	display: inline-block;
+	background-image: url('./images/dlsh.png') !important;
+	height: 24px;
+	width: 24px;
+}
+
+.trigger-ghsc {
+	display: inline-block;
+	background-image: url('./images/ghsc.png') !important;
+	height: 24px;
+	width: 24px;
+}
+
+.trigger-refresh {
+	display: inline-block;
+	background-image: url('./images/refresh.png') !important;
+	height: 24px;
+	width: 24px;
+}
+
+.trigger-save {
+	display: inline-block;
+	background-image: url('./images/save.png') !important;
+	height: 24px;
+	width: 24px;
+}
+
+.trigger-dissave {
+	display: inline-block;
+	background-image: url('./images/save_off.png') !important;
+	height: 24px;
+	width: 24px;
+}
+
+.trigger-choose {
+	display: inline-block;
+	background-image: url('./images/choose.png') !important;
+	height: 24px;
+	width: 24px;
+}
+
+.trigger-flow {
+	display: inline-block;
+	background-image: url('./images/flow.png') !important;
+	height: 24px;
+	width: 24px;
+}
+
+.trigger-next {
+	display: inline-block;
+	background-image: url('./images/next.png') !important;
+	height: 24px;
+	width: 24px;
+}
+
+.trigger-back {
+	display: inline-block;
+	background-image: url('./images/back.png') !important;
+	height: 24px;
+	width: 24px;
+}
+
+.trigger-last {
+	display: inline-block;
+	background-image: url('./images/last.png') !important;
+	height: 24px;
+	width: 24px;
+}
+
+.trigger-relatedInfo {
+	display: inline-block;
+	background-image: url('./images/relatedInfo.png') !important;
+	height: 24px;
+	width: 24px;
+}
+
+.trigger-recordInfo {
+	display: inline-block;
+	background-image: url('./images/recordInfo.png') !important;
+	height: 24px;
+	width: 24px;
+}
+
+.trigger-pause {
+	display: inline-block;
+	background-image: url('./images/pause.png') !important;
+	height: 24px;
+	width: 24px;
+}
+
+.trigger-export {
+	display: inline-block;
+	background-image: url('./images/export.png') !important;
+	height: 24px;
+	width: 24px;
+}
+
+.trigger-stop {
+	display: inline-block;
+	background-image: url('./images/stop.png') !important;
+	height: 24px;
+	width: 24px;
+}
+
+.trigger-ok {
+	display: inline-block;
+	background-image: url('./images/ok.png') !important;
+	height: 24px;
+	width: 24px;
+}
+
+.trigger-eye {
+	display: inline-block;
+	background-image: url('./images/eye.png') !important;
+	height: 24px;
+	width: 24px;
+}
+
+.trigger-search {
+	display: inline-block;
+	background-image: url('./images/search.png') !important;
+	height: 24px;
+	width: 24px;
+}
+
+.trigger-remove {
+	display: inline-block;
+	background-image: url('./images/remove.png') !important;
+	height: 24px;
+	width: 24px;
+}
+
+.trigger-delete {
+	display: inline-block;
+	background-image: url('./images/delete.png') !important;
+	height: 24px;
+	width: 24px;
+}
+
+.trigger-insert {
+	display: inline-block;
+	background-image: url('./images/insert.png') !important;
+	height: 24px;
+	width: 24px;
+}
+
+.trigger-edit {
+	display: inline-block;
+	background-image: url('./images/edit.png') !important;
+	height: 24px;
+	width: 24px;
+}
+
+div.show_message {
+	z-index: 99999;
+}
+
+@font-face {
+	font-family: 'icomoon';
+	src: url('./fonts/icomoon.eot');
+	src: url('./fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+		url('./fonts/icomoon.woff') format('woff'), url('./fonts/icomoon.ttf')
+		format('truetype'), url('./fonts/icomoon.svg#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'EUDC';
+	src: url('./fonts/EUDC.TTE') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.iconfont {
+	font-family: 'icomoon' !important;;
+	speak: none;
+	font-style: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+
+.iconfont-title {
+	font-size: 23px;
+	margin: 10px 0px;
+	color: #fff;
+}
+
+.iconfont-def {
+	font-size: 16px;
+	margin: 10px 0px;
+	color: #596063;
+}
+
+.iconfont-white {
+	color: white !important;
+}
+
+.iconfont-black {
+	color: black !important;
+}
+
+.iconfont-menu {
+	font-size: 16px;
+	padding-right: 5px;
+}
+
+.iconfont-size14 {
+	font-size: 16px;
+}
+
+.iconfont-size16 {
+	font-size: 16px;
+}
+
+.iconfont-size18 {
+	font-size: 18px;
+}
+
+.menuButton .arr_u {
+	cursor: pointer;
+	width: 16px;
+	height: 16px;
+	background: url(./images/arr.png) no-repeat 0 -16px;
+}
+
+.buttonBar {
+	margin: 2px 0 !important;
+}
+
+/*以下覆盖xform.css 
+modify 唐科杰 2015-3-5*/
+/*zhengff 2016625*/
+.xui-button.button-blue button {
+	background: #5db2ff;
+	border: 0px !important;
+}
+
+.xui-button.button-blue button:hover {
+	background: #70bafd !important;
+}
+
+.xui-button.button-purple button {
+	border: 0px !important;
+}
+
+.xui-button.button-hotpink button {
+	border: 0px !important;
+}
+
+.xui-button.button-darkcyan button {
+	border: 0px !important;
+}
+
+.xui-button.button-yellow button {
+	border: 0px !important;
+}
+
+.xui-button.button-green button {
+	border: 0px !important;
+}
+
+.xui-button.button-green button:hover {
+	background: #427913 !important;
+}
+
+.xui-button.button-green button[disabled]:hover {
+	background: #F8F8F8 !important
+}
+
+.xui-button.button-orange button {
+	border: 0px !important;
+}
+
+div.grid-report table.hdr td {
+	background-color: #FFF;
+	background-image: none;
+	border-color: #FDFDFD #B5B5B5 #B5B5B5 #FDFDFD;
+}
+
+div.grid-report table.obj tr.rowselected td,div.grid-compact table.obj tr.rowselected td.cellselected
+	{
+	color: #333;
+}
+
+div.grid-report .odd_justep {
+	background-color: #FFF !important;
+}
+
+div.grid-report table.obj tr:hover {
+	background-color: #FFF !important;
+}
+
+div.grid-report table.obj td.cellselected {
+	background-color: #FFF !important;
+}
+
+div.grid-compact table.hdr td {
+	background-color: #F9F9F9 !important;
+	border-bottom: 1px solid #D3D3D3;
+}
+
+div.gridbox_justep .ev_justep {
+	background-color: #FEFEFE !important;
+}
+
+.xui-button.button-black button {
+	border-radius: 2px;
+	text-align: center;
+	font-weight: 400;
+	color: white;
+	background: #5db2ff !important;
+	border-bottom: 1px solid #5db2ff;
+	*border-bottom: none;
+}
+
+.xui-button.button-black button:hover {
+	background: #7DD74D;
+}
+
+.xui-button button[disabled] {
+	color: #DDD!important;
+	background: #F8F8F8 !important;
+	border-bottom: 1px solid #EDEDED;
+	*border-bottom: none;
+	cursor: default;
+	border-top: 1px solid transparent;
+}
+
+/*
+.xui-button button[disabled],.xui-button button[disabled]:hover {
+	background: #F8F8F8 !important;
+}
+*/
+.dhx_combo_edit {
+	height: 100%;
+}
+
+/* window 提示信息 */
+.x-hint.x-hint-top {
+	top: 40%;
+}
+
+.x-hint {
+	position: absolute;
+	left: 50%;
+	margin-left: -150px;
+	z-index: 1000;
+}
+
+.alert-info {
+	background-image: -webkit-linear-gradient(top, #d9edf7 0, #b9def0 100%);
+	background-image: -o-linear-gradient(top, #d9edf7 0, #b9def0 100%);
+	background-image: linear-gradient(to bottom, #d9edf7 0, #b9def0 100%);
+	background-repeat: repeat-x;
+	filter: progid :           DXImageTransform.Microsoft.gradient (       
+		   startColorstr =     
+		     '#ffd9edf7', endColorstr =           '#ffb9def0', GradientType = 
+		      
+		  0 );
+	border-color: #9acfea;
+}
+
+.alert {
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+	-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 1px 2px
+		rgba(0, 0, 0, 0.05);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 1px 2px
+		rgba(0, 0, 0, 0.05);
+}
+
+.alert-info {
+	background-color: #d9edf7;
+	border-color: #bce8f1;
+	color: #31708f;
+}
+
+.alert {
+	padding: 15px;
+	margin-bottom: 5px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+
+/* loading zhengff*/
+div#statusPanel {
+	background: url(images/ajax-loader.gif) no-repeat center;
+	padding-top: 65px;
+	color: #333;
+}
+
+/** TODO tkj 覆盖bootstrap样式*/
+.form-control[disabled],.form-control[readonly],fieldset[disabled] .form-control
+	{
+	cursor: default !important;
+}
+
+.x-radio[disabled],.x-checkbox[disabled],fieldset[disabled] .x-radio,fieldset[disabled] .x-checkbox,.x-radio input[disabled]+label,.x-checkbox input[disabled]+label
+	{
+	cursor: default !important;
+}
+
+/**********************************************BUTTON 规范 START***********************************************/
+button.button-ok,button.button-yes {
+	color: #fff !important;
+	background-color: #5db2ff !important;
+	border-color: #5db2ff !important
+}
+
+button.button-ok:hover,button.button-yes:hover {
+	color: #fff !important;
+	background-color: #70bafd !important;
+	border-color: #70bafd !important
+}
+
+button.button-cancel:hover,button.button-no:hover {
+	text-decoration: none !important;
+	color: #333 !important;
+	background-color: #c7c7c7 !important;
+	border-color: #c7c7c7 !important
+}
+
+button.button-cancel,button.button-no {
+	background-color: #e6e6e6 !important;
+	border-color: #e6e6e6 !important
+}
+
+/*普通-默认*/
+.xui-button.button-default button {
+	background-color: #fff;
+}
+
+.xui-button.button-default button:hover {
+	background-color: #ccc;
+}
+
+/**重要 */
+.xui-button.button-primary button {
+	color: #fff;
+	background: #70bafd !important;
+}
+
+.xui-button.button-primary button:hover {
+	color: #fff;
+	background: #4285f4 !important;
+}
+
+.xui-button.button-info button {
+	color: #fff;
+	background: #5db2ff !important;
+}
+
+.xui-button.button-info button:hover {
+	background: #6abce2 !important;
+}
+
+/**成功 */
+.xui-button.button-success button {
+	color: #fff;
+	background: #A0D468 !important;
+}
+
+.xui-button.button-success button:hover {
+	background: #53a93f !important;
+}
+
+/*危险 -【删除】*/
+.xui-button.button-danger button {
+	color: #fff;
+	background: #fa6161;
+}
+
+.xui-button.button-danger button:hover {
+	color: #fff;
+	background: #e74b37 !important;
+}
+
+/**警告 */
+.xui-button.button-warning {
+	border: 1px solid #f4b400 !important;
+}
+
+.xui-button.button-warning button {
+	color: #fff;
+	background: #f4b400;
+}
+
+.xui-button.button-warning button:hover {
+	color: #fff;
+	background: #f6c12a !important;
+}
+
+/******************x5改造*********************************/
+.xui-button.button-blue button {
+	background: #5db2ff !important;
+}
+
+.xui-button.button-blue button:hover {
+	background: #6abce2 !important;
+}
+
+.xui-button.button-hotpink button {
+	background: #fa6161 !important;
+}
+
+.xui-button.button-hotpink button:hover {
+	background: #e74b37 !important;
+}
+
+/**错误提示信息**/
+.xforms-invalid {
+	background-color: rgb(255, 255, 227);
+}
+
+.xui-button button[disabled],.xui-button button[disabled]:hover {
+	color: #DDD!important;
+	background: #F8F8F8 !important;
+	border-bottom: 1px solid #EDEDED;
+	*border-bottom: none;
+	cursor: default;
+	border-top: 1px solid transparent;
+}
+
+.xforms-invalid input.xforms-value,.xforms-invalid textarea.xforms-value,.xforms-invalid .xforms-ext-select-input,.xforms-invalid .xforms-item
+	{
+	background-image: url(images/invalid.png);
+	background-repeat: no-repeat;
+	background-position: 5px;
+}
+
+/**********************************************BUTTON 规范 END***********************************************/
+/***********自定义组件*********/
+/*机构选择*/
+.orgSelectExt {
+	border: 1px solid #CCC;
+}
+
+.orgSelectExt .xui-input {
+	border: 0;
+}
+
+.orgSelectExt .clear {
+	position: absolute;
+	background-image: url('./images/qc.png');
+	height: 14px;
+	width: 14px;
+	right: 65px;
+	top: 6px;
+	display: none;
+	cursor: pointer;
+	text-decoration: underline;
+	color: #5db2ff
+}
+
+.orgSelectExt .clear:hover {
+	background-image: url('./images/qc-hover.png');
+}
+
+/*会签*/
+.multiSign .deptName {
+	
+}
+
+.multiSign .personTable {
+	
+}
+
+.multiSign .currentPerson {
+	
+}
+
+.multiSign .personName,.multiSign .signTime {
+	font-weight: bold;
+}
+
+/**惯用语*/
+div.butone_idiom {
+	/*position: absolute;*/
+	float: right;
+	right: 0px;
+	bottom: 0px;
+	width: 60px;
+	border: 1px solid #ddd;
+	height: 28px;
+	background: #5DB2FF;
+	color: white;
+	line-height: 30px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+div.butone_idiom_disabled {
+	color: #6D6D6D !important;
+	background: #f3f3f3 !important;
+}
+
+div.butone_idiom:hover {
+	cursor: pointer;
+}
+
+div.butone_idiom_disabled:hover {
+	cursor: default;
+}
+
+td.impLevel1{
+	background-image: url('./images/level5.png');
+	background-repeat: no-repeat;
+	background-position: left;
+	}
+td.impLevel2 {
+	background-image: url('./images/level2.png');
+	background-repeat: no-repeat;
+	background-position: left ;
+	}

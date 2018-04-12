@@ -1,0 +1,154 @@
+/*desktop*/
+/*TODO 1: add by tkj*/
+.close {
+  float: right;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 1;
+  color: #000000;
+  text-shadow: 0 1px 0 #ffffff;
+  opacity: 0.2;
+  filter: alpha(opacity=20);
+}
+.close:hover,
+.close:focus {
+  color: #000000;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+button.close {
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+}
+
+.x-dialog-resize-overlay {
+  display:none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+/*1:end*/
+
+.x-dialog-body-overflow-hidden {
+  overflow: hidden;
+}
+.x-dialog-drag .x-dialog {
+  cursor: move;
+}
+.x-dialog-resize-h {
+  cursor: s-resize;
+}
+.x-dialog-resize-v {
+  cursor: w-resize;
+}
+.x-dialog-overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  /*IE*/
+  filter: alpha(opacity=40);
+  /*IE*/
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 2000;
+  visibility: hidden;
+  opacity: 0;
+}
+.x-dialog-overlay.x-dialog-overlay-visible {
+  visibility: visible;
+  opacity: 0.5;
+  background-color: #eee;
+}
+.x-dialog {
+  position: fixed;
+  z-index: 2001;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  background-color: #ffffff;
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+.x-dialog.x-dialog-normal {
+  width: auto;
+  height: auto;
+  background-color: #ffffff;
+  border: 1px solid #999999;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  background-clip: padding-box;
+}
+.x-dialog.x-dialog-normal .x-dialog-body {
+  padding: 10px;
+}
+.x-dialog .x-dialog-title {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  border-bottom: 1px solid #e5e5e5;
+  min-height: 16.42857143px;
+  display: none;
+}
+.x-dialog-title .x-dialog-title-bar{
+	 padding: 15px;
+}
+.x-dialog.x-dialog-in {
+  opacity: 1;
+  display: block;
+}
+.x-dialog > .x-resizeBar-left,
+.x-dialog > .x-resizeBar-right {
+  width: 4px;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  cursor: w-resize;
+}
+.x-dialog > .x-resizeBar-right {
+  left: 100%;
+}
+.x-dialog > .x-resizeBar-bottom {
+  height: 4px;
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  cursor: s-resize;
+}
+.x-dialog[showTitle='true'] {
+  padding-top: 56px;
+  /*'padding-top'+'padding-bottom'+text+border*/
+}
+.x-dialog[showTitle='true'] > .x-dialog-title {
+  display: block;
+}
+.x-dialog-title-text {
+  margin: 0;
+  line-height: 1.42857143;
+}
+.x-dialog-title-bar .close {
+  float: right;
+}
+.x-dialog-body {
+  position: relative;
+  overflow: auto;
+  height: 100%;
+}
+@media (min-width: 768px) {
+  .x-dialog-normal {
+    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  }
+}

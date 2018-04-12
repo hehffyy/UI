@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<!--组件的注册文件:designerComponentReg.xml-->
+	<component-reg-file>../../components/designerComponentReg.xml</component-reg-file>
+</config>

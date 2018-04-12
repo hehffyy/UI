@@ -1,0 +1,86 @@
+.funcFrame{
+	background: white;
+}
+
+.funcFrame .title {
+	font-size: 20px;
+}
+
+.funcFrame iframe {
+	width: 100%;
+	height: 99%;
+}
+
+.funcFrame .home-btn{
+	text-decoration: none;
+	margin-top: 6px;
+	display: inline-block;
+	border-radius: 7px;
+	background: url(./images/home.gif) 8px center no-repeat;
+	color: white;
+	padding: 4px 8px 4px 28px;
+	font-size: 12px;
+	cursor: pointer;
+}
+
+.funcFrame .home-btn:hover, 
+.funcFrame .fun-head-right .close:hover {
+	text-decoration:underline;
+}
+
+.funcFrame .logout{
+	margin: 6px 20px 0 10px;
+	vertical-align: top;
+	text-decoration: none;
+	display: inline-block;
+	border-radius: 7px;
+	color: white;
+	padding: 4px 28px 4px 8px;
+	font-size: 12px;
+	
+}
+.funcFrame .logout a{
+	color: white;
+	text-decoration: none;
+	margin-right: 20px;
+	line-height: 20px;
+}
+
+.funcFrame .left{
+	float: left;
+	height: 100%;
+}
+.imLeft{
+	margin-left: 0px !important;
+}
+.funcFrame .func{
+	padding:0;
+}
+.max-func{
+	margin-left: 192px;
+	margin-left: 208px\9;
+}
+
+.min-func{
+	margin-left: 45px;
+	margin-left: 45px\9;
+}
+
+.def-func{
+	margin-left: 0px;
+	margin-left: 0px\9;
+}
+
+.funcFrame .func iframe {
+	width: 100%;
+	height: 99%;
+}
+
+.funcFrame .func .func-title {
+	height: 14px;
+	font-size: 14px;
+	color: #0967B0;
+	padding: 3px 5px;
+	text-align: center;
+	font-weight: bold;
+}

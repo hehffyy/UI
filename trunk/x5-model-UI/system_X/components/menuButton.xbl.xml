@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<xbl:xbl xmlns:xbl="http://www.w3.org/ns/xbl" xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:justep="http://www.justep.com/x5#" xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xforms="http://www.justep.com/xforms" xmlns:ev="http://www.w3.org/2001/xml-events"
+  xmlns:xui="http://www.justep.com/xui" xsl:version="2.0" script-type="text/javascript">  
+  <xbl:binding id="menuButton"> 
+    <xbl:template template-type="xslt"> 
+      <xsl:template match="/*">  
+        <root> 
+		  <xsl:variable name="hasHeadIcon" select=".[string-length(@icon-class) &gt; 0 or string-length(@iconURL) &gt; 0]" />
+		  <xsl:variable name="id" select="@id" />
+		  <xsl:variable name="hasListIcon" select="./*[local-name() = 'menuitem' and (string-length(@icon-class) &gt; 0 or string-length(@iconURL) &gt; 0)]" />
+          <xhtml:a href="#" class="head"> 
+            <xsl:if test="$hasHeadIcon">
+            <xhtml:span class="icon {@icon-class}"/>
+            </xsl:if>  
+            <xhtml:span class="label">
+              <xsl:value-of select="@label"/>
+            </xhtml:span>  
+            <xhtml:span class="arr"/> 
+          </xhtml:a>  
+          <xhtml:div id="{@id}-menu" class="menuButton menu"> 
+	          <xhtml:div class="list"> 
+	            <xhtml:a href="#" class="head"> 
+	              <xsl:if test="$hasHeadIcon">
+	              <xhtml:span class="icon {@icon-class}"/>
+	              </xsl:if>  
+	              <xhtml:span class="label">
+	                <xsl:value-of select="@label"/>
+	              </xhtml:span>  
+	              <xhtml:span class="arr"/> 
+	            </xhtml:a>  
+	            <xhtml:ul> 
+				  <xsl:for-each select="./*[local-name() = 'menuitem']">
+	              <xhtml:li>
+	              	<xsl:if test="@separator='true'">
+					  <xsl:attribute name="class">sep</xsl:attribute>
+	              	</xsl:if> 
+	                <xhtml:a href="#">
+	                  <xsl:if test="@name">
+					    <xsl:attribute name="name" select="@name"></xsl:attribute>
+	                  </xsl:if>
+	                  <xsl:if test="@onClick">
+					    <xsl:attribute name="method"><xsl:value-of select="@onClick"/></xsl:attribute>
+					    <xsl:attribute name="onclick">justep.xbl('<xsl:value-of select="$id"/>').execItem('<xsl:value-of select="@name"/>', event);return false;</xsl:attribute>
+	                  </xsl:if>
+	                  <xsl:if test="@operation-owner and @operation">
+					    <xsl:attribute name="operation-owner"><xsl:value-of select="@operation-owner"/></xsl:attribute>
+					    <xsl:attribute name="operation"><xsl:value-of select="@operation"/></xsl:attribute>
+					    <xsl:attribute name="onclick">justep.xbl('<xsl:value-of select="$id"/>').execItem('<xsl:value-of select="@name"/>', event);return false;</xsl:attribute>
+	                  </xsl:if>
+	                  <xsl:if test="$hasListIcon">
+	    	              <xhtml:span class="icon {if(string-length(@icon-class) &gt; 0) then @icon-class else 'empty-icon'}"></xhtml:span>  
+		              </xsl:if> 
+	                  <xhtml:span class="label"><xsl:value-of select="@label"/></xhtml:span> 
+	                </xhtml:a>
+	              </xhtml:li> 
+	              </xsl:for-each> 
+	            </xhtml:ul> 
+	          </xhtml:div>
+	          <xhtml:div class="overlay"></xhtml:div>
+          </xhtml:div>
+           
+        </root>  
+      </xsl:template>  
+    </xbl:template>  
+    <xbl:implementation><![CDATA[
+			({
+				initXBL: function(){
+					var me = this;
+					this.$node = $(this.domNode);
+					this.$head = $(">.head", this.$node);
+					this.$list = $(".list", this.$node);
+					this.$menu = $("#" + this.domNode.id + "-menu");
+					
+					$("body").append(this.$menu);
+					this.$listHead = $(">.head", this.$list);
+					this.$listBody = $(">ul", this.$list);
+					this.mode = this.$node.attr("mode") || '';
+
+					var onLabelClick = justep.Function.get(this.$node.attr("onLabelClick"));
+					if(onLabelClick){
+						this.$head.click(onLabelClick);
+						this.$listHead.click(function(event){
+							me.close();
+							onLabelClick.call(null, event);
+						});
+					}
+					
+					(onLabelClick? $('.arr', this.$head) : this.$head).click(function(){
+						me.open();
+						return false;
+					});
+
+					(onLabelClick? $('.arr', this.$listHead) : this.$listHead).click(function(){
+						me.close();
+						return false;
+					});
+					
+					this.$listBody.click(function(){
+						me.close();
+						return false;
+					});
+					
+					this.$overlay = $('>.overlay', this.$menu).click(function(){
+						me.close();
+					});
+				},
+				"initXBL2" : function() {
+					/*item class*/
+					function OpItem(owner, name, el, operationOwner, operation){
+						this.owner = owner;
+						this.name = name;
+						this.$el = $(el);
+						var me = this;
+
+						this.operationNotify = function(event){
+							if(event.type == 'change'){
+								var name = event.property;
+								if(name=='label'){
+									me.setLabel(event.value);
+								}
+								if(name=='enable'){
+									me.setDisabled(!event.value);
+								}
+							}
+						};
+
+						this.operationOwner = justep.xbl(operationOwner);
+						if(this.operationOwner){
+							this.operation = this.operationOwner.getOperation(operation);;
+							this.operation.registerObserver(this);
+						} 
+						this.method = function(){
+							if(me.operation) me.operation.execute();
+						};						
+						this.setDisabled = function(value){
+							if(value){
+								this.$el.attr('disabled', 'disabled');
+							}else{
+								this.$el.removeAttr('disabled');
+							}
+						};	
+						this.setLabel = function(value){
+							$('.label', this.$el).html(value);
+						};
+						if(!justep.String.trim($('.label', this.$el).html()))
+							this.setLabel(this.operation.getLabel());
+						if(!justep.String.trim($('.label', this.$el).html()))
+							this.setLabel(this.operation.getLabel());
+						this.setDisabled(!this.operation.getEnable());
+						
+						if($('.icon', this.$el).attr('class') == 'icon empty-icon' && this.operation.getIconClass())
+							$('.icon', this.$el).attr('class', 'icon ' + this.operation.getIconClass());
+					}
+					
+					function Item(owner, name, el, method){
+						this.owner = owner;
+						this.name = name;
+						this.$el = $(el);
+						eval('this.method = function(event){' + method +'(event);}');
+						this.setDisabled = function(value){
+							if(value){
+								this.$el.attr('disabled', 'disabled');
+							}else{
+								this.$el.removeAttr('disabled');
+							}
+						};	
+					}
+					
+					/*init item*/
+					this.items = {};
+					var me = this;
+					$('>ul>li>a', this.$list).each(function(){
+						var name = $(this).attr('name');
+						if(!me.items[name]){
+							var obj;
+							var method = $(this).attr('method');
+							var operationOwner = $(this).attr('operation-owner');
+							var operation = $(this).attr('operation');
+							if(operationOwner && operation){
+								obj = new OpItem(me, name, this, operationOwner, operation); 
+							}else if(method){
+								obj = new Item(me, name, this, method); 
+							}
+							me.items[name] = obj;
+						}
+					});
+				},
+				open: function(){
+					this.$listHead.width(this.$head.width());
+					/*清空上次计算的样式*/
+					this.$listBody.attr('style', ' ');
+					
+					var cls = 'dropdown';
+					if(this.mode == 'auto'){
+						/*通过显示计算区域大小*/
+						var oriStyle = this.$node.attr("style") || ' ';
+						this.$node.attr('style', oriStyle + ';overflow: hidden');
+						this.$list.addClass('test');
+						var w = Math.max(this.$listBody.outerWidth(), this.$listHead.outerWidth()),
+							h = this.$listBody.outerHeight() + this.$listHead.outerHeight();
+						this.$list.removeClass('test');
+						this.$node.attr('style', oriStyle);
+						
+						if((this.$node.offset().top - $(document).scrollTop() + h) > $(window).height())
+							cls = 'dropup';
+						if((this.$node.offset().left - $(document).scrollLeft() + w) > $(window).width())
+							cls += ' left';
+					}else{
+						if(this.mode.indexOf('up') != -1){
+							cls = 'dropup';
+						}
+						if(this.mode.indexOf('left') != -1){
+							cls += ' left';
+						}
+					}
+					
+					this.$menu.css(this.$head.offset());
+					this.$list.addClass(cls);
+					this.$overlay.show();
+
+					/* 计算最小宽度 */
+					this.$listBody.width(
+						Math.max(this.$listBody.outerWidth(), this.$listHead.outerWidth())
+						- (this.$listBody.outerWidth() - this.$listBody.width()) 
+					);
+
+					/* 计算偏移位置*/
+					this.$listBody.css(((cls.indexOf('dropdown') != -1)? 'top' : 'bottom'), this.$listHead.innerHeight());
+				},
+				
+				close: function(){
+					this.$list.removeClass("dropdown dropup left");
+					this.$overlay.hide();
+				},
+				
+				setDisabled: function(name, value){
+					this.getItem(name) && this.getItem(name).setDisabled(value);
+				},
+				
+				getItem: function(name){
+					return this.items[name];
+				},
+				execItem: function(name, event){
+					var item = this.getItem(name);
+					if(!item || item.$el.attr('disabled')) return;
+					if(item.method)
+						item.method(event);
+				}
+			})
+		]]> </xbl:implementation>  
+    <xbl:resources> 
+      <xbl:style src="/UI/system/components/menuButton/menuButton.css"/> 
+    </xbl:resources> 
+  </xbl:binding> 
+</xbl:xbl>

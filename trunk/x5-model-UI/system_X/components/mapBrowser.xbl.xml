@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xbl:xbl xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:justep="http://www.justep.com/x5#"
+	xmlns:xbl="http://www.w3.org/ns/xbl"
+	xmlns:xhtml="http://www.w3.org/1999/xhtml"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xsl:version="2.0"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xforms="http://www.justep.com/xforms"
+	script-type="text/javascript">
+	<xbl:script type="text/javascript" src="/UI/system/components/dialog/dialog.js"/>
+	<xbl:script type="text/javascript" src="/UI/system/components/windowDialog/windowDialog.js"/>
+	<xbl:script type="text/javascript" src="/UI/system/components/windowOpener/windowOpener.js"/>  
+    <xbl:script type="text/javascript" src="/UI/system/components/windowRunner/windowRunner.js"/>  
+    <xbl:script type="text/javascript" src="/UI/base/mapBrowser/gisUtils.js"/>
+    <xbl:script type="text/javascript" src="/UI/system/components/windowFrame/windowFrame.js"/>
+	
+	<xbl:binding id="mapBrowser">
+		<xbl:template template-type="java" src="MapBrowser"/>
+		<xbl:implementation>
+		({
+			"initXBL" : function() {
+				var node = this.domNode;
+				var url = node.getAttribute('url');
+				if(!url)
+					url="/UI/base/mapBrowser/mapBrowser.w";
+				this.subSystemName = node.getAttribute('subSystemName');
+				var runKind = node.getAttribute('runKind');
+				this.runKind = runKind;
+				if("frame" == runKind){
+					var frame = new justep.WindowFrame(this.domNode.id, url, this.domNode.getAttribute("auto-load"), 
+														this.domNode.getAttribute('onSend'), this.domNode.getAttribute('onReceive'), this.domNode.getAttribute('onInit'), this.domNode.getAttribute('onInitFrame'),
+														{"process":this.domNode.getAttribute("process"),"activity":this.domNode.getAttribute("activity")});
+					justep.Object.extend(this, frame);
+				}else if("runner" == runKind){
+					var runner = new justep.WindowRunner(url,node.getAttribute('title'),null,node.getAttribute('onSend'),node.getAttribute('onReceive'));
+					runner.setProcess(node.getAttribute("process"));
+					runner.setActivity(node.getAttribute("activity"));
+					justep.Object.extend(this, runner);
+				}else if ("opener" == runKind){
+					var option = {id:node.id,
+							  	url:url,
+							  modal:node.getAttribute('modal')=="true",
+							  width:node.getAttribute('width'),
+							  height:node.getAttribute('height'),
+							  left:node.getAttribute('left'),
+							  top:node.getAttribute('top'),
+							  parameters:node.getAttribute('parameters'),
+							  status:node.getAttribute('status') == "maximize"?"fullscreen":"",
+							  resizable:node.getAttribute('resizable')!="false",
+							  process:node.getAttribute("process"),
+							  activity:node.getAttribute("activity"),
+				              onSend:node.getAttribute('onSend'), 
+				              onReceive:node.getAttribute('onReceive'),
+				              onOpen:node.getAttribute('onOpen'),
+				              onClose:node.getAttribute('onClose')};
+					var opener = new justep.WindowOpener(option);
+					justep.Object.extend(this, opener);
+				}else{
+					var dialog = new justep.WindowDialog(node.id,url,node.getAttribute('title'),node.getAttribute('modal')=="true",node.getAttribute('status'),
+				                  node.getAttribute('width'),node.getAttribute('height'),node.getAttribute('left'),node.getAttribute('top'),node.getAttribute("reload-on-open") =='true',
+				                  node.getAttribute('onSend') , node.getAttribute('onReceive') ,node.getAttribute('onInit') ,node.getAttribute('onOpen') ,node.getAttribute('onClose'));
+					dialog.setClosable(node.getAttribute('closable')!="false");
+					dialog.setMinmaxable(node.getAttribute('minmaxable')!="false");
+					dialog.setResizable(node.getAttribute('resizable')!="false");
+					dialog.setNeighbor(node.getAttribute('neighbor'));
+					dialog.setAutoSize(node.getAttribute('autosize')=="true");
+					dialog.setShowTitle(node.getAttribute("show-title")!="false");
+					dialog.setProcess(node.getAttribute("process"));
+					dialog.setActivity(node.getAttribute("activity"));
+					justep.Object.extend(this, dialog);
+				}
+			},
+			
+			"openMap" : function(){
+				this.open();
+			}
+		})			
+		</xbl:implementation>
+	</xbl:binding>
+</xbl:xbl>

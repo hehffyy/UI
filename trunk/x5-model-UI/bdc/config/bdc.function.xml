@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root> 
+    <item label="模型管理" icon16="mo01.png"> 
+      
+      
+    <item label="业务配置"> 
+      <item label="统一收件流程定义" process="/bdc/gwbl/process/activitymapping/activitymappingProcess"
+        activity="mainActivity" url="/bdc/gwbl/process/activitymapping/mainActivity.w"/>  
+       
+    </item> 
+  </item> 
+  
+   
+  <item display="solid" label="统一收件"> 
+    <item label="业务登记" process="/bdc/gwbl/process/bdcsjprebizrec/bdcsjprebizrecProcess"
+      activity="mainActivity" url="/bdc/gwbl/process/bdcsjprebizrec/mainActivity.w"/>  
+     
+  </item> 
+  
+  
+</root>

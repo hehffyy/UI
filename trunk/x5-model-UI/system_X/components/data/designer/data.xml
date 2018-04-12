@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<elements>
+	<element name="bizData" tag-type="rich" tag-name="data" icon="bizData.gif" text="业务数据" 
+		binding-component="/UI/system/components/data.xbl.xml#bizData" display-property="id"
+		component-class="BizData" base-class="data" runtime-js-class="justep.XBizData"
+		component-type="data" parent-range="model" checkup-condition="count(ancestor::node()[string(@component)!='' and string(@component)!='/UI/system/components/window.xbl.xml#window'])=0">
+		<properties>
+			<property name="id" text="编号" required="true" />        
+<!--			<property name="concept" text="概念" required="true" editor-ref="conceptDlg" enum-values="name"/>-->
+			<property name="concept" text="概念" required="true" editor-ref="conceptActionDlg" ref-type="Concept" ref-context="reader/a"/>
+			<property name="reader" text="加载数据Action" required="true" editor-ref="actionDlg" path="reader/@action" type="complex" ref-type="ActionPath"/>
+			<property name="writer" text="写数据Action" editor-ref="actionDlg" path="writer/@action" type="complex" ref-type="ActionPath"/> 
+<!--			editor-ref="actionsDlg"-->
+			<property name="creator" text="新增数据Action" editor-ref="actionDlg" path="creator/@action" type="complex" ref-type="ActionPath"/>
+			<property name="relations" text="关系别名" editor-ref="relationsDlg" ref-type="Relation/m" ref-context="reader/a"/>	
+			<property name="filter-relations" text="允许过滤的关系" editor-ref="relationsDlg" ref-type="Relation/m" ref-context="reader/a"/>
+			<property name="limit" text="条数"  data-type="integer" default-value="20"/>
+			<property name="order-by" text="关系:排序" editor-ref="orderByRelationDlg" allow-empty="true"/>
+			<property name="update-mode" text="数据提交模式"  default-value="whereVersion" editor-ref="updatemodeList" enum-values=""/>
+			<property name="direct-delete" text="直接删除" default-value="false" editor-ref="booleanList" data-type="boolean"/>
+			<property name="confirm-delete" text="删除提示" default-value="true" editor-ref="booleanList" data-type="boolean"/>  
+			<property name="confirm-delete-text" text="删除提示文本" />        
+			<property name="confirm-refresh" text="刷新提示，数据修改后刷新数据进行提示" default-value="true" editor-ref="booleanList" data-type="boolean"/>
+			<property name="confirm-refresh-text" text="刷新提示文本" />
+			<property name="auto-load" text="自动加载数据，和auto-new属性互斥" default-value="false"  editor-ref="booleanList" data-type="boolean"/>
+			<property name="auto-new" text="自动新增数据，和auto-load属性互斥" default-value="false"  editor-ref="booleanList" data-type="boolean"/>
+			<property name="store-type" text="数据存贮类型" default-value="grid" editor-ref="storeTypeList" enum-values=""/>			       
+			<property name="data-type" text="数据序列化格式,支持xml/json" default-value="xml" editor-ref="dataTypeList" enum-values=""/>			       
+
+			<property name="is-tree" text="是否树型数据" default-value="false" editor-ref="booleanList" data-type="boolean"/>
+			<group name="tree-option" text="树选项" enabled-condition="@is-tree='true'" checkup-condition="@is-tree='true'">
+				<property name="parent-relation" required="true" path="tree-option/@parent-relation" type="complex" text="父关系" editor-ref="relationDlg" data-ref="true"/>
+				<property name="node-kind-relation"  required="false" path="tree-option/@node-kind-relation" type="complex" text="节点类型关系" editor-ref="relationDlg" data-ref="true"/>
+				<property name="virtual-root" path="tree-option/@virtual-root" text="虚根" type="complex" editor-ref=""/>
+				<property name="node-level-relation"  required="false" path="tree-option/@node-level-relation" type="complex" text="节点级别关系" editor-ref="relationDlg" data-ref="true"/>
+				<property name="root-filter"  required="false" path="tree-option/@root-filter" text="根条件" type="complex" editor-ref="" allow-empty="true"/>      
+			</group>
+			
+			<group name="master" text="主从选项">
+				<property name="data" path="master/@data" text="主数据" is-id-ref="true" type="complex" editor-ref="contextComponent" editor-parameter="data"/>
+				<property name="relation" path="master/@relation" text="关联关系" type="complex" editor-ref="relationDlg" ref-type="Relation" ref-context="id/d"/>
+				<!-- 
+				<property name="auto-load" path="master/@auto-load" text="自动加载"  default-value="false" type="complex" editor-ref="booleanList"/>   
+				 -->
+			</group>
+		</properties>
+
+		<property-editors><!--属性编辑器描述，可通过下拉列表或者弹出对话框来设置属性值，不这是默认问普通的文本输入框。-->
+			<property-editor name="updatemodeList" type="list" >
+				<static-data value="whereVersion,whereAll"/> <!--直接定义的静态数据 -->				
+			</property-editor>
+			<property-editor name="storeTypeList" type="list" >
+				<static-data value="grid,simple"/>
+			</property-editor>
+			<property-editor name="dataTypeList" type="list" >
+				<static-data value="json,xml"/>
+			</property-editor>
+
+			<property-editor name="rulesDlg" type="dialog">
+				<dynamic-data class-name="com.justep.studio.ui.editors.property.datasource.BizDataActionDatasource" method="getDatasource"/>
+				<dialog-page class-name="com.justep.studio.ui.editors.propertypage.BizDataPage"/>
+			</property-editor>
+			
+			<property-editor name="orderByRelationDlg" type="dialog">
+				<dialog-page class-name="com.justep.studio.ui.editors.propertypage.DataOrderByPage"  />				
+			</property-editor>
+
+			<property-editor name="conceptActionDlg" type="dialog">
+				<dialog-page class-name="com.justep.studio.ui.editors.propertypage.ConceptActionPage"  />				
+			</property-editor>
+			
+		</property-editors>
+		<templates>
+		   <template name="default"><![CDATA[ 
+			<data component="/UI/system/components/data.xbl.xml#bizData"
+			update-mode="whereVersion" data-type="json"
+			auto-load="false">
+			</data>
+		   ]]></template>
+		</templates>
+		<events>
+           <event name="onCreate" text="创建"/>
+           <event name="onDataChanged" text="数据发生变化（包括新增、刷新、删除、修改引起的变化），感知从data的变化"/>
+           <event name="onLoadSlave" text="加载从数据"/>
+           <event name="onIndexChanging" text="索引改变中"/>
+           <event name="onIndexChanged" text="索引改变"/>
+           <event name="onValueChanging" text="数据改变中"/>
+           <event name="onValueChanged" text="数据改变"/>
+           <event name="onNewError" type="callback" text="新增失败"/>
+           <event name="onNewCreateParam" text="创建新增参数"/>
+           <event name="onBeforeNew" text="新增前"/>
+           <event name="onCustomNew" text="接管新增"/>
+           <event name="onAfterNew" text="新增后"/>
+           <event name="onDeleteError" text="删除失败"/>
+           <event name="onBeforeDelete" text="删除前"/>
+           <event name="onCustomDelete" text="接管删除"/>
+           <event name="onAfterDelete" text="删除后"/>
+           <event name="onRefreshError" text="刷新失败"/>
+           <event name="onRefreshCreateParam" text="创建刷新参数"/>
+           <event name="onBeforeRefresh" text="刷新前"/>
+           <event name="onCustomRefresh" text="接管刷新"/>
+           <event name="onAfterRefresh" text="刷新后"/>
+           <event name="onBeforeRefreshTree" text="树数据刷新前"/>
+           <event name="onCustomRefreshTree" text="接管树数据刷新"/>
+           <event name="onAfterRefreshTree" text="树数据刷新后"/>
+           <event name="onBeforeRefreshPage" text="分页数据刷新前"/>
+           <event name="onAfterRefreshPage" text="分页数据刷新后"/>
+           <event name="onSaveError" text="保存失败"/>
+           <event name="onSaveCreateParam" text="创建保存参数"/>
+           <event name="onBeforeSave" text="保存前"/>
+           <event name="onCustomSave" text="接管保存"/>
+           <event name="onAfterSave" text="保存后"/>
+           <event name="onSaveCommit" text="保存事务提交"/>           
+        </events>
+		<operations>
+			<operation name="new" label="新建" img-src="" dis-src=""  enable="true" visible="true" icon-class="icon-system-plus"/>
+			<operation name="newChild" label="新建子节点" img-src="" dis-src=""  enable="true" visible="true" icon-class=""/>
+			<operation name="newBrother" label="新建兄弟节点" img-src="" dis-src=""  enable="true" visible="true" icon-class=""/>
+			<operation name="save" label="保存" img-src="" dis-src=""  enable="true" visible="true" icon-class="icon-system-floppy"/>
+			<operation name="delete" label="删除" img-src="" dis-src=""  enable="true" visible="true" icon-class="icon-system-trash"/>
+			<operation name="refresh" label="刷新" img-src="" dis-src=""  enable="true" visible="true" icon-class="icon-system-refresh"/>
+			<operation name="prevPage" label="上页" img-src="" dis-src=""  enable="true" visible="true" icon-class="icon-system-angle-left"/>
+			<operation name="nextPage" label="下页" img-src="" dis-src=""  enable="true" visible="true" icon-class="icon-system-angle-right"/>
+			<operation name="prevRow" label="上一条" img-src="" dis-src=""  enable="true" visible="true" icon-class="icon-system-angle-up"/>
+			<operation name="nextRow" label="下一条" img-src="" dis-src=""  enable="true" visible="true" icon-class="icon-system-angle-down"/>
+			<operation name="loadNextPage" label="下页" img-src="" dis-src=""  enable="true" visible="true" icon-class=""/>
+			<operation name="loadAllPage" label="全部" img-src="" dis-src=""  enable="true" visible="true" icon-class=""/>
+		</operations>
+		<toolbar>			
+			<item text="编辑规则" method="editRule"/>				
+			<item text="增加过滤条件" method="newFilter"/>	
+			<item text="增加计算关系" method="newCalculate"/>	
+			<!-- <item text="增加统计关系" method="newAggregate"/> -->	
+			<item text="生成Grid视图" method="generateGridView"/>
+			<item text="生成Tree视图" method="generateTreeView"/>
+			<item text="生成绝对布局" method="generateAbsoluteView"/>
+			<item text="生成Excel布局" method="generateExcelView"/>
+			<item text="编辑操作"  method="editOperatoions"/>
+		</toolbar>
+	</element>
+	<element name="dataBizRule" tag-name="rule" icon="rule.gif" text="规则" display-property="relation,concept"
+	   discriminate-condition="parent()/@component=/UI/system/components/data.xbl.xml#bizData">
+		<properties>
+			<property name="concept" text="概念别名"  editor-ref="conceptDlg" ref-type="Concept" ref-context="reader/a"/>
+			<property name="relation" text="关系别名"   editor-ref="relationDlg" data-ref="true"/>
+			<property name="readonly" text="只读" editor-ref="xpathEditor"/>
+			<property name="calculate" text="计算" editor-ref="xpathEditor"/>			
+			<property name="required" text="必须" editor-ref="xpathEditor"/>
+			<property name="relevant" text="可见性" editor-ref="xpathEditor"/>
+			<property name="constraint" text="约束" editor-ref="xpathEditor"/>
+			<property name="default-value" text="新增默认值" editor-ref=""/>
+			<property name="alert" text="提示" editor-ref=""/>
+			<property name="format" text="数据校验" editor-ref="formatList" enum-values="" />	
+					
+		</properties>
+		<property-editors>
+			<property-editor name="actionsDlg" type="dialog">
+				<dynamic-data class-name="com.justep.studio.ui.editors.property.datasource.RuleActionsDatasource" method="getDatasource"/>
+				<dialog-page class-name="com.justep.studio.ui.editors.propertypage.ConceptPage"/>				
+			</property-editor>
+			<property-editor name="formatList" type="list" >
+				<static-data value="ip,card,tel,mobile,post,email,url,date,time,dateTime" />				 
+			</property-editor>
+		</property-editors>
+		<templates>
+		   <template name="default"><![CDATA[
+			<rule></rule>
+		   ]]></template>
+		</templates>
+	</element>
+	<element name="dataRule" tag-name="rule" icon="rule.gif" text="规则" display-property="column"
+	   discriminate-condition="parent()/@component=/UI/system/components/data.xbl.xml#data">
+		<properties>
+			<property name="column" text="列别名" editor-ref="relationDlg"/>
+			<property name="type" text="类型" default-value="string" editor-ref="dataTypeList" enum-values=""/>
+			<property name="readonly" text="只读" editor-ref="xpathEditor"/>
+			<property name="calculate" text="计算" editor-ref="xpathEditor"/>			
+			<property name="required" text="必须" editor-ref="xpathEditor"/>
+			<property name="relevant" text="可见性" editor-ref="xpathEditor"/>
+			<property name="constraint" text="约束" editor-ref="xpathEditor"/>
+			<property name="alert" text="提示" editor-ref=""/>		
+		</properties>
+		<property-editors>
+			<property-editor name="actionsDlg" type="dialog">
+				<dynamic-data class-name="com.justep.studio.ui.editors.property.datasource.RuleActionsDatasource" method="getDatasource"/>
+				<dialog-page class-name="com.justep.studio.ui.editors.propertypage.ConceptPage"/>				
+			</property-editor>
+		</property-editors>
+		<templates>
+		   <template name="default"><![CDATA[ 
+			<rule></rule>
+		   ]]></template>
+		</templates>
+	</element>
+	
+	<element name="treeOption" tag-name="tree-option" icon="tree_cfg.gif" text="树选项" 
+		validator="TreeOptionValidator" design-view="web-designer" 
+		discriminate-condition="parent()/@component=/UI/system/components/data.xbl.xml#bizData">
+		<properties>
+				<property name="parent-relation"  text="父关系" editor-ref="relationDlg" data-ref="true"/>
+				<property name="node-kind-relation"  text="节点类型关系" editor-ref="relationDlg" data-ref="true"/>
+				<property name="virtual-root"  text="虚根" editor-ref=""/>
+				<property name="node-level-relation"  text="节点级别关系" editor-ref="relationDlg" data-ref="true"/>
+				<property name="root-filter"  text="根条件" editor-ref="" allow-empty="true"/>      
+		</properties>
+	</element>
+	
+	<element name="filter" tag-name="filter" icon="filter.gif" text="过滤" display-property="name"
+		validator="filterValidator" design-view="web-designer" 
+		discriminate-condition="parent()/@component=/UI/system/components/data.xbl.xml#bizData">
+		<properties>
+			<property name="name" text="名称" required="true" editor-ref=""/>
+			<property name="filter" text="内容" editor-ref="filterDialog" is-virtual = 'true' fixed-value='[...]'/>
+		</properties>
+		
+		<property-editors><!--属性编辑器描述，可通过下拉列表或者弹出对话框来设置属性值，不这是默认问普通的文本输入框。-->
+			<property-editor name="filterDialog" type="dialog">
+				<dialog-page class-name="EditFilterPage"/>				
+			</property-editor>
+		</property-editors>
+		
+		<templates>
+		   <template name="default"><![CDATA[ 
+			<filter name=""></filter>
+		   ]]></template>
+		</templates>
+	</element>
+
+	<element name="calculate-relation" tag-name="calculate-relation" icon="calculate-relation.png" text="计算关系" display-property="relation"
+		discriminate-condition="starts-with(parent()/@component,'/UI/system/components/data.xbl.xml')">
+		<properties>
+			<property name="relation" text="名称" required="true" editor-ref=""/>
+			<property name="type" text="数据类型" default-value="string" editor-ref="dataTypeList"/>
+		</properties>
+		<templates>
+		   <template name="default"><![CDATA[ 
+			<calculate-relation relation="" />
+		   ]]></template>
+		</templates>
+	</element>
+
+	<element name="aggregate-relation" tag-name="aggregate-relation" icon="aggregate-relation.png" text="统计关系" display-property="relation"
+	discriminate-condition="parent()/@component=/UI/system/components/data.xbl.xml#bizData">
+		<properties>
+			<property name="relation" text="名称" required="true" editor-ref=""/>
+			<property name="calculate" text="计算" editor-ref="xpathEditor"/>			
+		</properties>
+		<templates>
+		   <template name="default"><![CDATA[ 
+			<aggregate-relation relation="" />
+		   ]]></template>
+		</templates>
+	</element>
+	
+	<element name="master" tag-name="master" icon="element.gif" text="主键" 
+		validator="masterValidator" design-view="web-designer" 
+		discriminate-condition="parent()/@component=/UI/system/components/data.xbl.xml#bizData">
+		<properties>
+				<property name="data" text="主数据" is-id-ref="true" editor-ref="dataDlg"/>
+				<property name="relation" text="关联关系" editor-ref="relationDlg"/>
+				<!-- 
+				 <property name="auto-load" text="自动加载" default-value="true" editor-ref="booleanList"/>   
+				 -->
+		</properties>
+	</element>
+	
+	<element name="data" tag-type="rich" tag-name="data" icon="commonData.gif" text="通用数据" 
+		binding-component="/UI/system/components/data.xbl.xml#data" display-property="id"
+		discriminate-condition="@component=/UI/system/components/data.xbl.xml#data"
+		component-class="BizData" parent-range="model"  base-class="data" runtime-js-class="justep.XData"
+		component-type="data" validator="DataValidator" design-view="web-designer" checkup-condition="count(ancestor::node()[string(@component)!='' and string(@component)!='/UI/system/components/window.xbl.xml#window'])=0">
+		<properties>
+			<property name="id" text="编号" required="true" />        
+			<property name="columns" text="列名,如：'sName,sAge'" editor-ref="columnsDialog" required="true"/>
+			<property name="store-type" text="数据存储类型" default-value="grid" editor-ref="storeTypeList" enum-values=""/>
+			<property name="data-type" text="数据序列化格式,支持xml/json" default-value="xml" editor-ref="dataTypeList" enum-values=""/>			       
+			<property name="src" text="数据源" editor-ref="fileTreeDialog" editor-parameter=".j#false"/>
+			<property name="auto-load" text="自动加载数据，和auto-new属性互斥" default-value="false"  editor-ref="booleanList" data-type="boolean"/>
+			<property name="auto-new" text="自动新增数据，和auto-load属性互斥" default-value="false"  editor-ref="booleanList" data-type="boolean"/>
+			<property name="confirm-delete" text="删除提示" default-value="true" editor-ref="booleanList"/>  
+			<property name="confirm-delete-text" text="删除提示文本"  />        
+			<property name="confirm-refresh" text="刷新提示，数据修改后刷新数据进行提示" default-value="true" editor-ref="booleanList"/>
+			<property name="confirm-refresh-text" text="刷新提示文本" />
+		</properties>
+ 
+		<property-editors><!--属性编辑器描述，可通过下拉列表或者弹出对话框来设置属性值，不这是默认问普通的文本输入框。-->
+			<property-editor name="booleanList" type="list" >
+				<static-data value="true,false" /> <!--直接定义的静态数据 -->				
+			</property-editor>
+			<property-editor name="storeTypeList" type="list" >
+				<static-data value="grid,simple" />				 
+			</property-editor>
+			<property-editor name="dataTypeList" type="list" >
+				<static-data value="json,xml" />				 
+			</property-editor>
+			<property-editor name="columnsDialog" type="dialog">
+				<dialog-page class-name="EditColumnPage"/>				
+			</property-editor>
+		</property-editors>
+		<templates>
+		   <template name="default"><![CDATA[ 
+			<data component="/UI/system/components/data.xbl.xml#data" data-type="json"
+			columns="" src="" auto-load="false">
+			</data>
+		   ]]></template>
+		</templates>
+		<events>
+           <event name="onCreate" text="创建"/>
+           <event name="onDataChanged" text="数据发生变化（包括新增、刷新、删除、修改引起的变化），感知从data的变化"/>
+           <event name="onLoadSlave" text="加载从数据"/>
+           <event name="onIndexChanging" text="索引改变中"/>
+           <event name="onIndexChanged" text="索引改变"/>
+           <event name="onValueChanging" text="数据改变中"/>
+           <event name="onValueChanged" text="数据改变"/>
+           <event name="onNewError" type="callback" text="新增失败"/>
+           <event name="onBeforeNew" text="新增前"/>
+           <event name="onCustomNew" text="接管新增"/>
+           <event name="onAfterNew" text="新增后"/>
+           <event name="onDeleteError" text="删除失败"/>
+           <event name="onBeforeDelete" text="删除前"/>
+           <event name="onCustomDelete" text="接管删除"/>
+           <event name="onAfterDelete" text="删除后"/>
+           <event name="onRefreshError" text="刷新失败"/>
+           <event name="onBeforeRefresh" text="刷新前"/>
+           <event name="onCustomRefresh" text="接管刷新"/>
+           <event name="onAfterRefresh" text="刷新后"/>
+           <event name="onBeforeRefreshTree" text="树数据刷新前"/>
+           <event name="onCustomRefreshTree" text="接管树数据刷新"/>
+           <event name="onAfterRefreshTree" text="树数据刷新后"/>
+           <event name="onBeforeRefreshPage" text="分页数据刷新前"/>
+           <event name="onAfterRefreshPage" text="分页数据刷新后"/>
+           <event name="onSaveError" text="保存失败"/>
+           <event name="onBeforeSave" text="保存前"/>
+           <event name="onCustomSave" text="接管保存"/>
+           <event name="onAfterSave" text="保存后"/>
+           <event name="onSaveCommit" text="保存事务提交"/> 
+        </events>
+		<operations>
+			<operation name="new" label="新建" img-src="" dis-src=""  enable="true" visible="true" icon-class="icon-system-plus"/>
+			<operation name="newChild" label="新建子节点" img-src="" dis-src=""  enable="true" visible="true" icon-class=""/>
+			<operation name="newBrother" label="新建兄弟节点" img-src="" dis-src=""  enable="true" visible="true" icon-class=""/>
+			<operation name="save" label="保存" img-src="" dis-src=""  enable="true" visible="true" icon-class="icon-system-floppy"/>
+			<operation name="delete" label="删除" img-src="" dis-src=""  enable="true" visible="true" icon-class="icon-system-trash"/>
+			<operation name="refresh" label="刷新" img-src="" dis-src=""  enable="true" visible="true" icon-class="icon-system-refresh"/>
+			<operation name="prevRow" label="上一条" img-src="" dis-src=""  enable="true" visible="true" icon-class="icon-system-angle-up"/>
+			<operation name="nextRow" label="下一条" img-src="" dis-src=""  enable="true" visible="true" icon-class="icon-system-angle-down"/>
+			<operation name="prevPage" label="上页" img-src="" dis-src=""  enable="true" visible="true" icon-class="icon-system-angle-left"/>
+			<operation name="nextPage" label="下页" img-src="" dis-src=""  enable="true" visible="true" icon-class="icon-system-angle-right"/>
+			<operation name="loadNextPage" label="下页" img-src="" dis-src=""  enable="true" visible="true" icon-class=""/>
+			<operation name="loadAllPage" label="全部" img-src="" dis-src=""  enable="true" visible="true" icon-class=""/>
+		</operations>
+		<toolbar>			
+			<item text="编辑规则" method="editRule"/>
+			<item text="编辑数据" method="editData"/>				
+			<item text="编辑操作"  method="editOperatoions"/>
+		</toolbar>
+	</element>
+</elements>

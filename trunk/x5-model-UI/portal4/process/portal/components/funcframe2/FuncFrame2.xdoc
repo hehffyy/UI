@@ -1,0 +1,34 @@
+/**
+	@name justep.Portal.FuncFrame2
+	@model UI
+	@class 
+	@language js
+	@description 在新门户中使用的功能表现组件, 和FuncFrame相似只是没有标题栏和返回按钮.
+	@example 
+	<xmp>
+	var funcFrame = new FuncFrame2({id: 'funcFrame', bsessionid: bsessionid, onclose: function(option){
+		//当关闭功能时执行
+	}});
+	</xmp>
+*/
+
+/**
+	@name justep.Portal.FuncFrame2#open
+	@function
+	@description 打开一个功能 
+	@param {Object} oprion <b>[required]</b> 功能的描述
+*/
+
+/**
+	@name justep.Portal.FuncFrame2#refresh
+	@function
+	@description 刷新当前的功能为另一个功能
+	@param {Object} option <b>[required]</b> 功能的描述
+*/
+
+/**
+	@name justep.Portal.FuncFrame2#close
+	@function
+	@description 关闭功能
+	@param {String} id 功能的id
+*/

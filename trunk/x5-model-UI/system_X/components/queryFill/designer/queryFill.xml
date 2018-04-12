@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<elements> 
+  <element name="queryFill" tag-type="rich" tag-name="div" icon="dialog_icon_min.gif"
+    text="查询回填对话框" binding-component="/UI/system_X/components/queryFill.xbl.xml#queryFill"
+    display-property="id" component-class="queryFill" component-type="formControl"
+    parent-range="view" design-view="web-designer"> 
+    <properties> 
+      <property name="id" text="编号" required="true"/>  
+      <property name="url" text="模板" default-value="/UI/base/core/components/dialogs/selectDialog.w"
+        readonly="true"/>  
+      <property name="targetUrl" text="查询表单" editor-ref="fileDialog" editor-parameter="*.w"/>  
+      <property name="returnDataId" text="返回数据对象"/>  
+      <property name="multiSelect" text="是否多选" editor-ref="booleanList" readonly="true"
+        default-value="false"/>  
+      <property name="multiGridId" text="多选Grid组件ID"/>  
+      <property name="displayColumn" text="多选数据的显示列"/>  
+      <property name="checkColumn" text="多选数据状态列"/>  
+      <property name="title" text="对话框标题"/>  
+      <property name="show-title" text="显示标题栏" editor-ref="booleanList" readonly="true"
+        default-value="true"/>  
+      <property name="modal" text="模态" editor-ref="booleanList" readonly="true"
+        default-value="true"/>  
+      <property name="width" text="宽度，只支持PX单位" default-value="400px"/>  
+      <property name="height" text="高度，只支持PX单位" default-value="300px"/>  
+      <property name="left" text="窗口打开的位置(左)"/>  
+      <property name="top" text="窗口打开的位置(上)"/>  
+      <property name="neighbor" text="显示在某个元素下方(元素的ID)" is-id-ref="true"/>  
+      <property name="reload-on-open" text="打开时刷新页面" editor-ref="booleanList" readonly="true"
+        default-value="false" data-type="boolean"/>  
+      <property name="status" text="初始化状态" editor-ref="dialog-status" readonly="true"
+        enum-values=""/>  
+      <!-- 
+			<property name="autosize" text="是否通过内容自适应大小" default-value="false" editor-ref="booleanList" readonly="true" />
+			 -->  
+      <property name="resizable" text="是否可以改变大小" editor-ref="booleanList" default-value="true"
+        readonly="true" data-type="boolean"/>  
+      <property name="minmaxable" text="是否显示最大化最小化按钮" editor-ref="booleanList" default-value="true"
+        readonly="true" data-type="boolean"/>  
+      <property name="closable" text="是否显示关闭按钮" editor-ref="booleanList" default-value="true"
+        readonly="true" data-type="boolean"/>  
+      <property name="process" text="打开窗口的process，默认使用当前环境中的process"/>  
+      <property name="activity" text="打开窗口的activity，默认使用当前环境中的activity"/>  
+      <property name="mapping" text="配置返回数据的处理" editor-ref="mappingDialog" readonly="true"
+        is-virtual="true" fixed-value="[...]"/> 
+    </properties>  
+    <property-editors> 
+      <property-editor name="dialog-status" type="list"> 
+        <static-data value=",minimize,maximize"/> 
+      </property-editor>  
+      <property-editor name="mappingDialog" type="dialog"> 
+        <dialog-page class-name="EditMappingPage"/> 
+      </property-editor> 
+    </property-editors>  
+    <events> 
+      <event name="onCreateOpenParams" text="创建数据打开参数" parameters="event"/>  
+      <event name="onReceive" parameters="event"/>  
+      <event name="onInit"/>  
+      <event name="onOpen" parameters="event"/>  
+      <event name="onClose" parameters="event"/> 
+    </events>  
+    <templates> 
+      <template name="default"><![CDATA[ 
+			<xhtml:div component="/UI/system_X/components/queryFill.xbl.xml#queryFill" xmlns:xhtml="http://www.w3.org/1999/xhtml" 
+					title=""
+					width="400px"
+					height="300px"
+					modal="true"
+				/>
+		   ]]></template> 
+    </templates> 
+  </element> 
+</elements>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xbl:xbl xmlns="http://www.w3.org/ns/xbl"
+	xmlns:xui="http://www.justep.com/xui"
+	xmlns:xbl="http://www.w3.org/ns/xbl"
+	xmlns:xhtml="http://www.w3.org/1999/xhtml"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xsl:version="2.0"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xforms="http://www.justep.com/xforms"
+	xmlns:ev="http://www.w3.org/2001/xml-events"
+	script-type="text/javascript">
+	
+	<script src="/UI/system/components/common/common.js" />
+	<script src="/UI/system_X/components/rangeFilter/rangeFilter.js"/>
+
+	<binding id="rangeFilter">
+		<template template-type="java" src="RangeFilter" />
+		<implementation>
+			({
+				initXBL : function() {
+					justep.Object.extend(this, new com.butone.RangeFilter(this));				}
+			})			
+		</implementation>		
+	</binding>
+</xbl:xbl>	

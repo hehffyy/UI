@@ -1,0 +1,175 @@
+.color-layout-0 {background:#aaa;}
+.color-layout-1 {background:#eee;}  
+.color-layout-2 {background:#ddd;}  
+.color-layout-3 {background:#888;}  
+.color-layout-4 {background:#fff;}  
+.color-layout-5 {background:#666;}  
+
+.portalset{
+	height: 100%; 
+}
+
+.portalset .select{
+	height: 100%; 
+	float: right;
+	display: none;
+}
+
+.portalset .select .select-inner{
+	height: 100%; 
+	border-left: 1px dotted #999;
+	padding-left: 20px;
+}
+
+
+
+.portalset .select .description{
+	padding: 5px 10px;
+	color: #D1D1D1;
+}
+
+.portalset .select ul{
+	padding: 0;
+	margin: 20px;
+	list-style: none;
+}
+
+.portalset .select ul li{
+	position: relative;
+	padding: 8px;
+}
+
+.portalset .select ul li a{
+	color: white;
+	text-decoration: none;
+}
+
+.portalset .select ul li span{
+	display: none;
+	position: absolute;
+	width: 16px;
+	left: -16px;
+	height: 30px;
+	background: url(./images/check.ico) no-repeat;
+}
+
+.portalset .select ul .on span{
+	display: block;
+}
+
+.pageset{
+	float: right;
+	height: 100%;
+}
+
+.pageset .section{
+	float: right;
+}
+.pageset .section-inner{
+	padding: 0 16px; 
+	height: 200px; 
+	border-left: 1px dashed #999;
+}
+
+.pageset .section:last-child .section-inner{
+	border-left: none;
+	padding-left: 0; 
+}
+
+.pageset .section h1{
+	color: #515151;
+	margin: 0 0 0 6px;
+	padding: 8px 0;
+}
+
+.pageset .switch{
+	padding: 8px;
+}
+.pageset .switch a{
+	text-decoration: none;
+	padding: 5px 0 5px 27px;
+	color: #D1D1D1;
+}
+
+.pageset .switch .on{
+	background: url(./images/bulb.png) no-repeat;
+}
+
+.pageset .switch .off{
+	display: none;
+	background: url(./images/light_off3.png) no-repeat;
+}
+
+.portalset .pageset>.row {
+	margin-top: 5px;	
+}
+
+.portalset .pageset label {
+	color: #D1D1D1;
+}
+.portalset .pageset .field{
+	border: 1px #3A3A3A solid;
+	background: #717171;
+	margin-right: 10px;
+	margin-top: 4px;
+	width: 160px;
+	color: white;
+	height: 16px;
+}
+
+.pageset .select-layout{
+	background: #515151;
+	height: 170px;	
+}
+
+.pageset .select-widget{
+	background: #515151;
+	overflow: hidden;
+	height: 170px;	
+}
+.pageset .select-widget ul{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	color: white;
+}
+.pageset .select-widget ul li{
+	padding: 5px;
+}
+.pageset .select-widget ul li a{
+	display: block;
+	padding-left: 20px;
+	text-decoration: none;
+	color: white;
+	background: url(./images/checkbox_no.png) left center no-repeat;
+}
+.pageset .select-widget ul li .checked{
+	background-image: url(./images/checkbox_yes.png);
+}
+.pageset .select-layout-item{
+	float: left;
+}
+.pageset .select-layout-item input{
+	margin-left: 25px;
+}
+
+.pageset .thumbnail {
+	margin: 5px;
+	width: 60px;
+	height: 40px;
+}
+
+.pageset .thumbnail-select {
+	margin: 2px;
+	border: 3px solid white;
+}
+
+.pageset .thumbnail .column{
+	min-height: 0;
+	float: left;
+	height: 100%;
+}
+.pageset .thumbnail .row {
+	min-height: 0;
+	height: auto;
+}

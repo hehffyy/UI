@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<elements> 
+  <!--
+	此处组件名component-name必需和designerComponentsReg.xml中component-name元素的name保持一致
+	namespace="xhtml/xform/xui"
+	component-class 组件类，设计时需要画一个组件，这是一个js类 【设计时的JS类：/designer/sign.js】
+	binding-component属性：绑定一个实际运行时的一个组件
+	component-type="formControl" ：表单控件
+	-->  
+  <element name="sign" tag-type="rich" tag-name="div" icon="secret.gif" text="自定义签名组件"
+    is-complex-component="true" namespace="xhtml" namespace-uri="http://www.w3.org/1999/xhtml"
+    display-property="id" binding-component="/UI/system_X/components/sign.xbl.xml#sign"
+    component-class="sign" component-type="formControl"> 
+    <!--属性 editor-parameter：属性编辑器的参数-->  
+    <properties> 
+      <property name="id" text="编号" required="false"/>  
+      <property name="pro-data" text="数据源" required="true" is-id-ref="true" editor-ref="multiDatasource"/>  
+      <property name="ref" text="引用" required="true" editor-ref="dataRef"/>  
+      <property name="signDateField" text="签名日期字段" editor-ref="dataRef"/>  
+      <property name="protectFields" text="保护字段" required="true" editor-ref="relationsDlg_ext"
+        editor-parameter="pro-data"/>  
+      <property name="useSignImage" text="使用签名图片" editor-ref="booleanList" default-value="false"
+        data-type="boolean"/>  
+      <property name="useSignDevice" text="使用签名设备" editor-ref="booleanList" default-value="false"
+        data-type="boolean"/>  
+      <property name="verifyPassword" text="验证密码" editor-ref="booleanList" default-value="false"
+        data-type="boolean"/>  
+      <property name="class" text="class" editor-extend-data="xui-input:input"/>  
+      <property name="style" text="样式" editor-ref="styleDialog"> 
+        <property name="width" text="宽度" is-style="true"/> 
+      </property>  
+      <property name="readonly" text="只读" editor-ref="edit-readonly" default-value="false"
+        data-type="boolean"/>  
+      <property name="disabled" text="禁用" editor-ref="edit-disabled" default-value="false"
+        data-type="boolean"/> 
+    </properties>  
+    <!--属性编辑器-->  
+    <property-editors> 
+      <!--概念多选	-->  
+      <property-editor name="multiDatasource" type="list" mutil-selection="true"> 
+        <dynamic-data class-name="com.butone.studio.ui.utils.XUIUtils" method="getAllDataSourceIds"/> 
+      </property-editor>  
+      <!-- 关系多选 -->  
+      <property-editor name="relationsDlg_ext" type="dialog"> 
+        <dynamic-data class-name="com.butone.studio.ui.editors.property.datasource.MultiDatasourceRelation"
+          method="getDatasource"/>  
+        <dialog-page class-name="com.justep.studio.ui.editors.propertypage.RelationPage"/> 
+      </property-editor> 
+    </property-editors>  
+    <!--模板	-->  
+    <templates> 
+      <template name="default" type="dialog"> <![CDATA[
+				<xhtml:div xmlns:xui='http://www.justep.com/xui' 
+					   xmlns:xforms='http://www.justep.com/xforms' 
+					   xmlns:xhtml='http://www.w3.org/1999/xhtml'
+					   component='/UI/system_X/components/sign.xbl.xml#sign' style="width:155px;height:21px">
+					   <xhtml:table border="0" cellpadding="0" cellspacing="0" style="height:100%;width:100%;">
+							<xhtml:tr>
+								<xhtml:td style="width:60px;">
+									<xforms:trigger appearance="image-text" class="button-blue" icon-class="icon-system-pencil" style="height:100%;width:100%">
+										<xforms:label>签名</xforms:label>
+									</xforms:trigger>
+								</xhtml:td>
+							</xhtml:tr>
+						</xhtml:table>
+						<xhtml:div component="/UI/system/components/menu.xbl.xml#menu" appearance="context" open-mode="win" class="xui-container" style="width:0px;height:0px">
+							<xui:menuitem id="toVerify" label="验证" img="/UI/SA/OPM/images/funRole.gif" dis-img="/UI/SA/OPM/images/un_funRole.gif"></xui:menuitem>
+							<xui:menuitem id="toClear" label="清除" img="/UI/SA/OPM/images/dataRole.gif" dis-img="/UI/SA/OPM/images/un_dataRole.gif"></xui:menuitem>
+						</xhtml:div>
+				</xhtml:div>
+				]]> </template> 
+    </templates> 
+  </element> 
+</elements>

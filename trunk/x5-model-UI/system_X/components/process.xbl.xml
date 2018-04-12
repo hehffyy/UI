@@ -1,0 +1,249 @@
+<xbl xmlns="http://www.w3.org/ns/xbl"
+	xmlns:xbl="http://www.w3.org/ns/xbl"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:xforms="http://www.justep.com/xforms">
+	<xbl:script type="text/javascript" src="/UI/system/components/windowDialog/windowDialog.js"/>
+	<xbl:script type="text/javascript" src="/UI/system/components/windowFrame/windowFrame.js"/>
+	
+	  
+	<script src="./process/process.js"/>
+	<binding id="process">
+		<template template-type="xslt">
+			<xsl:template match="/*"
+				xmlns:xhtml="http://www.w3.org/1999/xhtml"
+				xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+				xmlns:xforms="http://www.justep.com/xforms"
+				
+				xmlns:ev="http://www.w3.org/2001/xml-events">
+				
+				
+				<xsl:variable name="id" select="@id"/>
+				<xsl:variable name="process-control-dialog-id" select="concat($id, '_processControlDialog')"/>
+				<xsl:variable name="process-confirm-dialog-id" select="concat($id, '_processConfirmDialog')"/>
+				<xsl:variable name="process-confirm-content-id" select="concat($id, '_processConfirmContent')"/>
+				
+				<xsl:variable name="customized-dialog-id" select="concat($id, '_customizedDialogID')"/>
+				<xsl:variable name="customized-dialog-iframe-id" select="concat($id, '_customizedDialogIFrameID')"/>
+				
+				<!--  
+				<xsl:variable name="process-event-trigger-id" select="concat($id, '_processEventTrigger')"/>
+				-->
+				<xsl:variable name="process-control-dialog-iframe-id" select="concat($id, '_processControlDialogIFrame')"/>
+				
+				<xsl:variable name="process-chart-dialog-id" select="concat($id, '_processChartDialogID')"/>
+				<xsl:variable name="process-chart-dialog-iframe-id" select="concat($id, '_processChartDialogIFrame')"/>
+				
+				<xsl:variable name="model-id" select="concat($id, '_model_id__')"/>
+				
+				
+				<root>
+					
+					<xforms:model id="{model-id}">
+						<xforms:action ev:event="xforms-model-construct">
+							<xforms:script>
+								<xsl:if test="(not(@auto-filter) or (@auto-filter='true')) and @data">
+									var data = justep.xbl('<xsl:value-of select="@data"/>');
+									var p = justep.xbl('<xsl:value-of select="@id"/>');
+									if (data){
+										data.attachEvent(justep.XData.EVENT_REFRESHDATA_BEFORE,
+											function(event){
+												/*if (p.isAutoFilter()){*/
+													var conceptName = event.source.getConceptAliasName();
+													var value = justep.Context.getProcessData1();
+													var condition = null;
+													if (value){
+														condition = conceptName + "='" + value + "'";
+													}else{
+														condition = "1=0";
+													}
+													event.source.setFilter("_process-filter_", condition);
+												/*}else{
+													event.source.setFilter("_process-filter_", "1=1");
+												}*/
+											},
+											data);  
+									}else{
+										var msg = new justep.Message(justep.Message.JUSTEP230001, "'<xsl:value-of select="@data"/>'");
+										throw justep.Error.create(msg);
+									}
+								</xsl:if>
+							</xforms:script>
+						</xforms:action>
+					</xforms:model>
+				
+					<xforms:dialog level="modal" close="true" width="700" height="465"
+						appearance="full" visible="false" id="{$process-control-dialog-id}"
+						neighbor="{@neighbor}">
+						<xsl:attribute name="title">i18n{process-control-in-process}</xsl:attribute>
+						
+						
+						<xforms:script ev:event="xforms-dialog-close">
+							
+							var processControlDialog = justep('<xsl:value-of select="$process-control-dialog-id"/>').xformsObject;
+							var isOk = processControlDialog._isOk;
+							var processControl = processControlDialog._processControl;
+							var task = processControlDialog._task;
+							var callback = processControlDialog._callback;
+							var options = processControlDialog._options;
+							
+							processControlDialog._isOk = false;
+							processControlDialog._processControl = null;
+							processControlDialog._task = null;
+							processControlDialog._callback = null;
+							processControlDialog._options = null;
+						
+							if (isOk){
+								var process = justep.xbl('<xsl:value-of select="$id"/>');
+								process[callback](task, processControl, options);
+							}
+							
+							justep('<xsl:value-of select="$process-control-dialog-iframe-id"/>').src="";
+							
+							
+						</xforms:script>
+						<xhtml:iframe name="{$process-control-dialog-iframe-id}" 
+							id="{$process-control-dialog-iframe-id}"
+							frameborder="no" 
+							style="width:100%;height:100%;"/>		
+					</xforms:dialog>
+				
+					<xforms:dialog  
+						neighbor="{@neighbor}"
+						status="maximize"
+						level="modal" close="true" width="700" height="445"
+						appearance="full" visible="false" id="{$process-chart-dialog-id}" show-title="false">
+						<xsl:attribute name="title">i18n{process-chart-in-process}</xsl:attribute>
+						
+						
+						<xforms:script ev:event="xforms-dialog-close">
+							justep('<xsl:value-of select="$process-chart-dialog-iframe-id"/>').src="";
+						</xforms:script>
+						<xforms:script ev:event="xforms-dialog-open">
+							var url = "/UI/system/service/process/processChart.w?process=" 
+								+ justep.Context.getCurrentProcess() + "&amp;activity=" 
+								+ justep.Context.getCurrentActivity();
+							var task = justep.Context.getTask();
+							if (task != null){
+								url =  url + "&amp;task=" + task;
+							}
+							url = justep.Request.convertURL(url);
+							justep('<xsl:value-of select="$process-chart-dialog-iframe-id"/>').src=url;
+						</xforms:script>
+						<xhtml:iframe name="{$process-chart-dialog-iframe-id}" 
+							id="{$process-chart-dialog-iframe-id}"
+							frameborder="no" 
+							style="width:100%;height:100%;"/>		
+					</xforms:dialog>
+					
+					
+					<xforms:dialog level="modal" close="true" draggable="true" width="250" height="90"
+						neighbor="{@neighbor}"
+						appearance="full" visible="false" id="{$process-confirm-dialog-id}">
+						<xforms:script ev:event="xforms-dialog-close">
+							var processConfirmDialog = justep('<xsl:value-of select="$process-confirm-dialog-id"/>').xformsObject;
+							var isOk = processConfirmDialog._isOk;
+							var processControl = processConfirmDialog._processControl;
+							var task = processConfirmDialog._task;
+							var callback = processConfirmDialog._callback;		
+							var options = processConfirmDialog._options;
+							
+							processConfirmDialog._isOk = false;
+							processConfirmDialog._task = null;
+							processConfirmDialog._processControl = null;
+							processConfirmDialog._callback = null;					
+							processConfirmDialog._options = null;
+							if (isOk &amp;&amp; processControl.isOk()){
+								var process = justep.xbl('<xsl:value-of select="$id"/>');
+								process[callback](task, processControl, options);
+							}
+						</xforms:script>
+						
+						<xhtml:table border="0" cellpadding="0" cellspacing="8" style="width:100%;height:100%;table-layout:fixed">
+							<xhtml:tr>
+								<xhtml:td>
+									<xhtml:div xblid="{$process-confirm-content-id}" style="padding: 5px;"/>
+								</xhtml:td>
+							</xhtml:tr>
+							<xhtml:tr height="22px">
+								<xhtml:td>
+									<xhtml:table border="0" cellpadding="0" cellspacing="0" style="width:100%;height:100%;table-layout:fixed">
+										<xhtml:tr>
+											<xhtml:td align="right">
+												<xforms:trigger style="width:75px;margin-right:8px;">
+													<xforms:label>i18n{ok-in-process}</xforms:label>
+													<xforms:action ev:event="DOMActivate">
+														<xforms:script>
+															var processConfirmDialog = justep('<xsl:value-of select="$process-confirm-dialog-id"/>').xformsObject;
+															processConfirmDialog._isOk = true;
+															xforms('<xsl:value-of select="$process-confirm-dialog-id"/>').close();
+														</xforms:script>
+													</xforms:action>
+												</xforms:trigger>
+											</xhtml:td>
+											<xhtml:td width="75px">
+												<xforms:trigger style="width:75px">
+													<xforms:label>i18n{cancel-in-process}</xforms:label>
+													<xforms:action ev:event="DOMActivate">
+														<xforms:script>
+															var processConfirmDialog = justep('<xsl:value-of select="$process-confirm-dialog-id"/>').xformsObject;
+															processConfirmDialog._isOk = false;
+															xforms('<xsl:value-of select="$process-confirm-dialog-id"/>').close();
+														</xforms:script>
+													</xforms:action>
+												</xforms:trigger>
+											</xhtml:td>
+										</xhtml:tr>
+									</xhtml:table>
+								</xhtml:td>
+							</xhtml:tr>
+						</xhtml:table>						
+					</xforms:dialog>
+
+				    <xhtml:div component="/UI/system/components/dialog.xbl.xml#dialog" modal="true"
+				    	neighbor="{@neighbor}"
+				      width="500" height="405" id="{$customized-dialog-id}" xblid="_customizedDialog_">
+						<xsl:attribute name="title">i18n{customized-process-in-process}</xsl:attribute>
+						<xhtml:iframe scrolling="no" src="about:blank" frameborder="no" style="width: 100%; height: 100%; overflow: hidden" id="{$customized-dialog-iframe-id}" name="{$customized-dialog-iframe-id}"></xhtml:iframe>      
+				    </xhtml:div>
+					
+					
+					 <!--  
+					<xforms:trigger id="{$process-event-trigger-id}">
+						<xforms:label>流程事件</xforms:label>
+						<xsl:copy-of select="/*/xforms:action"/>
+					</xforms:trigger>
+					-->
+					<xhtml:div style="display:none">
+						<xhtml:input xblid="_processInputData_"
+							processControlDialogID="{$process-control-dialog-id}"
+							processConfirmDialogID="{$process-confirm-dialog-id}" 
+							processConfirmContentID="{$process-confirm-content-id}"
+							iframeID = "{$process-control-dialog-iframe-id}"
+							customizedDialogID="{$customized-dialog-id}"
+							customizedDialogIFrameID="{$customized-dialog-iframe-id}"
+							processChartDialogID="{$process-chart-dialog-id}"
+							>
+						</xhtml:input>
+					</xhtml:div>
+				</root>
+			</xsl:template>	
+		</template>
+		
+		<implementation>
+			({
+				initXBL : function(){
+					justep.supportCustomOperation(this);
+					var processEngine = new justep.ProcessEngine(this);
+					justep.Object.extend(this, processEngine);
+					this._processEngine = processEngine;
+				},
+				
+				setProcessDialogWindow :function(url){
+					this._processEngine._processDialogWindow = url;
+				}
+			})
+		</implementation>
+		
+	</binding>
+</xbl>

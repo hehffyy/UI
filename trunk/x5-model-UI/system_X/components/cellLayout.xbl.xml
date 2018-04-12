@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<xbl:xbl xmlns:xbl="http://www.w3.org/ns/xbl" xmlns:justep="http://www.justep.com/x5#"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xforms="http://www.justep.com/xforms"
+  xmlns:ev="http://www.w3.org/2001/xml-events" xsl:version="2.0" script-type="text/javascript">  
+  <xbl:binding id="cellLayout" delete-bound-element="true"> 
+    <xbl:template template-type="java" src="CellLayout"/>  
+    <xbl:resources> 
+      <xbl:style src="./cellLayout/cellLayout.css"/>  
+      <xbl:style src="/UI/system_X/components/cellLayout/celllayout2.css"/> 
+    </xbl:resources> 
+  </xbl:binding> 
+</xbl:xbl>

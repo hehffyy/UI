@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:sample="http://www.agencexml.com/sample"
+  xmlns:xforms="http://www.justep.com/xforms" xmlns:ev="http://www.w3.org/2001/xml-events"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:justep="http://www.justep.com/x5#"
+  xmlns:ajx="http://www.ajaxforms.net/2006/ajx" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xhtml="http://www.w3.org/1999/xhtml" xsl:version="2.0" style="height:100%;width:100%;">  
+  <head> 
+    <meta http-equiv="Media-Type" content="ajaxforms"/>  
+    <meta name="keywords" content="AJAX, Javascript, Web, XForms, XSLTForms, Exemples, Samples"/>  
+    <!-- 
+		<link rel="stylesheet" type="text/css" href="/UI/system/fontface/system.font.css"></link>
+		 -->  
+    <link rel="stylesheet" type="text/css" href="/UI/system/icons/system.icon.css"/>  
+    <!-- 
+		<script language="javascript" href="/UI/system/resources/system.res.js"></script>
+		 -->  
+	<script> <![CDATA[
+			onerror = pageErrorHandler;
+			function pageErrorHandler(msg, url, line, stack) {
+				debugger;
+				msg = ('string'==typeof(msg) && msg)? msg.replace(/Uncaught Error:/,''):'i18n{window-unknow}';
+				msg = ('string'==typeof(msg) && msg)? msg.replace(/Error:/,''):'i18n{window-unknow}';
+				msg = justep.String.trim(msg);
+				if (msg.substring(0,1) == "{"){
+					/*认为是json格式的数据*/
+					var msgs = JSON.parse(msg);
+					var code = msgs.code;
+					code="";
+					var message = msgs.message;
+                    message=message.replace('data保存失败!!,','');
+ 					if(message && message.indexOf(":")>=0)
+						message = message.substring(message.indexOf(":")+1);
+					var reason = msgs.reason;
+					var messages = msgs.messages;
+					var javaStack = msgs.stack;
+					var javaUrl = msgs.url;
+					var javaParam = msgs.param;
+					
+					if (code!=null && code!=undefined && code!=""){
+						message = code + ", " + message;
+					}
+					
+					var detail = "";
+					
+					if (javaStack){
+						detail += javaStack; 
+					}
+					
+					if (javaUrl){
+						detail += '\n\r url:' + javaUrl;
+						if (javaParam){
+							detail += '\n\r param:' + javaParam;
+						}
+					}
+					
+					if(url){
+						detail += ('\n at ('+url); 
+						if(line) detail += (':'+line); 
+						detail += ')';
+					}
+					
+					if(stack) detail += stack;	
+					
+					(new justep.System.showMessage()).open({"width":600,"msg":message,"details":detail,"title":"i18n{window-title}", "reason": reason, "messages": messages});
+					return true;
+										
+				}else{
+					var msgs = msg.split("|");
+					if(justep.System.showMessage) {
+						var msg = msgs.length > 0 ? msgs[0] : "";
+						var detail = msgs.length > 1 ? (msgs[1] == "" ? msg : msgs[1]) : msg;
+						if(url){detail += ('\n at ('+url); if(line) detail += (':'+line); detail += ')';}
+						if(stack) detail += ('\n'+stack);
+						(new justep.System.showMessage()).open({"width":600,"msg":msg,"title":"i18n{window-title}","details":detail});
+						return true;
+					} else {
+						alert(msgs.length > 0 ? msgs[0] : "i18n{window-unknow}");
+						return false;
+					}
+				}
+				
+				var msgs = msg.split("|");
+				if(justep.System.showMessage) {
+					var tip = "";
+					var reason = "";
+					var others = "";
+					var messages = "";
+					if (msgs.length == 1){
+						tip = msgs[0];
+						reason = "";
+						messages = "";
+						others = "";					
+					}else if (msgs.length == 2){
+						tip = msgs[0];
+						reason = "i18n{window-unknow2}";
+						messages = "";
+						others = msgs[1];
+					}else if (msgs.length == 3){
+						tip = msgs[0];
+						reason = msgs[1];
+						messages = "";
+						others = msgs[2];
+					}else if (msgs.length >= 4){
+						tip = msgs[0];
+						reason = msgs[1];
+						messages = msgs[2];
+						others = msgs[3];
+					}
+					if(url){
+						others += ('\n at ('+url); 
+						if(line) others += (':'+line); 
+						others += ')';
+					}
+					
+					if(stack){ 
+						others += ('\n'+stack);
+					}	
+					(new justep.System.showMessage()).open({"width":600,"msg":tip,"details":others,"title":"i18n{window-title}","reason":reason,"messages":messages});
+					return true;
+				} else {
+					alert(msgs.length > 0 ? msgs[0] : "i18n{window-unknow}");
+					return false;
+				}
+			}
+			
+			var _closeActivityed = false;
+			function _closeActivity_(){
+				window._noShowSessionTimeOut_ = true;
+				if (!_closeActivityed){
+					_closeActivityed = true;
+					var log = justep.Context.getRequestParameter("log"); 
+					if (log==1 || log=="1"){
+						var process = justep.Context.getCurrentProcess();
+						var activity = justep.Context.getCurrentActivity();
+						var executor = justep.Context.getExecutor();
+						if (process!=null && activity!=null){
+							var xmlHttpRequest = justep.Request.sendBizRequest(process, activity, "closeActivityAction", "", null, function(data){}, true, executor);
+						}
+					}else{
+						
+					}
+				}
+			}
+			
+			function _close_(){
+				_closeActivity_();				
+			}
+		]]> </script>  
+    <!--  
+		<script id="__script"/>
+		-->  
+    <!-- 增加数据为空时，组件的表现特性-->  
+  
+  
+  </head>  
+  <!-- onunload="_closeActivity_();" -->  
+  <body style="margin:0; padding:0;height:100%;width:100%;" class="xui-body"> 
+    <!-- 可视部分 即用户描述的界面 -->  
+    <div id="visible-element" style="height:100%;width:100%;"/> 
+  </body> 
+</html>

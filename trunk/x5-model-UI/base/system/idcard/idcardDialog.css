@@ -1,0 +1,12 @@
+.cardLable {
+	position:absolute;font-family:微软雅黑;font-size:17px;color:#5FACEB;
+	}
+.cardNumLabel {
+	position:absolute;font-family:微软雅黑;font-size:19px;color:#5FACEB;
+	}
+.cardValue {
+	position:absolute;font-family:微软雅黑;font-size:19px;
+	}
+.cardNumValue {
+	position:absolute;font-family:微软雅黑;font-size:20px;
+	}

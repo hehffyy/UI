@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<xbl:xbl xmlns:xbl="http://www.w3.org/ns/xbl" xmlns="http://www.w3.org/ns/xbl" xmlns:xui="http://www.justep.com/xui"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xforms="http://www.justep.com/xforms"
+  xmlns:ev="http://www.w3.org/2001/xml-events" xsl:version="2.0" script-type="text/javascript"> 
+  <script src="/UI/system/components/dialog/dialog.js"/>  
+  <script src="/UI/system/components/windowDialog/windowDialog.js"/>  
+  <script src="/UI/system_X/components/boundaryImport/boundaryImport.js"/>  
+  <binding id="boundaryImport"> 
+    <!--编译入口-->  
+    <template template-type="java" src="BoundaryImport"/>  
+    <implementation>
+    ({
+    	initXBL : function() {
+    		
+		},
+		initXBL2 : function(){
+			justep.Object.extend(this, new com.butone.BoundaryImport(this));
+			var el = jQuery(this.domNode);
+			var config = $("div[role='result']",el).remove().html();
+    		if (config) {
+    			try {
+					this.resultConfig = eval(config);
+				} catch (e) {
+				}
+    		}
+			this.fileType = el.attr('file-type');
+			
+			var onAfterUpload = justep.Function.get(el.attr("onAfterUpload"));
+			if (onAfterUpload) {
+				this.attachEvent("onAfterUpload", onAfterUpload, this);
+			}
+		}
+    })
+    </implementation> 
+  </binding> 
+</xbl:xbl>

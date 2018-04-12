@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<elements> 
+  <element name="uiPlugin" tag-type="rich" tag-name="div" icon="dialog_icon_min.gif"
+    text="业务UI组件" binding-component="/UI/system_X/components/uiPlugin.xbl.xml#uiPlugin"
+    display-property="id" component-class="uiPlugin" component-type="formControl"
+    parent-range="view" design-view="web-designer"> 
+    <properties> 
+      <property name="id" text="编号" required="true"/>  
+      <property name="content" text="插件数据" path="content/text()" required="true"/>  
+      <property name="activityOperation" text="环节操作" editor-ref="booleanList" default-value="false"
+        data-type="boolean"/> 
+    </properties>  
+    <templates> 
+      <template name="default"><![CDATA[ 
+			<xhtml:div component="/UI/system_X/components/uiPlugin.xbl.xml#uiPlugin" xmlns:xhtml="http://www.w3.org/1999/xhtml"/>
+		   ]]> </template> 
+    </templates> 
+  </element> 
+</elements>

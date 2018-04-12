@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<elements> 
+  <element name="fileExport" tag-type="rich" tag-name="div" icon="import.gif" text="文件导入"
+    namespace="xhtml" namespace-uri="http://www.w3.org/1999/xhtml" display-property="id"
+    binding-component="/UI/system_X/components/fileExport.xbl.xml#fileExport" component-class="FileExport"
+    parent-range="view" component-type="formControl"> 
+    <properties> 
+      <property name="id" text="编号" required="true"/>  
+      <property name="url" text="映射文件"/>  
+      <property name="async" text="异步执行" editor-ref="booleanList" default-value="false"
+        data-type="boolean"/>  
+      <property name="download-filename" text="导出的文件名，默认为download.dat"/> 
+    </properties>  
+    <events> 
+      <event name="onBeforeExecute" text="执行前准备请求参数 " parameters="event"/> 
+    </events>  
+    <templates> 
+      <template name="default" type="dialog"> <![CDATA[
+				<xhtml:div xmlns:xui='http://www.justep.com/xui' 
+					   xmlns:xforms='http://www.justep.com/xforms' 
+					   xmlns:xhtml='http://www.w3.org/1999/xhtml'
+					   component='/UI/system_X/components/fileExport.xbl.xml#fileExport'>
+					   <xhtml:iframe xblid="download" src="about:blank" style="display:none"/>
+				</xhtml:div>
+				]]> </template> 
+    </templates> 
+  </element> 
+</elements>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<xbl:xbl xmlns:xbl="http://www.w3.org/ns/xbl" xmlns="http://www.w3.org/ns/xbl" xmlns:xui="http://www.justep.com/xui"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xforms="http://www.justep.com/xforms"
+  xmlns:ev="http://www.w3.org/2001/xml-events" xsl:version="2.0" script-type="text/javascript">  
+  <binding id="bindTemplate"> 
+    <!--编译入口-->  
+    <template template-type="java" src="BindTemplate"/>  
+    <xbl:resources> 
+<!--     	<xbl:style src="/UI/system/components/cellLayout/cellLayout.css"/>  -->
+    </xbl:resources> 
+  </binding> 
+</xbl:xbl>

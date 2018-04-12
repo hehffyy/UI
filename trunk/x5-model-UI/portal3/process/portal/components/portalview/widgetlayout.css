@@ -1,0 +1,50 @@
+.widgetlayout {
+	min-height: 200px;
+}
+
+.widgetlayout .column {
+	min-height: 200px;
+	float: left;
+}
+
+.widgetlayout .row {
+	min-height: 50px;
+}
+
+.widgetlayout .dock{
+	min-height: 50px;
+}
+
+.widgetlayout .row >.dock{
+	margin: 0;
+}
+
+.widgetlayout .column >.dock {
+	height: 100%;
+	margin: 0 4px;
+}
+
+.widgetlayout .column:first-child >.dock {
+	margin-left: 0;
+}
+
+.widgetlayout .column:last-child >.dock {
+	margin-right: 0;
+}
+
+.widgetlayout .thumbnail {
+	background: black;
+	width: 100px;
+	height: 80px;
+}
+
+.widgetlayout .thumbnail .column{
+	min-height: 0;
+	float: left;
+	height: 100%;
+}
+.widgetlayout .thumbnail .row {
+	min-height: 0;
+	height: auto;
+}
+

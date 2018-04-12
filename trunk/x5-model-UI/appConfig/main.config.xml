@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+	<!-- 系统中文名称 -->
+	<item name="title_zh"><![CDATA[电子政务平台]]></item>
+	<!-- 系统英文名称 -->
+	<item name="title_en"><![CDATA[E-Government System for the Department of Land and Resourses ]]></item>
+	<!-- 系统检索功能开关 -->
+	<item name="isSearch"><![CDATA[true]]></item>
+</root>

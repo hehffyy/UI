@@ -1,0 +1,113 @@
+.x-row+.x-row {
+	margin-top: 0px;
+}
+
+.row_ceng {
+	padding-bottom: 0px;
+}
+
+.pri {
+	max-width: 60px !important;
+	font-family: SimHei;
+	font-size: medium;
+	color: #35b3e4;
+}
+
+.pri div {
+	display: table;
+	height: 100%
+}
+
+.pri div span {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.row_h {
+	position: relative;
+}
+
+.rec {
+	height: 20px;
+	width: 20px;
+	position: absolute;
+	right: 5px;
+	background: url(images/p.png);
+	background-size: cover;
+	cursor: pointer;
+}
+
+.colH {
+	border-top: 1px solid #CCC;
+	border-left: 1px solid #CCC;
+	border-bottom: 1px solid #CCC;
+	padding-bottom: 2px;
+}
+
+.colH:last-child {
+	border-right: 1px solid #CCC;
+}
+
+span.hh {
+	font-size: large;
+}
+
+.zt {
+	padding: 2px;
+	border: 1px solid #CCC;
+	margin: 1px;
+	display: inline-block;
+	font-size: larger;
+	font-weight: bold;
+	color: #FFF;
+	cursor: pointer;
+}
+
+.zt:first-child {
+	margin-left: 0px;
+}
+
+.zt:last-child {
+	margin-right: 0px;
+}
+
+.allzt {
+	padding: 0px;
+}
+
+.zt-fz {
+	background-color: green;
+}
+
+.zt-dj {
+	background-color: #bb6610;
+}
+
+.zt-cf {
+	background-color: red;
+}
+
+.zt-yg {
+	background-color: #98a208;
+}
+
+.zt-yy {
+	background-color: grey;
+}
+
+.zt-dy {
+	background-color: #000a80;
+}
+
+.calculator {  
+	border : 1px dotted; 
+    position: absolute; /*设置绝对定位，脱离文档流，便于拖拽*/  
+    display: block;  
+    width: 218px;  
+    height: 280px;  
+    cursor: move;   /*鼠标呈拖拽状*/  
+}
+
+.dragover {
+	border:2px dotted red
+}

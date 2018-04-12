@@ -1,0 +1,127 @@
+.setpwd{
+	padding: 0;
+	height: 96%;
+	position: relative;
+	border: 1px solid #C9C9C9;
+	border-radius: 3px;
+    margin-bottom: 20px;
+}
+
+.setpwd .left {
+	float: left;
+	width: 99%;
+}
+
+.setpwd label {
+	width: 90px;
+	text-align: right;
+	padding-top: 7px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	float: left;
+	padding-right: 15px;
+	padding-left: 15px;
+	font-size: 14px;
+	line-height: 15px;
+	color: #000;
+}
+
+.setpwd .row {
+	margin-top: 5px;	
+	margin-left:100px;
+}
+.setpwd .row .newPwd {
+	font-size:12px;
+	margin-left:5px;
+	color:#08C;
+}
+.setpwd .btnBar {
+	margin-top: 12px;	
+	margin-left:250px;
+}
+.setpwd .btnBar >a{
+	margin-left: 5px;	
+}
+.setpwd .field{
+	width: 160px;
+	color: #555;
+	padding: 5px 12px;
+	vertical-align: middle;
+	background-color: #FFF;
+	border: 1px solid #CCC;
+	border-radius: 4px;
+}
+
+
+.setpwd .saveBtn {
+	text-decoration: none;
+	display: inline-block;
+	height: 20px;
+	line-height: 20px;
+	padding: 6px 12px;
+	border-radius: 4px;
+	text-align: center;
+	font-weight: normal;
+	background-repeat: repeat-x;
+	color: #FFF;
+    background-color: #54B3F3; 
+}
+.setpwd .saveBtn:hover,.setpwd .saveBtn:focus,.setpwd .saveBtn:active,.setpwd .saveBtn.active{
+	color:#fff;
+	background-color:#d2322d;
+	border-color:#ac2925
+}
+
+
+.setpwd .pwd-head{
+    background: -moz-linear-gradient(center top , #F8F8F8, #F2F2F2);
+    background:#F8F8F8;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    text-shadow: 0px 1px #FFF;
+    border-bottom: 1px solid #CCC;
+    border-top: 1px solid #FFF;
+    color: #666;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 8px 15px;
+}
+.setpwd .cancelBtn{
+	text-decoration: none;
+	display: inline-block;
+	height: 20px;
+	line-height: 20px;
+	padding: 6px 12px;
+	border-radius: 4px;
+	text-align: center;
+	font-weight: normal;
+	background-repeat: repeat-x;
+	color: #333;
+	background-color: #EBEBEB;
+	border-color: #ADADAD;
+}
+.setpwd .cancelBtn:hover,.setpwd .cancelBtn:focus,.setpwd .cancelBtn:active,.setpwd .cancelBtn.active{
+	color:#333;
+	background-color:#ebebeb;
+	border-color:#adadad;
+}
+.setpwd .right{
+	float: left;
+	width: 40%;
+	height: 116px;
+	color: #000;
+	border-left: 1px dashed  #999;
+	padding: 22px 10px 0 10px;
+}
+
+.setpwd .message{
+	display: none;
+	padding: 3px;
+	color: #C09853;
+	background-color: #FCF8E3;
+	border-color: #FBEED5;
+}
+
+.setpwd .error{
+	background-color: #FCF8E3;
+}

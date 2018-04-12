@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<elements> 
+  <element name="unitField" tag-type="rich" tag-name="div" icon="unitField.gif"
+    text="单位字段" is-complex-component="true" namespace="xhtml" namespace-uri="http://www.w3.org/1999/xhtml"
+    display-property="id" binding-component="/UI/system_X/components/unitField.xbl.xml#unitField"
+    component-class="unitField" component-type="formControl"> 
+    <!--属性-->  
+    <properties> 
+      <property name="id" text="编号" required="false"/>  
+      <property name="ref" text="引用" required="true" editor-ref="dataRef"/>  
+      <property name="unitType" default-value="" readonly="false" text="单位类别" editor-ref="unitType-list"
+        is-id-ref="true" allow-empty="true"/>  
+      <property name="dispUnit" default-value="" readonly="false" text="默认显示单位"
+        editor-ref="dispUnit-list" editor-parameter="unitType" depend-on="unitType"/>  
+      <property name="storeUnit" default-value="" readonly="false" text="存储单位" editor-ref="storeUnit-list"
+        editor-parameter="unitType" depend-on="unitType"/>  
+      <property name="useDialog" text="使用对话框" editor-ref="booleanList" default-value="true"
+        data-type="boolean"/>  
+      <property name="readonly" text="只读" editor-ref="edit-readonly" default-value="false"
+        data-type="boolean"/>  
+      <property name="disabled" text="禁用" editor-ref="edit-disabled" default-value="false"
+        data-type="boolean"/>  
+      <property name="style" text="样式" editor-ref="styleDialog"> 
+        <property name="width" text="宽度" is-style="true"/> 
+      </property> 
+    </properties>  
+    <!--属性编辑器-->  
+    <property-editors> 
+      <!--单位类别-->  
+      <property-editor name="unitType-list" type="list"> 
+        <dynamic-data class-name="com.butone.studio.ui.editors.property.datasource.UnitTypeListDatasource"
+          method="getTypeDatasource"/> 
+      </property-editor>  
+      <!--显示单位-->  
+      <property-editor name="dispUnit-list" type="list"> 
+        <dynamic-data class-name="com.butone.studio.ui.editors.property.datasource.UnitTypeListDatasource"
+          method="getDispDatasource"/> 
+      </property-editor>  
+      <!--存储单位-->  
+      <property-editor name="storeUnit-list" type="list"> 
+        <dynamic-data class-name="com.butone.studio.ui.editors.property.datasource.UnitTypeListDatasource"
+          method="getDispDatasource"/> 
+      </property-editor> 
+    </property-editors>  
+    <!--缺省模板	-->  
+    <templates> 
+      <template name="default" type="dialog"> <![CDATA[
+				<xhtml:div component='/UI/system_X/components/unitField.xbl.xml#unitField' style="width:155px;height:21px">
+						<xhtml:table border="0" cellpadding="0" cellspacing="0" style="width:100%;height:100%">
+							<xhtml:tr >
+								<xhtml:td>
+									<xhtml:input type="text" readonly="true" class="xui-input" style="height:100%;width:100%;"></xhtml:input>
+								</xhtml:td>
+								<xhtml:td style="width:30px;">
+									<xforms:trigger appearance="image-text" class="button-green" style="width:100%;height:100%">
+										<xforms:label>...</xforms:label>
+									</xforms:trigger>
+								</xhtml:td>
+							</xhtml:tr>
+						</xhtml:table>
+				</xhtml:div>
+				]]> </template> 
+    </templates> 
+  </element> 
+</elements>

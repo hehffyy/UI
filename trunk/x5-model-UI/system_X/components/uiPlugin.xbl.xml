@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xbl:xbl xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:justep="http://www.justep.com/x5#"
+	xmlns:xbl="http://www.w3.org/ns/xbl"
+	xmlns:xhtml="http://www.w3.org/1999/xhtml"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xsl:version="2.0"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xforms="http://www.justep.com/xforms"
+	script-type="text/javascript">
+	
+	<xbl:binding id="uiPlugin">
+<!--		<xbl:template template-type="xslt"/>-->
+		<xbl:template template-type="java" src="UIPlugin"/>
+		<xbl:implementation>
+		({
+			"initXBL" : function() {
+				var $C = $(this.domNode);
+				var pluginId = $C.attr("pluginId");
+				if(pluginId){
+					var options = window[pluginId];
+					if(options){
+						if(options.declaredClass == "base/plugins/Trigger"){
+							options.declaredClass = "base/plugins/LogicTrigger";
+						}
+						var me=this,classPath = options.declaredClass.replace(/\./g, "/");
+						require([ classPath ], function(Plugin){
+							me.initPlugin(options,Plugin);
+						});
+					}
+				}
+			},
+			
+			"initPlugin" : function(options, Plugin) {
+				var plugin = new Plugin(options);
+				this._uiPlugin = plugin;
+			},
+			
+			"execute" : function(options){
+				if(this._uiPlugin)
+					this._uiPlugin.execute(options);
+			} 
+		})			
+		</xbl:implementation>
+	</xbl:binding>
+</xbl:xbl>

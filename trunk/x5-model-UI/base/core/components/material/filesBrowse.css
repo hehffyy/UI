@@ -1,0 +1,40 @@
+ul li.title {
+	position: relative;
+	list-style-type: none;
+	line-height: 40px;
+	font-size:20px;
+	margin: 3px 2px 0px 0px;
+	border-bottom: 1px solid #ccc;
+	background-repeat: no-repeat;
+	background-position: 18px 4px;
+	color: #000;
+	font-weight: bold;
+}
+
+ul li.attachment {
+	position: relative;
+	list-style-type: none;
+	line-height: 30px;
+	font-size:16px;
+	margin: 3px 2px 0px 5px;
+	background-repeat: no-repeat;
+	background-position: 18px 4px;
+	color: #000;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+li.attachment span:hover {
+	cursor: pointer;
+	color: blue;
+}
+
+span.currentDocName {
+	color: blue;
+	font-weight: bolder;
+}
+#buttonlist button{float:left;margin: 5px;padding: 2px 8px;background:#fff;border-radius: 3px;border: 1px solid #a3d0ef;color: #59adeb;}
+#buttonlist button:hover{background:#eef5fb;}
+#buttonlist{overflow:hidden;background:#fff;position:absolute;z-index:1;}
+#img{min-width:300px;min-height:300px;max-width:90vw;max-height:90vh;display:block;}
+#img{margin-top:8vh;margin-left:5vw;}

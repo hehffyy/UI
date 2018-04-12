@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+	<item label="不动产demo">
+
+	<item label="楼盘表" process="/bdcSys/process/lpb/lpbProcess" activity="lpb" url="/bdcSys/process/lpb/lpb.w"></item></item>
+</root>

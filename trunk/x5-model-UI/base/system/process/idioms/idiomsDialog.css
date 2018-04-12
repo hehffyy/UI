@@ -1,0 +1,31 @@
+ul#idiomList {
+	margin-left: 5px;
+	overflow-y: auto;
+}
+
+#idiomList li {
+	height: 30px;
+	line-height: 30px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	cursor: pointer;
+	font-size: 16px;
+	margin: 5px 10px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+#idiomList li:hover {
+	background: #CCC;
+}
+
+#idiomList li span.xh {
+	padding-right: 10px;
+	font-weight: bolder;
+	text-align: right;
+}
+
+#idiomList li span.idiomContext {
+	margin-left: 10px;
+}

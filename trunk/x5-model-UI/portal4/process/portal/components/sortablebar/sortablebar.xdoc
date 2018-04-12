@@ -1,0 +1,62 @@
+/**
+	@name justep.Portal.SortableBar
+	@model UI
+	@class 
+	@language js
+	@description 一个可排序的Bar组件， 在新门户多处使用， 如常用功能，以打开功能等。 
+	@example 
+	<xmp>
+	</xmp>
+*/
+
+/**
+	@name justep.Portal.SortableBar#toggleConfig
+	@function
+	@description 切换配置模式和非配置模式， 配置模式下可以调整顺序
+*/
+
+/**
+	@name justep.Portal.SortableBar#close
+	@function
+	@description 关闭Bar
+*/
+
+/**
+	@name justep.Portal.SortableBar#open
+	@function
+	@description 展开Bar
+*/
+
+/**
+	@name justep.Portal.SortableBar#toggle
+	@function
+	@description 切换展开和关闭
+*/
+
+/**
+	@name justep.Portal.SortableBar#refresh
+	@function
+	@description 刷新item表现
+	@param {Object} option item描述
+*/
+
+/**
+	@name justep.Portal.SortableBar#add
+	@function
+	@description 增加item
+	@param {Object} option item描述
+*/
+
+/**
+	@name justep.Portal.SortableBar#remove
+	@function
+	@description 删除item
+	@param {Object} option item描述
+*/
+
+/**
+	@name justep.Portal.SortableBar#getCount
+	@function
+	@description 返回item个数
+	@return {Integwe}
+*/

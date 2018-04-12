@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">  
+  <xsl:template match="/"> 
+    <xhtml:html xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xforms="http://www.justep.com/xforms" xmlns:ev="http://www.w3.org/2001/xml-events"
+      xmlns:xxforms="http://orbeon.org/oxf/xml/xforms" xmlns:xbl="http://www.w3.org/ns/xbl"
+      xmlns:f="http://orbeon.org/oxf/xml/formatting" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:exf="http://www.exforms.org/exf/1-0"
+      xmlns:ajx="http://www.ajaxforms.net/2006/ajx" xmlns:xreport="http://www.justep.com/x5/xreport"
+      xmlns:justep="http://www.justep.com/x5#">  
+      <xhtml:head id="head"> 
+        <xhtml:script type="text/javascript" src="/base/base.js"/>  
+        <xhtml:script type="text/javascript" src="/form/form.js"/>  
+        <xhtml:link rel="stylesheet" type="text/css" href="/form/dhtmlx/dhtmlxMenu/skins/dhtmlxmenu_dhx_blue.css"/>  
+        <xhtml:style>body { padding: 0px; margin: 0px; } div.header{ font-size:14px; font:bold; } a.task{ font-size:14px; color:#479cd0; } a:link { text-decoration:none; color:#666666; font-size:14px; } a:visited { text-decoration:none; color:#1f3a87; font-size:14px; } a:hover { color:#003F5C; font-size:14px; text-decoration: none; } #taskListTable{padding-left:10px;padding-right:10px;} a:active { text-decoration:none; color:#1f3a87; font-size:14px; } table{ table-layout:fixed; } table td{ border-top: 1px solid #E7E7E7; height:30px; line-height:30px; } .className{ font-size:14px; word-break :keep-all; color: #999999; overflow: hidden; text-overflow:ellipsis; } body{ background:#fff; color:#000; font-family: "\5FAE\8F6F\96C5\9ED1", tahoma, arial; font-size:14px; line-height: 16px; }</xhtml:style>  
+        <xhtml:script> <![CDATA[
+		
+			onerror = pageErrorHandler;
+			function pageErrorHandler(msg, url, line, stack) {
+				msg = ('string'==typeof(msg) && msg)? msg.replace(/Uncaught Error:/,''):'i18n{window-unknow}';
+				msg = justep.String.trim(msg);
+				if (msg.substring(0,1) == "{"){
+					/*认为是json格式的数据*/
+					var msgs = JSON.parse(msg);
+					var code = msgs.code;
+					var message = msgs.message;
+					var reason = msgs.reason;
+					var messages = msgs.messages;
+					var javaStack = msgs.stack;
+					var javaUrl = msgs.url
+					var javaParam = msgs.param;
+					
+					if (code!=null && code!=undefined && code!=""){
+						message = code + ", " + message;
+					}
+					
+					var detail = "";
+					if (javaStack){
+						detail += javaStack; 
+					} 
+					
+					if (javaUrl){
+						detail += '\n\r url:' + javaUrl;
+						if (javaParam){
+							detail += '\n\r param:' + javaParam;
+						}
+					}
+					
+					if(url){
+						detail += ('\n at ('+url); 
+						if(line) detail += (':'+line); 
+						detail += ')';
+					}
+					if(stack) detail += stack;	
+					
+					
+					(new justep.System.showMessage()).open({"width":600,"msg":message,"details":detail,"title":"i18n{window-title}", "reason": reason, "messages": messages});
+					return true;
+										
+				}else{
+					var msgs = msg.split("|");
+					if(justep.System.showMessage) {
+						var msg = msgs.length > 0 ? msgs[0] : "";
+						var detail = msgs.length > 1 ? (msgs[1] == "" ? msg : msgs[1]) : msg;
+						if(url){detail += ('\n at ('+url); if(line) detail += (':'+line); detail += ')';}
+						if(stack) detail += ('\n'+stack);
+						(new justep.System.showMessage()).open({"width":600,"msg":msg,"details":detail,"title":"i18n{window-title}"});
+						return true;
+					} else {
+						alert(msgs.length > 0 ? msgs[0] : "i18n{window-unknow}");
+						return false;
+					}
+				}
+				var msgs = msg.split("|");
+				if(justep.System.showMessage) {
+					var tip = "";
+					var reason = "";
+					var others = "";
+					var messages = "";
+					if (msgs.length == 1){
+						tip = msgs[0];
+						reason = "";
+						messages = "";
+						others = "";					
+					}else if (msgs.length == 2){
+						tip = msgs[0];
+						reason = "i18n{window-unknow2}";
+						messages = "";
+						others = msgs[1];
+					}else if (msgs.length == 3){
+						tip = msgs[0];
+						reason = msgs[1];
+						messages = "";
+						others = msgs[2];
+					}else if (msgs.length == 3){
+						tip = msgs[0];
+						reason = msgs[1];
+						messages = msgs[2]
+						others = msgs[3];
+					}else {
+						tip = msgs[0];
+						reason = msgs[1];
+						messages = msgs[2]
+						others = msgs[3];
+					}
+					if(url){
+						others += ('\n at ('+url); 
+						if(line) others += (':'+line); 
+						others += ')';
+					}
+					
+					if(stack){ 
+						others += ('\n'+stack);
+					}	
+					(new justep.System.showMessage()).open({"width":600,"msg":tip,"details":others,"title":"i18n{window-title}","reason":reason,"messages":messages});
+					return true;
+				} else {
+					alert(msgs.length > 0 ? msgs[0] : "i18n{window-unknow}");
+					return false;
+				}
+			}
+		
+		   	tabActive = function(){
+				//refreshThisWindow();
+		   	}
+		   	
+		   	/*
+		  	setInterval("refreshThisWindow()",300000);
+		  	*/
+		  	
+		  	refreshThisWindow=function(){
+		  		document.location.reload();
+		  	}
+		
+		  	
+		  	function openNotice(fID){
+		  		if(!!fID){
+			  		var taskURL = "/UI/MOA/notice/process/noticeInfo/readNtActivity.w?mainID="+fID;
+					justep.Portal.openWindow("通知", encodeURI(taskURL));
+		  		}
+		  	}
+		  	
+		  	function trim(text){
+				if (text == undefined){
+					return text;
+				}else{
+					return text.replace(/(^\s*)|(\s*$)/g, "");
+				}
+			}
+		]]> </xhtml:script>  
+        <xsl:if test="/root/flag = 'false'"> 
+          <xhtml:script>function isActionError(){ var code = document.getElementById("errorCode").innerText; if (code == justep.Request.SESSION_TIMEOUT){ justep.Request.bizSessionOverdue(); }else{ alert(message); } }</xhtml:script> 
+        </xsl:if>  
+        <xsl:if test="/root/flag = 'true'"> 
+          <xhtml:script>function isActionError(){ }</xhtml:script> 
+        </xsl:if> 
+      </xhtml:head>  
+      <!-- hidenMask();JUSTEP_Utils.init(); -->  
+      <xhtml:body onload="isActionError();"> 
+        <xhtml:div id="errorMessage" style="display:none"> 
+          <xsl:value-of select="/root/message"/> 
+        </xhtml:div>  
+        <xhtml:div id="errorCode" style="display:none"> 
+          <xsl:value-of select="/root/code"/> 
+        </xhtml:div>  
+        <!-- 可视部分 即用户描述的界面 -->  
+        <xhtml:div id="visible-element" style="height:100%;width:100%;overflow: hidden;"> 
+          <xsl:if test="/root/flag = 'true'"> 
+            <xhtml:table style="width:100%;overflow: hidden;" id="taskListTable"> 
+              <xsl:for-each select="/root/data/*/noticeInfos/noticeInfo"> 
+                <xsl:variable name="onclickvalue">openNotice('<xsl:value-of select="fID"/>');
+                </xsl:variable>  
+                <xsl:variable name="id" select="generate-global-id()"/>  
+                <tr> 
+                  <td style="width:12px"> 
+                    <img name="flagImg" src="/UI/SA/task/taskView/images/dot.png"/> 
+                  </td>  
+                  <td class="className" width="100%"> 
+                    <nobr> 
+                      <a class="className" needContextMenu="true"> 
+                        <xsl:attribute name="href">javascript:void(0)</xsl:attribute>  
+                        <xsl:attribute name="onclick"> 
+                          <xsl:value-of select="$onclickvalue"/> 
+                        </xsl:attribute>  
+                        <xsl:variable name="fID" select="./fID"/>
+                        <xsl:value-of select="fNoticeTitle"/> 
+                      </a> 
+                    </nobr> 
+                  </td>  
+                  <td style="width:1px"/>  
+                  <td style="width:61px;" class="className"> 
+                    <nobr> 
+                      <xsl:value-of select="fContactPerson"/> 
+                    </nobr> 
+                  </td>  
+                  <td style="width:1px"/>  
+                  <td style="width:82px;" class="className"> 
+                    <nobr> 
+                      <xsl:value-of select="format-dateTime(fPublishTime, '[Y0001]-[M01]-[D01]')"/> 
+                    </nobr> 
+                  </td> 
+                </tr> 
+              </xsl:for-each> 
+            </xhtml:table> 
+          </xsl:if> 
+        </xhtml:div> 
+      </xhtml:body> 
+    </xhtml:html> 
+  </xsl:template> 
+</xsl:stylesheet>

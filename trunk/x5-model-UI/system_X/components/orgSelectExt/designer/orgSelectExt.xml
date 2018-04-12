@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<elements> 
+  <!--组件描述 -->  
+  <element name="orgSelectExt" tag-type="rich" tag-name="div" icon="orgSelect.gif"
+    text="组织机构选择" is-complex-component="true" namespace="xhtml" namespace-uri="http://www.w3.org/1999/xhtml"
+    display-property="id" binding-component="/UI/system_X/components/orgSelectExt.xbl.xml#orgSelectExt"
+    component-class="orgSelectExt" component-type="formControl"> 
+    <!--组件属性 -->  
+    <properties> 
+      <property name="id" text="编号" required="false"/>  
+      <property name="ref" text="关联字段(机构名称)" required="true" editor-ref="dataRef"/>  
+      <property name="extRef" text="扩展引用(机构ID)" required="true" editor-ref="dataRef"/>  
+      <property name="multi-select" text="是否多选" default-value="false" readonly="true"
+        editor-ref="show-multiSelect-list"/>  
+      <property name="org-kinds" text="可选择的组织类型" enum-values="/m" readonly="true"
+        default-value="ogn,dpt,pos,psm" editor-ref="orgKindList"/>  
+      <property name="show-type" default-value="tree" readonly="true" text="显示类型[list/tree]"
+        editor-ref="show-type-list"/>  
+      <property name="dialogTitle" text="选择对话框标题"/>  
+      <property name="readonly" text="只读" editor-ref="edit-readonly" default-value="false"
+        data-type="boolean"/>  
+      <property name="disabled" text="禁用" readonly="true" editor-ref="edit-disabled"
+        default-value="false" data-type="boolean"/>  
+      <property name="style" text="样式" editor-ref="styleDialog"> 
+        <property name="width" text="宽度" is-style="true"/> 
+      </property> 
+    </properties>  
+    <!--属性编辑器 -->  
+    <property-editors> 
+      <!--是否多选 -->  
+      <property-editor name="show-multiSelect-list" type="list"> 
+        <static-data value="true,false"/> 
+      </property-editor>  
+      <!--显示类型 -->  
+      <property-editor name="show-type-list" type="list"> 
+        <static-data value="list,tree"/> 
+      </property-editor>  
+      <!--可选类型 -->  
+      <property-editor name="orgKindList" type="list" mutil-selection="true"> 
+        <static-data value="ogn:机构,dpt:部门,pos:岗位,psm:人员"/> 
+      </property-editor> 
+    </property-editors>  
+    <events> 
+      <event name="onBeforeCalcOrgExpr" text="计算表达式前，用于传递表达式依赖的宿主参数值，或需要打开(无主控)工作表的过滤条件"/> 
+    </events>  
+    <!--缺省模板 -->  
+    <templates> 
+      <template name="default" type="dialog"> <![CDATA[
+				<xhtml:div component='/UI/system_X/components/orgSelectExt.xbl.xml#orgSelectExt' style="width:155px;height:21px" class="orgSelectExt">
+					   <xhtml:table border="0" cellpadding="0" cellspacing="0" style="height:100%;width:100%;padding-right:0px;margin-right:0px;">
+							<xhtml:tr>
+								<xhtml:td>
+								    <xhtml:div style="postion:relative;">
+								        <xforms:input readonly="true" class="xui-input xui-autofill"></xforms:input>
+								        <xhtml:div class="clear"></xhtml:div>
+								    </xhtml:div>									
+								</xhtml:td>
+								<xhtml:td style="width:60px">
+									<xforms:trigger appearance="image-text" class="button-green" icon-class="icon-system-user-add" style="height:100%;width:100%">
+										<xforms:label>选择</xforms:label>
+									</xforms:trigger>
+								</xhtml:td>
+							</xhtml:tr>
+						</xhtml:table>
+						<xhtml:div component="/UI/system/components/windowDialog.xbl.xml#windowDialog" title="选择办理人" width="556px" height="364px" modal="true" url="/UI/system/components/orgSelectExt/dialog/orgDialog.w" reload-on-open="false" dialogUpdate="true"/> 
+				</xhtml:div>
+				]]> </template> 
+    </templates> 
+  </element> 
+</elements>

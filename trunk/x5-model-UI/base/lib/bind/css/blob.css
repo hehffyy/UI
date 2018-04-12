@@ -1,0 +1,33 @@
+.x-blob {
+  position: relative;
+}
+.x-blob .x-blob-bar {
+  position: absolute;
+}
+.x-blob .x-autofill {
+  height: 100%;
+  width: 100%;
+}
+.x-blob-bar {
+  display: none;
+  width: 100%;
+  text-align: right;
+  padding: 8px;
+}
+.x-blob-bar .x-blob-edit,
+.x-blob-bar .x-blob-del {
+  padding-right: 8px;
+  font-size: 21px;
+  cursor: pointer;
+}
+.x-blob-bar .x-blob-edit {
+  color: #029ACF;
+}
+.x-blob-bar .x-blob-del {
+  color: #D9230F;
+}
+.x-blob-img-radius,
+.x-blob-radius,
+.x-blob-radius .x-blob-img {
+  border-radius: 4px;
+}

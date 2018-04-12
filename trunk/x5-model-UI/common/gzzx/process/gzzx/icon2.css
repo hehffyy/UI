@@ -1,0 +1,292 @@
+[class ^="icon2-"],[class *="icon2-"] {
+	background-image: url("images/icon2.png?v=7");
+	display: inline-block;
+	vertical-align: middle;
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+}
+
+.icon2-add {
+	background-position: 0 0
+}
+
+.icon2-comment {
+	background-position: -16px 0
+}
+
+.icon2-completed {
+	background-position: -32px 0
+}
+
+.icon2-setting {
+	background-position: -48px 0
+}
+
+.icon2-delete {
+	background-position: -63px 0
+}
+
+.icon2-video {
+	background-position: -80px 0
+}
+
+.icon2-search {
+	background-position: -96px 0
+}
+
+.icon2-back {
+	background-position: -112px 0
+}
+
+.icon2-refresh {
+	background-position: -128px 0
+}
+
+.icon2-refresh {
+	background-position: -128px 0
+}
+
+.icon2-disleft {
+	background-position: -144px 0
+}
+
+.icon2-left {
+	background-position: -160px 0
+}
+
+.icon2-disright {
+	background-position: -176px 0
+}
+
+.icon2-right {
+	background-position: -192px 0
+}
+
+.icon2-gz0 {
+	background-position: -208px 0;
+	vertical-align: -4px;
+	*vertical-align: 0
+}
+
+.icon2-gz1 {
+	background-position: -224px 0;
+	vertical-align: -4px;
+	*vertical-align: 0
+}
+
+.icon2-gz2 {
+	background-position: -240px 0;
+	vertical-align: -4px;
+	*vertical-align: 0
+}
+
+.icon2-dot {
+	background-position: -256px 0
+}
+
+.icon2-down {
+	background-position: -272px 0
+}
+
+.icon2-down:hover {
+	background-position: -272px -16px
+}
+
+.icon2-up {
+	background-position: -288px 0
+}
+
+.icon2-up:hover {
+	background-position: -288px -16px
+}
+
+.icon2-up-sort {
+	background-position: -320px -16px
+}
+
+.icon2-up-sort:hover {
+	background-position: -304px -16px
+}
+
+.icon2-down-sort {
+	background-position: -352px -16px
+}
+
+.icon2-down-sort:hover {
+	background-position: -336px -16px
+}
+
+.icon2-ok {
+	background-position: -304px 0
+}
+
+.icon2-warn {
+	background-position: -320px 0;
+	vertical-align: -3px
+}
+
+.icon2-receive {
+	background-position: -336px 0
+}
+
+.icon2-out {
+	background-position: -352px 0
+}
+
+.icon2-undone {
+	background-position: -368px 0
+}
+
+.icon2-disundone {
+	background-position: -384px 0
+}
+
+.icon2-done {
+	background-position: 0 -16px
+}
+
+.icon2-disdone {
+	background-position: -16px -16px
+}
+
+.icon2-close-task {
+	background-position: -32px -16px
+}
+
+.icon2-disclose-task {
+	background-position: -64px -16px
+}
+
+.icon2-attach {
+	background-position: -80px -16px
+}
+
+.icon2-aboutme {
+	background-position: -96px -16px
+}
+
+.icon2-task {
+	background-position: 0 -32px
+}
+
+.icon2-friend {
+	background-position: -16px -32px
+}
+
+.icon2-client {
+	background-position: -32px -32px
+}
+
+.icon2-discuss {
+	background-position: -48px -32px
+}
+
+.icon2-igoal {
+	background-position: -64px -32px
+}
+
+.icon2-knowledge {
+	background-position: -80px -32px
+}
+
+.icon2-memo {
+	background-position: -96px -32px
+}
+
+.icon2-weibo {
+	background-position: -112px -32px
+}
+
+.icon2-aboutme {
+	background-position: -96px -16px
+}
+
+.icon2-account {
+	background-position: -112px -16px
+}
+
+.icon2-calendar {
+	background-position: -129px -17px;
+	width: 14px;
+	height: 14px;
+	vertical-align: -2px
+}
+
+.icon2-clock {
+	background-position: -144px -16px
+}
+
+.icon2-attend {
+	background-position: -128px -32px
+}
+
+.icon2-approve {
+	background-position: -144px -32px
+}
+
+.icon2-mail {
+	background-position: -160px -32px
+}
+
+.icon2-document {
+	background-position: -176px -32px
+}
+
+.icon2-eg {
+	background-position: -192px -32px
+}
+
+.icon2-attention {
+	background-position: -208px -32px
+}
+
+.icon2-plan {
+	background-position: -224px -32px
+}
+
+.icon2-project {
+	background-position: -240px -32px
+}
+
+.icon2-delete-gray {
+	background-position: -160px -16px
+}
+
+.icon2-share-gray {
+	background-position: -176px -16px
+}
+
+.icon2-share {
+	background-position: -192px -16px
+}
+
+.icon2-lock-gray {
+	background-position: -208px -16px
+}
+
+.icon2-lock {
+	background-position: -224px -16px
+}
+
+.icon2-more {
+	background-position: -360px -47px;
+	width: 40px;
+	height: 17px
+}
+
+.icon2-manage {
+	background-position: -240px -16px
+}
+
+.icon2-help {
+	background-position: -256px -17px
+}
+
+.icon2-dunPan {
+	background-position: -256px -33px
+}
+
+.icon2-latedoc {
+	background-position: -272px -33px
+}

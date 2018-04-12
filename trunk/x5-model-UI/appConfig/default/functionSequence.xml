@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<item label="协同平台"/>
+	<item label="组件案例"/>
+	<item label="综合案例"/>
+	<item label="报表图表案例"/>
+	<item label="组织机构案例"/>
+	<item label="流程案例"/>
+</config>

@@ -1,0 +1,15 @@
+td.title {
+	text-align: center;
+}
+
+li.range {
+	margin-left: 10px;
+	float: left;
+	list-style-type: none;
+	border-bottom: 1px dotted #7D7D7D;
+	cursor: pointer;
+}
+
+td.input {
+	padding-right: 10px
+}

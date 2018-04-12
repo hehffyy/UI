@@ -1,0 +1,17 @@
+.op {
+  background-image: url('image/edit_button_background.jpg');
+  background-repeat: repeat-x;
+  width: 100px;
+  height: 25px;
+  border: 1px solid #a5b6d2;
+  margin: 1px;
+  padding: 2px;
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 14px;
+  cursor: pointer;
+  font-family:Î¢ÈíÑÅºÚ;
+  font-weight:bold;
+  
+}

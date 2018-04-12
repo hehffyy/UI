@@ -1,0 +1,25 @@
+.myCalendar {
+	font-style: 	
+}	
+
+.hiddenTR {
+	display: none;	
+}
+
+.restDayTD{
+	color: #FF0000;
+}
+
+.todayTD {
+	background-color: #FF8C69;	
+}
+
+.selectedTD{
+     background-color: #00BFFF;	
+}
+.options{
+     text-align: center
+}
+.weekdayColor{
+     background-color: #C1FFC1;
+}

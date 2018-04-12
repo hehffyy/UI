@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<elements>
+	<element name="dateFilter" tag-type="rich" tag-name="div" icon="dateFilter.gif" text="日期过滤" 
+			 namespace="xhtml" namespace-uri="http://www.w3.org/1999/xhtml"	
+			 binding-component="/UI/system/components/dateFilter.xbl.xml#dateFilter"  component-class="DateFilter" component-type="formControl" >
+			<properties>
+			<property name="id" text="编号" required="true" />
+			
+			<property name="filter-date-mode" text="过滤日期模式" editor-ref="filterDateModeList" default-value="single" required="false"/>
+			<property name="filter-data" text="过滤数据集" is-id-ref="true" editor-ref="contextComponent" editor-parameter="data"/>
+			<property name="filter-date-relation1" text="过滤日期关系1" editor-ref="relationDlg" editor-parameter="filter-data"/>
+			<property name="filter-date-relation2" text="过滤日期关系2" editor-ref="relationDlg" editor-parameter="filter-data"/>			
+
+			<property name="auto-refresh" text="当过滤条件改变时是否自动刷新数据（初始化过滤条件时不刷新）" editor-ref="booleanList" readonly="true" default-value="false"/>			
+			<property name="default-select" display-name="init-value" text="初始值" default-value="0" editor-ref="defaultValueList" enum-values=""/>
+			<property name="default-class" text="默认class" readonly="true" default-value="xui-select"/>
+			<property name="class"  text="class"/>
+			<property name="style" text="样式" editor-ref="styleDialog">
+				<property name="width" text="宽度" is-style="true" />
+			</property>
+			<property name="dropdown-height" text="下拉框高度" />
+			<property name="tabindex" text="Tab键顺序" data-type="integer" allow-empty="true"/>
+			<property name="accesskey" text="快捷键" />
+			<property name="readonly" text="只读" editor-ref="edit-readonly"  default-value="false" data-type="boolean" allow-empty="true"/>
+			<property name="disabled" text="禁用" editor-ref="edit-disabled" default-value="false" data-type="boolean" allow-empty="true"/>
+		</properties>
+		<property-editors>
+			<property-editor name="filterDateModeList" type="list" > 
+				<static-data value="single:单日期过滤,range:日期范围过滤" /> 
+			</property-editor>		
+			<property-editor name="defaultValueList" type="list" > 
+				<static-data value="0:全部,1:今天,2:昨天,3:本周,4:上周,5:本月,6:上月,7:今年,8:去年,9:一年内" /> 
+			</property-editor>		
+		</property-editors>		
+		<events>  <!--组件事件-->			
+			<event name="onGetCondition" text="构造过滤条件"/>
+			<event name="onChanged"  text="选择改变"/>
+		</events>
+		<templates>
+			<template name="default"><![CDATA[ 
+				<xhtml:div xmlns:xhtml="http://www.w3.org/1999/xhtml" default-select="3" component="/UI/system/components/dateFilter.xbl.xml#dateFilter" onChanged="" filter-date-mode="single"/>
+		   ]]></template>
+		</templates>
+	</element>
+</elements>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<reg-info> 
+  <!-- 组件目录注册  -->  
+  <component-dirs>/UI/base/components/multiSign, /UI/base/components/bindTemplate,/UI/base/components/attachment,/UI/base/components/scrollView</component-dirs>  
+  <!-- 组件工具箱配置 -->  
+  <toolbox> 
+    <!--component-name必需和xxx.xml中element元素的name一致-->  
+    <catalog name="butone" text="业务组件"> 
+      <item component-name="multiSign"/> 
+    </catalog>  
+    <catalog name="bind" text="数据绑定组件"> 
+      <item component-name="bindTemplate"/>  
+      <item component-name="attachment"/> 
+      <item component-name="attachmentPC"/> 
+      <item component-name="attachmentSimple"/> 
+      <item component-name="scrollView"/> 
+    </catalog> 
+  </toolbox> 
+</reg-info>

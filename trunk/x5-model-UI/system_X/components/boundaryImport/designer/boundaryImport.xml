@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<elements> 
+  <element name="boundaryImport" tag-type="rich" tag-name="div" icon="import.gif"
+    text="界址点导入" namespace="xhtml" namespace-uri="http://www.w3.org/1999/xhtml" display-property="id"
+    binding-component="/UI/system_X/components/boundaryImport.xbl.xml#boundaryImport"
+    component-class="boundaryImport" parent-range="view" component-type="formControl"> 
+    <properties> 
+      <property name="id" text="编号" required="false"/>  
+      <property name="file-type" default-value="" readonly="true" text="文件类型" editor-ref="file-type-list"/>  
+      <property name="urlMapping" text="映射文件"/> 
+    </properties>  
+    <property-editors> 
+      <property-editor name="file-type-list" type="list"> 
+        <static-data value="界址点坐标.txt,界址点坐标.mdb"/> 
+      </property-editor> 
+    </property-editors>  
+    <events> 
+      <event name="onAfterUpload" text="上传后" parameters="event"/> 
+    </events>  
+    <templates> 
+      <template name="default" type="dialog"> <![CDATA[
+				<xhtml:div xmlns:xui='http://www.justep.com/xui' 
+					   xmlns:xforms='http://www.justep.com/xforms' 
+					   xmlns:xhtml='http://www.w3.org/1999/xhtml'
+					   component='/UI/system_X/components/boundaryImport.xbl.xml#boundaryImport'>
+<!--					<result concept="T_DKXX" origin="BA_DKXX" operation="clear">-->
+<!--						<mapping from="BA_DKXX" to="FGUID" key="true" />-->
+<!--						<mapping from="fDKMC" to="DKMC" />-->
+<!--						<mapping from="fTFH" to="TFH" />-->
+<!--						<mapping from="fDKMJ" to="DKMJ" />-->
+<!--						<mapping from="fDKMJ" to="DKMJ" />-->
+<!--						<mapping from="fJZDS" to="JZDS" />-->
+<!--						<mapping from="fDKYT" to="DKYT" />-->
+<!--						<mapping from="fZL" to="ZL" />-->
+<!--					</result>-->
+<!--					<result concept="T_JZDZBB" origin="BA_ZBXX" operation="clear">-->
+<!--						<mapping from="fDKXXID" to="FT_DKXX" />-->
+<!--						<mapping from="fDianH" to="DH" />-->
+<!--						<mapping from="fQH" to="ZBBS" />-->
+<!--						<mapping from="fXZB" to="XZB" />-->
+<!--						<mapping from="fYZB" to="YZB" />-->
+<!--					</result> -->
+				</xhtml:div>
+				]]> </template> 
+    </templates> 
+  </element> 
+</elements>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root> 
+  <item label="业务配置" icon="demo.png" icon16="gongwen.png"> 
+    <item label="审批事项管理" process="/common/spsxgl/process/spsxgl/spsxglProcess"
+      activity="mainActivity" url="/common/spsxgl/process/spsxgl/mainActivity.w"/>  
+    <item label="案卷中心分组" process="/common/archives/process/groupdefine/groupdefineProcess"
+      activity="mainActivity" url="/common/archives/process/groupdefine/mainActivity.w"/>
+    <item label="案卷中心分组（移动端）" process="/common/archives/process/groupdefine/groupdefineProcess"
+      activity="mobileActivity" url="/common/archives/process/groupdefine/mobileActivity.w"/>  
+    <item label="案卷查询分组" process="/common/archives/process/groupdefine/groupdefineProcess"
+      activity="archivesActivity" url="/common/archives/process/groupdefine/archivesActivity.w"/>  
+    <item label="统一收件目录" process="/common/receive/process/rec/recProcess" activity="mainActivity"
+      url="/common/receive/process/rec/mainActivity.w"/>  
+    <item label="通知类型设置" process="/common/notice/process/noticeTypeMng/noticeTypeMngProcess"
+      activity="mainActivity" url="/common/notice/process/noticeTypeMng/mainActivity.w"/>  
+    <item label="预收件环节配置" process="/common/gwbl/process/activitymapping/activitymappingProcess"
+      activity="mainActivity" url="/common/gwbl/process/activitymapping/mainActivity.w"/>  
+    <item label="Office模板" process="/common/officeTemplate/process/template/templateProcess"
+      activity="mainActivity" url="/common/officeTemplate/process/template/mainActivity.w"/>
+    <item label="文档管理" process="/common/docMng/process/docMng/docMngProcess"
+      activity="manageActivity" url="/common/docMng/process/docMng/manageActivity.w"
+      device="pc" iconClass="icon-ios7-albums"/>  
+    <item label="部门业务排序" process="/common/recFuncs/process/recFuncs/recFuncsProcess"
+      activity="deptProcessOrder" url="/common/recFuncs/process/recFuncs/deptProcessOrder.w"/>
+  </item>  
+  <item label="公文办理" icon16="gongwen01.png"> 
+    <item label="统一收件" process="/common/gwbl/process/recevice/receviceProcess"
+      activity="mainActivity" url="/common/gwbl/process/recevice/mainActivity.w"/>  
+    <item label="案卷查询" process="/common/archives/process/archives/archivesProcess"
+      activity="mainActivity" url="/common/archives/process/archives/mainActivity.w"/>  
+    <item label="发起讨论" process="/common/topic/process/topic/topicProcess" activity="startTopic"
+      url="/common/topic/process/topic/startTopic.w"/>  
+    <item label="通讯录" process="/common/addressBook/process/addressBook/addressBookProcess"
+      activity="mainActivity" url="/common/addressBook/process/addressBook/mainActivity.w"/>  
+    <item label="工作主线" process="/common/gzzx/process/gzzx/gzzxProcess" activity="mainActivity"
+      url="/common/gzzx/process/gzzx/mainActivity.w"/>
+    <item label="阅件中心" process="/common/gzzx/process/gzzx/gzzxProcess" activity="yueJianCenter"
+      url="/common/gzzx/process/gzzx/yueJianCenter.w"/>
+  </item> 
+</root>

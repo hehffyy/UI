@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xbl:xbl xmlns="http://www.w3.org/ns/xbl"
+	xmlns:xbl="http://www.w3.org/ns/xbl"
+	xmlns:xhtml="http://www.w3.org/1999/xhtml"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xsl:version="2.0"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xforms="http://www.justep.com/xforms"
+	xmlns:ev="http://www.w3.org/2001/xml-events"
+	script-type="text/javascript"> 
+
+	<xbl:script type="text/javascript"
+		src="/UI/system/components/printHtml/formPrint.js" />
+				
+	<xbl:binding id="printHtml">
+		<xbl:template template-type="xslt">
+			<xsl:template match="/*">
+				<xsl:variable name="image">
+					<xsl:choose>
+						<xsl:when test="@src != ''">
+							<xsl:value-of select="if(starts-with(@src, '/UI')) then @src else concat('/UI',@src)" />
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of
+								select="'/UI/system/images/demo/print.gif'" />
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
+				<xsl:variable name="dis-image">
+					<xsl:choose>
+						<xsl:when test="@dis-src != ''">
+							<xsl:value-of select="if(starts-with(@dis-src, '/UI')) then @dis-src else concat('/UI',@dis-src)" />
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of
+								select="'/UI/system/images/demo/print.gif'" />
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
+				<xsl:variable name="appearance">
+					<xsl:choose>
+						<xsl:when test="@appearance != ''">
+							<xsl:value-of select="@appearance" />
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of
+								select="'button'" />
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
+				<xsl:variable name="style">
+					<xsl:choose>
+						<xsl:when test="$appearance = 'button'">
+							<xsl:value-of select="'height:100%;width:100%;'" />
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of
+								select="''" />
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
+				<xsl:variable name="appearance-mode">
+					<xsl:choose>
+						<xsl:when test="@image-text-mode != ''">
+							<xsl:value-of select="@image-text-mode" />
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of
+								select="''" />
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
+				<xsl:variable name="label">
+					<xsl:choose>
+						<xsl:when test="@label != ''">
+							<xsl:value-of select="@label" />
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:value-of>i18n{print}</xsl:value-of>
+						</xsl:otherwise>
+					</xsl:choose>
+				</xsl:variable>
+				
+
+				<root xbl:class="{concat('xui-printHtml-btn ',@class)}" xmlns:xbl="http://www.w3.org/ns/xbl">
+<!--					<style media="print">.PageNext{page-break-after: always;} .Noprint{display:none;}</style>-->
+<!--					<xhtml:div class='Noprint'>-->
+<!--						<xhtml:OBJECT id="wb" height="0" width="0" classid="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2" name="wb">-->
+<!--						</xhtml:OBJECT>-->
+<!--					</xhtml:div>-->
+					<xforms:trigger style="{concat('margin: 0 auto; ',$style)}" class="{concat('xui-no-border ',@class)}" id="{concat('trigger-',@id)}" appearance="{$appearance}" mode="{$appearance-mode}" tabindex="{@tabindex}" accesskey="{@accesskey}" readonly="{@readonly}" disabled="{@disabled}" icon-class="{@icon-class}">
+						<xsl:if test="not(@icon-class) or (@icon-class = '')">
+							<xsl:attribute name="src" select="$image"/>
+							<xsl:attribute name="dis-src" select="$dis-image"/>
+						</xsl:if>	
+						<xforms:label><xsl:value-of select="$label"/></xforms:label>
+					</xforms:trigger>
+				</root>			
+									
+			</xsl:template>	 
+		</xbl:template>
+		
+		<xbl:implementation>
+		<![CDATA[
+		({
+			"initXBL" : function() {
+			    this.__attribute_node = this.getElementByXblID('attribute');
+				this.__targetID = this.domNode.getAttribute("target-id");
+				if(this.__targetID) this.__targetID = this.__targetID.split(",");
+				this.__isPreview = this.domNode.getAttribute("is-preview");
+				var self = this;
+				jQuery(this.domNode).bind("click",function(){self.print();});
+			},
+			"print" : function(isPreview){		
+				if (isPreview || this.__isPreview=="true"){
+					justep.HtmlPrint.printpreview(this.__targetID);	
+				}else {
+					justep.HtmlPrint.printForm(this.__targetID);
+				}					
+			},
+			"_getTriggerObj" : function() {
+				return justep.xbl('trigger-'+this.domNode.id);
+			},
+			"setTargetID" : function(id){
+				this.__targetID = id;
+			},
+			"getTargetID" : function(){
+				return this.__targetID;
+			},			
+			"setTabIndex" : function(tabIndex){
+				var o = this._getTriggerObj();
+				if(o) o.setTabIndex(tabIndex);
+			},
+			"getTabIndex" : function(){
+				var o = this._getTriggerObj();
+				if(o) return o.getTabIndex();
+			},			
+			"setAccessKey" : function(key){
+				var o = this._getTriggerObj();
+				if(o) o.setAccessKey(key);
+			},			
+			"getAccessKey" : function(){
+				var o = this._getTriggerObj();
+				if(o) return o.getAccessKey();
+			},			
+			"setDisabled" : function(disabled){
+				var o = this._getTriggerObj();
+				if(o) o.setDisabled(disabled);
+			},			
+			"getDisabled" : function(){
+				var o = this._getTriggerObj();
+				if(o) return o.getDisabled();
+			},
+			"__getAttributeValue" : function(name){
+				return this.__attribute_node?this.__attribute_node.getAttribute(name):'';
+			}
+		})
+		]]>	
+		</xbl:implementation>
+
+		<xbl:resources>
+			<xbl:style>
+			<![CDATA[
+			  /*.xui-printHtml-btn{
+				width:65px;
+				height:22px;
+			  }*/
+			]]>
+			</xbl:style>
+		</xbl:resources>				
+		
+	</xbl:binding>
+</xbl:xbl>

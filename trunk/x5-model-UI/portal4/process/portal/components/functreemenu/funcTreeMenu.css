@@ -1,0 +1,68 @@
+.sf-menu {
+	margin-bottom: 0;
+}
+
+.sf-menu a {
+	color: #333;
+	border: none;
+}
+
+.sf-menu li {
+	background: white;
+}
+.sf-menu ul li {
+	background: #f8f8f8;
+}
+
+.sf-menu ul ul li {
+	background: #f8f8f8
+}
+
+.sf-menu >li >a >i.icon {
+	position: static;
+}
+.sf-menu i.icon {
+	position: absolute;
+	top: 10px;
+	right: 4px;
+}
+
+.sf-menu .down {
+	position: fixed;
+}
+
+.functreemenu .wrap {
+	margin: 0 32px;
+}
+
+.functreemenu .caroufredsel_wrapper {
+	/*overflow: visible!important;*/
+}
+
+.functreemenu .prev,
+.functreemenu .next {
+	margin-top: 10px;
+	width: 14px;
+	height: 14px;
+}
+
+.functreemenu .prev {
+	margin-left: 10px;
+	float: left;
+}
+
+.functreemenu .next {
+	margin-right: 10px;
+	float: right;
+}
+
+.functreemenu .sf-menu li:hover > ul,
+.functreemenu .sf-menu li.sfHover > ul {
+	display: none;
+}
+
+.functreemenu .open li:hover > ul,
+.functreemenu .open li.sfHover > ul {
+	display: block;
+}
+

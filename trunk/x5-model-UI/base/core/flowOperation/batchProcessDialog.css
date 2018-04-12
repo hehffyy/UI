@@ -1,0 +1,159 @@
+.font-bold {
+	font-weight: bold;
+}
+
+.underline {
+	text-decoration: underline
+}
+
+.clear-top-bottom-padding {
+	padding-top: 0px;
+	padding-bottom: 0px
+}
+
+.x-ro,.x-ros {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.x-ros {
+	position: relative;
+}
+
+.x-ro-title {
+	line-height: normal;
+}
+
+.x-img-list,.x-ros {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	min-height: 75px;
+	padding: 5px;
+}
+
+.x-ros-border,.x-ro-border .x-img-list-border,.x-img-list-border-enabled
+	{
+	border: 1px solid #B0B1B3;
+	border-radius: 5px;
+}
+
+.x-img-more {
+	float: right;
+	display: inline-block;
+	padding-left: 5px;
+	line-height: 64px;
+}
+
+.x-img-right {
+	background: url(./img/ico_all.png) no-repeat;
+	background-position: -374px -8px;
+	display: block;
+	width: 11px;
+	margin-top: 20px;
+	height: 25px;
+}
+
+.x-seperator-item {
+	float: left;
+	display: inline-block;
+	line-height: 64px;
+	margin-left: 2.5px;
+	margin-right: -15px;
+}
+
+.x-img-item {
+	float: left;
+	display: inline-block;
+	padding-left: 15px;
+	line-height: 64px;
+}
+
+.x-img-content {
+	line-height: normal;
+	position: relative;
+	margin-top: 5px;
+	width: 40px;
+	height: 40px;
+}
+
+.x-img {
+	width: 100%;
+	height: 100%;
+}
+
+.x-img-border {
+	border-radius: 5px;
+}
+
+.x-img-name {
+	margin-top: 5px;
+	line-height: normal;
+	font-size: 12px;
+	text-align: center;
+	display: block;
+}
+
+.x-img-list-remove-all {
+	color: #f57e7b;
+}
+
+.x-img-list-reset {
+	color: inherit;
+}
+
+.x-img-list-remove-item {
+	position: absolute;
+	top: -5px;
+	right: -6px;
+	background: url(./img/ico_all.png) no-repeat;
+	width: 25px;
+	height: 25px;
+	background-position: -568px -8px;
+	display: block;
+}
+
+.x-img-status {
+	width: 21px;
+	height: 22px;
+	background: url(./img/user_reader.png);
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+}
+
+.x-ro-title-status {
+	float: right;
+}
+
+th.ui-state-hover {
+	background: none !important;
+}
+
+tr.ui-state-hover {
+	background: #f0f4f7 !important;
+}
+
+.ui-state-highlight,.ui-widget-content .ui-state-highlight {
+	background: #f0f4f7 !important;
+}
+
+.ui-jqgrid tr.ui-row-ltr td {
+	padding-left: 10px;
+}
+
+.ui-jqgrid tr.jqgrow td {
+	height: 36px;
+}
+.link-apply{
+	color:inherit;
+}
+.noApplied{
+	color:blue;
+	text-decoration:underline
+}
+
+.x-row.list:before{ content:''; width:4px; height:4px; border-radius:50%; background:#000; display:inline-block; margin-right:5px; vertical-align:middle; margin-top:12px}
+
+.btn{
+	line-height:1 !important;
+}

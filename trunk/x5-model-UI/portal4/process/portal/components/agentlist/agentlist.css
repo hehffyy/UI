@@ -1,0 +1,15 @@
+.agentlist{
+	margin-right: 20px;
+}
+.agentlist >a{
+	display: inline-block;
+	font-size: 12px;
+	padding: 3px 10px 5px 10px;
+	text-decoration: none;
+	color: white;
+}
+
+.agentlist >a:hover{
+	text-decoration: underline;
+}
+

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<elements> 
+  <element name="multiSign" tag-name="div" icon="multiSign.gif" text="会签组件" namespace="xhtml"
+    is-complex-component="false" namespace-uri="http://www.w3.org/1999/xhtml" display-property="id"
+    binding-component="/UI/base/components/multiSign.xbl.xml#multiSign" component-class="MultiSign"
+    component-type="layout-container" child-range="grid,cellLayout"> 
+    <!--属性 editor-parameter：属性编辑器的参数-->  
+    <properties> 
+      <property name="id" text="编号" required="false"/>  
+      <property name="data" text="引用数据" required="true" editor-ref="contextComponent"
+        editor-parameter="data" is-id-ref="true"/>  
+      <property name="pro-data" text="保护数据源" required="true" is-id-ref="true" editor-ref="multiDatasource"/>  
+      <property name="protectFields" text="保护字段" required="true" editor-ref="relationsDlg_ext"
+        editor-parameter="pro-data"/>  
+      <property name="multiTime" text="多次签名" editor-ref="booleanList" default-value="false"
+        data-type="boolean"/>  
+      <property name="deptGroup" text="部门分组" editor-ref="booleanList" default-value="false"
+        data-type="boolean"/>
+      <property name="attachment" text="启用附件" editor-ref="booleanList" default-value="false"
+        data-type="boolean"/>  
+      <property name="useCA" text="使用CA签名" editor-ref="booleanList" default-value="false"
+        data-type="boolean"/>  
+      <property name="verifyPassword" text="验证密码" editor-ref="booleanList" default-value="false"
+        data-type="boolean"/>  
+      <property name="template" text="输出模板" editor-ref="templateList" readonly="true"/>  
+      <property name="shadow" text="阴影效果" editor-ref="booleanList" default-value="false"
+        data-type="boolean"/>  
+      <property name="header-height" text="签名意见意外的其他行高(px)" data-type="integer"/>  
+      <property name="signInfo-height" text="签名意见高度(px)" data-type="integer"/>  
+      <property name="class" text="class" editor-extend-data="cell-layout"/>  
+      <property name="style" text="样式" editor-ref="styleDialog"> 
+        <property name="width" text="宽度" is-style="true"/> 
+      </property>  
+      <property name="readonly" text="只读" editor-ref="edit-readonly" default-value="false"
+        data-type="boolean"/>  
+      <property name="disabled" text="禁用" editor-ref="edit-disabled" default-value="false"
+        data-type="boolean"/> 
+    </properties>  
+    <!--属性编辑器-->  
+    <property-editors> 
+      <!--下拉列表类型的编辑器-->  
+      <property-editor name="templateList" type="list"> 
+        <static-data value="default,grid,celllayout"/>  
+        <!--直接定义的静态数据 --> 
+      </property-editor>  
+      <!--概念多选	-->  
+      <!--      <property-editor name="multiDatasource" type="list" mutil-selection="true"> -->  
+      <!--        <dynamic-data class-name="com.butone.studio.ui.utils.XUIUtils" method="getAllDataSourceIds"/> -->  
+      <!--      </property-editor>  -->  
+      <!-- 关系多选 -->  
+      <!--      <property-editor name="relationsDlg_ext" type="dialog"> -->  
+      <!--        <dynamic-data class-name="com.butone.studio.ui.editors.property.datasource.MultiDatasourceRelation"-->  
+      <!--          method="getDatasource"/>  -->  
+      <!--        <dialog-page class-name="com.justep.studio.ui.editors.propertypage.RelationPage"/> -->  
+      <!--      </property-editor> --> 
+    </property-editors>  
+    <!--模板	-->  
+    <templates> 
+      <template name="default"> <![CDATA[
+				<xhtml:div class="multiSign cell-layout" component="/UI/base/components/multiSign.xbl.xml#multiSign" style="width:200px; height: 100px;"> 
+      			</xhtml:div>
+				]]> </template> 
+    </templates>  
+    <toolbar> 
+      <item text="从Excel导入..." method="importFromExcel"/> 
+    </toolbar> 
+  </element> 
+</elements>

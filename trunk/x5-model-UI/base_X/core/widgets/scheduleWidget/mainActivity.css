@@ -1,0 +1,37 @@
+body {
+	background: #fff;
+	color: #000;
+	font-family: "\5FAE\8F6F\96C5\9ED1", tahoma, arial;
+	font-size: 14px;
+	line-height: 16px;
+}
+
+table {
+	font-family: "\5FAE\8F6F\96C5\9ED1", tahoma, arial !important;
+	table-layout: fixed;
+}
+
+table td{
+	border-top: 1px solid #E7E7E7;
+	height: 30px;
+	line-height: 30px;
+	color: #666666;
+	word-wrap: break-word;
+	word-break: break-all;
+}
+
+table td ul {
+	list-style-type: none;
+}
+
+table td ul li {
+	border-bottom: 1px solid #E7E7E7;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin-left:10px;
+	margin-right:10px;
+}
+
+table td ul li:nth-last-child (1){
+	border-bottom-width: 0px;
+}
