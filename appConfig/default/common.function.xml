@@ -15,7 +15,7 @@
     <item label="通知类型设置" process="/common/notice/process/noticeTypeMng/noticeTypeMngProcess"
       activity="mainActivity" url="/common/notice/process/noticeTypeMng/mainActivity.w"/>  
     <item label="预收件环节配置" process="/common/gwbl/process/activitymapping/activitymappingProcess"
-      activity="mainActivity" url="/common/gwbl/process/activitymapping/mainActivity.w"/>  
+      activity="mainActivity" url="/common/gwbl/process/activitymapping/mainActivity.w" display="hide"/>  
     <item label="Office模板" process="/common/officeTemplate/process/template/templateProcess"
       activity="mainActivity" url="/common/officeTemplate/process/template/mainActivity.w"/>
     <item label="文档管理" process="/common/docMng/process/docMng/docMngProcess"
