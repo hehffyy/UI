@@ -10,21 +10,52 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
+		<buildCommand>
+			<name>org.maven.ide.eclipse.maven2Builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
 	</buildSpec>
 	<natures>
+		<nature>org.maven.ide.eclipse.maven2Nature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
 	<linkedResources>
 		<link>
-			<name>.output_base_resources_src</name>
+			<name>.output_appConfig_common_src</name>
 			<type>2</type>
-			<location>D:/BeX5_V3.6-platform3.1/model/UI/base/resources/classes</location>
+			<location>D:/BeX5_V3.6/model/UI/appConfig/common/classes</location>
 		</link>
 		<link>
-			<name>.output_generateXML_generateDYQXML_process_dsrc</name>
+			<name>.output_base_X_system_scan_dsrc</name>
 			<type>2</type>
-			<location>D:/BeX5_V3.6-platform3.1/model/UI/generateXML/generateDYQXML/process/dclasses</location>
+			<location>D:/BeX5_V3.6/model/UI/base/system/scan/dclasses</location>
+		</link>
+		<link>
+			<name>.output_common_commdialogs_funcTree_dsrc</name>
+			<type>2</type>
+			<location>D:/BeX5_V3.6/model/UI/common/commdialogs/funcTree/dclasses</location>
+		</link>
+		<link>
+			<name>.output_portal4_process_portal_dsrc</name>
+			<type>2</type>
+			<location>D:/BeX5_V3.6/model/UI/portal4/process/portal/dclasses</location>
+		</link>
+		<link>
+			<name>.output_system_X_components_data_dsrc</name>
+			<type>2</type>
+			<location>D:/BeX5_V3.6/model/UI/system/components/data/dclasses</location>
+		</link>
+		<link>
+			<name>.output_system_X_service_doc_common_dsrc</name>
+			<type>2</type>
+			<location>D:/BeX5_V3.6/model/UI/system/service/doc/common/dclasses</location>
+		</link>
+		<link>
+			<name>.output_system_resources_src</name>
+			<type>2</type>
+			<location>D:/BeX5_V3.6/model/UI/system/resources/classes</location>
 		</link>
 	</linkedResources>
 </projectDescription>
